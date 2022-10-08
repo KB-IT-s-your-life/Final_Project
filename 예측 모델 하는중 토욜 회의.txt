@@ -1,0 +1,8 @@
+linearRegression
+decisiontree
+ridge
+lasso
+elasticnet
+
+동 -> 편의시설 개수로 대체하고
+구도 추가 해서 성능을 높힘 
