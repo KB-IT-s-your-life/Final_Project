@@ -50,3 +50,76 @@ LSTM  :  -> 딥러닝 모델로 돌려보기
 3. 모델을 동별로 만들어서 성능 비교해보기 -> 라벨 인코딩 안하기
 
 4. 추가적으로 도메인 및 통계적 지식을 바탕으로 문서에 내용 추가 
+
+2022/10/09
+
+automl 사용해보려고 했으나 classificiation에서만 사용 가능 sort에 사용되는 지표가
+Accuracy	AUC	Recall	Prec.	F1	Kappa	MCC 뿐임
+https://learn.microsoft.com/ko-kr/azure/machine-learning/v1/how-to-auto-train-models-v1
+마이크로 소프트에서 만든 azure 이라는애가 있음 한달 무료체험 가능 automl
+
+딥러닝으로 회귀 모델 구현 참고 사이트
+https://tensorflow.blog/%EC%BC%80%EB%9D%BC%EC%8A%A4-%EB%94%A5%EB%9F%AC%EB%8B%9D/3-6-%EC%A3%BC%ED%83%9D-%EA%B0%80%EA%B2%A9-%EC%98%88%EC%B8%A1-%ED%9A%8C%EA%B7%80-%EB%AC%B8%EC%A0%9C/
+
+모델 돌리는데 키워드 에러 났을때 해결법 참고 사이트
+https://parading.tistory.com/56
+
+딥러닝은 데이터프레임 넣는게 아니라 np.array로 넣어야함 해결법사이트
+https://ek-koh.github.io/data%20analysis/df-transform/
+
+LSTM 정보 
+https://dgkim5360.tistory.com/entry/understanding-long-short-term-memory-lstm-kr
+
+-딥러닝 결과
+model = models.Sequential()
+    model.add(layers.Dense(64, activation='relu',
+                           input_shape=(x_train.shape[1],)))
+    model.add(layers.Dense(64, activation='relu'))
+    model.add(layers.Dense(1))
+    model.compile(optimizer='rmsprop', loss='mse', metrics=[tf.keras.metrics.MeanAbsoluteError()])
+
+이렇게 돌렸을때 400에폭에 mae 4.559나옴 mse 59.54나옴
+
+    model = models.Sequential()
+    model.add(layers.Dense(256, activation='relu',
+                           input_shape=(x_train.shape[1],)))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(1, activation='linear'))
+    model.compile(optimizer='adam', loss='mse', metrics=[tf.keras.metrics.MeanAbsoluteError()])
+
+mae 3.057 mse 27.713
+
+minmaxscaler 추가 결과
+
+mae 3.84 mse 38.68
+
+    model = models.Sequential()
+    model.add(layers.Dense(256, activation='relu',
+                           input_shape=(x_train.shape[1],)))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(1))
+    model.compile(optimizer='adam', loss='mse', metrics=[tf.keras.metrics.MeanAbsoluteError()])
+
+800에폭 결과 mae:3.15 mse:24.76
+
+    model = models.Sequential()
+    model.add(layers.Dense(256, activation='relu',
+                           input_shape=(x_train.shape[1],)))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(256, activation='relu'))
+    model.add(layers.Dense(1))
+    model.compile(optimizer='adam', loss='mse', metrics=[tf.keras.metrics.MeanAbsoluteError()])
+800 에폭 편의시설 데이터 송파구 결과
+mae 2.676 mse 22.296
+
+2022/10/10 월
+근데 편의시설을 합치는데 있어서 문제가 생겨서 
+다같이 편의시설 데이터 제작하기로 함
