@@ -59,7 +59,7 @@
     cursor: pointer;
 }
 #map{
-    position: absolute;
+    position: relative;
     width: 95.4vw;
     height: 100vh;
     z-index: 1;
@@ -67,4 +67,39 @@
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
+}
+#sidebar {    
+    position: absolute;
+    display: flex;    
+    width: 100%;    
+    align-items: stretch;
+    max-width: 400px;
+    min-width: 400px;    
+    min-height: 100vh;    
+    background-color: whitesmoke;    
+    transition: 0.5s all;
+    z-index: 2;
+    padding-left: 80px;
+} 
+fieldset{
+    width: 350px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+legend{
+    text-align: center;
+}
+.form-groug{
+    margin-bottom: 0px !important;
+}
+#submit{
+    float: right;
+}
+#subway{
+    float: left;
+    width: 150px;
+}
+#bus{
+    float: right;
+    width: 150px;
 }

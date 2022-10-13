@@ -15,8 +15,19 @@
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=219025cfba1979327f3c84484d93245a"
         ></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="/Front/css/index.css" />
-        <link rel="stylesheet" href="/Front/jscript/" />
+        <link rel="stylesheet" href="/css/index.css" />
+        <script>
+            $(function () {
+                $("#sidebarToggle").on("click", function () {
+                    if ($("#sidebar").css("display") == "none") {
+                        $("#sidebar").show();
+                    } else {
+                        $("#sidebar").hide();
+                    }
+                    // $('#sidebar').toggleClass('active');
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container-fluid">
@@ -29,13 +40,17 @@
                             id="home"
                             onclick="home()"
                         >
-                            <img src="/Front/img/icon_32_home_nor.svg" alt="" />
+                            <img src="img/icon_32_home_nor.svg" alt="" />
                             <p></p>
                             홈
                         </button>
-                        <button type="button" class="btn btn-nav menu">
+                        <button
+                            type="button"
+                            class="btn btn-nav menu"
+                            id="sidebarToggle"
+                        >
                             <img
-                                src="/Front/img/icon_menu.png"
+                                src="img/icon_menu.png"
                                 width="32px"
                                 height="32px"
                                 alt=""
@@ -45,6 +60,98 @@
                         </button>
                     </ul>
                     <br />
+                </div>
+
+                <div id="sidebar">
+                    <fieldset>
+                        <legend>매물 조건을 선택하세요!</legend>
+                        <form action="#">
+                            <div class="form-group" id="subway">
+                                <p>지하철 수</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="suv_Range"
+                                    value="0"
+                                    min="0"
+                                    max="4"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                    <option value="4"></option>
+                                </datalist>
+                                <p>Value: <span id="sub_val"></span></p>
+                                <script>
+                                    var result = $("#sub_val");
+                                    var slider = $("#suv_Range");
+                                    slider.on("input", function () {
+                                        result.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="bus">
+                                <p>버스정류장 수</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="bus_Range"
+                                    value="0"
+                                    min="0"
+                                    max="4"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                    <option value="4"></option>
+                                </datalist>
+                                <p>Value: <span id="bus_val"></span></p>
+                                <script>
+                                    var result_bus = $("#bus_val");
+                                    var slider_bus = $("#bus_Range");
+                                    slider_bus.on("input", function () {
+                                        result_bus.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group">
+                                <p>매물 희망 가격</p>
+                                <select
+                                    class="custom-select custom-select-sm mb-3"
+                                >
+                                    <option selected>금액을 선택하세요</option>
+                                    <option value="1000">1000</option>
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10000</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="usr">직장의 위치..?</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="usr"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="submit"
+                            >
+                                Submit
+                            </button>
+                        </form>
+                    </fieldset>
                 </div>
                 <main class="col-lg-9 bd-content nopadding" role="main">
                     <div id="map"></div>
