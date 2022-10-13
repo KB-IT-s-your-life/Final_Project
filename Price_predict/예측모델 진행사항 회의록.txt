@@ -123,3 +123,9 @@ mae 2.676 mse 22.296
 2022/10/10 월
 근데 편의시설을 합치는데 있어서 문제가 생겨서 
 다같이 편의시설 데이터 제작하기로 함
+
+
+매물 데이터 지도에 띄울때 참고
+
+도로명주소 - 가지번호의 의미 (본번, 부번)
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=edizon426&logNo=220509990866
