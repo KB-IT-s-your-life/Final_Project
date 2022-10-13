@@ -1,0 +1,70 @@
+.bd-sidebar {
+    position: sticky;
+    top: 4rem;
+    z-index: 1000;
+    height: 100vh;
+    overflow-y: auto;
+    min-width: 70px;
+    max-width: 70px;
+}
+.bd-sidebar .nav {
+    font-weight: 400;
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+    box-sizing: border-box;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 99999;
+    background: #fff;
+    box-shadow: 0 -4px 8px rgb(0 0 0 / 3%);
+    max-width: 424px;
+    width: 70px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 0;
+}
+.bd-sidebar .nav button{
+    box-sizing: border-box;
+    overflow: visible;
+    text-transform: none;
+    letter-spacing: 0;
+    box-shadow: none;
+    font-weight: 400;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    min-width: 24px;
+    min-height: 100px;
+    padding: 0;
+    color: #222;
+    position: relative;
+    flex: 1;
+    width: 100%;
+    margin: 0;
+    padding-top: 32px;
+    line-height: 18px;
+    text-align: center;
+    background: #fff;
+    transition: .3s;
+    display: block;
+    height: 30px;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+#map{
+    position: absolute;
+    width: 96.3vw;
+    height: 100vh;
+    z-index: 1;
+}
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}

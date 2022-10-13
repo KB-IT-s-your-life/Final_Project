@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+        />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=219025cfba1979327f3c84484d93245a"
+        ></script>
+        <link rel="stylesheet" href="/Front/index_page/css/index.css" />
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-lg-3 bd-sidebar">
+                    <ul class="nav">
+                        <button type="button" class="btn btn-nav home">
+                            <img src="images/icon_32_home_nor.jpg" alt="" />
+                            <p></p>
+                            홈
+                        </button>
+                        <button type="button" class="btn btn-nav map active">
+                            <img src="images/icon_32_map_nor.jpg" alt="" />
+                            <p></p>
+                            지도
+                        </button>
+                        <button type="button" class="btn btn-nav noti">
+                            알림
+                        </button>
+                        <button type="button" class="btn btn-nav menu">
+                            메뉴
+                        </button>
+                    </ul>
+                    <br />
+                </div>
+                <main class="col-lg-9 bd-content nopadding" role="main">
+                    <div id="map"></div>
+                    <script>
+                        var container = document.getElementById("map");
+                        var options = {
+                            center: new kakao.maps.LatLng(
+                                33.450701,
+                                126.570667
+                            ),
+                            level: 3,
+                        };
+
+                        var map = new kakao.maps.Map(container, options);
+                    </script>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
