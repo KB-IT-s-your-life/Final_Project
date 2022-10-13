@@ -14,27 +14,33 @@
             type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=219025cfba1979327f3c84484d93245a"
         ></script>
-        <link rel="stylesheet" href="/Front/index_page/css/index.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/Front/css/index.css" />
+        <link rel="stylesheet" href="/Front/jscript/" />
     </head>
     <body>
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <div class="col-lg-3 bd-sidebar">
                     <ul class="nav">
-                        <button type="button" class="btn btn-nav home">
-                            <img src="images/icon_32_home_nor.jpg" alt="" />
+                        <button
+                            type="button"
+                            class="btn btn-nav home"
+                            id="home"
+                            onclick="home()"
+                        >
+                            <img src="/Front/img/icon_32_home_nor.svg" alt="" />
                             <p></p>
                             홈
                         </button>
-                        <button type="button" class="btn btn-nav map active">
-                            <img src="images/icon_32_map_nor.jpg" alt="" />
-                            <p></p>
-                            지도
-                        </button>
-                        <button type="button" class="btn btn-nav noti">
-                            알림
-                        </button>
                         <button type="button" class="btn btn-nav menu">
+                            <img
+                                src="/Front/img/icon_menu.png"
+                                width="32px"
+                                height="32px"
+                                alt=""
+                            />
+                            <p></p>
                             메뉴
                         </button>
                     </ul>
@@ -46,13 +52,16 @@
                         var container = document.getElementById("map");
                         var options = {
                             center: new kakao.maps.LatLng(
-                                33.450701,
-                                126.570667
+                                37.5088676,
+                                127.0151072
                             ),
-                            level: 3,
+                            level: 7,
                         };
-
                         var map = new kakao.maps.Map(container, options);
+
+                        function home() {
+                            kakao.maps.Map(container, options);
+                        }
                     </script>
                 </main>
             </div>
