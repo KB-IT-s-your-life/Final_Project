@@ -20,9 +20,25 @@
             $(function () {
                 $("#sidebarToggle").on("click", function () {
                     if ($("#sidebar").css("display") == "none") {
+                        if ($("#facilities").css("display") != "none") {
+                            $("#facilities").hide();
+                        }
                         $("#sidebar").show();
                     } else {
                         $("#sidebar").hide();
+                    }
+                    // $('#sidebar').toggleClass('active');
+                });
+            });
+            $(function () {
+                $("#facilitiesToggle").on("click", function () {
+                    if ($("#facilities").css("display") == "none") {
+                        if ($("#sidebar").css("display") != "none") {
+                            $("#sidebar").hide();
+                        }
+                        $("#facilities").show();
+                    } else {
+                        $("#facilities").hide();
                     }
                     // $('#sidebar').toggleClass('active');
                 });
@@ -56,6 +72,19 @@
                                     alt=""
                                 />
                                 <p>메뉴</p>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-nav menu"
+                                id="facilitiesToggle"
+                            >
+                                <img
+                                    src="img/icon_menu.png"
+                                    width="32px"
+                                    height="32px"
+                                    alt=""
+                                />
+                                <p>편의시설</p>
                             </button>
                         </div>
                         <button
@@ -216,8 +245,10 @@
                                 </datalist>
                                 <p>Value: <span id="val_convenient"></span></p>
                                 <script>
-                                    var result_convenient = $("#val_convenient");
-                                    var slider_convenient = $("#Range_convenient");
+                                    var result_convenient =
+                                        $("#val_convenient");
+                                    var slider_convenient =
+                                        $("#Range_convenient");
                                     slider_convenient.on("input", function () {
                                         result_convenient.html($(this).val());
                                     });
@@ -359,8 +390,10 @@
                                 </datalist>
                                 <p>Value: <span id="val_restaurant"></span></p>
                                 <script>
-                                    var result_restaurant = $("#val_restaurant");
-                                    var slider_restaurant = $("#Range_restaurant");
+                                    var result_restaurant =
+                                        $("#val_restaurant");
+                                    var slider_restaurant =
+                                        $("#Range_restaurant");
                                     slider_restaurant.on("input", function () {
                                         result_restaurant.html($(this).val());
                                     });
@@ -407,10 +440,52 @@
                             ),
                             level: 7,
                         };
+
+                        // 마커를 표시할 위치와 title 객체 배열입니다
+                        var positions = [
+                            {
+                                title: "ㅇㅇ동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.5088676,
+                                    127.0151072
+                                ),
+                            },
+                            {
+                                title: "ㅁㅁ동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.5088676,
+                                    126.9551072
+                                ),
+                            },
+                            {
+                                title: "XX동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.5088676,
+                                    127.0551072
+                                ),
+                            },
+                            {
+                                title: "ㅂㅂ동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.4788676,
+                                    127.0151072
+                                ),
+                            },
+                        ];
+
                         home();
 
                         function home() {
                             var map = new kakao.maps.Map(container, options);
+
+                            for (var i = 0; i < positions.length; i++) {
+                                // 마커를 생성합니다
+                                var marker = new kakao.maps.Marker({
+                                    map: map, // 마커를 표시할 지도
+                                    position: positions[i].latlng, // 마커를 표시할 위치
+                                    title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                });
+                            }
                         }
                     </script>
                 </main>
