@@ -131,6 +131,7 @@
     transition: 0.5s all;
     z-index: 2;
     padding-left: 80px;
+    list-style: none;
 } 
 fieldset{
     width: 350px;

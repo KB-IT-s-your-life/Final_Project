@@ -43,11 +43,12 @@
                     // $('#sidebar').toggleClass('active');
                 });
             });
-            // jQuery(document).ready(function() {
-            //     jQuery('#sidebar').theiaStickySidebar({
-            //     // Settings
-            //     additionalMarginTop: 30
-            //     });
+            $(document).ready(function() {
+                $('#sidebar').theiaStickySidebar({
+                // Settings
+                additionalMarginTop: 30
+                });
+            });
         </script>
     </head>
     <body>
@@ -110,8 +111,8 @@
                     <br />
                 </div>
                 <!-- 사이드바 구성 -->
-                <div id="sidebar-wrapper">
-                    <div id="sidebar">
+                <div id="sidebar">
+                    <div class="theiaStickySidebar">
                         <fieldset>
                             <legend>매물 조건을 선택하세요!</legend>
                             <form action="#">
@@ -405,6 +406,68 @@
                                         });
                                     </script>
                                 </div>
+                                <!-- test 시작 -->
+                                    <div class=""></div>
+                                    <div class="form-group" id="park">
+                                        <p>공원</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_park"
+                                            value="0"
+                                            min="0"
+                                            max="3"
+                                            step="1"
+                                            list="tickmarks"
+                                        />
+                                        <datalist id="tickmarks">
+                                            <option value="0"></option>
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                            <option value="3"></option>
+                                        </datalist>
+                                        <p>Value: <span id="val_park"></span></p>
+                                        <script>
+                                            var result_park = $("#val_park");
+                                            var slider_park = $("#Range_park");
+                                            slider_park.on("input", function () {
+                                                result_park.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class=""></div>
+                                    <div class="form-group" id="restaurant">
+                                        <p>음식점</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_restaurant"
+                                            value="0"
+                                            min="0"
+                                            max="3"
+                                            step="1"
+                                            list="tickmarks"
+                                        />
+                                        <datalist id="tickmarks">
+                                            <option value="0"></option>
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                            <option value="3"></option>
+                                        </datalist>
+                                        <p>Value: <span id="val_restaurant"></span></p>
+                                        <script>
+                                            var result_restaurant =
+                                                $("#val_restaurant");
+                                            var slider_restaurant =
+                                                $("#Range_restaurant");
+                                            slider_restaurant.on("input", function () {
+                                                result_restaurant.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                <!-- test 끝 -->
                                 <!-- 매물 조건 -->
                                 <div class="form-group">
                                     <p>매물 희망 가격</p>
