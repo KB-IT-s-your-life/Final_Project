@@ -119,7 +119,7 @@
     padding: 0 !important;
     margin: 0 !important;
 }
-#sidebar {    
+#sidebar, #facilities{    
     position: absolute;
     display: none;    
     width: 100%;    
