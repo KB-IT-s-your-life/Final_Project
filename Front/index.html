@@ -34,29 +34,43 @@
             <div class="row flex-nowrap">
                 <div class="col-lg-3 bd-sidebar">
                     <ul class="nav">
+                        <div class="bodyline">
+                            <button
+                                type="button"
+                                class="btn btn-nav home"
+                                id="home"
+                                onclick="home()"
+                            >
+                                <img src="img/icon_32_home_nor.svg" alt="" />
+                                <p>홈</p>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-nav menu"
+                                id="sidebarToggle"
+                            >
+                                <img
+                                    src="img/icon_menu.png"
+                                    width="32px"
+                                    height="32px"
+                                    alt=""
+                                />
+                                <p>메뉴</p>
+                            </button>
+                        </div>
                         <button
                             type="button"
                             class="btn btn-nav home"
-                            id="home"
-                            onclick="home()"
+                            id="kbicon"
                         >
-                            <img src="img/icon_32_home_nor.svg" alt="" />
-                            <p></p>
-                            홈
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-nav menu"
-                            id="sidebarToggle"
-                        >
-                            <img
-                                src="img/icon_menu.png"
-                                width="32px"
-                                height="32px"
-                                alt=""
-                            />
-                            <p></p>
-                            메뉴
+                            <a href="http://www.kbland.kr" target="_blank">
+                                <img
+                                    src="img/kbland.png"
+                                    alt=""
+                                    width="32px"
+                                    height="32px"
+                                />
+                            </a>
                         </button>
                     </ul>
                     <br />
@@ -66,6 +80,7 @@
                     <fieldset>
                         <legend>매물 조건을 선택하세요!</legend>
                         <form action="#">
+                            <div class=""></div>
                             <div class="form-group" id="subway">
                                 <p>지하철 수</p>
                                 <p></p>

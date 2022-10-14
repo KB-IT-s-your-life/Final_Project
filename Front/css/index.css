@@ -28,6 +28,29 @@
     top: 0;
     border-radius: 0;
 }
+.bd-sidebar .nav .bodyline{
+    font-weight: 400;
+    user-select: none;
+    border: 1px solid transparent;
+    min-width: 24px;
+    min-height: 93%;
+    padding: 0;
+    color: #222;
+    position: relative;
+    flex: 1;
+    width: 100%;
+    margin: 0;
+    line-height: 18px;
+    text-align: center;
+    background: #fff;
+    transition: .3s;
+    display: block;
+    height: 30px;
+    border-bottom: 1px solid #eee;
+    border-radius: 10;
+    font-size: 14px;
+    cursor: pointer;
+}
 .bd-sidebar .nav button{
     box-sizing: border-box;
     overflow: visible;
@@ -35,7 +58,6 @@
     letter-spacing: 0;
     box-shadow: none;
     font-weight: 400;
-    vertical-align: middle;
     user-select: none;
     border: 1px solid transparent;
     min-width: 24px;
@@ -46,7 +68,36 @@
     flex: 1;
     width: 100%;
     margin: 0;
-    padding-top: 32px;
+    padding-top: 25px;
+    line-height: 18px;
+    text-align: center;
+    background: #fff;
+    transition: .3s;
+    display: block;
+    height: 30px;
+    border-bottom: 1px solid #eee;
+    border-radius: 10;
+    font-size: 14px;
+    cursor: pointer;
+}
+#kbicon{
+    box-sizing: border-box;
+    overflow: visible;
+    text-transform: none;
+    letter-spacing: 0;
+    box-shadow: none;
+    font-weight: 400;
+    user-select: none;
+    border: 1px solid transparent;
+    min-width: 24px;
+    min-height: 70px;
+    padding: 0px;
+    color: #222;
+    position: relative;
+    flex: 1;
+    width: 100%;
+    margin: 0;
+    padding-top: 0%;
     line-height: 18px;
     text-align: center;
     background: #fff;
