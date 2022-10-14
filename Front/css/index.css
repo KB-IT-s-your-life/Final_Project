@@ -146,11 +146,45 @@ legend{
 #submit{
     float: right;
 }
-#subway{
+
+/* 편의시설 조건 */
+#medical{
     float: left;
     width: 170px;
 }
-#bus{
+#security{
     float: right;
+    width: 170px;
+}
+#shopping{
+    float: left;
+    width: 170px;
+}
+#market{
+    float: right;
+    width: 170px;
+}
+#convenient{
+    float: right;
+    width: 170px;
+}
+#leisure{
+    float: left;
+    width: 170px;
+}
+#traffic{
+    float: right;
+    width: 170px;
+}
+#oil{
+    float: left;
+    width: 170px;
+}
+#park{
+    float: right;
+    width: 170px;
+}
+#Restaurant{
+    float: left;
     width: 170px;
 }
