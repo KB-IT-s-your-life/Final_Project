@@ -127,8 +127,9 @@
     width: 100%;    
     align-items: stretch;
     max-width: 470px;
-    min-width: 470px;    
-    max-height: 100%;
+    min-width: 470px;
+    min-height: 100%;    
+    max-height: 100vh;
     background-color: whitesmoke;    
     transition: 0.5s all;
     z-index: 2;
