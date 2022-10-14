@@ -70,11 +70,11 @@
 }
 #sidebar {    
     position: absolute;
-    display: flex;    
+    display: none;    
     width: 100%;    
     align-items: stretch;
-    max-width: 400px;
-    min-width: 400px;    
+    max-width: 450px;
+    min-width: 450px;    
     min-height: 100vh;    
     background-color: whitesmoke;    
     transition: 0.5s all;
@@ -84,7 +84,7 @@
 fieldset{
     width: 350px;
     margin-top: 20px;
-    margin-right: 10px;
+    margin-left: 5px;
 }
 legend{
     text-align: center;
