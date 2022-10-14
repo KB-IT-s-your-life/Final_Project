@@ -31,13 +31,13 @@
  - 등등 의 해결방안... 찾아보기
 
 컬럼 정의 (10.14 기준)
-'의료', medical
-'치안', security
-'쇼핑', shopping
-'장보기시설', market
-'생활편의시설', convenient
-'여가', leisure
-'교통', traffic
-'석유판매업', oil
-'공원수', park
-'음식점수' restaurant
+- '의료', medical
+- '치안', security
+- '쇼핑', shopping
+- '장보기시설', market
+- '생활편의시설', convenient
+- '여가', leisure
+- '교통', traffic
+- '석유판매업', oil
+- '공원수', park
+- '음식점수' restaurant
