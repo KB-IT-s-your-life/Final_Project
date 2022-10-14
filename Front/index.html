@@ -139,6 +139,65 @@
                                     });
                                 </script>
                             </div>
+                            <div class=""></div>
+                            <div class="form-group" id="subway">
+                                <p>지하철 수</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="suv_Range"
+                                    value="0"
+                                    min="0"
+                                    max="4"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                    <option value="4"></option>
+                                </datalist>
+                                <p>Value: <span id="sub_val"></span></p>
+                                <script>
+                                    var result = $("#sub_val");
+                                    var slider = $("#suv_Range");
+                                    slider.on("input", function () {
+                                        result.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="bus">
+                                <p>버스정류장 수</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="bus_Range"
+                                    value="0"
+                                    min="0"
+                                    max="4"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                    <option value="4"></option>
+                                </datalist>
+                                <p>Value: <span id="bus_val"></span></p>
+                                <script>
+                                    var result_bus = $("#bus_val");
+                                    var slider_bus = $("#bus_Range");
+                                    slider_bus.on("input", function () {
+                                        result_bus.html($(this).val());
+                                    });
+                                </script>
+                            </div>
                             <div class="form-group">
                                 <p>매물 희망 가격</p>
                                 <select
