@@ -129,3 +129,10 @@ mae 2.676 mse 22.296
 
 도로명주소 - 가지번호의 의미 (본번, 부번)
 https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=edizon426&logNo=220509990866
+
+csv to json으로 변경시 참고한 사이트
+https://copycoding.tistory.com/317
+
+npm 때문에
+node js 설치
+https://web-front-end.tistory.com/3
