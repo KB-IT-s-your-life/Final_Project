@@ -72,11 +72,12 @@
         <span style="font-size: 40px; padding-bottom: 30px;">KB 부동산</span>
         <button style="font-size: 20px;">맞춤지역,매물선택</button> 
     </div>
-            <!-- 검색창 -->
+            
     <div class="map_wrap">
         <div id="map" style="width:1000px;height:100%;position:relative;overflow:hidden;"></div>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb4599690d3c2023da5c66bebd6edee7&libraries=services"></script>
-        <div id="menu_wrap" class="bg_white">
+        
+        <!-- <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
@@ -88,7 +89,7 @@
             <hr>
             <ul id="placesList"></ul>
             <div id="pagination"></div>
-        </div>
+        </div> -->
         
     <script>
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -102,8 +103,8 @@
         infowindow = new kakao.maps.InfoWindow({removable: true});
 
 
-
-        $.getJSON("json/real.geojson",function(geojson){
+        //이거를 안에 넣어줘야하나..? 음....
+        $.getJSON("json/dong.geojson",function(geojson){
             var data = geojson.features;
             var coordinates = []; //좌표 저장할 배열
             var name = ''; //구 이름 저장
@@ -111,7 +112,7 @@
             $.each(data, function(index, val){
 
                 coordinates = val.geometry.coordinates;
-                name = val.properties.SIG_KOR_NM;
+                name = val.properties.EMD_KOR_NM;
                 displayArea(coordinates, name);
             })
         })
@@ -149,8 +150,7 @@
             kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
             polygon.setOptions({fillColor: '#09f'});
 
-            customOverlay.setContent('<div class="area">' + name + '</div>');
-            
+            customOverlay.setContent('<div class="area">' + name +'</div><br>');
             customOverlay.setPosition(mouseEvent.latLng); 
             customOverlay.setMap(map);
             });
@@ -179,8 +179,18 @@
                 }});
 
                 deletepolygon(polygons);                //해당지역 확대 후 폴리곤 제거
+
+                //여기부터 사이드 바 생기고 거기에 편의시설 정보 나오게 해야함
+
+                //동 폴리곤 보여주기
+                display_dong()
+
+
+
             });
         }
+
+
         //클릭하면 줌되는 중앙위치 함수
         function centroid(points){
             var i, j, len, p1, p2, f, area, x, y;
@@ -198,13 +208,27 @@
             }
             return new kakao.maps.LatLng(x / area, y / area);
         }
-
+        
+        //줌 되고나서 폴리곤 삭제 
         function deletepolygon(polygons){
             for(var i=0; i< polygons.length; i++){
                 polygons[i].setMap(null);
             }
             polygons = [];
         }
+        //dong 폴리곤 찍기
+        function display_dong(coordinates_dong, name_dong){
+
+            var path_dong =[]; //폴리곤 그려줄 path
+            var points_dong = []; //동 중심좌표 구하기 위한 동 좌표들
+            
+            $.each(coordinates_dong[0],function(index,coordinate_dong){
+                var point_dong = new Object();
+                point_dong.x = coordinate_dong[1];
+                point_dong.y = coordinate_dong[0];
+            })
+        }
+
     </script>
 </body>
 </html>
