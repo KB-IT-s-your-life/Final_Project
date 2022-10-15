@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>다음 지도 API</title>
+</head>
+<body>
+	<div id="map" style="width:100%;height:100vh;"></div>
+
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=347c7f85c4be17eab777f70f86fa601d"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(37.55811, 126.97406), // 지도의 중심좌표
+		        level: 4, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+		var x_positions = [];
+		var y_positions = [];
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		$.getJSON("json/매물갱신_좌표값넣음.json",function(data){
+            $.each(data, function(index, item){
+				var no = index+1;
+				var X = item.X;
+				var Y = item.Y;
+				//var addr = item.addr;
+				
+				// 마커 하나를 지도위에 표시합니다 
+				x_positions.push(X)
+				y_positions.push(Y)
+				//alert(y_positions)
+			});//each
+			//alert(x_positions)
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+for (var i = 0; i < y_positions.length; i ++) {
+    
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new kakao.maps.Size(24, 35); 
+    
+    // 마커 이미지를 생성합니다    
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: new kakao.maps.LatLng(x_positions[i], y_positions[i]), // 마커를 표시할 위치
+        //title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage, // 마커 이미지 
+    });
+}
+        });
+// 마커 이미지의 이미지 주소입니다
+
+
+
+/*new kakao.maps.LatLng(x_positions[0], y_positions[0])*/
+var marker = new kakao.maps.Marker({
+	map: map,
+	position: new kakao.maps.LatLng(37.55811, 126.97406),
+//	image : markerImage
+});
+
+
+
+</script>
+</body>
+</html>
