@@ -17,6 +17,56 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="css/index.css" />
         <script>
+            $(function () {
+                //1. 폼에 입력된 값을 다 가지고 ACTION에 연결된 페이지로 이동, 전송…하는 함수
+                $("#frm").submit(function (event) {
+                    //2. 편의시설에 입력된 값을 각각의 변수에 할당…id에 맞춰서
+                    //  alert 창으로 값 확인…폼 초기화, password
+                    var medical = $("#Range_medical").val();
+                    var shopping = $("#Range_shopping").val();
+                    var market = $("#Range_market").val();
+                    var convenient = $("#Range_convenient").val();
+                    var oil = $("#Range_oil").val();
+                    var leisure = $("#Range_leisure").val();
+                    var park = $("#Range_park").val();
+                    var traffic = $("#Range_traffic").val();
+                    var restaurant = $("#Range_restaurant").val();
+
+                    alert(
+                        medical +
+                            shopping +
+                            market +
+                            convenient +
+                            oil +
+                            leisure +
+                            park +
+                            traffic +
+                            restaurant
+                    );
+                    // return confirm(medical+shopping+market+convenient+oil+leisure+park+traffic+restaurant);
+                    //submit 이벤트 작동안하도록 ..기본적인 이벤트 막아주는 함수,…preventDefault()
+                    event.preventDefault();
+
+                    //
+                }); //submit
+
+                $("#charterCheck").click(function () {
+                    if ($(this).is(":checked")) {
+                        $("#charter").show();
+                    } else {
+                        $("#charter").hide();
+                    }
+                }); // 전세 클릭시 가격창
+
+                $("#monthlyCheck").click(function () {
+                    if ($(this).is(":checked")) {
+                        $("#monthly").show();
+                    } else {
+                        $("#monthly").hide();
+                    }
+                }); // 월세 클릭시 가격창
+            });
+
             /*
             $(function () {
                 $("#sidebarToggle").on("click", function () {
@@ -432,8 +482,53 @@
                                 </script>
                             </div>
                             <!-- 매물 조건 -->
-                            <div class="form-group">
-                                <p>매물 희망 가격</p>
+
+                            <p style="white-space: nowrap">
+                                희망하는 매물의 조건과 가격을 고르세요!
+                            </p>
+                            <div class="Check">
+                                <div
+                                    class="custom-control custom-checkbox mb-3"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        id="charterCheck"
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="charterCheck"
+                                        >전세</label
+                                    >
+                                </div>
+                                <div
+                                    class="custom-control custom-checkbox mb-3"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        id="monthlyCheck"
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="monthlyCheck"
+                                        >월세</label
+                                    >
+                                </div>
+                            </div>
+                            <div class="form-group" id="charter">
+                                <span>보증금/전세가</span>
+                                <select
+                                    class="custom-select custom-select-sm mb-3"
+                                >
+                                    <option selected>금액을 선택하세요</option>
+                                    <option value="1000">1000</option>
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10000</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="monthly">
+                                <span>월세</span>
                                 <select
                                     class="custom-select custom-select-sm mb-3"
                                 >

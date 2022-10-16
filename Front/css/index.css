@@ -206,3 +206,15 @@ legend{
     float: left;
     width: 170px;
 }
+
+.Check{
+    display: flex;
+    justify-content: space-around;
+}
+
+#charter{
+    display: none;
+}
+#monthly{
+    display: none;
+}
