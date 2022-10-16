@@ -23,25 +23,33 @@
                     //2. 편의시설에 입력된 값을 각각의 변수에 할당…id에 맞춰서
                     //  alert 창으로 값 확인…폼 초기화, password
                     var medical = $("#Range_medical").val();
+                    var security = $("#Range_security").val();
                     var shopping = $("#Range_shopping").val();
                     var market = $("#Range_market").val();
+                    var leisure = $("#Range_leisure").val();
                     var convenient = $("#Range_convenient").val();
                     var oil = $("#Range_oil").val();
-                    var leisure = $("#Range_leisure").val();
-                    var park = $("#Range_park").val();
                     var traffic = $("#Range_traffic").val();
                     var restaurant = $("#Range_restaurant").val();
+                    var park = $("#Range_park").val();
+                    var charter_val = $("#charter_select").val();
+                    var monthly_val = $("#monthly_select").val();
+                    var usr_val = $("#usr").val();
 
                     alert(
                         medical +
+                            security +
                             shopping +
                             market +
+                            leisure +
                             convenient +
                             oil +
-                            leisure +
-                            park +
                             traffic +
-                            restaurant
+                            restaurant +
+                            park +
+                            charter_val +
+                            monthly_val +
+                            usr_val
                     );
                     // return confirm(medical+shopping+market+convenient+oil+leisure+park+traffic+restaurant);
                     //submit 이벤트 작동안하도록 ..기본적인 이벤트 막아주는 함수,…preventDefault()
@@ -190,7 +198,7 @@
                 <div id="sidebar">
                     <fieldset>
                         <legend>매물 조건을 선택하세요!</legend>
-                        <form action="#">
+                        <form action="#" id="frm">
                             <div class=""></div>
                             <div class="form-group" id="medical">
                                 <p>의료시설</p>
@@ -520,6 +528,7 @@
                                 <span>보증금/전세가</span>
                                 <select
                                     class="custom-select custom-select-sm mb-3"
+                                    id="charter_select"
                                 >
                                     <option selected>금액을 선택하세요</option>
                                     <option value="1000">1000</option>
@@ -531,6 +540,7 @@
                                 <span>월세</span>
                                 <select
                                     class="custom-select custom-select-sm mb-3"
+                                    id="monthly_select"
                                 >
                                     <option selected>금액을 선택하세요</option>
                                     <option value="1000">1000</option>
