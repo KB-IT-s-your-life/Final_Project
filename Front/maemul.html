@@ -13,9 +13,10 @@
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
 		        center: new kakao.maps.LatLng(37.55811, 126.97406), // 지도의 중심좌표
-		        level: 4, // 지도의 확대 레벨
+		        level: 14, // 지도의 확대 레벨
 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 		    }; 
+		
 		var x_positions = [];
 		var y_positions = [];
 		// 지도를 생성한다 
@@ -55,19 +56,19 @@
 						//title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 						image : markerImage, // 마커 이미지 
 					});//마커 
-					clusterer.addMarkers(markers);
+					//clusterer.addMarkers(marker);
 				}//for문
 // 마커 클러스터러에 클릭이벤트를 등록합니다
     // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
     // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
-    kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+/*    kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
 
         // 현재 지도 레벨에서 1레벨 확대한 레벨
         var level = map.getLevel()-1;
 
         // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
         map.setLevel(level, {anchor: cluster.getCenter()});
-    }); //cluster 닫음
+    }); //cluster 닫음*/
 });//json 닫음
 // 마커 이미지의 이미지 주소입니다
 

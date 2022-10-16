@@ -136,3 +136,6 @@ https://copycoding.tistory.com/317
 npm 때문에
 node js 설치
 https://web-front-end.tistory.com/3
+
+csv json으로 변경할때 사용한 사이트
+https://www.convertcsv.com/csv-to-json.htm
