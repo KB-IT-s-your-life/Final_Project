@@ -136,3 +136,9 @@ https://copycoding.tistory.com/317
 npm 때문에
 node js 설치
 https://web-front-end.tistory.com/3
+
+csv json으로 변경할때 사용한 사이트
+https://www.convertcsv.com/csv-to-json.htm
+
+매물 찍어놓은 모델에서 클러스터 모델로 넘어갈때 고생 엄청했음
+잘 안됬는데 라이브러리 추가하고 마커 먼저 선언해주고 클러스터링에 해서 
