@@ -95,11 +95,10 @@
                 } else {
                     $("#facilities").hide();
                 }
-                $("#facilities").html(localStorage.getItem("key1"));
             }
-            function facilities_click_change() {
+            function facilities_click_change(facilities_detail) {
                 $("#facilities").show();
-                $("#facilities").html(localStorage.getItem("key1"));
+                $("#facilities").html(facilities_detail.innerText);
             }
         </script>
     </head>
@@ -551,6 +550,8 @@
                         home();
 
                         function home() {
+                            $("#sidebar").hide();
+                            $("#facilities").hide();
                             var map = new kakao.maps.Map(mapContainer, mapOption),
                                 customOverlay = new kakao.maps.CustomOverlay({}),
                                 infowindow = new kakao.maps.InfoWindow({ removable: true });
@@ -679,12 +680,8 @@
 
                                         for (var i = 0; i < y_positions.length; i++) {
                                             contentStr =
-                                                "<div class='customoverlay'><a href='#" +
-                                                "' target='_blank'><span class='title'>" +
-                                                sum[i] +
-                                                "개 " +
-                                                dong_names[i] +
-                                                "</span></a></div>";
+                                                "<button class='customoverlay'><div class='title'>"+
+                                                sum[i]+"</div>"+ dong_names[i] + "</button>";
                                             customOverlay = new kakao.maps.CustomOverlay({
                                                 map: map,
                                                 position: new kakao.maps.LatLng(
@@ -695,7 +692,11 @@
                                                 yAnchor: 1,
                                             });
                                         } //for문
+                                        $('.customoverlay').click(function () {
+                                            facilities_click_change(this);
+                                        })
                                     });
+                                    
                                 });
                             }
                             //클릭하면 줌되는 중앙위치 함수
