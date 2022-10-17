@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+        />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=219025cfba1979327f3c84484d93245a"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
+        <script>
+            $(function () {
+                //1. 폼에 입력된 값을 다 가지고 ACTION에 연결된 페이지로 이동, 전송…하는 함수
+                $("#frm").submit(function (event) {
+                    //2. 편의시설에 입력된 값을 각각의 변수에 할당…id에 맞춰서
+                    //  alert 창으로 값 확인…폼 초기화, password
+                    var medical = $("#Range_medical").val();
+                    var security = $("#Range_security").val();
+                    var shopping = $("#Range_shopping").val();
+                    var market = $("#Range_market").val();
+                    var leisure = $("#Range_leisure").val();
+                    var convenient = $("#Range_convenient").val();
+                    var oil = $("#Range_oil").val();
+                    var traffic = $("#Range_traffic").val();
+                    var restaurant = $("#Range_restaurant").val();
+                    var park = $("#Range_park").val();
+                    var charter_val = $("#charter_select").val();
+                    var monthly_val = $("#monthly_select").val();
+                    var usr_val = $("#usr").val();
+
+                    alert(
+                        medical +
+                            security +
+                            shopping +
+                            market +
+                            leisure +
+                            convenient +
+                            oil +
+                            traffic +
+                            restaurant +
+                            park +
+                            charter_val +
+                            monthly_val +
+                            usr_val
+                    );
+                    // return confirm(medical+shopping+market+convenient+oil+leisure+park+traffic+restaurant);
+                    //submit 이벤트 작동안하도록 ..기본적인 이벤트 막아주는 함수,…preventDefault()
+                    event.preventDefault();
+
+                    //
+                }); //submit
+
+                $("#charterCheck").click(function () {
+                    if ($(this).is(":checked")) {
+                        $("#charter").show();
+                    } else {
+                        $("#charter").hide();
+                    }
+                }); // 전세 클릭시 가격창
+
+                $("#monthlyCheck").click(function () {
+                    if ($(this).is(":checked")) {
+                        $("#monthly").show();
+                    } else {
+                        $("#monthly").hide();
+                    }
+                }); // 월세 클릭시 가격창
+            });
+
+            /*
+            $(function () {
+                $("#sidebarToggle").on("click", function () {
+                    if ($("#sidebar").css("display") == "none") {
+                        if ($("#facilities").css("display") != "none") {
+                            $("#facilities").hide();
+                        }
+                        $("#sidebar").show();
+                    } else {
+                        $("#sidebar").hide();
+                    }
+                    // $('#sidebar').toggleClass('active');
+                });
+                $("#facilitiesToggle").on("click", function () {
+                    if ($("#facilities").css("display") == "none") {
+                        if ($("#sidebar").css("display") != "none") {
+                            $("#sidebar").hide();
+                        }
+                        $("#facilities").show();
+                    } else {
+                        $("#facilities").hide();
+                    }
+                    // $('#sidebar').toggleClass('active');
+                });
+            });
+            // jQuery(document).ready(function() {
+            //     jQuery('#sidebar').theiaStickySidebar({
+            //     // Settings
+            //     additionalMarginTop: 30
+            //     });
+            */
+            function sidebar_click() {
+                if ($("#sidebar").css("display") == "none") {
+                    if ($("#facilities").css("display") != "none") {
+                        $("#facilities").hide();
+                    }
+                    $("#sidebar").show();
+                } else {
+                    $("#sidebar").hide();
+                }
+            }
+            function facilities_click() {
+                if ($("#facilities").css("display") == "none") {
+                    if ($("#sidebar").css("display") != "none") {
+                        $("#sidebar").hide();
+                    }
+                    $("#facilities").show();
+                } else {
+                    $("#facilities").hide();
+                }
+                $("#facilities").html(localStorage.getItem("key1"));
+            }
+            function facilities_click_change() {
+                $("#facilities").show();
+                $("#facilities").html(localStorage.getItem("key1"));
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-lg-3 bd-sidebar">
+                    <ul class="nav">
+                        <div class="bodyline">
+                            <button
+                                type="button"
+                                class="btn btn-nav home"
+                                id="home"
+                                onclick="home()"
+                            >
+                                <img src="img/icon_32_home_nor.svg" alt="" />
+                                <p>홈</p>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-nav menu"
+                                id="sidebarToggle"
+                                onclick="sidebar_click()"
+                            >
+                                <img
+                                    src="img/icon_menu.png"
+                                    width="32px"
+                                    height="32px"
+                                    alt=""
+                                />
+                                <p>메뉴</p>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-nav menu"
+                                id="facilitiesToggle"
+                                onclick="facilities_click()"
+                            >
+                                <img
+                                    src="img/icon_menu.png"
+                                    width="32px"
+                                    height="32px"
+                                    alt=""
+                                />
+                                <p>편의시설</p>
+                            </button>
+                        </div>
+                        <button
+                            type="button"
+                            class="btn btn-nav home"
+                            id="kbicon"
+                        >
+                            <a href="http://www.kbland.kr" target="_blank">
+                                <img
+                                    src="img/kbland.png"
+                                    alt=""
+                                    width="32px"
+                                    height="32px"
+                                />
+                            </a>
+                        </button>
+                    </ul>
+                    <br />
+                </div>
+                <!-- 사이드바 구성 -->
+                <div id="sidebar">
+                    <fieldset>
+                        <legend>매물 조건을 선택하세요!</legend>
+                        <form action="#" id="frm">
+                            <div class=""></div>
+                            <div class="form-group" id="medical">
+                                <p>의료시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_medical"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_medical"></span></p>
+                                <script>
+                                    var result_medical = $("#val_medical");
+                                    var slider_medical = $("#Range_medical");
+                                    slider_medical.on("input", function () {
+                                        result_medical.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="security">
+                                <p>치안시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_security"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_security"></span></p>
+                                <script>
+                                    var result_security = $("#val_security");
+                                    var slider_security = $("#Range_security");
+                                    slider_security.on("input", function () {
+                                        result_security.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="shopping">
+                                <p>쇼핑시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_shopping"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_shopping"></span></p>
+                                <script>
+                                    var result_shopping = $("#val_shopping");
+                                    var slider_shopping = $("#Range_shopping");
+                                    slider_shopping.on("input", function () {
+                                        result_shopping.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="market">
+                                <p>장보기시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_market"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_market"></span></p>
+                                <script>
+                                    var result_market = $("#val_market");
+                                    var slider_market = $("#Range_market");
+                                    slider_market.on("input", function () {
+                                        result_market.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="convenient">
+                                <p>생활편의시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_convenient"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_convenient"></span></p>
+                                <script>
+                                    var result_convenient =
+                                        $("#val_convenient");
+                                    var slider_convenient =
+                                        $("#Range_convenient");
+                                    slider_convenient.on("input", function () {
+                                        result_convenient.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="leisure">
+                                <p>여가시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_leisure"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_leisure"></span></p>
+                                <script>
+                                    var result_leisure = $("#val_leisure");
+                                    var slider_leisure = $("#Range_leisure");
+                                    slider_leisure.on("input", function () {
+                                        result_leisure.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="traffic">
+                                <p>교통시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_traffic"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_traffic"></span></p>
+                                <script>
+                                    var result_traffic = $("#val_traffic");
+                                    var slider_traffic = $("#Range_traffic");
+                                    slider_traffic.on("input", function () {
+                                        result_traffic.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="oil">
+                                <p>석유판매업</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_oil"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_oil"></span></p>
+                                <script>
+                                    var result_oil = $("#val_oil");
+                                    var slider_oil = $("#Range_oil");
+                                    slider_oil.on("input", function () {
+                                        result_oil.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="park">
+                                <p>공원</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_park"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_park"></span></p>
+                                <script>
+                                    var result_park = $("#val_park");
+                                    var slider_park = $("#Range_park");
+                                    slider_park.on("input", function () {
+                                        result_park.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="restaurant">
+                                <p>음식점</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_restaurant"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_restaurant"></span></p>
+                                <script>
+                                    var result_restaurant =
+                                        $("#val_restaurant");
+                                    var slider_restaurant =
+                                        $("#Range_restaurant");
+                                    slider_restaurant.on("input", function () {
+                                        result_restaurant.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <!-- 매물 조건 -->
+
+                            <p style="white-space: nowrap">
+                                희망하는 매물의 조건과 가격을 고르세요!
+                            </p>
+                            <div class="Check">
+                                <div
+                                    class="custom-control custom-checkbox mb-3"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        id="charterCheck"
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="charterCheck"
+                                        >전세</label
+                                    >
+                                </div>
+                                <div
+                                    class="custom-control custom-checkbox mb-3"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        id="monthlyCheck"
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="monthlyCheck"
+                                        >월세</label
+                                    >
+                                </div>
+                            </div>
+                            <div class="form-group" id="charter">
+                                <span>보증금/전세가</span>
+                                <select
+                                    class="custom-select custom-select-sm mb-3"
+                                    id="charter_select"
+                                >
+                                    <option selected>금액을 선택하세요</option>
+                                    <option value="1000">1000</option>
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10000</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="monthly">
+                                <span>월세</span>
+                                <select
+                                    class="custom-select custom-select-sm mb-3"
+                                    id="monthly_select"
+                                >
+                                    <option selected>금액을 선택하세요</option>
+                                    <option value="1000">1000</option>
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10000</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="usr">직장의 위치..?</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="usr"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="submit"
+                            >
+                                Submit
+                            </button>
+                            <br /><br /><br /><br /><br />
+                        </form>
+                    </fieldset>
+                </div>
+                <!-- sidebar -->
+                <div id="facilities"></div>
+                <main class="col-lg-9 bd-content nopadding" role="main">
+                    <div id="map"></div>
+                    <script>
+                        var MARKER_WIDTH = 33, // 기본, 클릭 마커의 너비
+                            MARKER_HEIGHT = 36, // 기본, 클릭 마커의 높이
+                            OFFSET_X = 12, // 기본, 클릭 마커의 기준 X좌표
+                            OFFSET_Y = MARKER_HEIGHT, // 기본, 클릭 마커의 기준 Y좌표
+                            OVER_MARKER_WIDTH = 40, // 오버 마커의 너비
+                            OVER_MARKER_HEIGHT = 42, // 오버 마커의 높이
+                            OVER_OFFSET_X = 13, // 오버 마커의 기준 X좌표
+                            OVER_OFFSET_Y = OVER_MARKER_HEIGHT, // 오버 마커의 기준 Y좌표
+                            SPRITE_MARKER_URL =
+                                "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markers_sprites2.png", // 스프라이트 마커 이미지 URL
+                            SPRITE_WIDTH = 126, // 스프라이트 이미지 너비
+                            SPRITE_HEIGHT = 146, // 스프라이트 이미지 높이
+                            SPRITE_GAP = 10; // 스프라이트 이미지에서 마커간 간격
+
+                        var markerSize = new kakao.maps.Size(
+                                MARKER_WIDTH,
+                                MARKER_HEIGHT
+                            ), // 기본, 클릭 마커의 크기
+                            markerOffset = new kakao.maps.Point(
+                                OFFSET_X,
+                                OFFSET_Y
+                            ), // 기본, 클릭 마커의 기준좌표
+                            overMarkerSize = new kakao.maps.Size(
+                                OVER_MARKER_WIDTH,
+                                OVER_MARKER_HEIGHT
+                            ), // 오버 마커의 크기
+                            overMarkerOffset = new kakao.maps.Point(
+                                OVER_OFFSET_X,
+                                OVER_OFFSET_Y
+                            ), // 오버 마커의 기준 좌표
+                            spriteImageSize = new kakao.maps.Size(
+                                SPRITE_WIDTH,
+                                SPRITE_HEIGHT
+                            ); // 스프라이트 이미지의 크기
+
+                        var positions = [
+                            // 마커의 위치
+                            {
+                                title: "ㅇㅇ동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.5088676,
+                                    127.0151072
+                                ),
+                            },
+                            {
+                                title: "ㅁㅁ동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.5088676,
+                                    126.9551072
+                                ),
+                            },
+                            {
+                                title: "XX동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.5088676,
+                                    127.0551072
+                                ),
+                            },
+                            {
+                                title: "ㅂㅂ동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.4788676,
+                                    127.0151072
+                                ),
+                            },
+                            {
+                                title: "ㄷㄷ동",
+                                latlng: new kakao.maps.LatLng(
+                                    37.4788676,
+                                    127.0551072
+                                ),
+                            },
+                        ];
+                        selectedMarker = null; // 클릭한 마커를 담을 변수
+
+                        var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+                            mapOption = {
+                                center: new kakao.maps.LatLng(
+                                    37.5088676,
+                                    127.0151072
+                                ),
+                                level: 7,
+                            };
+
+                        // var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                        home();
+
+                        function home() {
+                            var map = new kakao.maps.Map(
+                                mapContainer,
+                                mapOption
+                            );
+                            // 지도 위에 마커를 표시합니다
+                            for (
+                                var i = 0, len = positions.length;
+                                i < len;
+                                i++
+                            ) {
+                                var gapX = MARKER_WIDTH + SPRITE_GAP, // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
+                                    originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
+                                    overOriginY =
+                                        (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 오버 마커로 사용할 Y좌표 값
+                                    normalOrigin = new kakao.maps.Point(
+                                        0,
+                                        originY
+                                    ), // 스프라이트 이미지에서 기본 마커로 사용할 영역의 좌상단 좌표
+                                    clickOrigin = new kakao.maps.Point(
+                                        gapX,
+                                        originY
+                                    ), // 스프라이트 이미지에서 마우스오버 마커로 사용할 영역의 좌상단 좌표
+                                    overOrigin = new kakao.maps.Point(
+                                        gapX * 2,
+                                        overOriginY
+                                    ); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
+
+                                // 마커를 생성하고 지도위에 표시합니다
+                                addMarker(
+                                    positions[i],
+                                    normalOrigin,
+                                    overOrigin,
+                                    clickOrigin
+                                );
+                            }
+
+                            // 마커를 생성하고 지도 위에 표시하고, 마커에 mouseover, mouseout, click 이벤트를 등록하는 함수입니다
+                            function addMarker(
+                                position,
+                                normalOrigin,
+                                overOrigin,
+                                clickOrigin
+                            ) {
+                                // 기본 마커이미지, 오버 마커이미지, 클릭 마커이미지를 생성합니다
+                                var normalImage = createMarkerImage(
+                                        markerSize,
+                                        markerOffset,
+                                        normalOrigin
+                                    ),
+                                    overImage = createMarkerImage(
+                                        overMarkerSize,
+                                        overMarkerOffset,
+                                        overOrigin
+                                    ),
+                                    clickImage = createMarkerImage(
+                                        markerSize,
+                                        markerOffset,
+                                        clickOrigin
+                                    );
+                                // 마커를 생성하고 이미지는 기본 마커 이미지를 사용합니다
+                                var marker = new kakao.maps.Marker({
+                                    map: map,
+                                    position: positions[i].latlng, // 마커를 표시할 위치
+                                    title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                    image: normalImage,
+                                });
+                                // 마커 객체에 마커아이디와 마커의 기본 이미지를 추가합니다
+                                marker.normalImage = normalImage;
+
+                                // 마커에 mouseover 이벤트를 등록합니다
+                                kakao.maps.event.addListener(
+                                    marker,
+                                    "mouseover",
+                                    function () {
+                                        // 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면
+                                        // 마커의 이미지를 오버 이미지로 변경합니다
+                                        if (
+                                            !selectedMarker ||
+                                            selectedMarker !== marker
+                                        ) {
+                                            marker.setImage(overImage);
+                                        }
+                                    }
+                                );
+
+                                // 마커에 mouseout 이벤트를 등록합니다
+                                kakao.maps.event.addListener(
+                                    marker,
+                                    "mouseout",
+                                    function () {
+                                        // 클릭된 마커가 없고, mouseout된 마커가 클릭된 마커가 아니면
+                                        // 마커의 이미지를 기본 이미지로 변경합니다
+                                        if (
+                                            !selectedMarker ||
+                                            selectedMarker !== marker
+                                        ) {
+                                            marker.setImage(normalImage);
+                                        }
+                                    }
+                                );
+
+                                // 마커에 click 이벤트를 등록합니다
+                                kakao.maps.event.addListener(
+                                    marker,
+                                    "click",
+                                    function () {
+                                        // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
+                                        // 마커의 이미지를 클릭 이미지로 변경합니다
+                                        if (
+                                            !selectedMarker ||
+                                            selectedMarker !== marker
+                                        ) {
+                                            // 클릭된 마커 객체가 null이 아니면
+                                            // 클릭된 마커의 이미지를 기본 이미지로 변경하고
+                                            !!selectedMarker &&
+                                                selectedMarker.setImage(
+                                                    selectedMarker.normalImage
+                                                );
+
+                                            // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
+                                            marker.setImage(clickImage);
+                                        }
+
+                                        // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
+                                        selectedMarker = marker;
+                                        console.log(marker);
+                                        localStorage.key1 = marker.Gb;
+                                        facilities_click_change();
+                                    }
+                                );
+                            }
+
+                            // MakrerImage 객체를 생성하여 반환하는 함수입니다
+                            function createMarkerImage(
+                                markerSize,
+                                offset,
+                                spriteOrigin
+                            ) {
+                                var markerImage = new kakao.maps.MarkerImage(
+                                    SPRITE_MARKER_URL, // 스프라이트 마커 이미지 URL
+                                    markerSize, // 마커의 크기
+                                    {
+                                        offset: offset, // 마커 이미지에서의 기준 좌표
+                                        spriteOrigin: spriteOrigin, // 스트라이프 이미지 중 사용할 영역의 좌상단 좌표
+                                        spriteSize: spriteImageSize, // 스프라이트 이미지의 크기
+                                    }
+                                );
+
+                                return markerImage;
+                            }
+                        }
+                    </script>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
