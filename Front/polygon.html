@@ -11,7 +11,7 @@
         background: #fff;
         border: 1px solid #888;
         border-radius: 3px;
-        font-size: 12px;
+        font-size: 20px;
         top: -5px;
         left: 15px;
         padding:2px;
@@ -61,7 +61,12 @@
         #pagination {margin:10px auto;text-align: center;}
         #pagination a {display:inline-block;margin-right:10px;}
         #pagination .on {font-weight: bold; cursor: default;color:#777;}
-        </style>
+        .customoverlay {position:relative;bottom:85px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
+        .customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+        .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+        .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:10px;font-weight:bold;}
+        .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <!-- 참고 주소 -->
@@ -75,8 +80,8 @@
             <!-- 검색창 -->
     <div class="map_wrap">
         <div id="map" style="width:1000px;height:100%;position:relative;overflow:hidden;"></div>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb4599690d3c2023da5c66bebd6edee7&libraries=services"></script>
-        <div id="menu_wrap" class="bg_white">
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=46fc407db74c860f9d103c8a8a7cc21d&libraries=services"></script>
+        <!-- <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
@@ -87,7 +92,7 @@
             </div>
             <hr>
             <ul id="placesList"></ul>
-            <div id="pagination"></div>
+            <div id="pagination"></div> -->
         </div>
         
     <script>
@@ -97,11 +102,13 @@
             level: 9 // 지도의 확대 레벨
         };
         
-    var map = new kakao.maps.Map(mapContainer, mapOption),
+        var map = new kakao.maps.Map(mapContainer, mapOption),
         customOverlay = new kakao.maps.CustomOverlay({}),
         infowindow = new kakao.maps.InfoWindow({removable: true});
-
-
+        var x_positions = [];
+		var y_positions = [];
+        var dong_names=[];
+        var sum=[];
 
         $.getJSON("json/real.geojson",function(geojson){
             var data = geojson.features;
@@ -169,7 +176,7 @@
 
             //다각형에 click이벤트를 등록하고 이벤트가 발생하면 해당 지역을 확대.
             kakao.maps.event.addListener(polygon, 'click', function() {
-                
+                deletepolygon(polygons);                //해당지역 확대 후 폴리곤 제거
                 //3레벨 확대
                 var level = map.getLevel()-3;
 
@@ -178,8 +185,45 @@
                     duration: 350 //확대 애니메이션 시간
                 }});
 
-                deletepolygon(polygons);                //해당지역 확대 후 폴리곤 제거
+                
+
+                $.getJSON("json/동시각화 전용.json",function(json){
+                var data = json;
+            
+                $.each(data, function(index, item){
+                    if(item.자치구명 == name){
+                        var dong = item.법정동명;
+                        var X = item.position_x;
+                        var Y = item.position_y;
+                        var s = item.합계;
+                        x_positions.push(X);
+                        y_positions.push(Y);
+                        dong_names.push(dong);
+                        sum.push(s);
+                    }
+                    });
+                    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'"; 
+                    var imageSize = new kakao.maps.Size(34, 35); 
+                    var imageOption = {offset: new kakao.maps.Point(17, 36)};
+                    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+                    var markerTmp;      // 마커
+                    var customOverlay;  // 오버레이
+                    var contentStr;
+
+                    for (var i = 0; i < y_positions.length; i ++) {
+                    
+                        contentStr = "<div class='customoverlay'><a href='#" +"' target='_blank'><span class='title'>"+ sum[i]+"개 " +dong_names[i]+ "</span></a></div>";
+                        customOverlay = new kakao.maps.CustomOverlay({
+                        map: map,
+                        position: new kakao.maps.LatLng(x_positions[i], y_positions[i]),
+                        content: contentStr,
+                        yAnchor: 1 
+                    });
+                    }//for문
+                });
             });
+            
         }
         //클릭하면 줌되는 중앙위치 함수
         function centroid(points){
