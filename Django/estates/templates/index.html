@@ -544,7 +544,7 @@
                         var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                             mapOption = {
                                 center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-                                level: 9, // 지도의 확대 레벨
+                                level: 8, // 지도의 확대 레벨
                             };
 
                         home();
@@ -608,11 +608,6 @@
                                     "mouseover",
                                     function (mouseEvent) {
                                         polygon.setOptions({ fillColor: "#09f" });
-
-                                        customOverlay.setContent(
-                                            '<div class="area">' + name + "</div>"
-                                        );
-
                                         customOverlay.setPosition(mouseEvent.latLng);
                                         customOverlay.setMap(map);
                                     }
@@ -637,7 +632,7 @@
                                 kakao.maps.event.addListener(polygon, "click", function () {
                                     deletepolygon(polygons); //해당지역 확대 후 폴리곤 제거
                                     //3레벨 확대
-                                    var level = map.getLevel() - 4;
+                                    var level = map.getLevel() - 2;
 
                                     //클릭된 폴리곤의 중앙위치 기준으로 확대
                                     map.setLevel(level, {
@@ -727,6 +722,16 @@
                                 }
                                 polygons = [];
                             }
+                            var zoomControl = new kakao.maps.ZoomControl();
+                            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+                            // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+                            kakao.maps.event.addListener(map, 'zoom_changed', function() {        
+                                
+                                // 지도의 현재 레벨을 얻어옵니다
+                                var level = map.getLevel();
+                                
+                            });
                         }
                     </script>
                 </main>
