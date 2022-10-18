@@ -608,6 +608,11 @@
                                     "mouseover",
                                     function (mouseEvent) {
                                         polygon.setOptions({ fillColor: "#09f" });
+
+                                        customOverlay.setContent(
+                                            '<div class="area">' + name + "</div>"
+                                        );
+
                                         customOverlay.setPosition(mouseEvent.latLng);
                                         customOverlay.setMap(map);
                                     }
