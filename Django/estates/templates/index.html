@@ -95,11 +95,10 @@
                 } else {
                     $("#facilities").hide();
                 }
-                $("#facilities").html(localStorage.getItem("key1"));
             }
-            function facilities_click_change() {
+            function facilities_click_change(facilities_detail) {
                 $("#facilities").show();
-                $("#facilities").html(localStorage.getItem("key1"));
+                $("#facilities").html(facilities_detail.innerText);
             }
         </script>
     </head>
@@ -545,12 +544,14 @@
                         var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                             mapOption = {
                                 center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-                                level: 9, // 지도의 확대 레벨
+                                level: 8, // 지도의 확대 레벨
                             };
 
                         home();
 
                         function home() {
+                            $("#sidebar").hide();
+                            $("#facilities").hide();
                             var map = new kakao.maps.Map(mapContainer, mapOption),
                                 customOverlay = new kakao.maps.CustomOverlay({}),
                                 infowindow = new kakao.maps.InfoWindow({ removable: true });
@@ -636,7 +637,11 @@
                                 kakao.maps.event.addListener(polygon, "click", function () {
                                     deletepolygon(polygons); //해당지역 확대 후 폴리곤 제거
                                     //3레벨 확대
-                                    var level = map.getLevel() - 4;
+                                    var level = map.getLevel() - 2;
+
+                                    customOverlay.setContent(
+                                        '<div class="area" style="display:none">' + name + "</div>"
+                                    );
 
                                     //클릭된 폴리곤의 중앙위치 기준으로 확대
                                     map.setLevel(level, {
@@ -679,12 +684,8 @@
 
                                         for (var i = 0; i < y_positions.length; i++) {
                                             contentStr =
-                                                "<div class='customoverlay'><a href='#" +
-                                                "' target='_blank'><span class='title'>" +
-                                                sum[i] +
-                                                "개 " +
-                                                dong_names[i] +
-                                                "</span></a></div>";
+                                                "<button class='customoverlay'><div class='title'>"+
+                                                sum[i]+"</div>"+ dong_names[i] + "</button>";
                                             customOverlay = new kakao.maps.CustomOverlay({
                                                 map: map,
                                                 position: new kakao.maps.LatLng(
@@ -695,7 +696,11 @@
                                                 yAnchor: 1,
                                             });
                                         } //for문
+                                        $('.customoverlay').click(function () {
+                                            facilities_click_change(this);
+                                        })
                                     });
+                                    
                                 });
                             }
                             //클릭하면 줌되는 중앙위치 함수
@@ -726,6 +731,16 @@
                                 }
                                 polygons = [];
                             }
+                            var zoomControl = new kakao.maps.ZoomControl();
+                            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+                            // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+                            kakao.maps.event.addListener(map, 'zoom_changed', function() {        
+                                
+                                // 지도의 현재 레벨을 얻어옵니다
+                                var level = map.getLevel();
+                                
+                            });
                         }
                     </script>
                 </main>
