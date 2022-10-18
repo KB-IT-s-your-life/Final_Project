@@ -6,6 +6,3 @@ def index(request):
 
 def mamul(request):
     return render(request, 'mamul.html')
-
-def polygon(request):
-    return render(request, 'polygon.html')

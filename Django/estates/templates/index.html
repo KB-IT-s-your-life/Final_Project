@@ -639,6 +639,10 @@
                                     //3레벨 확대
                                     var level = map.getLevel() - 2;
 
+                                    customOverlay.setContent(
+                                        '<div class="area" style="display:none">' + name + "</div>"
+                                    );
+
                                     //클릭된 폴리곤의 중앙위치 기준으로 확대
                                     map.setLevel(level, {
                                         anchor: centroid(points),
