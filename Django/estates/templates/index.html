@@ -544,7 +544,7 @@
                         var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                             mapOption = {
                                 center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-                                level: 8, // 지도의 확대 레벨
+                                level: 9, // 지도의 확대 레벨
                             };
 
                         home();
@@ -636,19 +636,27 @@
                                 //다각형에 click이벤트를 등록하고 이벤트가 발생하면 해당 지역을 확대.
                                 kakao.maps.event.addListener(polygon, "click", function () {
                                     deletepolygon(polygons); //해당지역 확대 후 폴리곤 제거
+                                    customOverlay.setContent(
+                                            '<div class="area" style="display:none;">' + name + "</div>"
+                                        );
                                     //3레벨 확대
                                     var level = map.getLevel() - 2;
+                                    var a,b;
+                                    $.getJSON("{% static 'json/구별 중심좌표.json' %}",function(json){
+                                        var data = json;
+                                        $.each(data, function (index, item){
+                                            if(item.자치구명 == name){
+                                                a = item.X;
+                                                b = item.Y;
 
-                                    customOverlay.setContent(
-                                        '<div class="area" style="display:none">' + name + "</div>"
-                                    );
-
-                                    //클릭된 폴리곤의 중앙위치 기준으로 확대
-                                    map.setLevel(level, {
-                                        anchor: centroid(points),
-                                        animate: {
-                                            duration: 350, //확대 애니메이션 시간
-                                        },
+                                            }
+                                        });//each
+                                        map.setLevel(level, {
+                                            anchor: new kakao.maps.LatLng(a, b),
+                                            animate: {
+                                                duration: 500
+                                            }
+                                        });
                                     });
 
                                     $.getJSON("{% static 'json/동시각화 전용.json' %}", function (json) {
@@ -703,27 +711,6 @@
                                     
                                 });
                             }
-                            //클릭하면 줌되는 중앙위치 함수
-                            function centroid(points) {
-                                var i, j, len, p1, p2, f, area, x, y;
-
-                                area = x = y = 0;
-
-                                for (
-                                    i = 0, len = points.length, j = len - 1;
-                                    i < len;
-                                    j = i++
-                                ) {
-                                    p1 = points[i];
-                                    p2 = points[j];
-
-                                    f = p1.y * p2.x - p2.y * p1.x;
-                                    x += (p1.x + p2.x) * f;
-                                    y += (p1.y + p2.y) * f;
-                                    area += f * 3;
-                                }
-                                return new kakao.maps.LatLng(x / area, y / area);
-                            }
 
                             function deletepolygon(polygons) {
                                 for (var i = 0; i < polygons.length; i++) {
@@ -739,7 +726,6 @@
                                 
                                 // 지도의 현재 레벨을 얻어옵니다
                                 var level = map.getLevel();
-                                
                             });
                         }
                     </script>
