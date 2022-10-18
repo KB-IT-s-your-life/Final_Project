@@ -105,7 +105,7 @@
             ></div>
             <script
                 type="text/javascript"
-                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=46fc407db74c860f9d103c8a8a7cc21d&libraries=services"
+                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=91afdf715e4354f96784feb3f88d8baf&libraries=services"
             ></script>
         
 
@@ -201,18 +201,29 @@
                 kakao.maps.event.addListener(polygon, "click", function () {
                     deletepolygon(polygons); //해당지역 확대 후 폴리곤 제거
                     //3레벨 확대
-                    var level = map.getLevel() - 3;
+                    var level = map.getLevel() - 2;
+                    var a,b;
+                    $.getJSON("json/구별 중심좌표.json",function(json){
+                        var data = json;
+                        $.each(data, function (index, item){
+                            if(item.자치구명 == name){
+                                a = item.X;
+                                b = item.Y;
 
-                    //클릭된 폴리곤의 중앙위치 기준으로 확대
-                    map.setLevel(level, {
-                        anchor: centroid(points),
-                        animate: {
-                            duration: 350, //확대 애니메이션 시간
-                        },
+                            }
+                        });//each
+                        map.setLevel(level, {
+                            anchor: new kakao.maps.LatLng(a, b),
+                            animate: {
+                                duration: 500
+                            }
+                        });
                     });
+                    
 
                     $.getJSON("json/동시각화 전용.json", function (json) {
                         var data = json;
+                        
 
                         $.each(data, function (index, item) {
                             if (item.자치구명 == name) {
@@ -260,26 +271,36 @@
                 });
             }
             //클릭하면 줌되는 중앙위치 함수
-            function centroid(points) {
-                var i, j, len, p1, p2, f, area, x, y;
+            // function centroid(points) {
+            //     var i, j, len, p1, p2, f, area, x, y;
 
-                area = x = y = 0;
+            //     area = x = y = 0;
 
-                for (
-                    i = 0, len = points.length, j = len - 1;
-                    i < len;
-                    j = i++
-                ) {
-                    p1 = points[i];
-                    p2 = points[j];
+            //     for (
+            //         i = 0, len = points.length, j = len - 1;
+            //         i < len;
+            //         j = i++
+            //     ) {
+            //         p1 = points[i];
+            //         p2 = points[j];
 
-                    f = p1.y * p2.x - p2.y * p1.x;
-                    x += (p1.x + p2.x) * f;
-                    y += (p1.y + p2.y) * f;
-                    area += f * 3;
-                }
-                return new kakao.maps.LatLng(x / area, y / area);
-            }
+            //         f = p1.y * p2.x - p2.y * p1.x;
+            //         x += (p1.x + p2.x) * f;
+            //         y += (p1.y + p2.y) * f;
+            //         area += f * 3;
+            //     }
+            //     return new kakao.maps.LatLng(x / area, y / area);
+            // }
+            // function centroid(points){
+            //     var x_sum,y_sum;
+            //     x_sum=y_sum=0;
+            //     var len=points.length;
+            //     for(var j=0; j<len;j++){
+            //         x_sum+=points[j].x
+            //         y_sum+=points[j].y
+            //     }
+            //     return new kakao.maps.LatLng(x_sum / len, y_sum / len);
+            // }
 
             function deletepolygon(polygons) {
                 for (var i = 0; i < polygons.length; i++) {
