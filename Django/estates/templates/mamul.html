@@ -31,6 +31,10 @@
             }
             function facilities_click_change(facilities_detail) {
                 $("#facilities").show();
+                for (i=0; i<facilities_detail.length; i++){
+                    console.log(facilities_detail[i])
+                }
+                
                 $("#facilities").html(facilities_detail.innerText);
             }
         </script>
@@ -98,6 +102,7 @@
                             }; 
                         var x_positions = [];
                         var y_positions = [];
+                        var title = [];
                         var map = new kakao.maps.Map(mapContainer, mapOption); 
                         // 마커 클러스터러를 생성합니다 
                         var markers = [];
@@ -109,70 +114,65 @@
                             });// 클러스터
                         
                         // 데이터를 가져오기 위해 jQuery를 사용합니다
-                    // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-                    $.getJSON("{% static 'json/최종매물데이터.json' %}",function(data){
-                        $.each(data, function(index, item){
-                            var no = index+1;
-                            var X = item.X;
-                            var Y = item.Y;
-                            
-                            //var addr = item.addr;
-                            
-                            // 마커 하나를 지도위에 표시합니다 
-                            x_positions.push(X)
-                            y_positions.push(Y)
-                            //alert(y_positions)
-                        });//each
-                        //alert(x_positions)
-                        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-                        for (var i = 0; i < y_positions.length; i ++) {
+                        // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
+                        $.getJSON("{% static 'json/test.json' %}",function(data){
+                            $.each(data, function(index, item){
+                                var no = index+1;
+                                var X = item.X;
+                                var Y = item.Y;
                                 
-                                // 마커 이미지의 이미지 크기 입니다
-                            var imageSize = new kakao.maps.Size(24, 35); 
+                                //var addr = item.addr;
                                 
-                                // 마커 이미지를 생성합니다    
-                            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                                // 마커 하나를 지도위에 표시합니다 
+                                x_positions.push(X)
+                                y_positions.push(Y)
+                                title.push(no)
+                                // alert(y_positions)
+                            });//each
+                            //alert(x_positions)
+                            var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+                            for (var i = 0; i < y_positions.length; i ++) {
+                                    // 마커 이미지의 이미지 크기 입니다
+                                var imageSize = new kakao.maps.Size(24, 35); 
+                                    
+                                    // 마커 이미지를 생성합니다    
+                                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                                    
+                                    // 마커를 생성합니다
+                                var marker = new kakao.maps.Marker({
+                                    position: new kakao.maps.LatLng(x_positions[i], y_positions[i]), // 마커를 표시할 위치
+                                        //title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                        //image : markerImage, // 마커 이미지
+                                        title: title[i],
+                                });//마커 
+                                kakao.maps.event.addListener(marker, "click", function (){
+                                    console.log(this.Gb)
+                                    facilities_click()
+                                });
+                                markers.push(marker);
                                 
-                                // 마커를 생성합니다
-                            var marker = new kakao.maps.Marker({
-                                position: new kakao.maps.LatLng(x_positions[i], y_positions[i]), // 마커를 표시할 위치
-                                    //title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                    //image : markerImage, // 마커 이미지 
+                            }//for문
+                            clusterer.addMarkers(markers);
                             
-                            });//마커 
-                            markers.push(marker);
-                            
-                        }//for문
-                        clusterer.addMarkers(markers);
-                        // 클러스터러에 마커들을 추가합니다
-                        //clusterer.addMarkers(marker);
-                    });
-                // 마커 이미지의 이미지 주소입니다
-                // 마커 클러스터러에 클릭이벤트를 등록합니다
-                    // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
-                    // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
-                kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+                            // 클러스터러에 마커들을 추가합니다
+                            //clusterer.addMarkers(marker);
+                            //kakao.maps.event.addListener(marker, "click", function (){
+                            //});
+                        });
+                        // 마커 이미지의 이미지 주소입니다
+                        // 마커 클러스터러에 클릭이벤트를 등록합니다
+                        // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
+                        // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
+                        kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
 
-                        // 현재 지도 레벨에서 1레벨 확대한 레벨
-                        var level = map.getLevel()-1;
+                                // 현재 지도 레벨에서 1레벨 확대한 레벨
+                                var level = map.getLevel();
 
-                        // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
-                        map.setLevel(level, {anchor: cluster.getCenter()});
-
-                        facilities_click()
-                        // console.log(marker)
-                });
-
-                /*new kakao.maps.LatLng(x_positions[0], y_positions[0])*/
-                /*var marker = new kakao.maps.Marker({
-                    map: map,
-                    position: new kakao.maps.LatLng(37.55811, 126.97406),
-                //	image : markerImage
-                });*/
-
-
-
-                </script>
+                                // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
+                                map.setLevel(level, {anchor: cluster.getCenter()});
+                                facilities_click_change(this._clusters)
+                        });
+                    </script>
                 </main>
             </div>
         </div>
