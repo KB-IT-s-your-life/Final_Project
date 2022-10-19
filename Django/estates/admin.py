@@ -7,7 +7,7 @@ from .models import Database
 class DatabaseAdmin(admin.ModelAdmin):
     
     list_display = ('field1', 'predict', 'jachigu', 'bubjung', 'height', 'junwallse', 'pyeong', 'bozeonggum', 'imdaeru', 'gunmullmyeong', 'yongdo', 'zibunjuso', 'imdaeru', 'gunmulyongdo', 'year', 'created_at', 'updated_at',)
-    # 'lastimdaeru', 'zibunjuso', 'gunchukyear', 'gunmulyongdo', 'lastbozeong', 'created_at', 'updated_at',)
+    # 'lastimdaeru', 'zibunjuso', 'gunchukyear', 'gunmulyongdo', x'lastbozeong', 'created_at', 'updated_at',)
 admin.site.register(Database, DatabaseAdmin)
 
 # Register your models here.
