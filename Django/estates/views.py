@@ -6,3 +6,5 @@ def index(request):
 
 def mamul(request):
     return render(request, 'mamul.html')
+def visualization(request):
+    return render(request, 'visualization.html')
