@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class facilities(models.Model):
+class Facilities(models.Model):
     title = models.CharField(max_length=30)
     subway = models.PositiveIntegerField()
     bus = models.PositiveIntegerField()
