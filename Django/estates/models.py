@@ -26,3 +26,22 @@ class Facilities(models.Model):
     mart = models.PositiveIntegerField()
     shop = models.PositiveIntegerField()
     # 법정동명,지하철역,버스정류소,서점,골프연습장업,목욕장업,석유판매업,세탁업,영화상영관,제과점영업,체력단련장업,병원,약국,의원,치안센터,경찰서,119안전센터,공원수,노래방수,당구장,음식점수,장보기시설,쇼핑시설
+    
+class Database(models.Model):
+    field1 = models.PositiveIntegerField()
+    predict = models.FloatField()
+    jachigu = models.CharField(max_length=50)
+    bubjung = models.CharField(max_length=50)
+    height = models.FloatField()
+    junwallse = models.CharField(max_length=50)
+    pyeong = models.FloatField()
+    bozeonggum = models.PositiveIntegerField()
+    imdaeru = models.PositiveIntegerField()
+    gunmullmyeong = models.CharField(max_length=50)
+    gunchukyear = models.FloatField()
+    gunmulyongdo = models.CharField(max_length=50)
+    lastbozeong = models.FloatField()
+    lastimdaeru = models.FloatField()
+    zibunjuso = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
