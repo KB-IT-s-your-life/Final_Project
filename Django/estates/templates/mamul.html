@@ -21,13 +21,14 @@
             
             function facilities_click() {
                 if ($("#facilities").css("display") == "none") {
-                    if ($("#sidebar").css("display") != "none") {
-                        $("#sidebar").hide();
-                    }
                     $("#facilities").show();
                 } else {
                     $("#facilities").hide();
                 }
+            }
+            function facilities_click_marker(mark) {
+                $("#facilities").show();
+                $("#facilities").html(mark.Gb);
             }
             function facilities_click_change(mamul_detail) {
                 $("#facilities").show();
@@ -146,8 +147,7 @@
                                         title: title[i],
                                 });//마커 
                                 kakao.maps.event.addListener(marker, "click", function (){
-                                    console.log(this.Gb)
-                                    facilities_click()
+                                    facilities_click_marker(this)
                                 });
                                 markers.push(marker);
                                 
