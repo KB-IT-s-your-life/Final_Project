@@ -28,7 +28,25 @@
             }
             function facilities_click_marker(mark) {
                 $("#facilities").show();
-                $("#facilities").html(mark.Gb);
+                var pk = mark.Gb
+                $.ajax({
+                    type:'get',
+                    url: '/estates/getmamuls?pk='+ pk,
+                    dateType: 'json',
+                    success:function(jsonData){
+                        $('#facilities').html(jsonData.mamuls.zibunjuso);
+
+                        //$.each(jsonData, function(index, item){
+                          //  alert('hhhh')
+                            //if (item == title){
+                                //str += "subway: "+ item.subway + "bus: "+ item.bus + "book"+ item.book + "golf"+ item.golf + "bath"+ item.bath + "gas"+ item.gas + "laundry"+ item.laundry + "movie"+ item.movie + "bakery"+ item.bakery + "gym"+ item.gym + "hospital"+ item.hospital + "pharmacy"+ item.pharmacy + "medical"+ item.medical + "safefy"+ item.safefy + "police"+ item.police + "fire"+ item.fire + "park"+ item.park +"karaoke"+ item.karaoke + "billiard"+ item.billiard + "restaurant"+ item.restaurant + "mart"+ item.mart + "shop"+ item.shop
+                                //$('#facilities').html('hhh');
+                            //}
+                        //})
+
+                        //print(jsonData.name)
+                    } // callback
+                })
             }
             function facilities_click_change(mamul_detail) {
                 $("#facilities").show();
@@ -116,7 +134,7 @@
                         
                         // 데이터를 가져오기 위해 jQuery를 사용합니다
                         // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-                        $.getJSON("{% static 'json/test.json' %}",function(data){
+                        $.getJSON("{% static 'json/LatLng.json' %}",function(data){
                             $.each(data, function(index, item){
                                 var no = index+1;
                                 var X = item.X;
@@ -147,6 +165,7 @@
                                         title: title[i],
                                 });//마커 
                                 kakao.maps.event.addListener(marker, "click", function (){
+                                    alert(this.Gb)
                                     facilities_click_marker(this)
                                 });
                                 markers.push(marker);
@@ -164,7 +183,8 @@
                         // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
                         // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
                         kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
-                                facilities_click_change(cluster)
+                            alert(cluster)
+                            facilities_click_change(cluster)
                         });
                     </script>
                 </main>

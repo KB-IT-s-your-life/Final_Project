@@ -9,4 +9,5 @@ urlpatterns = [
     path('mamul', views.mamul, name='mamul'),
     path('index_taeho', views.index_taeho, name='index_taeho'),
     path('getfacilities', views.getfacilities, name='getfacilities'),
+    path('getmamuls', views.getmamuls, name='getmamuls'),
 ]
