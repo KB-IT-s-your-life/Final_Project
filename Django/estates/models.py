@@ -45,7 +45,3 @@ class Mamul(models.Model):
     zibunjuso = models.CharField(max_length=50)
     x = models.FloatField()
     y = models.FloatField()
-    
-class Test(models.Model):
-    title = models.TextField(primary_key=True)
-    content = models.TextField()
