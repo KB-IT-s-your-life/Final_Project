@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Facilities(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30, primary_key=True)
     subway = models.PositiveIntegerField()
     bus = models.PositiveIntegerField()
     book = models.PositiveIntegerField()
@@ -45,3 +45,7 @@ class Mamul(models.Model):
     zibunjuso = models.CharField(max_length=50)
     x = models.FloatField()
     y = models.FloatField()
+    
+class Test(models.Model):
+    title = models.TextField(primary_key=True)
+    content = models.TextField()

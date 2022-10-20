@@ -99,20 +99,27 @@
             }
             function facilities_click_change(dong) {
                 $("#facilities").show();
-                $("#facilities").html(dong);
-                /*$.ajax({
-                    type:'POST',
-                    url: 'estates/getfacilities',
-                    // data: {title:dong}
-                    dataType: 'json',
-
+                //var title= 'test';
+                $.ajax({
+                    type:'get',
+                    url: '/estates/getfacilities?title='+dong,
+                    dateType: 'json',
                     success:function(jsonData){
-                        alert('hi')
-                    },
-                    error: function(){
-                        alert('no')
-                    }
-                })*/
+                       // alert(jsonData.facil.subway)
+                        $('#facilities').html(jsonData.facil.title);
+                     //  var str = ''
+
+                        //$.each(jsonData, function(index, item){
+                          //  alert('hhhh')
+                            //if (item == title){
+                                //str += "subway: "+ item.subway + "bus: "+ item.bus + "book"+ item.book + "golf"+ item.golf + "bath"+ item.bath + "gas"+ item.gas + "laundry"+ item.laundry + "movie"+ item.movie + "bakery"+ item.bakery + "gym"+ item.gym + "hospital"+ item.hospital + "pharmacy"+ item.pharmacy + "medical"+ item.medical + "safefy"+ item.safefy + "police"+ item.police + "fire"+ item.fire + "park"+ item.park +"karaoke"+ item.karaoke + "billiard"+ item.billiard + "restaurant"+ item.restaurant + "mart"+ item.mart + "shop"+ item.shop
+                                //$('#facilities').html('hhh');
+                            //}
+                        //})
+
+                        //print(jsonData.name)
+                    } // callback
+                })
             }
         </script>
     </head>
