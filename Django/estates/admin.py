@@ -1,14 +1,14 @@
 from django.contrib import admin
 from . models import Facilities
-from .models import Database
+from .models import Mamul
 
 
 # Register your models here.
-class DatabaseAdmin(admin.ModelAdmin):
+class MamulAdmin(admin.ModelAdmin):
     
-    list_display = ('field1', 'predict', 'jachigu', 'bubjung', 'height', 'junwallse', 'pyeong', 'bozeonggum', 'imdaeru', 'gunmullmyeong', 'yongdo', 'zibunjuso', 'imdaeru', 'gunmulyongdo', 'year', 'created_at', 'updated_at',)
-    # 'lastimdaeru', 'zibunjuso', 'gunchukyear', 'gunmulyongdo', x'lastbozeong', 'created_at', 'updated_at',)
-admin.site.register(Database, DatabaseAdmin)
+    list_display = ('field1', 'predict', 'jachigu', 'bubjung', 'height', 'junwallse', 'pyeong', 'bozeonggum', 'imdaeru', 'gunmullmyeong', 'gunchukyear', 'gunmulyongdo', 'lastbozeong', 'lastimdaeru', 'zibunjuso', 'x', 'y')
+    # 'lastimdaeru', 'zibunjuso', 'gunchukyear', 'gunmulyongdo', 'lastbozeong', 'created_at', 'updated_at',)
+admin.site.register(Mamul, MamulAdmin)
 
 # Register your models here.
 class FacilitiesAdmin(admin.ModelAdmin):

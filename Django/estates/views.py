@@ -1,10 +1,28 @@
 from django.shortcuts import render
+from . models import Facilities, Mamul
+from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
 def mamul(request):
-    return render(request, 'mamul.html')
+    mamuls = Mamul.objects.all() # objects API
+    
+    context = {
+        'mamuls': mamuls
+    }
+    return render(request, 'mamul.html', context)
+
 def visualization(request):
     return render(request, 'visualization.html')
+
+def getfacilities(request):
+    print('1')
+    facil = Facilities.objects.all()
+    print(facil)
+    context = {
+        'facil': facil
+    }
+    
+    return JsonResponse(context)

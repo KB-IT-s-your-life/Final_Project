@@ -3,7 +3,6 @@
 <html lang="en">
     <head>
         <title>KB IT's your Life</title>
-      
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -19,25 +18,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
-        <style>
-            #svg-area {
-                position: relative;
-            }
-    
-            #tooltip {
-                position: absolute;
-                opacity: 0;
-                width: 40px;
-                height: 20px;
-                line-height: 20px;
-                transition: all 0.3s;
-                border-radius: 5px;
-                text-align: center;
-                color: #fff;
-                font-size: 14px;
-                font-weight: bold;
-            }
-        </style>
         <script>
             $(function () {
                 //1. 폼에 입력된 값을 다 가지고 ACTION에 연결된 페이지로 이동, 전송…하는 함수
@@ -117,11 +97,23 @@
                     $("#facilities").hide();
                 }
             }
-             {% comment %} function facilities_click_change(facilities_detail) {
+            function facilities_click_change(dong) {
                 $("#facilities").show();
-                $("#facilities").html(facilities_detail.innerText);
-                
-            } {% endcomment %}
+                $("#facilities").html(dong);
+                /*$.ajax({
+                    type:'POST',
+                    url: 'estates/getfacilities',
+                    // data: {title:dong}
+                    dataType: 'json',
+
+                    success:function(jsonData){
+                        alert('hi')
+                    },
+                    error: function(){
+                        alert('no')
+                    }
+                })*/
+            }
         </script>
     </head>
     <body>
@@ -559,170 +551,7 @@
                     </fieldset>
                 </div>
                 <!-- sidebar -->
-                <div id="facilities">
-                    <div id="svg-area">
-                        <div id="tooltip">
-                            <script>
-                                var width = 400;
-                                var height = 400;
-                                var margin = {top: 40, left: 40, bottom: 40, right: 40};
-
-                                var data = [
-
-                                    {name: '지하철역', value: 10, color: '#5487b1'},
-                                    {name: '버스정류소', value: 29, color: '#63a1af'},
-                                    {name: '서점', value: 32, color: '#7ab8aa'},
-                                    {name: '골프연습장', value: 25, color: '#93caa8'},
-                                    {name: '약국', value: 23, color: '#add7a8'},
-                                    {name: '의원', value: 15, color: '#c6e3a7'}
-                                ];
-
-                                var x = d3.scaleBand()
-                                .domain(data.map(d => d.name))
-                                .range([margin.left, width - margin.right])
-                                .padding(0.4);
-
-                                var y = d3.scaleLinear()
-                                .domain([0, d3.max(data, d => d.value)]).nice()
-                                    .range([height - margin.bottom, margin.top]);
-
-                                var xAxis = g => g
-                                .attr('transform', `translate(0, ${height - margin.bottom})`)
-                                .call(d3.axisBottom(x)
-                                    .tickSizeOuter(0))
-                                .call(g => g.select('.domain').remove())
-                                .call(g => g.selectAll('line').remove());
-
-                                var yAxis = g => g
-                                .attr('transform', `translate(${margin.left}, 0)`)
-                                .call(d3.axisLeft(y))
-                                .call(g => g.select('.domain').remove())
-                                .call(g => g.selectAll('line')
-                                    .attr('x2', width)
-                                    .style('stroke', '#f5f5f5'))
-
-
-                                var svg = d3.select('#svg-area').append('svg').style('width', width).style('height', height);
-
-                                svg.append('g').call(xAxis);
-                                svg.append('g').call(yAxis);
-                                svg.append('g')
-                                .selectAll('rect').data(data).enter().append('rect')
-                                .attr('x', d => x(d.name))
-                                .attr('y', d => y(d.value))
-                                .attr('height', d => y(0) - y(d.value))
-                                .attr("rx", 15)
-                                .attr('width', x.bandwidth())
-                                .attr('fill', d => d.color)
-                                .attr('data-x', d => d.name)
-                                .attr('data-y', d => d.value)
-                                .attr('data-color', d=> d.color);
-
-                                svg.node();
-
-                                var rectEl = document.getElementsByTagName('rect');
-                                var tooltop = document.getElementById('tooltip');
-
-                                for(var el of rectEl) {
-                                el.addEventListener('mouseover', (event) => {
-                                    var target = event.target;
-                                    var positionLeft = Number(target.getAttribute('x')) + Number(x.bandwidth()/2) - tooltop.clientWidth/2;
-                                    var positionTop = height - margin.top - target.getAttribute('height') - tooltop.clientHeight - 5;
-                                    var color = target.dataset.color;
-                                    var value = target.dataset.y;
-
-                                    tooltop.innerText = value;
-                                    tooltop.style.background = color;
-                                    tooltop.style.top = positionTop + 'px';
-                                    tooltop.style.left = positionLeft + 'px';
-                                    tooltop.style.opacity = 1;
-                                });
-                                }
-                            </script>
-                        </div>
-                    </div>
-                    <br>
-                    <div id="svg-area">
-                        <div id="tooltip">
-                            <script>
-                                var width = 400;
-                                var height = 400;
-                                var margin = {top: 40, left: 40, bottom: 40, right: 40};
-
-                                var data = [
-                                    {name: 'A', value: 10, color: '#5487b1'},
-                                    {name: 'B', value: 29, color: '#63a1af'},
-                                    {name: 'C', value: 32, color: '#7ab8aa'},
-                                    {name: 'D', value: 25, color: '#93caa8'},
-                                    {name: 'E', value: 23, color: '#add7a8'},
-                                    {name: 'F', value: 15, color: '#c6e3a7'}
-                                ];
-
-                                var x = d3.scaleBand()
-                                .domain(data.map(d => d.name))
-                                .range([margin.left, width - margin.right])
-                                .padding(0.4);
-
-                                var y = d3.scaleLinear()
-                                .domain([0, d3.max(data, d => d.value)]).nice()
-                                    .range([height - margin.bottom, margin.top]);
-
-                                var xAxis = g => g
-                                .attr('transform', `translate(0, ${height - margin.bottom})`)
-                                .call(d3.axisBottom(x)
-                                    .tickSizeOuter(0))
-                                .call(g => g.select('.domain').remove())
-                                .call(g => g.selectAll('line').remove());
-
-                                var yAxis = g => g
-                                .attr('transform', `translate(${margin.left}, 0)`)
-                                .call(d3.axisLeft(y))
-                                .call(g => g.select('.domain').remove())
-                                .call(g => g.selectAll('line')
-                                    .attr('x2', width)
-                                    .style('stroke', '#f5f5f5'))
-
-
-                                var svg = d3.select('#svg-area').append('svg').style('width', width).style('height', height);
-
-                                svg.append('g').call(xAxis);
-                                svg.append('g').call(yAxis);
-                                svg.append('g')
-                                .selectAll('rect').data(data).enter().append('rect')
-                                .attr('x', d => x(d.name))
-                                .attr('y', d => y(d.value))
-                                .attr('height', d => y(0) - y(d.value))
-                                .attr("rx", 15)
-                                .attr('width', x.bandwidth())
-                                .attr('fill', d => d.color)
-                                .attr('data-x', d => d.name)
-                                .attr('data-y', d => d.value)
-                                .attr('data-color', d=> d.color);
-
-                                svg.node();
-
-                                var rectEl = document.getElementsByTagName('rect');
-                                var tooltop = document.getElementById('tooltip');
-
-                                for(var el of rectEl) {
-                                el.addEventListener('mouseover', (event) => {
-                                    var target = event.target;
-                                    var positionLeft = Number(target.getAttribute('x')) + Number(x.bandwidth()/2) - tooltop.clientWidth/2;
-                                    var positionTop = height - margin.top - target.getAttribute('height') - tooltop.clientHeight - 5;
-                                    var color = target.dataset.color;
-                                    var value = target.dataset.y;
-
-                                    tooltop.innerText = value;
-                                    tooltop.style.background = color;
-                                    tooltop.style.top = positionTop + 'px';
-                                    tooltop.style.left = positionLeft + 'px';
-                                    tooltop.style.opacity = 1;
-                                });
-                                }
-                            </script>
-                        </div>
-                    </div>
-                </div>
+                <div id="facilities"></div>
                 <main class="col-lg-9 bd-content nopadding" role="main">
                     <div id="map"></div>
                     <script>
@@ -890,24 +719,8 @@
                                             });
                                         } //for문
                                         $('.customoverlay').click(function () {
-                                            //facilities_click_change(this);
-                                            var temp = $(this).attr('val') ///temp안에 그 법정동 들어있음
-                                            $("#facilities").show();
-                                            //$("#facilities").html(temp);
-                                            
-                                            
-                                            $.getJSON("{% static 'json/편의시설 변경 버전.json' %}", function (json) {
-                                                var data = json;
-
-                                                $.each(data, function (index, item) {
-                                                    if (item.법정동명 == temp) {
-                                                        
-                                                        var X = item.버스정류소;
-                                                        alert(X);
-                                                    }
-                                                });//법정동 마커 찍기위해 좌표,법정동이름,합계 저장하기
-                                            });//편의시설 갯수들 받아오는 getjson
-                                        });//click시 temp에 클릭한 법정동 이름 저장
+                                            facilities_click_change($(this).attr('val'));
+                                        });
                                     });//동시각화 전용 getjson
                                     
                                 });
