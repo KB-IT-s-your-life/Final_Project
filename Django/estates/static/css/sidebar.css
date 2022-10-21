@@ -1,0 +1,68 @@
+fieldset{
+    width: 350px;
+    margin-top: 20px;
+    margin-left: 5px;
+}
+legend{
+    text-align: center;
+}
+.form-groug{
+    margin-bottom: 0px !important;
+}
+#submit{
+    float: right;
+}
+
+/* 편의시설 조건 */
+#medical{
+    float: left;
+    width: 170px;
+}
+#security{
+    float: right;
+    width: 170px;
+}
+#shopping{
+    float: left;
+    width: 170px;
+}
+#market{
+    float: right;
+    width: 170px;
+}
+#convenient{
+    float: right;
+    width: 170px;
+}
+#leisure{
+    float: left;
+    width: 170px;
+}
+#traffic{
+    float: right;
+    width: 170px;
+}
+#oil{
+    float: left;
+    width: 170px;
+}
+#park{
+    float: right;
+    width: 170px;
+}
+#Restaurant{
+    float: left;
+    width: 170px;
+}
+
+.Check{
+    display: flex;
+    justify-content: space-around;
+}
+
+#charter{
+    display: none;
+}
+#monthly{
+    display: none;
+}

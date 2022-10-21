@@ -6,6 +6,9 @@ from django.http import JsonResponse
 def index(request):
     return render(request, 'index.html')
 
+def base_index_test(request):
+    return render(request, 'base_index_test.html')
+
 def mamul(request):
     return render(request, 'mamul.html')
 
