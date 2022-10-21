@@ -3,7 +3,7 @@ import csv
 
 
 def run():
-    with open('estates/facilites.csv', encoding='UTF-8') as file:
+    with open('estates/facilities.csv', encoding='UTF-8') as file:
         reader = csv.reader(file)
         next(reader)  # Advance past the header
 
@@ -12,27 +12,59 @@ def run():
         for row in reader:
             print(row)
             
-            facilities = Facilities(title = row[1],
-                                    subway = row[2],
-                                    bus = row[3],
-                                    book = row[4],
-                                    golf = row[5],
-                                    bath = row[6],
-                                    gas = row[7],
-                                    laundry = row[8],
-                                    movie = row[9],
-                                    bakery = row[10],
-                                    gym = row[11],
-                                    hospital = row[12],
-                                    pharmacy = row[13],
-                                    medical = row[14],
-                                    safefy = row[15],
-                                    police = row[16],
-                                    fire = row[17],
-                                    park = row[18],
-                                    karaoke = row[19],
-                                    billiard = row[20],
-                                    restaurant = row[21],
-                                    mart = row[22],
-                                    shop = row[23])
+            facilities = Facilities(
+                title = row[1], # 법정동
+                traffic = row[43], # 교통
+                subway = row[2], # 지하철역
+                bus = row[3], # 버스정류소
+                
+                treatment = row[38], # 의료
+                hospital = row[18], # 병원
+                pharmacy = row[19], # 약국
+                medical = row[20], # 의원
+                
+                safety = row[39], # 생활복지시설
+                security = row[21], # 치안
+                police = row[22], # 경찰서
+                fire = row[23], # 119안전센터
+                post = row[29], # 우체국
+                
+                facilities = row[40], # 생활편의시설
+                bath = row[6], # 목욕장업
+                laundry = row[7], # 세탁업
+                
+                rest = row[41], # 휴식
+                park = row[24], # 공원수
+                museum = row[28], # 박물관미술관
+                library = row[27], # 도서관
+                
+                leisure = row[42], # 여가
+                golf = row[5], # 골프연습장
+                gym = row[10], # 체력단련장
+                billard = row[26], # 당구장
+                karaoke = row[25], # 노래방
+                movie = row[8], # 영화상영관
+                
+                shop = row[44], # 쇼핑시설
+                department = row[14], # 백화점
+                complex = row[15], #복합쇼핑몰
+                center = row[16], # 쇼핑센터
+                book = row[4], # 서점
+                
+                mart = row[45], # 장보기시설
+                large = row[12], # 대규모점포
+                none = row[11], # 구분없음
+                supermarket = row[13], # 대형마트
+                market = row[17], # 시장
+                bakery = row[9], # 제과점
+                
+                restaurant = row[30], # 음식점
+                west = row[33], # 경양식
+                bunsik = row[34], # 분식
+                japan = row[35], # 일식
+                china = row[36], # 중식
+                korea = row[37], # 한식
+                
+                cafe = row[31], # 카페
+                fast = row[32],) # 패스트푸드
             facilities.save()
