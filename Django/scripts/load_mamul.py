@@ -3,7 +3,7 @@ import csv
 
 
 def run():
-    with open('estates/mamul.csv') as file:
+    with open('estates/mamul.csv', encoding='UTF-8') as file:
         reader = csv.reader(file)
         next(reader)  # Advance past the header
 
@@ -13,20 +13,21 @@ def run():
             print(row)
             
             mamul = Mamul(field1 = row[0],
-                                predict = row[1],
-                                jachigu = row[2],
-                                bubjung = row[3],
-                                height = row[4],
-                                junwallse = row[5],
-                                pyeong = row[6],
-                                bozeonggum = row[7],
-                                imdaeru = row[8],
-                                gunmullmyeong = row[9],
-                                gunchukyear = row[10],
-                                gunmulyongdo = row[11],
-                                lastbozeong = row[12],
-                                lastimdaeru = row[13],
-                                zibunjuso = row[14],
-                                x = row[15],
-                                y = row[16])
+                          unnamed = row[2],
+                                predict = row[3],
+                                jachigu = row[4],
+                                bubjung = row[5],
+                                height = row[6],
+                                junwallse = row[7],
+                                pyeong = row[8],
+                                bozeonggum = row[9],
+                                imdaeru = row[10],
+                                gunmullmyeong = row[11],
+                                gunchukyear = row[12],
+                                gunmulyongdo = row[13],
+                                lastbozeong = row[14],
+                                lastimdaeru = row[15],
+                                zibunjuso = row[16],
+                                x = row[17],
+                                y = row[18])
             mamul.save()
