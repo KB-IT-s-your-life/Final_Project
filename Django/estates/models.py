@@ -2,30 +2,60 @@ from django.db import models
 
 # Create your models here.
 class Facilities(models.Model):
-    title = models.CharField(max_length=30, primary_key=True)
-    subway = models.PositiveIntegerField()
-    bus = models.PositiveIntegerField()
-    book = models.PositiveIntegerField()
-    golf = models.PositiveIntegerField()
-    bath = models.PositiveIntegerField()
-    gas = models.PositiveIntegerField()
-    laundry = models.PositiveIntegerField()
-    movie = models.PositiveIntegerField()
-    bakery = models.PositiveIntegerField()
-    gym = models.PositiveIntegerField()
-    hospital = models.PositiveIntegerField()
-    pharmacy = models.PositiveIntegerField()
-    medical = models.PositiveIntegerField()
-    safefy = models.PositiveIntegerField()
-    police = models.PositiveIntegerField()
-    fire = models.PositiveIntegerField()
-    park = models.PositiveIntegerField()
-    karaoke = models.PositiveIntegerField()
-    billiard = models.PositiveIntegerField()
-    restaurant = models.PositiveIntegerField()
-    mart = models.PositiveIntegerField()
-    shop = models.PositiveIntegerField()
-    # 법정동명,지하철역,버스정류소,서점,골프연습장업,목욕장업,석유판매업,세탁업,영화상영관,제과점영업,체력단련장업,병원,약국,의원,치안센터,경찰서,119안전센터,공원수,노래방수,당구장,음식점수,장보기시설,쇼핑시설
+    title = models.CharField(max_length=30, primary_key=True) # 법정동
+    traffic = models.PositiveIntegerField() # 교통
+    subway = models.PositiveIntegerField() # 지하철역
+    bus = models.PositiveIntegerField() # 버스정류소
+    
+    treatment = models.PositiveIntegerField() # 의료
+    hospital = models.PositiveIntegerField() # 병원
+    pharmacy = models.PositiveIntegerField() # 약국
+    medical = models.PositiveIntegerField() # 의원
+    
+    safety = models.PositiveIntegerField() # 생활복지시설
+    security = models.PositiveIntegerField() # 치안
+    police = models.PositiveIntegerField() # 경찰서
+    fire = models.PositiveIntegerField() # 119안전센터
+    post = models.PositiveIntegerField() # 우체국
+    
+    facilities = models.PositiveIntegerField() # 생활편의시설
+    bath = models.PositiveIntegerField() # 목욕장업
+    laundry = models.PositiveIntegerField() # 세탁업
+    
+    rest = models.PositiveIntegerField() # 휴식
+    park = models.PositiveIntegerField() # 공원수
+    museum = models.PositiveIntegerField() # 박물관미술관
+    library = models.PositiveIntegerField() # 도서관
+    
+    leisure = models.PositiveIntegerField() # 여가
+    golf = models.PositiveIntegerField() # 골프연습장
+    gym = models.PositiveIntegerField() # 체력단련장
+    billard = models.PositiveIntegerField() # 당구장
+    karaoke = models.PositiveIntegerField() # 노래방
+    movie = models.PositiveIntegerField() # 영화상영관
+    
+    shop = models.PositiveIntegerField() # 쇼핑시설
+    department = models.PositiveIntegerField() # 백화점
+    complex = models.PositiveIntegerField() #복합쇼핑몰
+    center = models.PositiveIntegerField() # 쇼핑센터
+    book = models.PositiveIntegerField() # 서점
+    
+    mart = models.PositiveIntegerField() # 장보기시설
+    large = models.PositiveIntegerField() # 대규모점포
+    none = models.PositiveIntegerField() # 구분없음
+    supermarket = models.PositiveIntegerField() # 대형마트
+    market = models.PositiveIntegerField() # 시장
+    bakery = models.PositiveIntegerField() # 제과점
+    
+    restaurant = models.PositiveIntegerField() # 음식점
+    west = models.PositiveIntegerField() # 경양식
+    bunsik = models.PositiveIntegerField() # 분식
+    japan = models.PositiveIntegerField() # 일식
+    china = models.PositiveIntegerField() # 중식
+    korea = models.PositiveIntegerField() # 한식
+    
+    cafe = models.PositiveIntegerField() # 카페
+    fast = models.PositiveIntegerField() # 패스트푸드
 
 class Mamul(models.Model):
     field1 = models.PositiveIntegerField()
