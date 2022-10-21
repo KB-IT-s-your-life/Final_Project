@@ -10,4 +10,7 @@ urlpatterns = [
     path('index_taeho', views.index_taeho, name='index_taeho'),
     path('getfacilities', views.getfacilities, name='getfacilities'),
     path('getmamuls', views.getmamuls, name='getmamuls'),
+    path('piechart', views.piechart, name='piechart'),
+    path('barchart', views.barchart, name='barchart'),
+    path('index_copy', views.index_copy, name='index_copy'),
 ]

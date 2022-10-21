@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <title>KB IT's your Life</title>
+      
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -18,7 +19,25 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <style>
+            #svg-area {
+                position: relative;
+            }
+    
+            #tooltip {
+                position: absolute;
+                opacity: 0;
+                width: 40px;
+                height: 20px;
+                line-height: 20px;
+                transition: all 0.3s;
+                border-radius: 5px;
+                text-align: center;
+                color: #fff;
+                font-size: 14px;
+                font-weight: bold;
+            }
+        </style>
         <script>
             $(function () {
                 //1. 폼에 입력된 값을 다 가지고 ACTION에 연결된 페이지로 이동, 전송…하는 함수
@@ -39,30 +58,44 @@
                     var monthly_val = $("#monthly_select").val();
                     var usr_val = $("#usr").val();
 
-          alert(medical + security + shopping + market + leisure + convenient + oil + traffic + restaurant + park + charter_val + monthly_val + usr_val);
-          // return confirm(medical+shopping+market+convenient+oil+leisure+park+traffic+restaurant);
-          //submit 이벤트 작동안하도록 ..기본적인 이벤트 막아주는 함수,…preventDefault()
-          event.preventDefault();
+                    alert(
+                        medical +
+                            security +
+                            shopping +
+                            market +
+                            leisure +
+                            convenient +
+                            oil +
+                            traffic +
+                            restaurant +
+                            park +
+                            charter_val +
+                            monthly_val +
+                            usr_val
+                    );
+                    // return confirm(medical+shopping+market+convenient+oil+leisure+park+traffic+restaurant);
+                    //submit 이벤트 작동안하도록 ..기본적인 이벤트 막아주는 함수,…preventDefault()
+                    event.preventDefault();
 
-          //
-        }); //submit
+                    //
+                }); //submit
 
-        $("#charterCheck").click(function () {
-          if ($(this).is(":checked")) {
-            $("#charter").show();
-          } else {
-            $("#charter").hide();
-          }
-        }); // 전세 클릭시 가격창
+                $("#charterCheck").click(function () {
+                    if ($(this).is(":checked")) {
+                        $("#charter").show();
+                    } else {
+                        $("#charter").hide();
+                    }
+                }); // 전세 클릭시 가격창
 
-        $("#monthlyCheck").click(function () {
-          if ($(this).is(":checked")) {
-            $("#monthly").show();
-          } else {
-            $("#monthly").hide();
-          }
-        }); // 월세 클릭시 가격창
-      });
+                $("#monthlyCheck").click(function () {
+                    if ($(this).is(":checked")) {
+                        $("#monthly").show();
+                    } else {
+                        $("#monthly").hide();
+                    }
+                }); // 월세 클릭시 가격창
+            });
 
             function sidebar_click() {
                 if ($("#sidebar").css("display") == "none") {
@@ -84,66 +117,171 @@
                     $("#facilities").hide();
                 }
             }
-            function facilities_click_change(dong) {
+            
+            function barchart_res(value_list){
+                $('#svg-area').empty();
+                //$('#svg-area > svg').append("<div id='tooltip'></div>")
+                var width = 300;
+                var height = 300;
+                var margin = {top: 40, left: 40, bottom: 40, right: 40};
+
+                var data = [
+
+                    {name: '한식', value: value_list[0], color: '#5487b1'},
+                    {name: '양식', value: value_list[1], color: '#63a1af'},
+                    {name: '중식', value: value_list[2], color: '#7ab8aa'},
+                    {name: '분식', value: value_list[3], color: '#93caa8'},
+                    {name: '일식', value: value_list[4], color: '#add7a8'},
+                    //{name: '의원', value: value_list[5], color: '#c6e3a7'}
+                ];
+
+                var x = d3.scaleBand()
+                .domain(data.map(d => d.name))
+                .range([margin.left, width - margin.right])
+                .padding(0.4);
+
+                var y = d3.scaleLinear()
+                .domain([0, d3.max(data, d => d.value)]).nice()
+                .range([height - margin.bottom, margin.top]);
+
+                var xAxis = g => g
+                .attr('transform', `translate(0, ${height - margin.bottom})`)
+                .call(d3.axisBottom(x)
+                .tickSizeOuter(0))
+                .call(g => g.select('.domain').remove())
+                .call(g => g.selectAll('line').remove());
+
+                var yAxis = g => g
+                 .attr('transform', `translate(${margin.left}, 0)`)
+                .call(d3.axisLeft(y))
+                .call(g => g.select('.domain').remove())
+                .call(g => g.selectAll('line')
+                .attr('x2', width)
+                .style('stroke', '#f5f5f5'))
+
+
+                var svg = d3.select('#svg-area').append('svg').style('width', width).style('height', height);
+
+                svg.append('g').call(xAxis);
+                svg.append('g').call(yAxis);
+                svg.append('g')
+                .selectAll('rect').data(data).enter().append('rect')
+                .attr('x', d => x(d.name))
+                .attr('y', d => y(d.value))
+                .attr('height', d => y(0) - y(d.value))
+                .attr("rx", 15)
+                .attr('width', x.bandwidth())
+                .attr('fill', d => d.color)
+                .attr('data-x', d => d.name)
+                .attr('data-y', d => d.value)
+                .attr('data-color', d=> d.color);
+
+                 svg.node();
+                 
+                 var rectEl = document.getElementsByTagName('rect');
+                 var tooltop = document.getElementById('tooltip');
+
+                for(var el of rectEl) {
+                    el.addEventListener('mouseover', (event) => {
+                        var target = event.target;
+                        var positionLeft = Number(target.getAttribute('x')) + Number(x.bandwidth()/2) - tooltop.clientWidth/2;
+                        var positionTop = height - margin.top - target.getAttribute('height') - tooltop.clientHeight - 5;
+                        var color = target.dataset.color;
+                        var value = target.dataset.y;
+
+                        tooltop.innerText = value;
+                        tooltop.style.background = color;
+                        tooltop.style.top = positionTop + 'px';
+                        tooltop.style.left = positionLeft + 'px';
+                        tooltop.style.opacity = 1;
+                    });
+                }
+        
+            }
+             {% comment %} function facilities_click_change(facilities_detail) {
                 $("#facilities").show();
-                $.ajax({
-                    type:'get',
-                    url: '/estates/getfacilities?title='+dong,
-                    dateType: 'json',
-                    success:function(jsonData){
-                        var fac = [];
-                        fac.push(jsonData.facil.title);
-                        fac.push(jsonData.facil.subway);
-                        fac.push(jsonData.facil.bus);
-                        fac.push(jsonData.facil.book);
-                        fac.push(jsonData.facil.golf);
-                        fac.push(jsonData.facil.bath);
-                        fac.push(jsonData.facil.gas);
-                        fac.push(jsonData.facil.laundry);
-                        fac.push(jsonData.facil.movie);
-                        fac.push(jsonData.facil.bakery);
-                        fac.push(jsonData.facil.gym);
-                        fac.push(jsonData.facil.hospital);
-                        fac.push(jsonData.facil.pharmacy);
-                        fac.push(jsonData.facil.medical);
-                        fac.push(jsonData.facil.safety);
-                        fac.push(jsonData.facil.police);
-                        fac.push(jsonData.facil.fire);
-                        fac.push(jsonData.facil.park);
-                        fac.push(jsonData.facil.karaoke);
-                        fac.push(jsonData.facil.billiard);
-                        fac.push(jsonData.facil.restaurant);
-                        fac.push(jsonData.facil.mart);
-                        fac.push(jsonData.facil.shop);
-                        // $('#facilities').html(fac)
-                        var chart = new CanvasJS.Chart("piechart",
-                        {
-                            theme: "light2",
-                            title:{
-                                text: "Gaming Consoles Sold in 2012"
-                            },		
-                            data: [
-                            {       
-                                type: "pie",
-                                showInLegend: true,
-                                toolTipContent: "{y} - #percent %",
-                                yValueFormatString: "#,##0,,.## Million",
-                                legendText: "{indexLabel}",
-                                dataPoints: [
-                                    {  y: 4181563, indexLabel: "PlayStation 3" },
-                                    {  y: 2175498, indexLabel: "Wii" },
-                                    {  y: 3125844, indexLabel: "Xbox 360" },
-                                    {  y: 1176121, indexLabel: "Nintendo DS"},
-                                    {  y: 1727161, indexLabel: "PSP" },
-                                    {  y: 4303364, indexLabel: "Nintendo 3DS"},
-                                    {  y: 1717786, indexLabel: "PS Vita"}
-                                ]
-                            }
-                            ]
-                        });
-                        chart.render();
-                    } // callback
-                })
+                $("#facilities").html(facilities_detail.innerText);
+                
+            } {% endcomment %}
+            function barchart_ent(value_list){
+                //$('#svg-area').empty();
+                //$('#svg-area > svg').append("<div id='tooltip'></div>");
+                var width = 300;
+                var height = 300;
+                var margin = {top: 40, left: 40, bottom: 40, right: 40};
+
+                var data = [
+
+                    {name: '당구장', value: value_list[0], color: '#5487b1'},
+                    {name: '노래방', value: value_list[1], color: '#63a1af'},
+                    {name: '영화관', value: value_list[2], color: '#7ab8aa'},
+                    {name: '골프장', value: value_list[3], color: '#93caa8'},
+                    {name: '체력단련', value: value_list[4], color: '#add7a8'},
+                    //{name: '의원', value: value_list[5], color: '#c6e3a7'}
+                ];
+
+                var x = d3.scaleBand()
+                .domain(data.map(d => d.name))
+                .range([margin.left, width - margin.right])
+                .padding(0.4);
+
+                var y = d3.scaleLinear()
+                .domain([0, d3.max(data, d => d.value)]).nice()
+                .range([height - margin.bottom, margin.top]);
+
+                var xAxis = g => g
+                .attr('transform', `translate(0, ${height - margin.bottom})`)
+                .call(d3.axisBottom(x)
+                .tickSizeOuter(0))
+                .call(g => g.select('.domain').remove())
+                .call(g => g.selectAll('line').remove());
+
+                var yAxis = g => g
+                 .attr('transform', `translate(${margin.left}, 0)`)
+                .call(d3.axisLeft(y))
+                .call(g => g.select('.domain').remove())
+                .call(g => g.selectAll('line')
+                .attr('x2', width)
+                .style('stroke', '#f5f5f5'))
+
+
+                var svg = d3.select('#svg-area').append('svg').style('width', width).style('height', height);
+
+                svg.append('g').call(xAxis);
+                svg.append('g').call(yAxis);
+                svg.append('g')
+                .selectAll('rect').data(data).enter().append('rect')
+                .attr('x', d => x(d.name))
+                .attr('y', d => y(d.value))
+                .attr('height', d => y(0) - y(d.value))
+                .attr("rx", 15)
+                .attr('width', x.bandwidth())
+                .attr('fill', d => d.color)
+                .attr('data-x', d => d.name)
+                .attr('data-y', d => d.value)
+                .attr('data-color', d=> d.color);
+
+                 svg.node();
+                 
+                 var rectEl = document.getElementsByTagName('rect');
+                 var tooltop = document.getElementById('tooltip');
+
+                for(var el of rectEl) {
+                    el.addEventListener('mouseover', (event) => {
+                        var target = event.target;
+                        var positionLeft = Number(target.getAttribute('x')) + Number(x.bandwidth()/2) - tooltop.clientWidth/2;
+                        var positionTop = height - margin.top - target.getAttribute('height') - tooltop.clientHeight -5;
+                        var color = target.dataset.color;
+                        var value = target.dataset.y;
+
+                        tooltop.innerText = value;
+                        tooltop.style.background = color;
+                        tooltop.style.top = positionTop + 'px';
+                        tooltop.style.left = positionLeft + 'px';
+                        tooltop.style.opacity = 1;
+                    });
+                }
+        
             }
         </script>
     </head>
@@ -583,7 +721,9 @@
                 </div>
                 <!-- sidebar -->
                 <div id="facilities">
-                    <div id='piechart' width='100%' height='500px'></div>
+                    <div id="svg-area">
+                        <div id='tooltip'></div>
+                    </div>
                 </div>
                 <main class="col-lg-9 bd-content nopadding" role="main">
                     <div id="map"></div>
@@ -594,205 +734,208 @@
                                 level: 9, // 지도의 확대 레벨
                             };
 
-            home();
+                        home();
 
-            function home() {
-              $("#sidebar").hide();
-              $("#facilities").hide();
-              var map = new kakao
-                  .maps
-                  .Map(mapContainer, mapOption),
-                customOverlay = new kakao
-                  .maps
-                  .CustomOverlay({}),
-                infowindow = new kakao
-                  .maps
-                  .InfoWindow({removable: true});
-              var x_positions = [];
-              var y_positions = [];
-              var dong_names = [];
-              var sum = [];
+                        function home() {
+                            $("#sidebar").hide();
+                            $("#facilities").hide();
+                            var map = new kakao.maps.Map(mapContainer, mapOption),
+                                customOverlay = new kakao.maps.CustomOverlay({}),
+                                infowindow = new kakao.maps.InfoWindow({ removable: true });
+                            var x_positions = [];
+                            var y_positions = [];
+                            var dong_names = [];
+                            var sum = [];
+                                
+                            $.getJSON("{% static 'json/real.geojson' %}", function (geojson) {
+                                var data = geojson.features;
+                                var coordinates = []; //좌표 저장할 배열
+                                var name = ""; //구 이름 저장
 
-              $.getJSON("{% static 'json/real.geojson' %}", function (geojson) {
-                var data = geojson.features;
-                var coordinates = []; //좌표 저장할 배열
-                var name = ""; //구 이름 저장
+                                $.each(data, function (index, val) {
+                                    coordinates = val.geometry.coordinates;
+                                    name = val.properties.SIG_KOR_NM;
+                                    displayArea(coordinates, name);
+                                });
+                            });
 
-                $.each(data, function (index, val) {
-                  coordinates = val.geometry.coordinates;
-                  name = val.properties.SIG_KOR_NM;
-                  displayArea(coordinates, name);
-                });
-              });
+                            var polygons = []; //클릭시 폴리곤 없앨때 사용 예정
 
-              var polygons = []; //클릭시 폴리곤 없앨때 사용 예정
+                            function displayArea(coordinates, name) {
+                                var path = []; //폴리곤 그려줄 path
+                                var points = []; //중심좌표 구하기 위한 지역구 좌표들
 
-              function displayArea(coordinates, name) {
-                var path = []; //폴리곤 그려줄 path
-                var points = []; //중심좌표 구하기 위한 지역구 좌표들
+                                $.each(coordinates[0], function (index, coordinate) {
+                                    var point = new Object();
+                                    point.x = coordinate[1];
+                                    point.y = coordinate[0];
+                                    points.push(point);
+                                    path.push(
+                                        new kakao.maps.LatLng(coordinate[1], coordinate[0])
+                                    ); //json에 좌표순서가 반대로 되있어서 요래 해줌.
+                                });
 
-                $.each(coordinates[0], function (index, coordinate) {
-                  var point = new Object();
-                  point.x = coordinate[1];
-                  point.y = coordinate[0];
-                  points.push(point);
-                  path.push(new kakao.maps.LatLng(coordinate[1], coordinate[0])); //json에 좌표순서가 반대로 되있어서 요래 해줌.
-                });
+                                //다각형 생성
+                                var polygon = new kakao.maps.Polygon({
+                                    map: map, //다각형 표시할 지도 객체
+                                    path: path,
+                                    strokeWeight: 2,
+                                    strokeColor: "#004c80",
+                                    strokeOpacity: 0.8,
+                                    fillColor: "#fff",
+                                    fillOpacity: 0.7,
+                                });
+                                polygons.push(polygon); //나중에 특정 구 누르면 확대 될때 폴리곤 없애야해서 만들어줬음
 
-                //다각형 생성
-                var polygon = new kakao
-                  .maps
-                  .Polygon({
-                    map: map, //다각형 표시할 지도 객체
-                    path: path,
-                    strokeWeight: 2,
-                    strokeColor: "#004c80",
-                    strokeOpacity: 0.8,
-                    fillColor: "#fff",
-                    fillOpacity: 0.7
-                  });
-                polygons.push(polygon); //나중에 특정 구 누르면 확대 될때 폴리곤 없애야해서 만들어줬음
+                                //다각형에 mouseover 이벤트 등록, 발생시 색 변경
+                                // 지역명 표시하는 커스텀오버레이 표시
 
-                //다각형에 mouseover 이벤트 등록, 발생시 색 변경
-                // 지역명 표시하는 커스텀오버레이 표시
+                                kakao.maps.event.addListener(
+                                    polygon,
+                                    "mouseover",
+                                    function (mouseEvent) {
+                                        polygon.setOptions({ fillColor: "#09f" });
 
-                kakao
-                  .maps
-                  .event
-                  .addListener(polygon, "mouseover", function (mouseEvent) {
-                    polygon.setOptions({fillColor: "#09f"});
+                                        customOverlay.setContent(
+                                            '<div class="area">' + name + "</div>"
+                                        );
 
-                    customOverlay.setContent('<div class="area">' + name + "</div>");
+                                        customOverlay.setPosition(mouseEvent.latLng);
+                                        customOverlay.setMap(map);
+                                    }
+                                );
+                                // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다
+                                kakao.maps.event.addListener(
+                                    polygon,
+                                    "mousemove",
+                                    function (mouseEvent) {
+                                        customOverlay.setPosition(mouseEvent.latLng);
+                                    }
+                                );
 
-                    customOverlay.setPosition(mouseEvent.latLng);
-                    customOverlay.setMap(map);
-                  });
-                // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다
-                kakao
-                  .maps
-                  .event
-                  .addListener(polygon, "mousemove", function (mouseEvent) {
-                    customOverlay.setPosition(mouseEvent.latLng);
-                  });
+                                // 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
+                                // 커스텀 오버레이를 지도에서 제거합니다
+                                kakao.maps.event.addListener(polygon, "mouseout", function () {
+                                    polygon.setOptions({ fillColor: "#fff" });
+                                    customOverlay.setMap(null);
+                                });
 
-                // 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
-                // 커스텀 오버레이를 지도에서 제거합니다
-                kakao
-                  .maps
-                  .event
-                  .addListener(polygon, "mouseout", function () {
-                    polygon.setOptions({fillColor: "#fff"});
-                    customOverlay.setMap(null);
-                  });
+                                //다각형에 click이벤트를 등록하고 이벤트가 발생하면 해당 지역을 확대.
+                                kakao.maps.event.addListener(polygon, "click", function () {
+                                    deletepolygon(polygons); //해당지역 확대 후 폴리곤 제거
+                                    customOverlay.setContent(
+                                            '<div class="area" style="display:none;">' + name + "</div>"
+                                        );
+                                    //3레벨 확대
+                                    var level = map.getLevel() - 2;
+                                    var a,b;
+                                    $.getJSON("{% static 'json/구별 중심좌표.json' %}",function(json){
+                                        var data = json;
+                                        $.each(data, function (index, item){
+                                            if(item.자치구명 == name){
+                                                a = item.X;
+                                                b = item.Y;
 
-                //다각형에 click이벤트를 등록하고 이벤트가 발생하면 해당 지역을 확대.
-                kakao
-                  .maps
-                  .event
-                  .addListener(polygon, "click", function () {
-                    deletepolygon(polygons); //해당지역 확대 후 폴리곤 제거
-                    customOverlay.setContent('<div class="area" style="display:none;">' + name + "</div>");
-                    //3레벨 확대
-                    var level = map.getLevel() - 2;
-                    var a,
-                      b;
-                    $.getJSON("{% static 'json/구별 중심좌표.json' %}", function (json) {
-                      var data = json;
-                      $.each(data, function (index, item) {
-                        if (item.자치구명 == name) {
-                          a = item.X;
-                          b = item.Y;
+                                            }
+                                        });//each
+                                        map.setLevel(level, {
+                                            anchor: new kakao.maps.LatLng(a, b),
+                                            animate: {
+                                                duration: 500
+                                            }
+                                        });
+                                    });
 
+                                    $.getJSON("{% static 'json/동시각화 전용.json' %}", function (json) {
+                                        var data = json;
+
+                                        $.each(data, function (index, item) {
+                                            if (item.자치구명 == name) {
+                                                var dong = item.법정동명;
+                                                var X = item.position_x;
+                                                var Y = item.position_y;
+                                                var s = item.합계;
+                                                x_positions.push(X);
+                                                y_positions.push(Y);
+                                                dong_names.push(dong);
+                                                sum.push(s);
+                                            }
+                                        });//법정동 마커 찍기위해 좌표,법정동이름,합계 저장하기
+                                        var imageSrc =
+                                            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'";
+                                        var imageSize = new kakao.maps.Size(34, 35);
+                                        var imageOption = {
+                                            offset: new kakao.maps.Point(17, 36),
+                                        };
+                                        var markerImage = new kakao.maps.MarkerImage(
+                                            imageSrc,
+                                            imageSize,
+                                            imageOption
+                                        );
+
+                                        var markerTmp; // 마커
+                                        var customOverlay; // 오버레이
+                                        var contentStr;
+
+                                        for (var i = 0; i < y_positions.length; i++) {
+                                            contentStr =
+                                                "<button class='customoverlay' val='" + dong_names[i]+"'><div class='title'>"+
+                                                sum[i]+"</div><div class = 'dong_' val='"+ dong_names[i] + "'>" + dong_names[i] + "</div></button>";
+                                            customOverlay = new kakao.maps.CustomOverlay({
+                                                map: map,
+                                                position: new kakao.maps.LatLng(
+                                                    x_positions[i],
+                                                    y_positions[i]
+                                                ),
+                                                content: contentStr,
+                                                yAnchor: 1,
+                                            });
+                                        } //for문
+                                        $('.customoverlay').click(function () {
+                                            //facilities_click_change(this);
+                                            var temp = $(this).attr('val') ///temp안에 그 법정동 들어있음
+                                            $("#facilities").show();
+                                            //$("#facilities").html(temp);
+                                            
+                                            
+                                            $.getJSON("{% static 'json/편의시설 변경 버전.json' %}", function (json) {
+                                                var data = json;
+                                                
+                                                $.each(data, function (index, item) {
+                                                    if (item.법정동명 == temp) {
+                                                        
+                                                        var restaurant = [item.한식,item.경양식,item.중국식, item.분식, item.일식];
+                                                        var entertainment = [item.당구장, item.노래방수, item.영화상영관, item.골프연습장업, item.체력단련장업]
+                                                        barchart_res(restaurant);
+                                                        barchart_ent(entertainment);
+                                                    }
+                                                });//법정동 마커 찍기위해 좌표,법정동이름,합계 저장하기
+                                            });//편의시설 갯수들 받아오는 getjson
+                                        });//click시 temp에 클릭한 법정동 이름 저장
+                                    });//동시각화 전용 getjson
+                                    
+                                });
+                            }
+
+                            function deletepolygon(polygons) {
+                                for (var i = 0; i < polygons.length; i++) {
+                                    polygons[i].setMap(null);
+                                }
+                                polygons = [];
+                            }
+                            var zoomControl = new kakao.maps.ZoomControl();
+                            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+                            // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+                            kakao.maps.event.addListener(map, 'zoom_changed', function() {        
+                                
+                                // 지도의 현재 레벨을 얻어옵니다
+                                var level = map.getLevel();
+                            });
                         }
-                      }); //each
-                      map.setLevel(level, {
-                        anchor: new kakao
-                          .maps
-                          .LatLng(a, b),
-                        animate: {
-                          duration: 500
-                        }
-                      });
-                    });
-
-                    $.getJSON("{% static 'json/동시각화 전용.json' %}", function (json) {
-                      var data = json;
-
-                      $.each(data, function (index, item) {
-                        if (item.자치구명 == name) {
-                          var dong = item.법정동명;
-                          var X = item.position_x;
-                          var Y = item.position_y;
-                          var s = item.합계;
-                          x_positions.push(X);
-                          y_positions.push(Y);
-                          dong_names.push(dong);
-                          sum.push(s);
-                        }
-                      }); //법정동 마커 찍기위해 좌표,법정동이름,합계 저장하기
-                      var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'";
-                      var imageSize = new kakao
-                        .maps
-                        .Size(34, 35);
-                      var imageOption = {
-                        offset: new kakao
-                          .maps
-                          .Point(17, 36)
-                      };
-                      var markerImage = new kakao
-                        .maps
-                        .MarkerImage(imageSrc, imageSize, imageOption);
-
-                      var markerTmp; // 마커
-                      var customOverlay; // 오버레이
-                      var contentStr;
-
-                      for (var i = 0; i < y_positions.length; i++) {
-                        contentStr = "<button class='customoverlay' val='" + dong_names[i] + "'><div class='title'>" + sum[i] + "</div><div class = 'dong_' val='" + dong_names[i] + "'>" + dong_names[i] + "</div></button>";
-                        customOverlay = new kakao
-                          .maps
-                          .CustomOverlay({
-                            map: map,
-                            position: new kakao
-                              .maps
-                              .LatLng(x_positions[i], y_positions[i]),
-                            content: contentStr,
-                            yAnchor: 1
-                          });
-                      } //for문facilities_click_change
-                      $('.customoverlay').click(function () {
-                        facilities_click_change($(this).attr('val'));
-                      });
-                    }); //동시각화 전용 getjson
-
-                  });
-              }
-
-              function deletepolygon(polygons) {
-                for (var i = 0; i < polygons.length; i++) {
-                  polygons[i].setMap(null);
-                }
-                polygons = [];
-              }
-              var zoomControl = new kakao
-                .maps
-                .ZoomControl();
-              map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-              // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-              kakao
-                .maps
-                .event
-                .addListener(map, 'zoom_changed', function () {
-
-                  // 지도의 현재 레벨을 얻어옵니다
-                  var level = map.getLevel();
-                });
-            }
-          </script>
-        </main>
-      </div>
-    </div>
-  </body>
-
+                    </script>
+                </main>
+            </div>
+        </div>
+    </body>
 </html>
