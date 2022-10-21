@@ -12,4 +12,5 @@ urlpatterns = [
     path('getmamuls', views.getmamuls, name='getmamuls'),
     path('piechart', views.piechart, name='piechart'),
     path('barchart', views.barchart, name='barchart'),
+    path('index_copy', views.index_copy, name='index_copy'),
 ]

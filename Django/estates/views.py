@@ -17,7 +17,10 @@ def barchart(request):
 
 def piechart(request):
     return render(request, 'piechart.html')
-    
+
+def index_copy(request):
+    return render(request, 'index_copy.html')
+  
 def getfacilities(request):
     title = request.GET.get('title')
     facil = Facilities.objects.get(title=title).__dict__
