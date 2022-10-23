@@ -62,3 +62,128 @@
     right: 0;
     bottom: 0;
 }
+
+.listname {
+    /*width: calc(100% - 27px);
+    display: flex;*/
+    
+    /* align-items: center; */
+    padding-top: 15px;
+    font-weight: 800;
+    font-size: 14px;
+    margin-right: 4px;
+    padding-left: 6px;
+}
+
+.listprice {
+    width: 100%;
+    text-overflow: ellipsis; /*글자가 넓이를 넘을 경우 생략부호를 표시함*/
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 6px;
+}
+
+.listinfo {
+    margin-top: 4px;
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
+    position: relative;
+    padding-left: 6px;
+    margin-right: 6px;
+    color: #888;
+    font-size: 14px;
+    display: inline-block;
+    text-align: left;
+}
+
+.info_left {
+    width: 230px;
+    height: 100px;
+    float: left;
+}
+
+.info_right {
+    border-radius:7px;
+}
+
+
+.listpredict {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.gunmulyongdo {
+    color: #ffaf00;
+    margin-right: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family : Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.gunmullmyeong {
+    color: #7c7366;
+    margin-right: 4px;
+    font-size: 16px;
+    font-family :  "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.jachigu {
+    margin-right: 4px;
+    font-size: 16px;
+    font-family : "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.bubjung {
+    margin-right: 4px;
+    font-size: 16px;
+    font-family : "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.junwallse {
+    color: #f54f1b;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+.price {
+
+max-width: calc(100% - 44px);
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+font-size: 20px;
+font-weight: 700;
+}
+
+.label.kb em{
+    color: #ffaf00;
+    font-style: normal;
+}
+
+.label.kb {
+    background: #fff2d9;
+    color: #7c7366;
+}
+
+.label {
+    padding: 0 4px;
+    font-size: 11px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 18px;
+    border: 1px solid #fff2d9;
+    border-radius: 4px;
+}
+
+#mamul_img {
+    width:100px;
+    height:100px;
+    border-radius:10px;
+}
+
+hr{
+    size:10px;
+}

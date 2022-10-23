@@ -102,6 +102,7 @@ function make_filter_cluster(bozeong) {
                 for (i = 0; i < item.length; i++) {
                     x_posi.push(item[i].x);
                     y_posi.push(item[i].y);
+                    title.push(i);
                     // 마커 이미지의 이미지 크기 입니다
                     var imageSize = new kakao.maps.Size(24, 35);
 
@@ -141,7 +142,7 @@ function make_filter_cluster(bozeong) {
                 clusterer,
                 "clusterclick",
                 function (cluster) {
-                    mamulbar_click_change(cluster);
+                    mamul_click_info(cluster);
                 }
             );
         }, // for문
