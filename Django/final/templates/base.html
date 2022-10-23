@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>KB IT's your Life</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+        />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=219025cfba1979327f3c84484d93245a&libraries=clusterer"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/facilities.css' %}">
+        {% block css %}
+        
+        {% endblock css %}
+    </head>
+    <body>
+        {% block body %}
+        
+        {% endblock body %}
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-lg-3 bd-sidebar">
+                    <ul class="nav">
+                        <div class="bodyline">
+                            <button
+                                type="button"
+                                class="btn btn-nav home"
+                                id="home"
+                                onclick="home()"
+                            >
+                                <img src="{% static 'img/icon_32_home_nor.svg' %}" alt="" />
+                                <p>홈</p>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-nav menu"
+                                id="sidebarToggle"
+                            >
+                                <img
+                                    src="{% static 'img/icon_menu.png' %}"
+                                    width="32px"
+                                    height="32px"
+                                    alt=""
+                                />
+                                <p>메뉴</p>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-nav menu"
+                                id="facilitiesToggle"
+                            >
+                                <img
+                                    src="{% static 'img/icon_menu.png' %}"
+                                    width="32px"
+                                    height="32px"
+                                    alt=""
+                                />
+                                <p>편의시설</p>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-nav menu"
+                                id="mamulToggle"
+                            >
+                                <img
+                                    src="{% static 'img/icon_menu.png' %}"
+                                    width="32px"
+                                    height="32px"
+                                    alt=""
+                                />
+                                <p>매물보기</p>
+                            </button>
+                        </div>
+                        <!-- bodyline -->
+                        <button
+                            type="button"
+                            class="btn btn-nav home"
+                            id="kbicon"
+                        >
+                            <a href="http://www.kbland.kr" target="_blank">
+                                <img
+                                    src="{% static "img/kbland.png" %}"
+                                    alt=""
+                                    width="32px"
+                                    height="32px"
+                                />
+                            </a>
+                        </button>
+                    </ul>
+                    <br />
+                </div>
+                <!-- 검색조건 sidebar 구성 -->
+                <div id="sidebar">
+                    <fieldset>
+                        <legend>매물 조건을 선택하세요!</legend>
+                        <form action="{% url 'estates:mamul' %}" method='post' id="frm">
+                            {% csrf_token %}
+                            <div class=""></div>
+                            <div class="form-group" id="medical">
+                                <p>의료시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_medical"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_medical"></span></p>
+                                <script>
+                                    var result_medical = $("#val_medical");
+                                    var slider_medical = $("#Range_medical");
+                                    slider_medical.on("input", function () {
+                                        result_medical.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="security">
+                                <p>치안시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_security"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_security"></span></p>
+                                <script>
+                                    var result_security = $("#val_security");
+                                    var slider_security = $("#Range_security");
+                                    slider_security.on("input", function () {
+                                        result_security.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="shopping">
+                                <p>쇼핑시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_shopping"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_shopping"></span></p>
+                                <script>
+                                    var result_shopping = $("#val_shopping");
+                                    var slider_shopping = $("#Range_shopping");
+                                    slider_shopping.on("input", function () {
+                                        result_shopping.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="market">
+                                <p>장보기시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_market"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_market"></span></p>
+                                <script>
+                                    var result_market = $("#val_market");
+                                    var slider_market = $("#Range_market");
+                                    slider_market.on("input", function () {
+                                        result_market.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="convenient">
+                                <p>생활편의시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_convenient"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_convenient"></span></p>
+                                <script>
+                                    var result_convenient = $("#val_convenient");
+                                    var slider_convenient = $("#Range_convenient");
+                                    slider_convenient.on("input", function () {
+                                        result_convenient.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="leisure">
+                                <p>여가시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_leisure"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_leisure"></span></p>
+                                <script>
+                                    var result_leisure = $("#val_leisure");
+                                    var slider_leisure = $("#Range_leisure");
+                                    slider_leisure.on("input", function () {
+                                        result_leisure.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="traffic">
+                                <p>교통시설</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_traffic"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_traffic"></span></p>
+                                <script>
+                                    var result_traffic = $("#val_traffic");
+                                    var slider_traffic = $("#Range_traffic");
+                                    slider_traffic.on("input", function () {
+                                        result_traffic.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class="form-group" id="oil">
+                                <p>석유판매업</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_oil"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_oil"></span></p>
+                                <script>
+                                    var result_oil = $("#val_oil");
+                                    var slider_oil = $("#Range_oil");
+                                    slider_oil.on("input", function () {
+                                        result_oil.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="park">
+                                <p>공원</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_park"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_park"></span></p>
+                                <script>
+                                    var result_park = $("#val_park");
+                                    var slider_park = $("#Range_park");
+                                    slider_park.on("input", function () {
+                                        result_park.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <div class=""></div>
+                            <div class="form-group" id="restaurant">
+                                <p>음식점</p>
+                                <p></p>
+                                <input
+                                    type="range"
+                                    class="slider_range"
+                                    id="Range_restaurant"
+                                    value="0"
+                                    min="0"
+                                    max="3"
+                                    step="1"
+                                    list="tickmarks"
+                                />
+                                <datalist id="tickmarks">
+                                    <option value="0"></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </datalist>
+                                <p>Value: <span id="val_restaurant"></span></p>
+                                <script>
+                                    var result_restaurant = $("#val_restaurant");
+                                    var slider_restaurant = $("#Range_restaurant");
+                                    slider_restaurant.on("input", function () {
+                                        result_restaurant.html($(this).val());
+                                    });
+                                </script>
+                            </div>
+                            <!-- 매물 조건 -->
+
+                            <p style="white-space: nowrap">
+                                희망하는 매물의 조건과 가격을 고르세요!
+                            </p>
+                            <div class="Check">
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        id="charterCheck"
+                                    />
+                                    <label class="custom-control-label" for="charterCheck"
+                                        >전세</label
+                                    >
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        id="monthlyCheck"
+                                    />
+                                    <label class="custom-control-label" for="monthlyCheck"
+                                        >월세</label
+                                    >
+                                </div>
+                            </div>
+                            <div class="form-group" id="charter">
+                                <span>보증금/전세가</span>
+                                <select
+                                    class="custom-select custom-select-sm mb-3"
+                                    id="charter_select"
+                                >
+                                    <option selected>금액을 선택하세요</option>
+                                    <option value="1000">1000</option>
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10000</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="monthly">
+                                <span>월세</span>
+                                <select
+                                    class="custom-select custom-select-sm mb-3"
+                                    id="monthly_select"
+                                >
+                                    <option selected>금액을 선택하세요</option>
+                                    <option value="1000">1000</option>
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10000</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="usr">직장의 위치..?</label>
+                                <input type="text" class="form-control" id="usr" />
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submit">
+                                Submit
+                            </button>
+                            <br /><br /><br /><br /><br />
+                        </form>
+                    </fieldset>
+                </div>
+                <!-- 편의시설 facilitiesbar 구성 -->
+                <div id="facilities">
+                    <div id='plot'>
+                        <canvas id="pie-chart"></canvas>
+                        <p></p>
+                        <div id='subplot_btn'>
+                            <h5>상세히 보고 싶은 분류를 선택하세요.</h5>
+                            <div id="btn1">
+                                <button id='btn_traffic'>교통</button>
+                                <button id='btn_treatment'>의료</button>
+                                <button id='btn_welfare'>생활복지시설</button>
+                                <button id='btn_facilities'>생활편의시설</button>
+                            </div>
+                            <p></p>
+                            <div id="btn1">
+                                <button id='btn_leisure'>여가</button>
+                                <button id='btn_shop'>쇼핑시설</button>
+                                <button id='btn_mart'>장보기시설</button>
+                                <button id='btn_restaurant'>음식점</button>
+                            </div>
+                        </div>
+                        <div id='bar_traffic'>
+                            <canvas id="bar-chart-horizontal traffic"></canvas>
+                        </div>
+                        <div id='bar_treatment'>
+                            <canvas id="bar-chart-horizontal treatment"></canvas>
+                        </div>
+                        <div id='bar_welfare'>
+                            <canvas id="bar-chart-horizontal welfare"></canvas>
+                        </div>
+                        <div id='bar_facilities'>
+                            <canvas id="bar-chart-horizontal facilities"></canvas>
+                        </div>
+                        <div id='bar_leisure'>
+                            <canvas id="bar-chart-horizontal leisure"></canvas>
+                        </div>
+                        <div id='bar_shop'>
+                            <canvas id="bar-chart-horizontal shop"></canvas>
+                        </div>
+                        <div id='bar_mart'>
+                            <canvas id="bar-chart-horizontal mart"></canvas>
+                        </div>
+                        <div id='bar_restaurant'>
+                            <canvas id="bar-chart-horizontal restaurant"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- 매물보기 sidebar_mamul 구성 -->
+                <div id="mamulbar">
+                    {% block sidebar_mamul %}
+                    
+                    {% endblock sidebar_mamul %}
+                </div>
+                <main>
+                    {% block map %}
+                    
+                    {% endblock map %}
+
+                    {% block mapscript %}
+                    
+                    {% endblock mapscript %}
+                </main>
+            </div>
+        </div>
+        <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/sidebar.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/facilitiesbar.js' %}"></script>
+        {% block js %}
+        
+        {% endblock js %}
+    </body>
+</html>

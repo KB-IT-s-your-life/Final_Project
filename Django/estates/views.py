@@ -9,18 +9,6 @@ def index(request):
 def mamul(request):
     return render(request, 'mamul.html')
 
-def index_taeho(request):
-    return render(request, 'index_taeho.html')
-
-def barchart(request):
-    return render(request, 'barchart.html')
-
-def piechart(request):
-    return render(request, 'piechart.html')
-
-def index_copy(request):
-    return render(request, 'index_copy.html')
-  
 def getfacilities(request):
     title = request.GET.get('title')
     facil = Facilities.objects.get(title=title).__dict__
@@ -40,5 +28,16 @@ def getmamuls(request):
     print(mamuls)
     context = {
         'mamuls':mamuls,     
+    }
+    return JsonResponse(context)
+
+def getlatlng(request):
+    print('시작')
+    bozeong = request.GET.get('bozeong')
+    mamul = list(Mamul.objects.filter(bozeonggum__gt = bozeong).values())
+    print(mamul[0])
+
+    context = {
+        'mamul':mamul,      
     }
     return JsonResponse(context)
