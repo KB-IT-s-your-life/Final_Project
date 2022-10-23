@@ -2,6 +2,7 @@ var fac = [];
 
 function facilities_click_change(dong) {
     $("#facilities").show();
+    $("#mamulbar").hide();
     $("#subplot_btn").show();
     $.ajax({
         type:'get',

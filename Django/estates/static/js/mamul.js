@@ -1,5 +1,6 @@
 function mamulbar_click_marker(mark) {
     $("#mamulbar").show();
+    $("#facilities").hide();
     var pk = mark.Gb;
     $.ajax({
         type: "get",
@@ -24,6 +25,7 @@ function mamulbar_click_marker(mark) {
 function mamul_click_info(mamul_detail) {
     $("#mamulbar").empty();
     $("#mamulbar").show();
+    $("#facilities").hide();
     var mamul_list = [];
     for (i = 0; i < mamul_detail._markers.length; i++) {
         mamul_list.push(mamul_detail._markers[i].Gb + " ");
