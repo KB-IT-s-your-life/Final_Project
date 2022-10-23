@@ -6,26 +6,8 @@ from django.http import JsonResponse
 def index(request):
     return render(request, 'index.html')
 
-def base_index(request):
-    return render(request, 'base_index.html')
-
-def base_mamul(request):
-    return render(request, 'base_mamul.html')
-
 def mamul(request):
     return render(request, 'mamul.html')
-
-def index_taeho(request):
-    return render(request, 'index_taeho.html')
-
-def barchart(request):
-    return render(request, 'barchart.html')
-
-def piechart(request):
-    return render(request, 'piechart.html')
-
-def index_copy(request):
-    return render(request, 'index_copy.html')
 
 def getfacilities(request):
     title = request.GET.get('title')
