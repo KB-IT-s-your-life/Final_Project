@@ -19,6 +19,7 @@
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
         {% block css %}
         
         {% endblock css %}
@@ -451,16 +452,21 @@
                 </div>
                 <!-- 편의시설 facilitiesbar 구성 -->
                 <div id="facilities">
-                    {% block facilities %}{% endblock facilities %}
+                    {% block facilities %}
+                    
+                    {% endblock facilities %}
                 </div>
                 <!-- 매물보기 sidebar_mamul 구성 -->
                 <div id="mamulbar">
-                    {% block sidebar_mamul %}{% endblock sidebar_mamul %}
+                    {% block sidebar_mamul %}
+                    
+                    {% endblock sidebar_mamul %}
                 </div>
                 <main>
                     {% block map %}
                     
                     {% endblock map %}
+
                     {% block mapscript %}
                     
                     {% endblock mapscript %}
@@ -468,6 +474,7 @@
             </div>
         </div>
         <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/sidebar.js' %}"></script>
         {% block js %}
         
         {% endblock js %}

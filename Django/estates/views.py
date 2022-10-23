@@ -9,6 +9,9 @@ def index(request):
 def base_index_test(request):
     return render(request, 'base_index_test.html')
 
+def base_mamul(request):
+    return render(request, 'base_mamul.html')
+
 def mamul(request):
     return render(request, 'mamul.html')
 

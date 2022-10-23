@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('mamul', views.mamul, name='mamul'),
     path('base_index_test', views.base_index_test, name='base_index_test'),
+    path('base_mamul', views.base_mamul, name='base_mamul'),
     path('index_taeho', views.index_taeho, name='index_taeho'),
     path('getfacilities', views.getfacilities, name='getfacilities'),
     path('getmamuls', views.getmamuls, name='getmamuls'),

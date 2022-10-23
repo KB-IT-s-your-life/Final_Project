@@ -2,7 +2,6 @@
 
 {% block css %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
     <link rel="stylesheet" href="{% static 'css/map.css' %}" />
     <link rel="stylesheet" href="{% static 'css/facilities.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -54,13 +53,15 @@
         </div>
     </div>
 {% endblock facilities %}
+
 {% block sidebar_mamul %}
 
 {% endblock sidebar_mamul %}
 
 {% block map %}
     <div id="map"></div>
-{% endblock map %} 
+{% endblock map %}
+
 {% block mapscript %}
     {% load static %}
     <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
@@ -68,6 +69,5 @@
 
 {% block js %} 
 {% load static %}
-    <script type="text/javascript" src="{% static 'js/sidebar.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/facilitiesbar.js' %}"></script>
 {% endblock js %}
