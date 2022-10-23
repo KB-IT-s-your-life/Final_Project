@@ -1,21 +1,12 @@
-
-function facilities_click() {
-    if ($("#facilities").css("display") == "none") {
-        $("#facilities").show();
-    } else {
-        $("#facilities").hide();
-    }
-}
-
-function facilities_click_marker(mark) {
-    $("#facilities").show();
+function mamulbar_click_marker(mark) {
+    $("#mamulbar").show();
     var pk = mark.Gb;
     $.ajax({
         type: "get",
         url: "/estates/getmamuls?pk=" + pk,
         dateType: "json",
         success: function (jsonData) {
-            $("#facilities").html(jsonData.mamuls.zibunjuso);
+            $("#mamulbar").html(jsonData.mamuls.zibunjuso);
 
             //$.each(jsonData, function(index, item){
             //  alert('hhhh')
@@ -30,11 +21,13 @@ function facilities_click_marker(mark) {
     });
 }
 
-function facilities_click_change(mamul_detail) {
-    $("#facilities").show();
+function mamulbar_click_change(cluster) {
+    $("#mamulbar").show();
+    console.log(cluster._markers)
     var mamul_list = [];
-    for (i = 0; i < mamul_detail._markers.length; i++) {
-        mamul_list.push(mamul_detail._markers[i].Gb + " ");
+    for (i = 0; i < cluster._markers.length; i++) {
+        mamul_list.push(cluster._markers[i].Gb + " ");
     }
-    $("#facilities").html(mamul_list);
+    console.log(mamul_list)
+    $("#mamulbar").html(mamul_list);
 }

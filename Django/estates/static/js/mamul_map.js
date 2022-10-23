@@ -9,19 +9,6 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
         level: 5, // 지도의 확대 레벨
         mapTypeId: kakao.maps.MapTypeId.ROADMAP, // 지도종류
     };
-var x_posi = [];
-var y_posi = [];
-var title = [];
-var customOverlays = []; //커스텀 오버레이 저장할 배열
-var map = new kakao.maps.Map(mapContainer, mapOption);
-// 마커 클러스터러를 생성합니다
-var markers = [];
-var clusterer = new kakao.maps.MarkerClusterer({
-    map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-    averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-    minLevel: 1, // 클러스터 할 최소 지도 레벨
-    disableClickZoom: true, // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
-}); // 클러스터
 
 $.getJSON(
     "http://localhost:8000/static/json/동시각화 전용.json",
@@ -56,9 +43,6 @@ $.getJSON(
             customOverlays.push(customOverlay);
             customOverlay.setMap(null);
         } //for문facilities_click_change
-        $(".customoverlay").click(function () {
-            facilities_click_change($(this).attr("val"));
-        });
     }
 ); //동시각화 전용 getjson
 function setMarkers(map) {
@@ -67,8 +51,27 @@ function setMarkers(map) {
     }
 }
 
+var x_posi = [];
+var y_posi = [];
+var title = [];
+var customOverlays = []; //커스텀 오버레이 저장할 배열
+var map = new kakao.maps.Map(mapContainer, mapOption);
+// 마커 클러스터러를 생성합니다
+var markers = [];
+var clusterer = new kakao.maps.MarkerClusterer({
+    map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+    averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+    minLevel: 1, // 클러스터 할 최소 지도 레벨
+    disableClickZoom: true, // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
+}); // 클러스터
+
 function showMarkers() {
     setMarkers(map);
+    
+    $(".customoverlay").click(function () {
+        facilities_click_change($(this).attr("val"));
+        //_change($(this).attr("val"));
+    });
 }
 
 function hideMarkers() {
@@ -119,7 +122,7 @@ function make_filter_cluster(bozeong) {
                     }); //마커
                     kakao.maps.event.addListener(marker, "click", function () {
                         // alert(this.Gb);
-                        facilities_click_marker(this);
+                        mamulbar_click_marker(this);
                     });
                     markers.push(marker);
                 } //for문
@@ -138,8 +141,7 @@ function make_filter_cluster(bozeong) {
                 clusterer,
                 "clusterclick",
                 function (cluster) {
-                    alert(cluster);
-                    facilities_click_change(cluster);
+                    mamulbar_click_change(cluster);
                 }
             );
         }, // for문
