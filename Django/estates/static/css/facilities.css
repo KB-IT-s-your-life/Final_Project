@@ -1,0 +1,38 @@
+#bar_traffic{
+    display: none;
+}
+#bar_treatment{
+    display: none;
+}
+#bar_welfare{
+    display: none;
+}
+#bar_facilities{
+    display: none;
+}
+#bar_leisure{
+    display: none;
+}
+#bar_shop{
+    display: none;
+}
+#bar_mart{
+    display: none;
+}
+#bar_restaurant{
+    display: none;
+}
+
+#subplot_btn{
+    display: none;
+}
+
+#btn1{
+    display: flex;
+    justify-content: space-between;
+}
+
+#btn2{
+    display: flex;
+    justify-content: space-between;
+}

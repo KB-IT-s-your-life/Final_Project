@@ -67,7 +67,7 @@
                             <button
                                 type="button"
                                 class="btn btn-nav menu"
-                                id="facilitiesToggle"
+                                id="mamulToggle"
                             >
                                 <img
                                     src="{% static 'img/icon_menu.png' %}"
@@ -102,9 +102,20 @@
                 </div>
                 <!-- 편의시설 facilitiesbar 구성 -->
                 <div id="facilities">
-                    
+                    {% block facilities %}{% endblock facilities %}
                 </div>
-                
+                <!-- 매물보기 sidebar_mamul 구성 -->
+                <div id="mamulbar">
+                    {% block sidebar_mamul %}{% endblock sidebar_mamul %}
+                </div>
+                <main>
+                    {% block map %}
+                    
+                    {% endblock map %}
+                    {% block mapscript %}
+                    
+                    {% endblock mapscript %}
+                </main>
             </div>
         </div>
         <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
