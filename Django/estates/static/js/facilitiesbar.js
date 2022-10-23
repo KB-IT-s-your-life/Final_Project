@@ -58,10 +58,10 @@ function facilities_click_change(dong) {
             new Chart(document.getElementById("pie-chart"), {
                 type: 'pie',
                 data: {
-                    labels: ["교통", "의료", "생활복지시설", "생활편의시설", "여가", "쇼핑시설", "장보기시설", "음식점"],
+                    labels: ["교통", "의료", "생활복지시설", "생활편의시설", "여가", "쇼핑시설", "장보기시설", "음식점", "카페", "패트스푸드"],
                     datasets: [{
                         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f"],
-                        data: [fac[1], fac[4], fac[8], fac[14], fac[17], fac[25], fac[30], fac[36]]
+                        data: [fac[1], fac[4], fac[8], fac[14], fac[17], fac[25], fac[30], fac[36], fac[42], fac[43]]
                     }]
                 },
                 options: {
@@ -223,38 +223,6 @@ function facilities_click_change(dong) {
                 }
                 }
             });
-            // new Chart(document.getElementById("radar-chart"), {
-            //     type: 'radar',
-            //     data: {
-            //     labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-            //     datasets: [
-            //         {
-            //         label: "1950",
-            //         fill: true,
-            //         backgroundColor: "rgba(179,181,198,0.2)",
-            //         borderColor: "rgba(179,181,198,1)",
-            //         pointBorderColor: "#fff",
-            //         pointBackgroundColor: "rgba(179,181,198,1)",
-            //         data: [8.77,55.61,21.69,6.62,6.82]
-            //         }, {
-            //         label: "2050",
-            //         fill: true,
-            //         backgroundColor: "rgba(255,99,132,0.2)",
-            //         borderColor: "rgba(255,99,132,1)",
-            //         pointBorderColor: "#fff",
-            //         pointBackgroundColor: "rgba(255,99,132,1)",
-            //         pointBorderColor: "#fff",
-            //         data: [25.48,54.16,7.61,8.06,4.45]
-            //         }
-            //     ]
-            //     },
-            //     options: {
-            //     title: {
-            //         display: true,
-            //         text: 'Distribution in % of world population'
-            //     }
-            //     }
-            // });
         } // callback
     })
 }
