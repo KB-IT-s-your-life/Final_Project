@@ -15,4 +15,5 @@ urlpatterns = [
     path('piechart', views.piechart, name='piechart'),
     path('barchart', views.barchart, name='barchart'),
     path('index_copy', views.index_copy, name='index_copy'),
+    path('getlatlng', views.getlatlng, name='getlatlng'),
 ]

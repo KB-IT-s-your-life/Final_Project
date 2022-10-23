@@ -26,7 +26,7 @@ def piechart(request):
 
 def index_copy(request):
     return render(request, 'index_copy.html')
-  
+
 def getfacilities(request):
     title = request.GET.get('title')
     facil = Facilities.objects.get(title=title).__dict__
@@ -46,5 +46,16 @@ def getmamuls(request):
     print(mamuls)
     context = {
         'mamuls':mamuls,     
+    }
+    return JsonResponse(context)
+
+def getlatlng(request):
+    print('시작')
+    bozeong = request.GET.get('bozeong')
+    mamul = list(Mamul.objects.filter(bozeonggum__gt = bozeong).values())
+    print(mamul[0])
+
+    context = {
+        'mamul':mamul,      
     }
     return JsonResponse(context)

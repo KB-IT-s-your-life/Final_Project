@@ -1,0 +1,64 @@
+.customoverlay{
+    padding-left: 25px;
+    position: relative;
+    width: 95px;
+    height: 30px;
+    font-size: 5px;
+    font-weight: bold;
+    background-color: white;
+    color: rgb(17, 135, 207);
+    border: 1px solid rgb(17, 135, 207);
+    border-radius: 30px;
+    
+}
+.title{
+    text-align: center;
+    line-height: 26px;
+    width: 35%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(17, 135, 207);
+    color: white;
+    border-radius: 30px;
+    border: 2px solid rgb(17, 135, 207);
+    position: absolute;
+    white-space: nowrap;
+}
+.customoverlay:hover .title{
+    background-color: white;
+    color: rgb(17, 135, 207);
+}
+.dong_{
+    margin-bottom: 0px;
+    padding: 8px;
+    margin-left: 5px;
+}
+
+#svg-area {
+    position: relative;
+  }
+
+#tooltip {
+    position: absolute;
+    opacity: 0;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    transition: all 0.3s;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+.btn-secondary{
+    margin: 30px;
+}
+
+#facbtn{
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+}
