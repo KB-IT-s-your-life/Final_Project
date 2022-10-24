@@ -17,7 +17,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
             var dong_names = [];
             var sum = [];
 
-            $.getJSON("http://localhost:8000/static/json/real.geojson", function (geojson) {
+            $.getJSON("http://127.0.0.1:8000/static/json/real.geojson", function (geojson) {
                 var data = geojson.features;
                 var coordinates = []; //좌표 저장할 배열
                 var name = ""; //구 이름 저장
@@ -98,7 +98,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                     var level = map.getLevel() - 2;
                     var a, b;
                     $.getJSON(
-                        "http://localhost:8000/static/json/구별 중심좌표.json",
+                        "http://127.0.0.1:8000/static/json/구별 중심좌표.json",
                         function (json) {
                             var data = json;
                             $.each(data, function (index, item) {
@@ -117,7 +117,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                     );
 
                     $.getJSON(
-                        "http://localhost:8000/static/json/동시각화 전용.json",
+                        "http://127.0.0.1:8000/static/json/동시각화 전용.json",
                         function (json) {
                             var data = json;
 
@@ -151,15 +151,15 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
 
                             for (var i = 0; i < y_positions.length; i++) {
                                 contentStr =
-                                    "<button class='customoverlay' val='" +
+                                    "<div class='customoverlay' val='" +
                                     dong_names[i] +
-                                    "'><div class='title'>" +
+                                    "'><p class='title'>" +
                                     sum[i] +
-                                    "</div><div class = 'dong_' val='" +
+                                    "</p><div class = 'dong_' val='" +
                                     dong_names[i] +
                                     "'>" +
                                     dong_names[i] +
-                                    "</div></button>";
+                                    "</p></div>";
                                 customOverlay = new kakao.maps.CustomOverlay({
                                     map: map,
                                     position: new kakao.maps.LatLng(

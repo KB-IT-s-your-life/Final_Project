@@ -15,5 +15,7 @@ urlpatterns = [
     path('barchart', views.barchart, name='barchart'),
     path('index_copy', views.index_copy, name='index_copy'),
     path('getlatlng', views.getlatlng, name='getlatlng'),
-    path('pca', views.pca, name='pca')
+    path('pca', views.pca, name='pca'),
+    path('getwallselatlng', views.getwallselatlng, name='getwallselatlng'),
+    path('getbozeonglatlng', views.getbozeonglatlng, name='getbozeonglatlng'),
 ]

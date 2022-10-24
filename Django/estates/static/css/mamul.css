@@ -1,4 +1,4 @@
-.customoverlay{
+/* .customoverlay{
     padding-left: 25px;
     position: relative;
     width: 95px;
@@ -28,12 +28,12 @@
 .customoverlay:hover .title{
     background-color: white;
     color: rgb(17, 135, 207);
-}
-.dong_{
+} */
+/* .dong_{
     margin-bottom: 0px;
     padding: 8px;
     margin-left: 5px;
-}
+} */
 
 #svg-area {
     position: relative;
