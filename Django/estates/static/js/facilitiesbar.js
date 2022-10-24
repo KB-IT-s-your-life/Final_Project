@@ -76,13 +76,14 @@ function facilities_click_change(dong) {
             fac.push(jsonData.facil.cafe);
             fac.push(jsonData.facil.fast);
             //$('#facilities').html(fac)
-
+            
             pie = new Chart(document.getElementById("pie-chart"), {
                 type: 'pie',
                 data: {
                     labels: ["교통", "의료", "생활복지시설", "생활편의시설", "여가", "쇼핑시설", "장보기시설", "음식점", "카페", "패스트푸드"],
                     datasets: [{
-                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f"],
+                        //backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f"],
+                        backgroundColor:["#E1F5FE","#B3E5FC","#81D4FA","#4FC3F7","#29B6F6","#03A9F4","#039BE5","#0288D1","#0277BD","#01579B"],
                         data: [fac[1], fac[4], fac[8], fac[14], fac[17], fac[25], fac[30], fac[36], fac[42], fac[43]]
                     }]
                 },
@@ -100,7 +101,7 @@ function facilities_click_change(dong) {
                 labels: ["지하철", "버스"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#7D6E83", "#D0B8A8"],
                     data: [fac[2], fac[3]]
                     }
                 ]
@@ -120,7 +121,7 @@ function facilities_click_change(dong) {
                 labels: ["병원", "약국", "의원"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#8CC0DE", "#FAF0D7","#FFD9C0"],
                     data: [fac[5], fac[6], fac[7]]
                     }
                 ]
@@ -140,7 +141,7 @@ function facilities_click_change(dong) {
                 labels: ["치안", "경찰서", "119안전센터", "우체국", "도서관"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#D0C9C0","#EFEAD8","#6D8B74","#5F7161"],
                     data: [fac[9], fac[10], fac[11], fac[12], fac[13]]
                     }
                 ]
@@ -160,7 +161,7 @@ function facilities_click_change(dong) {
                 labels: ["목욕장", "세탁소"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#EEE4AB", "#99C4C8"],
                     data: [fac[15], fac[16]]
                     }
                 ]
@@ -180,7 +181,7 @@ function facilities_click_change(dong) {
                 labels: ["공원", "박물관/미술관", "골프장", "체력단련장", "당구장", "노래방", "영화관"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#92BA92", "#78938A","#525E75","#F1DDBF","#DAB88B","#632626","#F3E9DD"],
                     data: [fac[18], fac[19], fac[20], fac[21], fac[22], fac[23], fac[24]]
                     }
                 ]
@@ -200,7 +201,7 @@ function facilities_click_change(dong) {
                 labels: ["백화점", "복합쇼핑몰", "쇼핑센터", "서점"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#694E4E", "#886F6F","#C1A3A3","#F3C5C5"],
                     data: [fac[26], fac[27], fac[28], fac[29]]
                     }
                 ]
@@ -220,7 +221,7 @@ function facilities_click_change(dong) {
                 labels: ["대규모점포", "구분없음", "대형마트", "시장", "제과점"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#986D8E", "#87A8A4","#D9CAB3","#DEBA9D","#EFE3D0"],
                     data: [fac[31], fac[32], fac[33], fac[34], fac[35]]
                     }
                 ]
@@ -240,7 +241,7 @@ function facilities_click_change(dong) {
                 labels: ["경양식", "분식", "일식", "중식", "한식", "카페", "패스트푸드"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#9DAB86", "#DED7B1","#ECB390","#E08F62","#DF7861","#CC7351","#CD5D7D"],
                     data: [fac[37], fac[38], fac[39], fac[40], fac[41], fac[42], fac[43]]
                     }
                 ]
