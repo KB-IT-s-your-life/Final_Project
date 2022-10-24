@@ -17,7 +17,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
             var dong_names = [];
             var sum = [];
 
-            $.getJSON("http://127.0.0.1:8000/static/json/real.geojson", function (geojson) {
+            $.getJSON("http://localhost:8000/static/json/real.geojson", function (geojson) {
                 var data = geojson.features;
                 var coordinates = []; //좌표 저장할 배열
                 var name = ""; //구 이름 저장
@@ -98,7 +98,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                     var level = map.getLevel() - 2;
                     var a, b;
                     $.getJSON(
-                        "http://127.0.0.1:8000/static/json/구별 중심좌표.json",
+                        "http://localhost:8000/static/json/구별 중심좌표.json",
                         function (json) {
                             var data = json;
                             $.each(data, function (index, item) {
@@ -117,7 +117,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                     );
 
                     $.getJSON(
-                        "http://127.0.0.1:8000/static/json/동시각화 전용.json",
+                        "http://localhost:8000/static/json/동시각화 전용.json",
                         function (json) {
                             var data = json;
 

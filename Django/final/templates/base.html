@@ -22,11 +22,6 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/facilities.css' %}">
-        <script>
-            $.ajaxSetup({
-                headers: { "X-CSRFToken": '{{csrf_token}}' }
-            });
-        </script>
         {% block css %}
         
         {% endblock css %}
@@ -111,7 +106,7 @@
                 <div id="sidebar">
                     <fieldset>
                         <legend>매물 조건을 선택하세요!</legend>
-                        <form action="{% url 'estates:mamul' %}" method='post' id="frm">
+                        <form action="{% url 'estates:mamul' %}" method="POST" id="frm">
                             {% csrf_token %}
                             <div class=""></div>
                             <div id="first_sidebar">

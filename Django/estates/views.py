@@ -4,6 +4,7 @@ from django.http import JsonResponse
 import joblib
 import json
 import numpy as np
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def index(request):
@@ -63,6 +64,7 @@ def getwallselatlng(request):
     }
     return JsonResponse(context)
 
+@csrf_exempt
 def getbozeonglatlng(request):
     print('시작')
     jsonObject = json.loads(request.body)
@@ -76,8 +78,9 @@ def getbozeonglatlng(request):
     }
     return JsonResponse(context)
 
+@csrf_exempt
 def pca(request):
-    pca_model = joblib.load('/Users/ijung-yun/Final_Project-main/Django/models/pca_tool.pickle')
+    pca_model = joblib.load('estates/pca_tool.pickle')
     jsonObject = json.loads(request.body)
     medical = jsonObject.get('medical')
     security = jsonObject.get('security')
@@ -94,7 +97,7 @@ def pca(request):
     input_array = np.array(input_list).reshape(1,-1)
     pca_result = pca_model.transform(input_array)
     # print(pca_result)
-    knn_model = joblib.load('/Users/ijung-yun/Final_Project-main/Django/models/knn_clustering.pkl')
+    knn_model = joblib.load('estates/knn_clustering.pkl')
     pred = knn_model.predict(pca_result)
     pred = pred.tolist()
     # print(type(pred))

@@ -2,6 +2,7 @@
 
 {% block css %}
     {% load static %}
+    {% csrf_token %}
     <link rel="stylesheet" href="{% static 'css/mamul.css' %}" />
     <link rel="stylesheet" href="{% static 'css/map.css' %}" />
     <script type="text/javascript" src="{% static 'js/mamul.js' %}"></script>
