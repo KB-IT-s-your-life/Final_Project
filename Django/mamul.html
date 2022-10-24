@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+  <head>
+    <title>KB IT's your Life</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=219025cfba1979327f3c84484d93245a&libraries=clusterer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
+    <script>
+      $(function () {
+        //getval();
+        getvalue();
+
+        localStorage.clear();
+      });
+
+      function getval() {
+        input = ''
+        each
+        var bozeong = localStorage.getItem('charter_select'); //aaa,sss,3000
+        var wallse = localStorage.getItem('monthly_select');
+       
+        alert(bozeong)
+
+        return make_filter_cluster(bozeong)
+        
+      } // getval
+     
+      function getvalue(){
+        var input_data = [];
+
+        var medical = localStorage.getItem('Range_medical');
+        var security = localStorage.getItem('Range_security');
+        var shopping = localStorage.getItem('Range_shopping');
+        var market = localStorage.getItem('Range_market');
+        var leisure = localStorage.getItem('Range_leisure');
+        var convenient = localStorage.getItem('Range_convenient');
+        var oil = localStorage.getItem('Range_oil');
+        var traffic = localStorage.getItem('Range_traffic');
+        var restaurant = localStorage.getItem('Range_restaurant');
+        var park = localStorage.getItem('Range_park');
+        input_data.push(medical)
+        input_data.push(security)
+        input_data.push(shopping)
+        input_data.push(market)
+        input_data.push(leisure)
+        input_data.push(convenient)
+        input_data.push(oil)
+        input_data.push(traffic)
+        input_data.push(restaurant)
+        input_data.push(park)
+
+        alert(input_data)
+        //return convert_pca(input_data);
+        return convert_pca(medical,security, shopping, market, leisure, convenient, oil, traffic, restaurant, park);
+      };
+      function convert_pca(medical,security, shopping, market, leisure, convenient, oil, traffic, restaurant, park){
+        //alert(security);
+        let params = {
+          'medical' : medical,
+          'security' :security,
+          'shopping' : shopping,
+          'market' : market,
+          'leisure' : leisure,
+          'convenient' : convenient,
+          'oil' : oil,
+          'traffic' : traffic,
+          'restaurant' : restaurant,
+          'park' : park,
+        }
+        $.ajax({
+          type:'POST',
+          headers : {
+            'X-CSRFTOKEN' : '{{ csrf_token }}'
+          },
+          //url: '/estates/pca?medical='+medical+'&security='+security+'&shopping='+shopping+'&market='+market+'&leisure='+leisure,
+          url: '/estates/pca',
+          data: JSON.stringify(params),
+          dateType:'json',
+
+          success: function(result) {
+            //console.log(result);
+            $.each(result, function(index,item){
+              alert(item)
+            }) //each
+          },//success
+        });//ajax
+      }; //convert_pca
+      function make_filter_cluster(bozeong){
+        $.ajax({
+          type:'get',
+          url: '/estates/getlatlng?bozeong='+bozeong,
+          dateType:'json',
+          success: function(jsonData) {
+            $.each(jsonData, function(index, item){
+              alert(item.length);
+              alert(item[0].x);
+              for (i=0; i < item.length; i++){
+                 x_positions.push(item[i].x);
+                 y_positions.push(item[i].y);
+                 // 마커 이미지의 이미지 크기 입니다
+                 var imageSize = new kakao
+                 .maps
+                 .Size(24, 35);
+
+                 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+               // 마커 이미지를 생성합니다
+                 var markerImage = new kakao
+                 .maps
+                 .MarkerImage(imageSrc, imageSize);
+
+               // 마커를 생성합니다
+                 var marker = new kakao
+                 .maps
+                 .Marker({
+                   position: new kakao
+                     .maps
+                     .LatLng(x_positions[i], y_positions[i]), // 마커를 표시할 위치
+                   //title : positions[i].title,  마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                   //image : markerImage,  마커 이미지
+                   title: title[i]
+                 }); //마커
+                 kakao.maps.event.addListener(marker, "click", function () {
+                   alert(this.Gb)
+                   facilities_click_marker(this)
+                 });
+                 markers.push(marker);
+
+             } //for문
+             clusterer.addMarkers(markers);
+
+             // 클러스터러에 마커들을 추가합니다
+             //clusterer.addMarkers(marker);
+             //kakao.maps.event.addListener(marker, "click", function (){
+             //});
+           }); //each문
+           // 마커 이미지의 이미지 주소입니다
+           // 마커 클러스터러에 클릭이벤트를 등록합니다
+           // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
+           // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
+           kakao
+             .maps
+             .event
+             .addListener(clusterer, 'clusterclick', function (cluster) {
+               alert(cluster)
+               facilities_click_change(cluster)
+             });
+              }// for문
+            })// each문  ajax
+          }//success    make filter cluster
+ //       })//ajax
+ //     } // make filter cluster
+
+      //alert({{medical_val}})
+      // getval
+
+      function facilities_click() {
+        if ($("#facilities").css("display") == "none") {
+          $("#facilities").show();
+        } else {
+          $("#facilities").hide();
+        }
+      }
+
+      function facilities_click_marker(mark) {
+        $("#facilities").show();
+        var pk = mark
+          .Gb
+          $
+          .ajax({
+            type: 'get',
+            url: '/estates/getmamuls?pk=' + pk,
+            dateType: 'json',
+            success: function (jsonData) {
+              $('#facilities').html(jsonData.mamuls.zibunjuso);
+
+              //$.each(jsonData, function(index, item){
+              //  alert('hhhh')
+              //if (item == title){
+              //str += "subway: "+ item.subway + "bus: "+ item.bus + "book"+ item.book + "golf"+ item.golf + "bath"+ item.bath + "gas"+ item.gas + "laundry"+ item.laundry + "movie"+ item.movie + "bakery"+ item.bakery + "gym"+ item.gym + "hospital"+ item.hospital + "pharmacy"+ item.pharmacy + "medical"+ item.medical + "safefy"+ item.safefy + "police"+ item.police + "fire"+ item.fire + "park"+ item.park +"karaoke"+ item.karaoke + "billiard"+ item.billiard + "restaurant"+ item.restaurant + "mart"+ item.mart + "shop"+ item.shop
+              //$('#facilities').html('hhh');
+              //}
+              //})
+
+              //print(jsonData.name)
+            } // callback
+          })
+      }
+
+      function facilities_click_change(mamul_detail) {
+        $("#facilities").show();
+        var mamul_list = [];
+        for (i = 0; i < mamul_detail._markers.length; i++) {
+          mamul_list.push(mamul_detail._markers[i].Gb + " ")
+        }
+        $("#facilities").html(mamul_list);
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        <div class="col-lg-3 bd-sidebar">
+          <ul class="nav">
+            <div class="bodyline">
+              <a href="{% url 'estates:index' %}">
+                <button type="button" class="btn btn-nav home" id="home">
+                  <img src="{% static 'img/icon_32_home_nor.svg' %}" alt=""/>
+                  <p>홈</p>
+                </button>
+              </a>
+
+              <button type="button" class="btn btn-nav menu" id="facilitiesToggle" onclick="facilities_click()">
+                <img src="{% static 'img/icon_menu.png' %}" width="32px" height="32px" alt=""/>
+                <p>매물보기</p>
+              </button>
+            </div>
+            <button type="button" class="btn btn-nav home" id="kbicon">
+              <a href="http://www.kbland.kr" target="_blank">
+                <img src="{% static "img/kbland.png" %}" alt="" width="32px" height="32px"/>
+              </a>
+            </button>
+          </ul>
+          <br/>
+        </div>
+
+        <!-- sidebar -->
+        <div id="facilities"></div>
+        <main class="col-lg-9 bd-content nopadding" role="main">
+          <div id="map"></div>
+          <script>
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+              mapOption = {
+                center: new kakao
+                  .maps
+                  .LatLng(37.55811, 126.97406), // 지도의 중심좌표
+                level: 5, // 지도의 확대 레벨
+                mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
+              };
+            var x_positions = [];
+            var y_positions = [];
+            var title = [];
+            var map = new kakao
+              .maps
+              .Map(mapContainer, mapOption);
+            // 마커 클러스터러를 생성합니다
+            var markers = [];
+            var clusterer = new kakao
+              .maps
+              .MarkerClusterer({
+                map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+                averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+                minLevel: 1, // 클러스터 할 최소 지도 레벨
+                disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
+              }); // 클러스터
+
+            // 데이터를 가져오기 위해 jQuery를 사용합니다
+            // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
+            /*$.getJSON("{% static 'json/LatLng.json' %}", function (data) {
+                      $.each(data, function (index, item) {
+                        var no = index + 1;
+                        var X = item.X;
+                        var Y = item.Y;
+
+                        //var addr = item.addr;
+
+                        // 마커 하나를 지도위에 표시합니다
+                        x_positions.push(X)
+                        y_positions.push(Y)
+                        title.push(no)
+                        // alert(y_positions)
+                      }); //each
+                      //alert(x_positions)
+                      var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+                      for (var i = 0; i < y_positions.length; i++) {
+                        // 마커 이미지의 이미지 크기 입니다
+                        var imageSize = new kakao
+                          .maps
+                          .Size(24, 35);
+
+                        // 마커 이미지를 생성합니다
+                        var markerImage = new kakao
+                          .maps
+                          .MarkerImage(imageSrc, imageSize);
+
+                        // 마커를 생성합니다
+                        var marker = new kakao
+                          .maps
+                          .Marker({
+                            position: new kakao
+                              .maps
+                              .LatLng(x_positions[i], y_positions[i]), // 마커를 표시할 위치
+                            //title : positions[i].title,  마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                            //image : markerImage,  마커 이미지
+                            title: title[i]
+                          }); //마커
+                        kakao
+                          .maps
+                          .event
+                          .addListener(marker, "click", function () {
+                            alert(this.Gb)
+                            facilities_click_marker(this)
+                          });
+                        markers.push(marker);
+
+                      } //for문
+                      clusterer.addMarkers(markers);
+
+                      // 클러스터러에 마커들을 추가합니다
+                      //clusterer.addMarkers(marker);
+                      //kakao.maps.event.addListener(marker, "click", function (){
+                      //});
+                    });
+                    // 마커 이미지의 이미지 주소입니다
+                    // 마커 클러스터러에 클릭이벤트를 등록합니다
+                    // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
+                    // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
+                    kakao
+                      .maps
+                      .event
+                      .addListener(clusterer, 'clusterclick', function (cluster) {
+                        alert(cluster)
+                        facilities_click_change(cluster)
+                      });*/
+          </script>
+        </main>
+      </div>
+    </div>
+  </body>
+
+</html>
