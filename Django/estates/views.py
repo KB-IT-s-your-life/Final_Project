@@ -27,11 +27,8 @@ def getfacilities(request):
     return JsonResponse(context)
 
 def getdong(request):
-    print('시작')
     gu = request.GET.get('jachigu')
-    print(gu)
     facil = list(Jachibubjung.objects.filter(jachigu__contains=gu).values())
-    print(facil)
 
     context = {
         'facil':facil,      
@@ -39,25 +36,19 @@ def getdong(request):
     return JsonResponse(context)
 
 def getmamuls(request):
-    print('hi')
     pk = request.GET.get('pk')
-    print(pk)
     mamuls = Mamul.objects.get(pk=pk).__dict__
     del mamuls['_state']
-    print(mamuls)
     context = {
         'mamuls':mamuls,     
     }
     return JsonResponse(context)
 
 def getwallselatlng(request):
-    print('시작')
     jsonObject = json.loads(request.body)
     bozeong = jsonObject.get('bozeong')
     wallse = jsonObject.get('wallse')
-    print('필터')
     mamul = list(Mamul.objects.filter(bozeonggum__lte = bozeong, imdaeru__lte=wallse).values())
-    print(mamul[0])
 
     context = {
         'mamul':mamul,      
@@ -66,12 +57,9 @@ def getwallselatlng(request):
 
 @csrf_exempt
 def getbozeonglatlng(request):
-    print('시작')
     jsonObject = json.loads(request.body)
     bozeong = jsonObject.get('bozeong')
-    print('필터')
     mamul = list(Mamul.objects.filter(bozeonggum__lte = bozeong).values())
-    print(mamul[0])
 
     context = {
         'mamul':mamul,      

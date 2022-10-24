@@ -88,7 +88,7 @@ $(function () {
 function getval() {
     var bozeong = localStorage.getItem("charter_select"); //aaa,sss,3000
     var wallse = localStorage.getItem("monthly_select");
-    alert(bozeong);
+    // alert(bozeong);
 
     if (wallse) {
         return make_wallse_filter_cluster(bozeong, wallse);
@@ -110,8 +110,8 @@ function make_bozeong_filter_cluster(bozeong) {
         dateType: "json",
         success: function (jsonData) {
             $.each(jsonData, function (index, item) {
-                alert(item.length);
-                alert(item[0].x);
+                // alert(item.length);
+                // alert(item[0].x);
                 for (i = 0; i < item.length; i++) {
                     x_posi.push(item[i].x);
                     y_posi.push(item[i].y);
@@ -176,8 +176,8 @@ function make_wallse_filter_cluster(bozeong, wallse) {
         dateType: "json",
         success: function (jsonData) {
             $.each(jsonData, function (index, item) {
-                alert(item.length);
-                alert(item[0].x);
+                // alert(item.length);
+                // alert(item[0].x);
                 for (i = 0; i < item.length; i++) {
                     x_posi.push(item[i].x);
                     y_posi.push(item[i].y);
@@ -251,7 +251,7 @@ function getvalue() {
     input_data.push(restaurant);
     input_data.push(park);
 
-    alert(input_data);
+    // alert(input_data);
     //return convert_pca(input_data);
     return convert_pca(
         medical,
@@ -278,7 +278,7 @@ function convert_pca(
     restaurant,
     park
 ) {
-    //alert(security);
+    // alert(security);
     let params = {
         medical: medical,
         security: security,
@@ -304,7 +304,7 @@ function convert_pca(
         success: function (result) {
             //console.log(result);
             $.each(result, function (index, item) {
-                alert(item);
+                // alert(item);
             }); //each
         }, //success
     }); //ajax
@@ -312,5 +312,5 @@ function convert_pca(
 //       })//ajax
 //     }  make filter cluster
 
-//alert({{medical_val}})
+// alert({{medical_val}})
 // getval
