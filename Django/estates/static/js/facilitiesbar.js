@@ -82,7 +82,7 @@ function facilities_click_change(dong) {
                 data: {
                     labels: ["교통", "의료", "생활복지시설", "생활편의시설", "여가", "쇼핑시설", "장보기시설", "음식점", "카페", "패스트푸드"],
                     datasets: [{
-                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f"],
+                        backgroundColor: ["#E1F5FE", "#B3E5FC","#81D4FA","#4FC3F7","#29B6F6", "#03A9F4", "#039BE5","#0288D1","#0277BD","#01579B"],
                         data: [fac[1], fac[4], fac[8], fac[14], fac[17], fac[25], fac[30], fac[36], fac[42], fac[43]]
                     }]
                 },
@@ -100,7 +100,7 @@ function facilities_click_change(dong) {
                 labels: ["지하철", "버스"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#3C2317", "#628E90"],
                     data: [fac[2], fac[3]]
                     }
                 ]
@@ -120,7 +120,7 @@ function facilities_click_change(dong) {
                 labels: ["병원", "약국", "의원"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#B4CDE6", "#8BBCCC","#4C6793"],
                     data: [fac[5], fac[6], fac[7]]
                     }
                 ]
@@ -140,7 +140,7 @@ function facilities_click_change(dong) {
                 labels: ["치안", "경찰서", "119안전센터", "우체국", "도서관"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#A7D2CB", "#F2D388","#C98474","#874C62","#D07000"],
                     data: [fac[9], fac[10], fac[11], fac[12], fac[13]]
                     }
                 ]
@@ -160,7 +160,7 @@ function facilities_click_change(dong) {
                 labels: ["목욕장", "세탁소"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#9ED2C6", "#54BAB9"],
                     data: [fac[15], fac[16]]
                     }
                 ]
@@ -180,7 +180,7 @@ function facilities_click_change(dong) {
                 labels: ["공원", "박물관/미술관", "골프장", "체력단련장", "당구장", "노래방", "영화관"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#73A9AD", "#90C8AC","#C4DFAA","#F5F0BB","#8879B0","#FBA1A1","#FBC5C5"],
                     data: [fac[18], fac[19], fac[20], fac[21], fac[22], fac[23], fac[24]]
                     }
                 ]
@@ -200,7 +200,7 @@ function facilities_click_change(dong) {
                 labels: ["백화점", "복합쇼핑몰", "쇼핑센터", "서점"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#354259", "#CDC2AE","#ECE5C7","#C2DED1"],
                     data: [fac[26], fac[27], fac[28], fac[29]]
                     }
                 ]
@@ -220,7 +220,7 @@ function facilities_click_change(dong) {
                 labels: ["대규모점포", "구분없음", "대형마트", "시장", "제과점"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#B3E8E5", "#82DBD8","#3BACB6","#68A7AD","#2F8F9D"],
                     data: [fac[31], fac[32], fac[33], fac[34], fac[35]]
                     }
                 ]
@@ -240,7 +240,7 @@ function facilities_click_change(dong) {
                 labels: ["경양식", "분식", "일식", "중식", "한식", "카페", "패스트푸드"],
                 datasets: [
                     {
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                    backgroundColor: ["#FF9494", "#FFD1D1","#FFE3E1","#FFF5E4","#A1C298","#C6EBC5","#FBF2CF"],
                     data: [fac[37], fac[38], fac[39], fac[40], fac[41], fac[42], fac[43]]
                     }
                 ]
