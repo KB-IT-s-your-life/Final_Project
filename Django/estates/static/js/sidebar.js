@@ -57,3 +57,18 @@ $(function () {
         }); // 월세 클릭시 가격창
     });
 });
+
+$("#nextbutton").click(function(){
+    $("#next_sidebar").show();
+    $("#first_sidebar").hide();
+    $("#nextbutton").hide();
+    $("#prebutton").show();
+    $("#submit").show();
+}); // 다음 버튼 누르면 매물조건
+    $("#prebutton").click(function(){
+    $("#next_sidebar").hide();
+    $("#first_sidebar").show();
+    $("#nextbutton").show();
+    $("#prebutton").hide();
+    $("#submit").hide();
+}); // 다음 버튼 누르면 매물조건
