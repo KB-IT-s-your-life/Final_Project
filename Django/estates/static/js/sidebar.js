@@ -44,15 +44,27 @@ $(function () {
             if ($(this).is(":checked")) {
                 $("#charter").show();
             } else {
-                $("#charter").hide();
+                if ($("#monthlyCheck").is(":checked")) {
+                    
+                }
+                else {
+                    $("#charter").hide();
+                }
             }
         }); // 전세 클릭시 가격창
 
         $("#monthlyCheck").click(function () {
             if ($(this).is(":checked")) {
                 $("#monthly").show();
+                $("#charter").show();
             } else {
-                $("#monthly").hide();
+                if ($('#charterCheck').is(":checked")){
+                    $("#monthly").hide();
+                }
+                else {
+                    $("#monthly").hide();
+                    $("#charter").hide();
+                }
             }
         }); // 월세 클릭시 가격창
     });
