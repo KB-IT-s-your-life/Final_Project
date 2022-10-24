@@ -10,6 +10,8 @@ urlpatterns = [
     path('makebtn', views.makebtn, name='makebtn'),
     path('getfacilities', views.getfacilities, name='getfacilities'),
     path('getmamuls', views.getmamuls, name='getmamuls'),
-    path('getlatlng', views.getlatlng, name='getlatlng'),
     path('getdong', views.getdong, name='getdong'),
+    path('pca', views.pca, name='pca'),
+    path('getwallselatlng', views.getwallselatlng, name='getwallselatlng'),
+    path('getbozeonglatlng', views.getbozeonglatlng, name='getbozeonglatlng'),
 ]
