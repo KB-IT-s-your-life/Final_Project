@@ -74,3 +74,7 @@ class Mamul(models.Model):
     zibunjuso = models.CharField(max_length=50)
     x = models.FloatField()
     y = models.FloatField()
+
+class Jachibubjung(models.Model):
+    jachigu = models.CharField(max_length=50)
+    bubjung = models.CharField(max_length=50)

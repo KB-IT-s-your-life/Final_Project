@@ -11,7 +11,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     };
 
 $.getJSON(
-    "http://localhost:8000/static/json/동시각화 전용.json",
+    "http://127.0.0.1:8000/static/json/동시각화 전용.json",
     function (json) {
         var data = json;
 

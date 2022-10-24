@@ -51,10 +51,26 @@ def getmamuls(request):
     }
     return JsonResponse(context)
 
-def getlatlng(request):
+def getwallselatlng(request):
     print('시작')
-    bozeong = request.GET.get('bozeong')
-    mamul = list(Mamul.objects.filter(bozeonggum__gt = bozeong).values())
+    jsonObject = json.loads(request.body)
+    bozeong = jsonObject.get('bozeong')
+    wallse = jsonObject.get('wallse')
+    print('필터')
+    mamul = list(Mamul.objects.filter(bozeonggum__lte = bozeong, imdaeru__lte=wallse).values())
+    print(mamul[0])
+
+    context = {
+        'mamul':mamul,      
+    }
+    return JsonResponse(context)
+
+def getbozeonglatlng(request):
+    print('시작')
+    jsonObject = json.loads(request.body)
+    bozeong = jsonObject.get('bozeong')
+    print('필터')
+    mamul = list(Mamul.objects.filter(bozeonggum__lte = bozeong).values())
     print(mamul[0])
 
     context = {

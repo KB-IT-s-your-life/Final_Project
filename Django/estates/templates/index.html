@@ -1,23 +1,19 @@
 {% extends 'base.html' %}
 
 {% block css %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/map.css' %}" />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/map.css' %}"/>
 {% endblock css %}
 
-{% block sidebar_mamul %}
-
-{% endblock sidebar_mamul %}
+{% block sidebar_mamul %}{% endblock sidebar_mamul %}
 
 {% block map %}
-    <div id="map"></div>
+  <div id="map"></div>
 {% endblock map %}
 
 {% block mapscript %}
-    {% load static %}
-    <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+  {% load static %}
+  <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
 {% endblock mapscript %}
 
-{% block js %} 
-
-{% endblock js %}
+{% block js %}{% endblock js %}
