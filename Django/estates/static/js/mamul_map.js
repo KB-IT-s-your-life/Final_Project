@@ -115,6 +115,7 @@ function make_bozeong_filter_cluster(bozeong) {
                 for (i = 0; i < item.length; i++) {
                     x_posi.push(item[i].x);
                     y_posi.push(item[i].y);
+                    title.push(item[i].id);
                     // 마커 이미지의 이미지 크기 입니다
                     var imageSize = new kakao.maps.Size(24, 35);
 
@@ -134,8 +135,7 @@ function make_bozeong_filter_cluster(bozeong) {
                         title: title[i],
                     }); //마커
                     kakao.maps.event.addListener(marker, "click", function () {
-                        alert(this.Gb);
-                        facilities_click_marker(this);
+                        mamul_click_marker(this);
                     });
                     markers.push(marker);
                 } //for문
@@ -154,8 +154,7 @@ function make_bozeong_filter_cluster(bozeong) {
                 clusterer,
                 "clusterclick",
                 function (cluster) {
-                    alert(cluster);
-                    facilities_click_change(cluster);
+                    mamul_click_info(cluster);
                 }
             );
         }, // for문
@@ -182,6 +181,7 @@ function make_wallse_filter_cluster(bozeong, wallse) {
                 for (i = 0; i < item.length; i++) {
                     x_posi.push(item[i].x);
                     y_posi.push(item[i].y);
+                    title.push(item[i].id);
                     // 마커 이미지의 이미지 크기 입니다
                     var imageSize = new kakao.maps.Size(24, 35);
 
@@ -201,8 +201,7 @@ function make_wallse_filter_cluster(bozeong, wallse) {
                         title: title[i],
                     }); //마커
                     kakao.maps.event.addListener(marker, "click", function () {
-                        alert(this.Gb);
-                        facilities_click_marker(this);
+                        mamul_click_marker(this);
                     });
                     markers.push(marker);
                 } //for문
@@ -221,8 +220,7 @@ function make_wallse_filter_cluster(bozeong, wallse) {
                 clusterer,
                 "clusterclick",
                 function (cluster) {
-                    alert(cluster);
-                    facilities_click_change(cluster);
+                    mamul_click_info(cluster);
                 }
             );
         }, // for문

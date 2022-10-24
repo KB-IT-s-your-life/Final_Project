@@ -1,4 +1,4 @@
-function mamulbar_click_marker(mark) {
+function mamul_click_marker(mark) {
     $("#mamulbar").show();
     $("#facilities").hide();
     var pk = mark.Gb;
@@ -100,3 +100,7 @@ function mamul_click_info(mamul_detail) {
         }); //ajax
     } //for
 } //facilities_click_info
+
+function home() {
+    location.href ='index';
+}
