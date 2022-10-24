@@ -1,9 +1,30 @@
 var fac = [];
+var pie = new Chart(document.getElementById("pie-chart"))
+var tra = new Chart(document.getElementById("bar-chart-horizontal traffic"))
+var tre = new Chart(document.getElementById("bar-chart-horizontal treatment"))
+var wel = new Chart(document.getElementById("bar-chart-horizontal welfare"))
+var faci = new Chart(document.getElementById("bar-chart-horizontal facilities"))
+var lei = new Chart(document.getElementById("bar-chart-horizontal leisure"))
+var sho = new Chart(document.getElementById("bar-chart-horizontal shop"))
+var mar = new Chart(document.getElementById("bar-chart-horizontal mart"))
+var res = new Chart(document.getElementById("bar-chart-horizontal restaurant"))
+
 
 function facilities_click_change(dong) {
     $("#facilities").show();
     $("#mamulbar").hide();
     $("#subplot_btn").show();
+
+    pie.destroy()
+    tra.destroy()
+    tre.destroy()
+    wel.destroy()
+    faci.destroy()
+    lei.destroy()
+    sho.destroy()
+    mar.destroy()
+    res.destroy()
+
     $.ajax({
         type:'get',
         url: '/estates/getfacilities?title='+dong,
@@ -56,10 +77,10 @@ function facilities_click_change(dong) {
             fac.push(jsonData.facil.fast);
             //$('#facilities').html(fac)
 
-            new Chart(document.getElementById("pie-chart"), {
+            pie = new Chart(document.getElementById("pie-chart"), {
                 type: 'pie',
                 data: {
-                    labels: ["교통", "의료", "생활복지시설", "생활편의시설", "여가", "쇼핑시설", "장보기시설", "음식점", "카페", "패트스푸드"],
+                    labels: ["교통", "의료", "생활복지시설", "생활편의시설", "여가", "쇼핑시설", "장보기시설", "음식점", "카페", "패스트푸드"],
                     datasets: [{
                         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2","#3cba9f"],
                         data: [fac[1], fac[4], fac[8], fac[14], fac[17], fac[25], fac[30], fac[36], fac[42], fac[43]]
@@ -67,12 +88,13 @@ function facilities_click_change(dong) {
                 },
                 options: {
                     title: {
+                        fontSize: 30,
                         display: true,
-                        text: fac[0] + ' 의 편의 시설 수',
+                        text: fac[0] + ' 편의시설 수',
                     }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal traffic"), {
+            tra = new Chart(document.getElementById("bar-chart-horizontal traffic"), {
                 type: 'horizontalBar',
                 data: {
                 labels: ["지하철", "버스"],
@@ -85,13 +107,14 @@ function facilities_click_change(dong) {
                 },
                 options: {
                 legend: { display: false },
-                title: {
+                    title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 교통 편의 시설 수',
+                    text: fac[0] + ' 교통 편의시설 수',
                 }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal treatment"), {
+            tre = new Chart(document.getElementById("bar-chart-horizontal treatment"), {
                 type: 'horizontalBar',
                 data: {
                 labels: ["병원", "약국", "의원"],
@@ -104,13 +127,14 @@ function facilities_click_change(dong) {
                 },
                 options: {
                 legend: { display: false },
-                title: {
+                    title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 의료 편의 시설 수',
+                    text: fac[0] + ' 의료 편의시설 수',
                 }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal welfare"), {
+            wel = new Chart(document.getElementById("bar-chart-horizontal welfare"), {
                 type: 'horizontalBar',
                 data: {
                 labels: ["치안", "경찰서", "119안전센터", "우체국", "도서관"],
@@ -123,13 +147,14 @@ function facilities_click_change(dong) {
                 },
                 options: {
                 legend: { display: false },
-                title: {
+                    title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 생활복지시설 편의 시설 수',
+                    text: fac[0] + ' 생활 복지시설 수',
                 }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal facilities"), {
+            faci = new Chart(document.getElementById("bar-chart-horizontal facilities"), {
                 type: 'horizontalBar',
                 data: {
                 labels: ["목욕장", "세탁소"],
@@ -142,13 +167,14 @@ function facilities_click_change(dong) {
                 },
                 options: {
                 legend: { display: false },
-                title: {
+                    title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 생활편의시설 편의 시설 수',
+                    text: fac[0] + ' 생활 편의시설 수',
                 }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal leisure"), {
+            lei = new Chart(document.getElementById("bar-chart-horizontal leisure"), {
                 type: 'horizontalBar',
                 data: {
                 labels: ["공원", "박물관/미술관", "골프장", "체력단련장", "당구장", "노래방", "영화관"],
@@ -161,13 +187,14 @@ function facilities_click_change(dong) {
                 },
                 options: {
                 legend: { display: false },
-                title: {
+                    title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 여가 편의 시설 수',
+                    text: fac[0] + ' 여가 편의시설 수',
                 }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal shop"), {
+            sho = new Chart(document.getElementById("bar-chart-horizontal shop"), {
                 type: 'horizontalBar',
                 data: {
                 labels: ["백화점", "복합쇼핑몰", "쇼핑센터", "서점"],
@@ -180,13 +207,14 @@ function facilities_click_change(dong) {
                 },
                 options: {
                 legend: { display: false },
-                title: {
+                    title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 쇼핑 편의 시설 수',
+                    text: fac[0] + ' 쇼핑 편의시설 수',
                 }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal mart"), {
+            mar = new Chart(document.getElementById("bar-chart-horizontal mart"), {
                 type: 'horizontalBar',
                 data: {
                 labels: ["대규모점포", "구분없음", "대형마트", "시장", "제과점"],
@@ -200,27 +228,29 @@ function facilities_click_change(dong) {
                 options: {
                 legend: { display: false },
                 title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 장보기 편의 시설 수',
+                    text: fac[0] + ' 마트 편의시설 수',
                 }
                 }
             });
-            new Chart(document.getElementById("bar-chart-horizontal restaurant"), {
+            res = new Chart(document.getElementById("bar-chart-horizontal restaurant"), {
                 type: 'horizontalBar',
                 data: {
-                labels: ["경양식", "분식", "일식", "중식", "한식"],
+                labels: ["경양식", "분식", "일식", "중식", "한식", "카페", "패스트푸드"],
                 datasets: [
                     {
                     backgroundColor: ["#3e95cd", "#8e5ea2"],
-                    data: [fac[37], fac[38], fac[39], fac[40], fac[41]]
+                    data: [fac[37], fac[38], fac[39], fac[40], fac[41], fac[42], fac[43]]
                     }
                 ]
                 },
                 options: {
                 legend: { display: false },
-                title: {
+                    title: {
+                    fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의 음식점 편의 시설 수',
+                    text: fac[0] + ' 음식점 편의시설 수',
                 }
                 }
             });
