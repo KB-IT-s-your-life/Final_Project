@@ -86,28 +86,31 @@ $(function () {
 });
 
 function getval() {
-    var bozeong = localStorage.getItem("charter_select"); //aaa,sss,3000
-    var wallse = localStorage.getItem("monthly_select");
+    var bozeong_min = localStorage.getItem("charter_min"); //aaa,sss,3000
+    var bozeong_max = localStorage.getItem("charter_max"); //aaa,sss,3000
+    var wallse_min = localStorage.getItem("monthly_min");
+    var wallse_max = localStorage.getItem("monthly_max");
     var junwallse = localStorage.getItem("junwallse");
     // alert(bozeong);
 
     if (junwallse == 2) {
-        make_wallse_filter_cluster(bozeong, wallse)
-        make_bozeong_filter_cluster(bozeong)
+        make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max);
+        make_bozeong_filter_cluster(bozeong_min, bozeong_max);
     }
     else {
-        if (wallse) {
+        if (wallse_min) {
             console.log('월세')
-            return make_wallse_filter_cluster(bozeong, wallse);
+            return make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max);
         } else {
             console.log('전세')
-            return make_bozeong_filter_cluster(bozeong);
+            return make_bozeong_filter_cluster(bozeong_min, bozeong_max);
         }
     }
 } // getval
-function make_bozeong_filter_cluster(bozeong) {
+function make_bozeong_filter_cluster(bozeong_min, bozeong_max) {
     let params = {
-        bozeong: bozeong,
+        bozeong_min: bozeong_min,
+        bozeong_max: bozeong_max,
     };
     $.ajax({
         type: "POST",
@@ -170,10 +173,12 @@ function make_bozeong_filter_cluster(bozeong) {
     }); // each문  ajax
 } //success    make filter cluster
 
-function make_wallse_filter_cluster(bozeong, wallse) {
+function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max) {
     let params = {
-        bozeong: bozeong,
-        wallse: wallse,
+        bozeong_min: bozeong_min,
+        bozeong_max: bozeong_max,
+        wallse_min: wallse_min,
+        wallse_max: wallse_max,
     };
     $.ajax({
         type: "POST",
@@ -236,90 +241,64 @@ function make_wallse_filter_cluster(bozeong, wallse) {
     }); // each문  ajax
 } //success    make wallse filter cluster
 
-function getvalue() {
+function getvalue(){
     var input_data = [];
 
-    var medical = localStorage.getItem("Range_medical");
-    var security = localStorage.getItem("Range_security");
-    var shopping = localStorage.getItem("Range_shopping");
-    var market = localStorage.getItem("Range_market");
-    var leisure = localStorage.getItem("Range_leisure");
-    var convenient = localStorage.getItem("Range_convenient");
-    var oil = localStorage.getItem("Range_oil");
-    var traffic = localStorage.getItem("Range_traffic");
-    var restaurant = localStorage.getItem("Range_restaurant");
-    var park = localStorage.getItem("Range_park");
-    input_data.push(medical);
-    input_data.push(security);
-    input_data.push(shopping);
-    input_data.push(market);
-    input_data.push(leisure);
-    input_data.push(convenient);
-    input_data.push(oil);
-    input_data.push(traffic);
-    input_data.push(restaurant);
-    input_data.push(park);
+    var medical = localStorage.getItem('Range_medical');
+    var facility = localStorage.getItem('Range_facility');
+    var shopping = localStorage.getItem('Range_shopping');
+    var market = localStorage.getItem('Range_market');
+    var leisure = localStorage.getItem('Range_leisure');
+    var convenient = localStorage.getItem('Range_convenient');
+    var cafe = localStorage.getItem('Range_cafe');
+    var traffic = localStorage.getItem('Range_traffic');
+    var restaurant = localStorage.getItem('Range_restaurant');
+    var fastfood = localStorage.getItem('Range_fastfood');
+    input_data.push(medical)
+    input_data.push(facility)
+    input_data.push(convenient)
+    input_data.push(leisure)
+    input_data.push(traffic)
+    input_data.push(restaurant)
+    input_data.push(cafe)
+    input_data.push(fastfood)
+    input_data.push(shopping)
+    input_data.push(market)
 
-    // alert(input_data);
+    alert(input_data)
     //return convert_pca(input_data);
-    return convert_pca(
-        medical,
-        security,
-        shopping,
-        market,
-        leisure,
-        convenient,
-        oil,
-        traffic,
-        restaurant,
-        park
-    );
-}
-function convert_pca(
-    medical,
-    security,
-    shopping,
-    market,
-    leisure,
-    convenient,
-    oil,
-    traffic,
-    restaurant,
-    park
-) {
-    // alert(security);
+    return convert_pca(medical,facility,shopping,market,leisure,convenient,cafe,traffic,restaurant,fastfood);
+};
+
+function convert_pca(medical,facility,shopping,market,leisure,convenient,cafe,traffic,restaurant,fastfood){
+    //alert(security);
     let params = {
-        medical: medical,
-        security: security,
-        shopping: shopping,
-        market: market,
-        leisure: leisure,
-        convenient: convenient,
-        oil: oil,
-        traffic: traffic,
-        restaurant: restaurant,
-        park: park,
-    };
+        'medical' : medical,
+        'facility' :facility,
+        'convenient' : convenient,
+        'leisure' : leisure,
+        'restaurant' : restaurant,
+        'traffic' : traffic,
+        'fastfood' : fastfood,
+        'cafe' : cafe,
+        'market' : market,
+        'shopping' : shopping,
+    }
     $.ajax({
-        type: "POST",
-        headers: {
-            "X-CSRFTOKEN": "{{ csrf_token }}",
+        type:'POST',
+        headers : {
+        'X-CSRFTOKEN' : '{{ csrf_token }}'
         },
         //url: '/estates/pca?medical='+medical+'&security='+security+'&shopping='+shopping+'&market='+market+'&leisure='+leisure,
-        url: "/estates/pca",
+        url: '/estates/pca',
         data: JSON.stringify(params),
-        dateType: "json",
+        dateType:'json',
 
-        success: function (result) {
-            //console.log(result);
-            $.each(result, function (index, item) {
-                // alert(item);
-            }); //each
-        }, //success
-    }); //ajax
-} //convert_pca
-//       })//ajax
-//     }  make filter cluster
-
-// alert({{medical_val}})
-// getval
+        success: function(result) {
+        //console.log(result);
+            $.each(result, function(index,item){
+                alert(item)
+            }) //each
+        },//success
+    });//ajax
+}; //convert_pca

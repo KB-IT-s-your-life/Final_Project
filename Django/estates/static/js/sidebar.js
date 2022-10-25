@@ -85,8 +85,347 @@ $(function () {
             else if (8 <= $("#Range_market").val()){
                 var market = 4;
             }
-            var charter_val = $("#charter_select").val();
-            var monthly_val = $("#monthly_select").val();
+            var charter_min = 0;
+            var charter_max = 10000000;
+            var monthly_min = 0;
+            var monthly_max = 10000000;
+
+            // 전세(보증금) 최소값
+            if (slider_left2.val() == 0){
+                charter_min = 0 ;
+            }else if(slider_left2.val() == 1){
+                charter_min = 100 ;
+            }else if(slider_left2.val() == 2){
+                charter_min = 200 ;
+            }else if(slider_left2.val() == 3){
+                charter_min = 300 ;
+            }else if(slider_left2.val() == 4){
+                charter_min = 400 ;
+            }else if(slider_left2.val() == 5){
+                charter_min = 500 ;
+            }else if(slider_left2.val() == 6){
+                charter_min = 1000 ;
+            }else if(slider_left2.val() == 7){
+                charter_min = 1500 ;
+            }else if(slider_left2.val() == 8){
+                charter_min = 2000 ;
+            }else if(slider_left2.val() == 9){
+                charter_min = 2500 ;
+            }else if(slider_left2.val() == 10){
+                charter_min = 3000 ;
+            }else if(slider_left2.val() == 11){
+                charter_min = 3500 ;
+            }else if(slider_left2.val() == 12){
+                charter_min = 4000 ;
+            }else if(slider_left2.val() == 13){
+                charter_min = 4500 ;
+            }else if(slider_left2.val() == 14){
+                charter_min = 5000 ;
+            }else if(slider_left2.val() == 15){
+                charter_min = 5500 ;
+            }else if(slider_left2.val() == 16){
+                charter_min = 6000 ;
+            }else if(slider_left2.val() == 17){
+                charter_min = 6500 ;
+            }else if(slider_left2.val() == 18){
+                charter_min = 7000 ;
+            }else if(slider_left2.val() == 19){
+                charter_min = 8000 ;
+            }else if(slider_left2.val() == 20){
+                charter_min = 9000 ;
+            }else if(slider_left2.val() == 21){
+                charter_min = 10000;
+            }else if(slider_left2.val() == 22){
+                charter_min = 11000;
+            }else if(slider_left2.val() == 23){
+                charter_min = 12000;
+            }else if(slider_left2.val() == 24){
+                charter_min = 13000;
+            }else if(slider_left2.val() == 25){
+                charter_min = 14000;
+            }else if(slider_left2.val() == 26){
+                charter_min = 15000;
+            }else if(slider_left2.val() == 27){
+                charter_min = 16000;
+            }else if(slider_left2.val() == 28){
+                charter_min = 17000;
+            }else if(slider_left2.val() == 29){
+                charter_min = 18000;
+            }else if(slider_left2.val() == 30){
+                charter_min = 19000;
+            }else if(slider_left2.val() == 31){
+                charter_min = 20000;
+            }else if(slider_left2.val() == 32){
+                charter_min = 25000;
+            }else if(slider_left2.val() == 33){
+                charter_min = 30000;
+            }else if(slider_left2.val() == 34){
+                charter_min = 35000;
+            }else if(slider_left2.val() == 35){
+                charter_min = 40000;
+            }else if(slider_left2.val() == 36){
+                charter_min = 45000;
+            }else if(slider_left2.val() == 37){
+                charter_min = 50000;
+            }else if(slider_left2.val() == 38){
+                charter_min = 55000;
+            }else if(slider_left2.val() == 39){
+                charter_min = 60000;
+            }else if(slider_left2.val() == 40){
+                charter_min = 65000;
+            }else if(slider_left2.val() == 41){
+                charter_min = 70000;
+            }else if(slider_left2.val() == 42){
+                charter_min = 75000;
+            }else if(slider_left2.val() == 43){
+                charter_min = 80000;
+            }else if(slider_left2.val() == 44){
+                charter_min = 85000;
+            }else if(slider_left2.val() == 45){
+                charter_min = 90000;
+            }else{
+                charter_min = 10000000;
+            }
+
+            // 전세(보증금) 최댓값
+            if (slider_right2.val() == 0){
+                charter_max = 0 ;
+            }else if(slider_right2.val() == 1){
+                charter_max = 100 ;
+            }else if(slider_right2.val() == 2){
+                charter_max = 200 ;
+            }else if(slider_right2.val() == 3){
+                charter_max = 300 ;
+            }else if(slider_right2.val() == 4){
+                charter_max = 400 ;
+            }else if(slider_right2.val() == 5){
+                charter_max = 500 ;
+            }else if(slider_right2.val() == 6){
+                charter_max = 1000 ;
+            }else if(slider_right2.val() == 7){
+                charter_max = 1500 ;
+            }else if(slider_right2.val() == 8){
+                charter_max = 2000 ;
+            }else if(slider_right2.val() == 9){
+                charter_max = 2500 ;
+            }else if(slider_right2.val() == 10){
+                charter_max = 3000 ;
+            }else if(slider_right2.val() == 11){
+                charter_max = 3500 ;
+            }else if(slider_right2.val() == 12){
+                charter_max = 4000 ;
+            }else if(slider_right2.val() == 13){
+                charter_max = 4500 ;
+            }else if(slider_right2.val() == 14){
+                charter_max = 5000 ;
+            }else if(slider_right2.val() == 15){
+                charter_max = 5500 ;
+            }else if(slider_right2.val() == 16){
+                charter_max = 6000 ;
+            }else if(slider_right2.val() == 17){
+                charter_max = 6500 ;
+            }else if(slider_right2.val() == 18){
+                charter_max = 7000 ;
+            }else if(slider_right2.val() == 19){
+                charter_max = 8000 ;
+            }else if(slider_right2.val() == 20){
+                charter_max = 9000 ;
+            }else if(slider_right2.val() == 21){
+                charter_max = 10000;
+            }else if(slider_right2.val() == 22){
+                charter_max = 11000;
+            }else if(slider_right2.val() == 23){
+                charter_max = 12000;
+            }else if(slider_right2.val() == 24){
+                charter_max = 13000;
+            }else if(slider_right2.val() == 25){
+                charter_max = 14000;
+            }else if(slider_right2.val() == 26){
+                charter_max = 15000;
+            }else if(slider_right2.val() == 27){
+                charter_max = 16000;
+            }else if(slider_right2.val() == 28){
+                charter_max = 17000;
+            }else if(slider_right2.val() == 29){
+                charter_max = 18000;
+            }else if(slider_right2.val() == 30){
+                charter_max = 19000;
+            }else if(slider_right2.val() == 31){
+                charter_max = 20000;
+            }else if(slider_right2.val() == 32){
+                charter_max = 25000;
+            }else if(slider_right2.val() == 33){
+                charter_max = 30000;
+            }else if(slider_right2.val() == 34){
+                charter_max = 35000;
+            }else if(slider_right2.val() == 35){
+                charter_max = 40000;
+            }else if(slider_right2.val() == 36){
+                charter_max = 45000;
+            }else if(slider_right2.val() == 37){
+                charter_max = 50000;
+            }else if(slider_right2.val() == 38){
+                charter_max = 55000;
+            }else if(slider_right2.val() == 39){
+                charter_max = 60000;
+            }else if(slider_right2.val() == 40){
+                charter_max = 65000;
+            }else if(slider_right2.val() == 41){
+                charter_max = 70000;
+            }else if(slider_right2.val() == 42){
+                charter_max = 75000;
+            }else if(slider_right2.val() == 43){
+                charter_max = 80000;
+            }else if(slider_right2.val() == 44){
+                charter_max = 85000;
+            }else if(slider_right2.val() == 45){
+                charter_max = 90000;
+            }else{
+                charter_max = 10000000;
+            }
+
+            // 월세 최솟값
+            if (slider_left.val() == 0){
+                monthly_min = 0 ;
+            }else if (slider_left.val() == 1){
+                monthly_min = 5;
+            }else if(slider_left.val() == 2){
+                monthly_min = 10;
+            }else if(slider_left.val() == 3){
+                monthly_min = 15;
+            }else if(slider_left.val() == 4){
+                monthly_min = 20;
+            }else if(slider_left.val() == 5){
+                monthly_min = 25;
+            }else if(slider_left.val() == 6){
+                monthly_min = 30;
+            }else if(slider_left.val() == 7){
+                monthly_min = 35;
+            }else if(slider_left.val() == 8){
+                monthly_min = 40;
+            }else if(slider_left.val() == 9){
+                monthly_min = 45;
+            }else if(slider_left.val() == 10){
+                monthly_min = 50;
+            }else if(slider_left.val() == 11){
+                monthly_min = 55;
+            }else if(slider_left.val() == 12){
+                monthly_min = 60;
+            }else if(slider_left.val() == 13){
+                monthly_min = 65;
+            }else if(slider_left.val() == 14){
+                monthly_min = 70;
+            }else if(slider_left.val() == 15){
+                monthly_min = 75;
+            }else if(slider_left.val() == 16){
+                monthly_min = 80;
+            }else if(slider_left.val() == 17){
+                monthly_min = 85;
+            }else if(slider_left.val() == 18){
+                monthly_min = 90;
+            }else if(slider_left.val() == 19){
+                monthly_min = 95;
+            }else if(slider_left.val() == 20){
+                monthly_min = 100;
+            }else if(slider_left.val() == 21){
+                monthly_min = 110;
+            }else if(slider_left.val() == 22){
+                monthly_min = 120;
+            }else if(slider_left.val() == 23){
+                monthly_min = 130;
+            }else if(slider_left.val() == 24){
+                monthly_min = 140;
+            }else if(slider_left.val() == 25){
+                monthly_min = 150;
+            }else if(slider_left.val() == 26){
+                monthly_min = 160;
+            }else if(slider_left.val() == 27){
+                monthly_min = 170;
+            }else if(slider_left.val() == 28){
+                monthly_min = 180;
+            }else if(slider_left.val() == 29){
+                monthly_min = 190;
+            }else if(slider_left.val() == 30){
+                monthly_min = 200;
+            }else if(slider_left.val() == 31){
+                monthly_min = 250;
+            }else if(slider_left.val() == 32){
+                monthly_min = 300;
+            }else{
+                monthly_min = 10000000;
+            }
+
+            // 월세 최댓값
+            if (slider_right.val() == 0){
+                monthly_max = 0 ;
+            }else if (slider_right.val() == 1){
+                monthly_max = 5;
+            }else if(slider_right.val() == 2){
+                monthly_max = 10;
+            }else if(slider_right.val() == 3){
+                monthly_max = 15;
+            }else if(slider_right.val() == 4){
+                monthly_max = 20;
+            }else if(slider_right.val() == 5){
+                monthly_max = 25;
+            }else if(slider_right.val() == 6){
+                monthly_max = 30;
+            }else if(slider_right.val() == 7){
+                monthly_max = 35;
+            }else if(slider_right.val() == 8){
+                monthly_max = 40;
+            }else if(slider_right.val() == 9){
+                monthly_max = 45;
+            }else if(slider_right.val() == 10){
+                monthly_max = 50;
+            }else if(slider_right.val() == 11){
+                monthly_max = 55;
+            }else if(slider_right.val() == 12){
+                monthly_max = 60;
+            }else if(slider_right.val() == 13){
+                monthly_max = 65;
+            }else if(slider_right.val() == 14){
+                monthly_max = 70;
+            }else if(slider_right.val() == 15){
+                monthly_max = 75;
+            }else if(slider_right.val() == 16){
+                monthly_max = 80;
+            }else if(slider_right.val() == 17){
+                monthly_max = 85;
+            }else if(slider_right.val() == 18){
+                monthly_max = 90;
+            }else if(slider_right.val() == 19){
+                monthly_max = 95;
+            }else if(slider_right.val() == 20){
+                monthly_max = 100;
+            }else if(slider_right.val() == 21){
+                monthly_max = 110;
+            }else if(slider_right.val() == 22){
+                monthly_max = 120;
+            }else if(slider_right.val() == 23){
+                monthly_max = 130;
+            }else if(slider_right.val() == 24){
+                monthly_max = 140;
+            }else if(slider_right.val() == 25){
+                monthly_max = 150;
+            }else if(slider_right.val() == 26){
+                monthly_max = 160;
+            }else if(slider_right.val() == 27){
+                monthly_max = 170;
+            }else if(slider_right.val() == 28){
+                monthly_max = 180;
+            }else if(slider_right.val() == 29){
+                monthly_max = 190;
+            }else if(slider_right.val() == 30){
+                monthly_max = 200;
+            }else if(slider_right.val() == 31){
+                monthly_max = 250;
+            }else if(slider_right.val() == 32){
+                monthly_max = 300;
+            }else{
+                monthly_max = 10000000;
+            }
+
             var usr_val = $("#usr").val();
             var junwallse = 0;
             //로컬 스토리지에 넣음
@@ -101,12 +440,15 @@ $(function () {
             localStorage.setItem('Range_market', market);
             localStorage.setItem('Range_shopping', shopping);
             if ($('#charterCheck').is(":checked")) {
-                localStorage.setItem('charter_select', charter_val);
+                localStorage.setItem('charter_min', charter_min);
+                localStorage.setItem('charter_max', charter_max);
                 junwallse += 1;
             }
             if ($('#monthlyCheck').is(":checked")) {
-                localStorage.setItem('charter_select', charter_val);
-                localStorage.setItem('monthly_select', monthly_val);
+                localStorage.setItem('charter_min', charter_min);
+                localStorage.setItem('charter_max', charter_max);
+                localStorage.setItem('monthly_min', monthly_min);
+                localStorage.setItem('monthly_max', monthly_max);
                 junwallse += 1;
             }
             localStorage.setItem('usr', usr_val);

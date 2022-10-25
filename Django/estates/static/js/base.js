@@ -13,6 +13,21 @@ sidebar.addEventListener('click', function(){
     }
 })
 
+var sidebar_cli = document.getElementById('sidebarClose');
+sidebar_cli.addEventListener('click', function(){
+    if ($("#sidebar").css("display") == "none") {
+        if ($("#facilities").css("display") != "none") {
+            $("#facilities").hide();
+        }
+        if ($("#mamulbar").css("display") != "none") {
+            $("#mamulbar").hide();
+        }
+        $("#sidebar").show();
+    } else {
+        $("#sidebar").hide();
+    }
+})
+
 var facilities = document.getElementById('facilitiesToggle');
 facilities.addEventListener('click', function () {
     if ($("#facilities").css("display") == "none") {

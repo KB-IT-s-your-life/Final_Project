@@ -47,9 +47,11 @@ def getmamuls(request):
 @csrf_exempt
 def getwallselatlng(request):
     jsonObject = json.loads(request.body)
-    bozeong = jsonObject.get('bozeong')
-    wallse = jsonObject.get('wallse')
-    mamul = list(Mamul.objects.filter(bozeonggum__lte = bozeong, imdaeru__lte=wallse, junwallse='월세').values())
+    bozeong_min = jsonObject.get('bozeong_min')
+    bozeong_max = jsonObject.get('bozeong_max')
+    wallse_min = jsonObject.get('wallse_min')
+    wallse_max = jsonObject.get('wallse_max')
+    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, imdaeru__gte=wallse_min, imdaeru__lte=wallse_max, junwallse='월세').values())
 
     context = {
         'mamul':mamul,
@@ -59,8 +61,9 @@ def getwallselatlng(request):
 @csrf_exempt
 def getbozeonglatlng(request):
     jsonObject = json.loads(request.body)
-    bozeong = jsonObject.get('bozeong')
-    mamul = list(Mamul.objects.filter(bozeonggum__lte = bozeong, junwallse='전세').values())
+    bozeong_min = jsonObject.get('bozeong_min')
+    bozeong_max = jsonObject.get('bozeong_max')
+    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, junwallse='전세').values())
 
     context = {
         'mamul':mamul,      

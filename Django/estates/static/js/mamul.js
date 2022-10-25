@@ -37,10 +37,10 @@ function mamul_click_marker(mark) {
                 "<div class= 'listinfo'>" +
                 "<span class = 'height'>" +
                 jsonData.mamuls.height +
-                "5층 /</span>" +
+                "층 /</span>" +
                 "<span class = 'pyeong'>" +
                 jsonData.mamuls.pyeong +
-                "평 /</span>" +
+                "㎡ /</span>" +
                 "<span class = 'gunchukyear'>" +
                 jsonData.mamuls.gunchukyear +
                 "(건축년도) <br></span>" +
@@ -115,10 +115,10 @@ function mamul_click_info(mamul_detail) {
                         "<div class= 'listinfo'>" +
                         "<span class = 'height'>" +
                         jsonData.mamuls.height +
-                        "5층 /</span>" +
+                        "층 /</span>" +
                         "<span class = 'pyeong'>" +
                         jsonData.mamuls.pyeong +
-                        "평 /</span>" +
+                        "㎡ /</span>" +
                         "<span class = 'gunchukyear'>" +
                         jsonData.mamuls.gunchukyear +
                         "(건축년도) <br></span>" +
