@@ -5,6 +5,7 @@ app_name = 'estates'
 
 urlpatterns = [
     # http://127.0.0.1:8000 => ''
+    path('', views.land, name='land'),
     path('index', views.index, name='index'),
     path('mamul', views.mamul, name='mamul'),
     path('makebtn', views.makebtn, name='makebtn'),
