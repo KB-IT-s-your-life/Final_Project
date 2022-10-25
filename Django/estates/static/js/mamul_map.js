@@ -79,14 +79,14 @@ var customOverlays = []; //커스텀 오버레이 저장할 배열
 var map = new kakao.maps.Map(mapContainer, mapOption);
 // 마커 클러스터러를 생성합니다
 var markers = [];
-var clusterer_wallse = new kakao.maps.MarkerClusterer({
+var clusterer_junwallse = new kakao.maps.MarkerClusterer({
     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
     minLevel: 1, // 클러스터 할 최소 지도 레벨
     disableClickZoom: true, // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 }); // 월세 클러스터
 
-var clusterer_junse = new kakao.maps.MarkerClusterer({
+var clusterer = new kakao.maps.MarkerClusterer({
     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
     minLevel: 1, // 클러스터 할 최소 지도 레벨
@@ -106,17 +106,33 @@ function hideMarkers() {
     setMarkers(null);
 }
 
+var sortable_list = [one_dong, two_dong, three_dong, four_dong, five_dong];
+
 function get_five_dong(){
     gu = localStorage.getItem('choose_gu');
     dong = localStorage.getItem('choose_dong');
     sortable1 = return_dong(gu, dong);
     alert(sortable1);
-    one_dong = sortable1[0][0];
-    two_dong = sortable1[1][0];
-    three_dong = sortable1[2][0];
-    four_dong = sortable1[3][0]; 
-    five_dong = sortable1[4][0];
-    alert(one_dong);
+    if (sortable1.length >= 5){
+        one_dong = sortable1[0][0];
+        two_dong = sortable1[1][0];
+        three_dong = sortable1[2][0];
+        four_dong = sortable1[3][0]; 
+        five_dong = sortable1[4][0];
+    }else{
+        for (i = 0; i < sortable1.length; i++) {
+            sortable_list[i] = sortable1[i][0];
+            
+    }
+}
+one_dong = sortable_list[0];
+two_dong = sortable_list[1];
+three_dong = sortable_list[2];
+four_dong = sortable_list[3];
+five_dong = sortable_list[4];
+
+alert(one_dong);
+alert(two_dong);
 }
 
 
@@ -137,24 +153,24 @@ function getval() {
     // alert(bozeong);
 
     if (junwallse == 2) {
-        make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong);
-        make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong);
+        make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong);
     }
     else {
         if (wallse_min) {
             console.log('월세')
-            return make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong);
+            return make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong);
         } else {
             console.log('전세')
-            return make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong);
+            return make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_dong);
         }
     }
 } // getval
-function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong) {
+function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_dong) {
     let params = {
         bozeong_min: bozeong_min,
         bozeong_max: bozeong_max,
         one_dong : one_dong,
+        two_dong : two_dong,
     };
     $.ajax({
         type: "POST",
@@ -168,8 +184,6 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong) {
             $.each(jsonData, function (index, item) {
                 // alert(item.length);
                 // alert(item[0].x);
-                markers =[];
-                alert(markers);
                 for (i = 0; i < item.length; i++) {
                     x_posi.push(item[i].x);
                     y_posi.push(item[i].y);
@@ -197,7 +211,7 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong) {
                     });
                     markers.push(marker);
                 } //for문
-                clusterer_junse.addMarkers(markers);
+                clusterer.addMarkers(markers);
 
                 // 클러스터러에 마커들을 추가합니다
                 //clusterer.addMarkers(marker);
@@ -209,7 +223,7 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong) {
             // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
             // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
             kakao.maps.event.addListener(
-                clusterer_junse,
+                clusterer,
                 "clusterclick",
                 function (cluster) {
                     mamul_click_info(cluster);
@@ -219,13 +233,14 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong) {
     }); // each문  ajax
 } //success    make filter cluster
 
-function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong) {
+function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong) {
     let params = {
         bozeong_min: bozeong_min,
         bozeong_max: bozeong_max,
         wallse_min: wallse_min,
         wallse_max: wallse_max,
         one_dong : one_dong,
+        two_dong : two_dong,
     };
     $.ajax({
         type: "POST",
@@ -240,7 +255,6 @@ function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse
                 // alert(item.length);
                 // alert(item[0].x);
                 markers = [];
-                alert(markers);
                 for (i = 0; i < item.length; i++) {
                     x_posi.push(item[i].x);
                     y_posi.push(item[i].y);
@@ -268,7 +282,7 @@ function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse
                     });
                     markers.push(marker);
                 } //for문
-                clusterer_wallse.addMarkers(markers);
+                clusterer.addMarkers(markers);
 
                 // 클러스터러에 마커들을 추가합니다
                 //clusterer.addMarkers(marker);
@@ -280,11 +294,86 @@ function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse
             // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
             // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
             kakao.maps.event.addListener(
-                clusterer_wallse,
+                clusterer,
                 "clusterclick",
                 function (cluster) {
                     
                         mamul_click_info(cluster);
+                    
+                }
+            );
+        }, // for문
+    }); // each문  ajax
+} //success    make wallse filter cluster
+
+function make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong) {
+    let params = {
+        bozeong_min: bozeong_min,
+        bozeong_max: bozeong_max,
+        wallse_min: wallse_min,
+        wallse_max: wallse_max,
+        one_dong : one_dong,
+        two_dong : two_dong,
+    };
+    $.ajax({
+        type: "POST",
+        headers: {
+            "X-CSRFTOKEN": "{{ csrf_token }}",
+        },
+        url: "/estates/getjunwallselatlng",
+        data: JSON.stringify(params),
+        dateType: "json",
+        success: function (jsonData) {
+            $.each(jsonData, function (index, item) {
+                // alert(item.length);
+                // alert(item[0].x);
+                
+                for (i = 0; i < item.length; i++) {
+
+                    x_posi.push(item[i].x);
+                    y_posi.push(item[i].y);
+                    title.push(item[i].id);
+                    
+                    // 마커 이미지의 이미지 크기 입니다
+                    var imageSize = new kakao.maps.Size(24, 35);
+
+                    var imageSrc =
+                        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+                    // 마커 이미지를 생성합니다
+                    var markerImage = new kakao.maps.MarkerImage(
+                        imageSrc,
+                        imageSize
+                    );
+
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: new kakao.maps.LatLng(x_posi[i], y_posi[i]), // 마커를 표시할 위치
+                        //title : positions[i].title,  마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                        //image : markerImage,  마커 이미지
+                        title: title[i],
+                    }); //마커
+                    kakao.maps.event.addListener(marker, "click", function () {
+                        mamul_click_marker(this);
+                    });
+                    markers.push(marker);
+                } //for문
+                clusterer_junwallse.addMarkers(markers);
+
+                // 클러스터러에 마커들을 추가합니다
+                //clusterer.addMarkers(marker);
+                //kakao.maps.event.addListener(marker, "click", function (){
+                //});
+            }); //each문
+            // 마커 이미지의 이미지 주소입니다
+            // 마커 클러스터러에 클릭이벤트를 등록합니다
+            // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
+            // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
+            kakao.maps.event.addListener(
+                clusterer_junwallse,
+                "clusterclick",
+                function (cluster) {
+                    
+                        junwallse_mamul_click_info(cluster);
                     
                 }
             );
