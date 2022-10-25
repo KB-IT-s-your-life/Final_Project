@@ -154,3 +154,5 @@ function mamul_click_info(mamul_detail) {
 function home() {
     location.href ='index';
 }
+
+
