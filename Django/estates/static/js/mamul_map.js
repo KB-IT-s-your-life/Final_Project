@@ -124,12 +124,13 @@ function get_five_dong(){
             sortable_list[i] = sortable1[i][0];
             
     }
-}
 one_dong = sortable_list[0];
 two_dong = sortable_list[1];
 three_dong = sortable_list[2];
 four_dong = sortable_list[3];
 five_dong = sortable_list[4];
+}
+
 
 alert(one_dong);
 alert(two_dong);
@@ -153,24 +154,27 @@ function getval() {
     // alert(bozeong);
 
     if (junwallse == 2) {
-        make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong);
+        make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong, three_dong, four_dong, five_dong);
     }
     else {
         if (wallse_min) {
             console.log('월세')
-            return make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong);
+            return make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong, three_dong, four_dong, five_dong);
         } else {
             console.log('전세')
-            return make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_dong);
+            return make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_dong, three_dong, four_dong, five_dong);
         }
     }
 } // getval
-function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_dong) {
+function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_dong, three_dong, four_dong, five_dong) {
     let params = {
         bozeong_min: bozeong_min,
         bozeong_max: bozeong_max,
         one_dong : one_dong,
         two_dong : two_dong,
+        three_dong : three_dong,
+        four_dong : four_dong,
+        five_dong : five_dong
     };
     $.ajax({
         type: "POST",
@@ -233,7 +237,7 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_don
     }); // each문  ajax
 } //success    make filter cluster
 
-function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong) {
+function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong, three_dong, four_dong, five_dong) {
     let params = {
         bozeong_min: bozeong_min,
         bozeong_max: bozeong_max,
@@ -241,6 +245,9 @@ function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse
         wallse_max: wallse_max,
         one_dong : one_dong,
         two_dong : two_dong,
+        three_dong : three_dong,
+        four_dong : four_dong,
+        five_dong : five_dong
     };
     $.ajax({
         type: "POST",
@@ -306,7 +313,7 @@ function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse
     }); // each문  ajax
 } //success    make wallse filter cluster
 
-function make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong) {
+function make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong, two_dong, three_dong, four_dong, five_dong) {
     let params = {
         bozeong_min: bozeong_min,
         bozeong_max: bozeong_max,
@@ -314,6 +321,9 @@ function make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wal
         wallse_max: wallse_max,
         one_dong : one_dong,
         two_dong : two_dong,
+        three_dong : three_dong,
+        four_dong : four_dong,
+        five_dong : five_dong
     };
     $.ajax({
         type: "POST",
