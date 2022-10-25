@@ -2,6 +2,27 @@ var x_positions = [];
 var y_positions = [];
 var dong_names = [];
 var sum = [];
+var sortable1 = [];
+var temp = [];
+var show = '';
+var dong_temp1 = [];
+var tp_dong = '';
+var one_dong = '';
+var two_dong = '';
+var three_dong = '';
+var four_dong = '';
+var five_dong = '';
+var dong_dict = {};
+var sortable = [];
+var cluster_num = -1;
+
+var dong_cluster = []; //여기는 클러스터 결과 동들 넣어줘야함.
+var real_dong = [];
+var temp_gu = [];
+var main_x = 0.0;
+var main_y = 0.0;
+
+var temp_dong2 = '';
 
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     mapOption = {
@@ -11,7 +32,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     };
 
 $.getJSON(
-    "http://localhost:8000/static/json/동시각화 전용.json",
+    "http://127.0.0.1:8000/static/json/동시각화 전용.json",
     function (json) {
         var data = json;
 
@@ -78,9 +99,24 @@ function hideMarkers() {
     setMarkers(null);
 }
 
+function get_five_dong(){
+    gu = localStorage.getItem('choose_gu');
+    dong = localStorage.getItem('choose_dong');
+    sortable1 = return_dong(gu, dong);
+    alert(sortable1);
+    one_dong = sortable1[0][0];
+    two_dong = sortable1[1][0];
+    three_dong = sortable1[2][0];
+    four_dong = sortable1[3][0]; 
+    five_dong = sortable1[4][0];
+    alert(one_dong);
+}
+
+
 $(function () {
-    getval();
     getvalue();
+    get_five_dong();
+    getval();
     localStorage.clear();
 
 });
@@ -94,23 +130,24 @@ function getval() {
     // alert(bozeong);
 
     if (junwallse == 2) {
-        make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max);
-        make_bozeong_filter_cluster(bozeong_min, bozeong_max);
+        make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong);
+        make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong);
     }
     else {
         if (wallse_min) {
             console.log('월세')
-            return make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max);
+            return make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong);
         } else {
             console.log('전세')
-            return make_bozeong_filter_cluster(bozeong_min, bozeong_max);
+            return make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong);
         }
     }
 } // getval
-function make_bozeong_filter_cluster(bozeong_min, bozeong_max) {
+function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong) {
     let params = {
         bozeong_min: bozeong_min,
         bozeong_max: bozeong_max,
+        one_dong : one_dong,
     };
     $.ajax({
         type: "POST",
@@ -173,12 +210,13 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max) {
     }); // each문  ajax
 } //success    make filter cluster
 
-function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max) {
+function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse_max, one_dong) {
     let params = {
         bozeong_min: bozeong_min,
         bozeong_max: bozeong_max,
         wallse_min: wallse_min,
         wallse_max: wallse_max,
+        one_dong : one_dong,
     };
     $.ajax({
         type: "POST",
@@ -290,6 +328,7 @@ function convert_pca(medical,facility,shopping,market,leisure,convenient,cafe,tr
         'X-CSRFTOKEN' : '{{ csrf_token }}'
         },
         //url: '/estates/pca?medical='+medical+'&security='+security+'&shopping='+shopping+'&market='+market+'&leisure='+leisure,
+        async : false,
         url: '/estates/pca',
         data: JSON.stringify(params),
         dateType:'json',
@@ -297,8 +336,235 @@ function convert_pca(medical,facility,shopping,market,leisure,convenient,cafe,tr
         success: function(result) {
         //console.log(result);
             $.each(result, function(index,item){
-                alert(item)
+                cluster_num = item;
+                alert(cluster_num);
+                cluster_dong(cluster_num);
             }) //each
         },//success
     });//ajax
 }; //convert_pca
+
+function cluster_dong(cluster_num) {
+        $.ajax({
+            type: 'get',
+            url: '/estates/getclusterdong?cluster_num=' + cluster_num,
+            dateType: 'json',
+            async: false,
+            success: function (jsonData) {
+                $.each(jsonData, function (index, item) {
+                    for (i = 0; i < item.length; i++) {
+                        dong_cluster.push(item[i].dong);
+                    }
+
+                }); //each
+            } // success
+    }); //ajax
+} // func cluster_dong
+
+
+
+function return_dong(gu, dong) {
+
+    if (gu == "도봉구") {
+        temp_gu = ['강북구', '노원구', '도봉구'];
+    } else if (gu == "노원구") {
+        temp_gu = ['중랑구', '노원구', '도봉구'];
+    } else if (gu == "중랑구") {
+        temp_gu = ['중랑구', '노원구', '성북구', '동대문구', '광진구'];
+    } else if (gu == "강북구") {
+        temp_gu = ['강북구', '노원구', '도봉구', '성북구'];
+    } else if (gu == "노원구") {
+        temp_gu = ['중랑구', '노원구', '도봉구'];
+    } else if (gu == "성북구") {
+        temp_gu = [
+        '종로구',
+        '성북구',
+        '동대문구',
+        '중랑구',
+        '노원구',
+        '강북구'
+        ];
+    } else if (gu == "은평구") {
+        temp_gu = ['은평구', '종로구', '서대문구', '마포구'];
+    } else if (gu == "서대문구") {
+        temp_gu = [
+        '서대문구',
+        '은평구',
+        '마포구',
+        '종로구',
+        '중구',
+        '용산구'
+        ];
+    } else if (gu == "종로구") {
+        temp_gu = ['은평구', '종로구', '서대문구', '성북구', '중구'];
+    } else if (gu == "동대문구") {
+        temp_gu = [
+        '성북구',
+        '중랑구',
+        '광진구',
+        '성동구',
+        '동대문구',
+        '노원구'
+        ];
+    } else if (gu == "마포구") {
+        temp_gu = [
+        '마포구',
+        '서대문구',
+        '중구',
+        '용산구',
+        '영등포구',
+        '양천구'
+        ];
+    } else if (gu == "중구") {
+        temp_gu = [
+        '중구',
+        '종로구',
+        '서대문구',
+        '마포구',
+        '용산구',
+        '성동구',
+        '동대문구',
+        '성북구'
+        ];
+    } else if (gu == "성동구") {
+        temp_gu = [
+        '성동구',
+        '동대문구',
+        '성북구',
+        '종로구',
+        '중구',
+        '용산구',
+        '강남구',
+        '송파구',
+        '광진구',
+        '중랑구'
+        ];
+    } else if (gu == "광진구") {
+        temp_gu = [
+        '광진구',
+        '중랑구',
+        '동대문구',
+        '성동구',
+        '강남구',
+        '송파구',
+        '강동구'
+        ];
+    } else if (gu == "강동구") {
+        temp_gu = ['광진구', '강동구', '송파구'];
+    } else if (gu == "강서구") {
+        temp_gu = ['강서구', '마포구', '양천구', '영등포구'];
+    } else if (gu == "양천구") {
+        temp_gu = ['양천구', '강서구', '영등포구', '구로구', '마포구'];
+    } else if (gu == "영등포구") {
+        temp_gu = [
+        '영등포구',
+        '마포구',
+        '용산구',
+        '동작구',
+        '관악구',
+        '금천구',
+        '구로구',
+        '양천구'
+        ];
+    } else if (gu == "동작구") {
+        temp_gu = [
+        '동작구',
+        '영등포구',
+        '용산구',
+        '서초구',
+        '관악구',
+        '금천구',
+        '구로구'
+        ];
+    } else if (gu == "서초구") {
+        temp_gu = [
+        '서초구',
+        '관악구',
+        '동작구',
+        '용산구',
+        '강남구',
+        '성동구'
+        ];
+    } else if (gu == "강남구") {
+        temp_gu = [
+        '강남구',
+        '서초구',
+        '용산구',
+        '성동구',
+        '광진구',
+        '송파구',
+        '중구'
+        ];
+    } else if (gu == "송파구") {
+        temp_gu = ['송파구', '강남구', '성동구', '광진구', '강동구'];
+    } else if (gu == "금천구") {
+        temp_gu = ['금천구', '구로구', '영등포구', '동작구', '관악구'];
+    } else if (gu == "구로구") {
+        temp_gu = [
+        '구로구',
+        '양천구',
+        '영등포구',
+        '동작구',
+        '관악구',
+        '금천구'
+        ];
+    } else if (gu == "관악구") {
+        temp_gu = [
+        '관악구',
+        '동작구',
+        '영등포구',
+        '구로구',
+        '금천구',
+        '서초구'
+        ];
+    }
+
+    var temp_dong = make_dong_list(temp_gu); //여기에 주변 구의 동들 다 저장 되어있음.
+    //alert(temp_dong);
+    for (i = 0; i < temp_dong.length; i++) {
+        for (j = 0; j < dong_cluster.length; j++) {
+            if (temp_dong[i] == dong_cluster[j]) {
+                real_dong.push(temp_dong[i]);
+                break;
+            }
+        }
+    } // 여기까지 거리잴 동들 real_dong에 저장완료 기준(선택한)동 dong, 모델이 골라준 동 real_dong리스트
+    // 이제 여기서 부터 real_dong과 dong의 좌표값들 다 가져와 주면 됨.
+    $.ajax({
+        type: 'get',
+        url: '/estates/getmain_xy?dong=' + dong,
+        dateType: 'json',
+        async: false,
+        success: function (jsonData) {
+        main_x = jsonData.mainxy.position_x
+        main_y = jsonData.mainxy.position_y
+
+        }
+    }); //main x,y
+    //alert(main_x);
+    for (i = 0; i < real_dong.length; i++) {
+        temp_dong2 = real_dong[i];
+        $.ajax({
+            type: 'get',
+            url: '/estates/getdong_xy?dong=' + temp_dong2,
+            dateType: 'json',
+            async: false,
+            success: function (jsonData) {
+
+                dong_x = jsonData.mainxy.position_x
+                dong_y = jsonData.mainxy.position_y
+                dong_dict[real_dong[i]] = ((main_x - dong_x) ** 2 + (main_y - dong_y) ** 2) * 1000;
+            }
+        });
+    }
+    for (var dongdong in dong_dict) {
+        sortable.push([
+        dongdong, dong_dict[dongdong]
+        ]);
+    }
+
+    sortable.sort(function (a, b) {
+        return a[1] - b[1];
+    });
+    return (sortable);
+}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Facilities, Mamul, Jachibubjung, Jachibubjung_xy
+from . models import Facilities, Mamul, Jachibubjung, Jachibubjung_xy, cluster_class
 from django.http import JsonResponse
 import joblib
 import json
@@ -32,6 +32,16 @@ def getdong(request):
 
     context = {
         'facil':facil,      
+    }
+    return JsonResponse(context)
+
+def getclusterdong(request):
+    print('클러스터 시작')
+    cluster_num = request.GET.get('cluster_num')
+    cluster = list(cluster_class.objects.filter(cluster_num=cluster_num).values())
+    print(cluster[0])
+    context = {
+        'cluster':cluster,      
     }
     return JsonResponse(context)
 
@@ -73,13 +83,16 @@ def getdong_xy(request):
 
 @csrf_exempt
 def getwallselatlng(request):
+    print('월세시작')
     jsonObject = json.loads(request.body)
     bozeong_min = jsonObject.get('bozeong_min')
     bozeong_max = jsonObject.get('bozeong_max')
     wallse_min = jsonObject.get('wallse_min')
     wallse_max = jsonObject.get('wallse_max')
-    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, imdaeru__gte=wallse_min, imdaeru__lte=wallse_max, junwallse='월세').values())
-
+    one_dong = jsonObject.get('one_dong')
+    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, imdaeru__gte=wallse_min, imdaeru__lte=wallse_max, junwallse='월세', bubjung=one_dong).values())
+    print('월세 끝')
+    print(mamul[0])
     context = {
         'mamul':mamul,
     }
@@ -90,7 +103,8 @@ def getbozeonglatlng(request):
     jsonObject = json.loads(request.body)
     bozeong_min = jsonObject.get('bozeong_min')
     bozeong_max = jsonObject.get('bozeong_max')
-    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, junwallse='전세').values())
+    one_dong = jsonObject.get('one_dong')
+    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, junwallse='전세', bubjung=one_dong).values())
 
     context = {
         'mamul':mamul,      
