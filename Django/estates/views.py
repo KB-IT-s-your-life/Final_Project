@@ -72,30 +72,24 @@ def pca(request):
     pca_model = joblib.load('estates/pca_tool.pickle')
     jsonObject = json.loads(request.body)
     medical = jsonObject.get('medical')
-    security = jsonObject.get('security')
-    shopping = jsonObject.get('shopping')
+    facility = jsonObject.get('facility')
+    convenient = jsonObject.get('convenient')
     market = jsonObject.get('market')
     leisure = jsonObject.get('leisure')
-    convenient = jsonObject.get('convenient')
-    oil = jsonObject.get('oil')
+    fastfood = jsonObject.get('fastfood')
+    cafe = jsonObject.get('cafe')
     traffic = jsonObject.get('traffic')
     restaurant = jsonObject.get('restaurant')
-    park = jsonObject.get('park')
-    # input_data = request.GET.get('input_data')
-    input_list = [medical,security, shopping, market, leisure, convenient, oil, traffic, restaurant, park]
+    shopping = jsonObject.get('shopping')
+    input_list = [medical,facility,convenient,leisure,traffic,restaurant,fastfood,cafe,market,shopping]
     input_array = np.array(input_list).reshape(1,-1)
     pca_result = pca_model.transform(input_array)
-    # print(pca_result)
+    print(pca_result)
     knn_model = joblib.load('estates/knn_clustering.pkl')
     pred = knn_model.predict(pca_result)
     pred = pred.tolist()
-    # print(type(pred))
     
     context = {
-        # 'medical' : medical,
-        # 'security' : security
-        # 'input_list' : input_list,
-        # 'pca_result' : pca_result
         'pred' : pred
     }
     return JsonResponse(context)
