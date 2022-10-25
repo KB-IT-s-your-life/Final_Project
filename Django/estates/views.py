@@ -16,9 +16,6 @@ def index(request):
 def mamul(request):
     return render(request, 'mamul.html')
 
-def makebtn(request):
-    return render(request, 'makebtn.html')
-
 def getfacilities(request):
     title = request.GET.get('title')
     facil = Facilities.objects.get(title=title).__dict__

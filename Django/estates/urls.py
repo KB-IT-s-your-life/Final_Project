@@ -8,7 +8,6 @@ urlpatterns = [
     path('', views.land, name='land'),
     path('index', views.index, name='index'),
     path('mamul', views.mamul, name='mamul'),
-    path('makebtn', views.makebtn, name='makebtn'),
     path('getfacilities', views.getfacilities, name='getfacilities'),
     path('getmamuls', views.getmamuls, name='getmamuls'),
     path('getdong', views.getdong, name='getdong'),
