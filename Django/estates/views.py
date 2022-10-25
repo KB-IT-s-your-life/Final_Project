@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Facilities, Mamul, Jachibubjung
+from . models import Facilities, Mamul, Jachibubjung, Jachibubjung_xy
 from django.http import JsonResponse
 
 # Create your views here.
@@ -26,7 +26,7 @@ def getdong(request):
     print('시작')
     gu = request.GET.get('jachigu')
     print(gu)
-    facil = list(Jachibubjung.objects.filter(jachigu__contains=gu).values())
+    facil = list(Jachibubjung.objects.filter(jachigu=gu).values())
     print(facil)
 
     context = {
@@ -34,6 +34,31 @@ def getdong(request):
     }
     return JsonResponse(context)
 
+def getmain_xy(request):
+    print('시작')
+    dong = request.GET.get('dong')
+    print(dong)
+    mainxy = Jachibubjung_xy.objects.get(bubjung=dong).__dict__
+    del mainxy['_state']
+    print(mainxy)
+
+    context = {
+        'mainxy':mainxy,      
+    }
+    return JsonResponse(context)
+
+def getdong_xy(request):
+    print('시작')
+    dong = request.GET.get('dong')
+    print(dong)
+    mainxy = Jachibubjung_xy.objects.get(bubjung=dong).__dict__
+    del mainxy['_state']
+    print(mainxy)
+
+    context = {
+        'mainxy':mainxy,      
+    }
+    return JsonResponse(context)
 def getmamuls(request):
     print('hi')
     pk = request.GET.get('pk')

@@ -1,0 +1,2327 @@
+[
+ {
+  "Column1": 0,
+  "jachigu": "종로구",
+  "bubjung": "청운동"
+ },
+ {
+  "Column1": 1,
+  "jachigu": "종로구",
+  "bubjung": "신교동"
+ },
+ {
+  "Column1": 2,
+  "jachigu": "종로구",
+  "bubjung": "궁정동"
+ },
+ {
+  "Column1": 3,
+  "jachigu": "종로구",
+  "bubjung": "효자동"
+ },
+ {
+  "Column1": 4,
+  "jachigu": "종로구",
+  "bubjung": "창성동"
+ },
+ {
+  "Column1": 5,
+  "jachigu": "종로구",
+  "bubjung": "통의동"
+ },
+ {
+  "Column1": 6,
+  "jachigu": "종로구",
+  "bubjung": "적선동"
+ },
+ {
+  "Column1": 7,
+  "jachigu": "종로구",
+  "bubjung": "통인동"
+ },
+ {
+  "Column1": 8,
+  "jachigu": "종로구",
+  "bubjung": "누상동"
+ },
+ {
+  "Column1": 9,
+  "jachigu": "종로구",
+  "bubjung": "누하동"
+ },
+ {
+  "Column1": 10,
+  "jachigu": "종로구",
+  "bubjung": "옥인동"
+ },
+ {
+  "Column1": 11,
+  "jachigu": "종로구",
+  "bubjung": "체부동"
+ },
+ {
+  "Column1": 12,
+  "jachigu": "종로구",
+  "bubjung": "필운동"
+ },
+ {
+  "Column1": 13,
+  "jachigu": "종로구",
+  "bubjung": "내자동"
+ },
+ {
+  "Column1": 14,
+  "jachigu": "종로구",
+  "bubjung": "사직동"
+ },
+ {
+  "Column1": 15,
+  "jachigu": "종로구",
+  "bubjung": "도렴동"
+ },
+ {
+  "Column1": 16,
+  "jachigu": "종로구",
+  "bubjung": "당주동"
+ },
+ {
+  "Column1": 17,
+  "jachigu": "종로구",
+  "bubjung": "내수동"
+ },
+ {
+  "Column1": 18,
+  "jachigu": "종로구",
+  "bubjung": "세종로"
+ },
+ {
+  "Column1": 19,
+  "jachigu": "종로구",
+  "bubjung": "신문로1가"
+ },
+ {
+  "Column1": 20,
+  "jachigu": "종로구",
+  "bubjung": "신문로2가"
+ },
+ {
+  "Column1": 21,
+  "jachigu": "종로구",
+  "bubjung": "청진동"
+ },
+ {
+  "Column1": 22,
+  "jachigu": "종로구",
+  "bubjung": "서린동"
+ },
+ {
+  "Column1": 23,
+  "jachigu": "종로구",
+  "bubjung": "수송동"
+ },
+ {
+  "Column1": 24,
+  "jachigu": "종로구",
+  "bubjung": "중학동"
+ },
+ {
+  "Column1": 25,
+  "jachigu": "종로구",
+  "bubjung": "종로1가"
+ },
+ {
+  "Column1": 26,
+  "jachigu": "종로구",
+  "bubjung": "공평동"
+ },
+ {
+  "Column1": 27,
+  "jachigu": "종로구",
+  "bubjung": "관훈동"
+ },
+ {
+  "Column1": 28,
+  "jachigu": "종로구",
+  "bubjung": "견지동"
+ },
+ {
+  "Column1": 29,
+  "jachigu": "종로구",
+  "bubjung": "와룡동"
+ },
+ {
+  "Column1": 30,
+  "jachigu": "종로구",
+  "bubjung": "권농동"
+ },
+ {
+  "Column1": 31,
+  "jachigu": "종로구",
+  "bubjung": "운니동"
+ },
+ {
+  "Column1": 32,
+  "jachigu": "종로구",
+  "bubjung": "익선동"
+ },
+ {
+  "Column1": 33,
+  "jachigu": "종로구",
+  "bubjung": "경운동"
+ },
+ {
+  "Column1": 34,
+  "jachigu": "종로구",
+  "bubjung": "관철동"
+ },
+ {
+  "Column1": 35,
+  "jachigu": "종로구",
+  "bubjung": "인사동"
+ },
+ {
+  "Column1": 36,
+  "jachigu": "종로구",
+  "bubjung": "낙원동"
+ },
+ {
+  "Column1": 37,
+  "jachigu": "종로구",
+  "bubjung": "종로2가"
+ },
+ {
+  "Column1": 38,
+  "jachigu": "종로구",
+  "bubjung": "팔판동"
+ },
+ {
+  "Column1": 39,
+  "jachigu": "종로구",
+  "bubjung": "삼청동"
+ },
+ {
+  "Column1": 40,
+  "jachigu": "종로구",
+  "bubjung": "안국동"
+ },
+ {
+  "Column1": 41,
+  "jachigu": "종로구",
+  "bubjung": "소격동"
+ },
+ {
+  "Column1": 42,
+  "jachigu": "종로구",
+  "bubjung": "화동"
+ },
+ {
+  "Column1": 43,
+  "jachigu": "종로구",
+  "bubjung": "사간동"
+ },
+ {
+  "Column1": 44,
+  "jachigu": "종로구",
+  "bubjung": "송현동"
+ },
+ {
+  "Column1": 45,
+  "jachigu": "종로구",
+  "bubjung": "가회동"
+ },
+ {
+  "Column1": 46,
+  "jachigu": "종로구",
+  "bubjung": "재동"
+ },
+ {
+  "Column1": 47,
+  "jachigu": "종로구",
+  "bubjung": "계동"
+ },
+ {
+  "Column1": 48,
+  "jachigu": "종로구",
+  "bubjung": "원서동"
+ },
+ {
+  "Column1": 49,
+  "jachigu": "종로구",
+  "bubjung": "훈정동"
+ },
+ {
+  "Column1": 50,
+  "jachigu": "종로구",
+  "bubjung": "묘동"
+ },
+ {
+  "Column1": 51,
+  "jachigu": "종로구",
+  "bubjung": "봉익동"
+ },
+ {
+  "Column1": 52,
+  "jachigu": "종로구",
+  "bubjung": "돈의동"
+ },
+ {
+  "Column1": 53,
+  "jachigu": "종로구",
+  "bubjung": "장사동"
+ },
+ {
+  "Column1": 54,
+  "jachigu": "종로구",
+  "bubjung": "관수동"
+ },
+ {
+  "Column1": 55,
+  "jachigu": "종로구",
+  "bubjung": "종로3가"
+ },
+ {
+  "Column1": 56,
+  "jachigu": "종로구",
+  "bubjung": "인의동"
+ },
+ {
+  "Column1": 57,
+  "jachigu": "종로구",
+  "bubjung": "예지동"
+ },
+ {
+  "Column1": 58,
+  "jachigu": "종로구",
+  "bubjung": "원남동"
+ },
+ {
+  "Column1": 59,
+  "jachigu": "종로구",
+  "bubjung": "연지동"
+ },
+ {
+  "Column1": 60,
+  "jachigu": "종로구",
+  "bubjung": "종로4가"
+ },
+ {
+  "Column1": 61,
+  "jachigu": "종로구",
+  "bubjung": "효제동"
+ },
+ {
+  "Column1": 62,
+  "jachigu": "종로구",
+  "bubjung": "종로5가"
+ },
+ {
+  "Column1": 63,
+  "jachigu": "종로구",
+  "bubjung": "종로6가"
+ },
+ {
+  "Column1": 64,
+  "jachigu": "종로구",
+  "bubjung": "이화동"
+ },
+ {
+  "Column1": 65,
+  "jachigu": "종로구",
+  "bubjung": "연건동"
+ },
+ {
+  "Column1": 66,
+  "jachigu": "종로구",
+  "bubjung": "충신동"
+ },
+ {
+  "Column1": 67,
+  "jachigu": "종로구",
+  "bubjung": "동숭동"
+ },
+ {
+  "Column1": 68,
+  "jachigu": "종로구",
+  "bubjung": "혜화동"
+ },
+ {
+  "Column1": 69,
+  "jachigu": "종로구",
+  "bubjung": "명륜1가"
+ },
+ {
+  "Column1": 70,
+  "jachigu": "종로구",
+  "bubjung": "명륜2가"
+ },
+ {
+  "Column1": 71,
+  "jachigu": "종로구",
+  "bubjung": "명륜4가"
+ },
+ {
+  "Column1": 72,
+  "jachigu": "종로구",
+  "bubjung": "명륜3가"
+ },
+ {
+  "Column1": 73,
+  "jachigu": "종로구",
+  "bubjung": "창신동"
+ },
+ {
+  "Column1": 74,
+  "jachigu": "종로구",
+  "bubjung": "숭인동"
+ },
+ {
+  "Column1": 75,
+  "jachigu": "종로구",
+  "bubjung": "교남동"
+ },
+ {
+  "Column1": 76,
+  "jachigu": "종로구",
+  "bubjung": "평동"
+ },
+ {
+  "Column1": 77,
+  "jachigu": "종로구",
+  "bubjung": "송월동"
+ },
+ {
+  "Column1": 78,
+  "jachigu": "종로구",
+  "bubjung": "홍파동"
+ },
+ {
+  "Column1": 79,
+  "jachigu": "종로구",
+  "bubjung": "교북동"
+ },
+ {
+  "Column1": 80,
+  "jachigu": "종로구",
+  "bubjung": "행촌동"
+ },
+ {
+  "Column1": 81,
+  "jachigu": "종로구",
+  "bubjung": "구기동"
+ },
+ {
+  "Column1": 82,
+  "jachigu": "종로구",
+  "bubjung": "평창동"
+ },
+ {
+  "Column1": 83,
+  "jachigu": "종로구",
+  "bubjung": "부암동"
+ },
+ {
+  "Column1": 84,
+  "jachigu": "종로구",
+  "bubjung": "홍지동"
+ },
+ {
+  "Column1": 85,
+  "jachigu": "종로구",
+  "bubjung": "신영동"
+ },
+ {
+  "Column1": 86,
+  "jachigu": "종로구",
+  "bubjung": "무악동"
+ },
+ {
+  "Column1": 87,
+  "jachigu": "중구",
+  "bubjung": "무교동"
+ },
+ {
+  "Column1": 88,
+  "jachigu": "중구",
+  "bubjung": "다동"
+ },
+ {
+  "Column1": 89,
+  "jachigu": "중구",
+  "bubjung": "태평로1가"
+ },
+ {
+  "Column1": 90,
+  "jachigu": "중구",
+  "bubjung": "을지로1가"
+ },
+ {
+  "Column1": 91,
+  "jachigu": "중구",
+  "bubjung": "을지로2가"
+ },
+ {
+  "Column1": 92,
+  "jachigu": "중구",
+  "bubjung": "남대문로1가"
+ },
+ {
+  "Column1": 93,
+  "jachigu": "중구",
+  "bubjung": "삼각동"
+ },
+ {
+  "Column1": 94,
+  "jachigu": "중구",
+  "bubjung": "수하동"
+ },
+ {
+  "Column1": 95,
+  "jachigu": "중구",
+  "bubjung": "장교동"
+ },
+ {
+  "Column1": 96,
+  "jachigu": "중구",
+  "bubjung": "수표동"
+ },
+ {
+  "Column1": 97,
+  "jachigu": "중구",
+  "bubjung": "소공동"
+ },
+ {
+  "Column1": 98,
+  "jachigu": "중구",
+  "bubjung": "남창동"
+ },
+ {
+  "Column1": 99,
+  "jachigu": "중구",
+  "bubjung": "북창동"
+ },
+ {
+  "Column1": 100,
+  "jachigu": "중구",
+  "bubjung": "태평로2가"
+ },
+ {
+  "Column1": 101,
+  "jachigu": "중구",
+  "bubjung": "남대문로2가"
+ },
+ {
+  "Column1": 102,
+  "jachigu": "중구",
+  "bubjung": "남대문로3가"
+ },
+ {
+  "Column1": 103,
+  "jachigu": "중구",
+  "bubjung": "남대문로4가"
+ },
+ {
+  "Column1": 104,
+  "jachigu": "중구",
+  "bubjung": "남대문로5가"
+ },
+ {
+  "Column1": 105,
+  "jachigu": "중구",
+  "bubjung": "봉래동1가"
+ },
+ {
+  "Column1": 106,
+  "jachigu": "중구",
+  "bubjung": "봉래동2가"
+ },
+ {
+  "Column1": 107,
+  "jachigu": "중구",
+  "bubjung": "회현동1가"
+ },
+ {
+  "Column1": 108,
+  "jachigu": "중구",
+  "bubjung": "회현동2가"
+ },
+ {
+  "Column1": 109,
+  "jachigu": "중구",
+  "bubjung": "회현동3가"
+ },
+ {
+  "Column1": 110,
+  "jachigu": "중구",
+  "bubjung": "충무로1가"
+ },
+ {
+  "Column1": 111,
+  "jachigu": "중구",
+  "bubjung": "충무로2가"
+ },
+ {
+  "Column1": 112,
+  "jachigu": "중구",
+  "bubjung": "명동1가"
+ },
+ {
+  "Column1": 113,
+  "jachigu": "중구",
+  "bubjung": "명동2가"
+ },
+ {
+  "Column1": 114,
+  "jachigu": "중구",
+  "bubjung": "남산동1가"
+ },
+ {
+  "Column1": 115,
+  "jachigu": "중구",
+  "bubjung": "남산동2가"
+ },
+ {
+  "Column1": 116,
+  "jachigu": "중구",
+  "bubjung": "남산동3가"
+ },
+ {
+  "Column1": 117,
+  "jachigu": "중구",
+  "bubjung": "저동1가"
+ },
+ {
+  "Column1": 118,
+  "jachigu": "중구",
+  "bubjung": "충무로4가"
+ },
+ {
+  "Column1": 119,
+  "jachigu": "중구",
+  "bubjung": "충무로5가"
+ },
+ {
+  "Column1": 120,
+  "jachigu": "중구",
+  "bubjung": "인현동2가"
+ },
+ {
+  "Column1": 121,
+  "jachigu": "중구",
+  "bubjung": "예관동"
+ },
+ {
+  "Column1": 122,
+  "jachigu": "중구",
+  "bubjung": "묵정동"
+ },
+ {
+  "Column1": 123,
+  "jachigu": "중구",
+  "bubjung": "필동1가"
+ },
+ {
+  "Column1": 124,
+  "jachigu": "중구",
+  "bubjung": "필동2가"
+ },
+ {
+  "Column1": 125,
+  "jachigu": "중구",
+  "bubjung": "필동3가"
+ },
+ {
+  "Column1": 126,
+  "jachigu": "중구",
+  "bubjung": "남학동"
+ },
+ {
+  "Column1": 127,
+  "jachigu": "중구",
+  "bubjung": "주자동"
+ },
+ {
+  "Column1": 128,
+  "jachigu": "중구",
+  "bubjung": "예장동"
+ },
+ {
+  "Column1": 129,
+  "jachigu": "중구",
+  "bubjung": "장충동1가"
+ },
+ {
+  "Column1": 130,
+  "jachigu": "중구",
+  "bubjung": "장충동2가"
+ },
+ {
+  "Column1": 131,
+  "jachigu": "중구",
+  "bubjung": "광희동1가"
+ },
+ {
+  "Column1": 132,
+  "jachigu": "중구",
+  "bubjung": "광희동2가"
+ },
+ {
+  "Column1": 133,
+  "jachigu": "중구",
+  "bubjung": "쌍림동"
+ },
+ {
+  "Column1": 134,
+  "jachigu": "중구",
+  "bubjung": "을지로6가"
+ },
+ {
+  "Column1": 135,
+  "jachigu": "중구",
+  "bubjung": "을지로7가"
+ },
+ {
+  "Column1": 136,
+  "jachigu": "중구",
+  "bubjung": "을지로4가"
+ },
+ {
+  "Column1": 137,
+  "jachigu": "중구",
+  "bubjung": "을지로5가"
+ },
+ {
+  "Column1": 138,
+  "jachigu": "중구",
+  "bubjung": "주교동"
+ },
+ {
+  "Column1": 139,
+  "jachigu": "중구",
+  "bubjung": "방산동"
+ },
+ {
+  "Column1": 140,
+  "jachigu": "중구",
+  "bubjung": "오장동"
+ },
+ {
+  "Column1": 141,
+  "jachigu": "중구",
+  "bubjung": "을지로3가"
+ },
+ {
+  "Column1": 142,
+  "jachigu": "중구",
+  "bubjung": "입정동"
+ },
+ {
+  "Column1": 143,
+  "jachigu": "중구",
+  "bubjung": "산림동"
+ },
+ {
+  "Column1": 144,
+  "jachigu": "중구",
+  "bubjung": "충무로3가"
+ },
+ {
+  "Column1": 145,
+  "jachigu": "중구",
+  "bubjung": "초동"
+ },
+ {
+  "Column1": 146,
+  "jachigu": "중구",
+  "bubjung": "인현동1가"
+ },
+ {
+  "Column1": 147,
+  "jachigu": "중구",
+  "bubjung": "저동2가"
+ },
+ {
+  "Column1": 148,
+  "jachigu": "중구",
+  "bubjung": "신당동"
+ },
+ {
+  "Column1": 149,
+  "jachigu": "중구",
+  "bubjung": "흥인동"
+ },
+ {
+  "Column1": 150,
+  "jachigu": "중구",
+  "bubjung": "무학동"
+ },
+ {
+  "Column1": 151,
+  "jachigu": "중구",
+  "bubjung": "황학동"
+ },
+ {
+  "Column1": 152,
+  "jachigu": "중구",
+  "bubjung": "서소문동"
+ },
+ {
+  "Column1": 153,
+  "jachigu": "중구",
+  "bubjung": "정동"
+ },
+ {
+  "Column1": 154,
+  "jachigu": "중구",
+  "bubjung": "순화동"
+ },
+ {
+  "Column1": 155,
+  "jachigu": "중구",
+  "bubjung": "의주로1가"
+ },
+ {
+  "Column1": 156,
+  "jachigu": "중구",
+  "bubjung": "충정로1가"
+ },
+ {
+  "Column1": 157,
+  "jachigu": "중구",
+  "bubjung": "중림동"
+ },
+ {
+  "Column1": 158,
+  "jachigu": "중구",
+  "bubjung": "의주로2가"
+ },
+ {
+  "Column1": 159,
+  "jachigu": "중구",
+  "bubjung": "만리동1가"
+ },
+ {
+  "Column1": 160,
+  "jachigu": "중구",
+  "bubjung": "만리동2가"
+ },
+ {
+  "Column1": 161,
+  "jachigu": "용산구",
+  "bubjung": "후암동"
+ },
+ {
+  "Column1": 162,
+  "jachigu": "용산구",
+  "bubjung": "용산동2가"
+ },
+ {
+  "Column1": 163,
+  "jachigu": "용산구",
+  "bubjung": "용산동4가"
+ },
+ {
+  "Column1": 164,
+  "jachigu": "용산구",
+  "bubjung": "갈월동"
+ },
+ {
+  "Column1": 165,
+  "jachigu": "용산구",
+  "bubjung": "남영동"
+ },
+ {
+  "Column1": 166,
+  "jachigu": "용산구",
+  "bubjung": "용산동1가"
+ },
+ {
+  "Column1": 167,
+  "jachigu": "용산구",
+  "bubjung": "동자동"
+ },
+ {
+  "Column1": 168,
+  "jachigu": "용산구",
+  "bubjung": "서계동"
+ },
+ {
+  "Column1": 169,
+  "jachigu": "용산구",
+  "bubjung": "청파동1가"
+ },
+ {
+  "Column1": 170,
+  "jachigu": "용산구",
+  "bubjung": "청파동2가"
+ },
+ {
+  "Column1": 171,
+  "jachigu": "용산구",
+  "bubjung": "청파동3가"
+ },
+ {
+  "Column1": 172,
+  "jachigu": "용산구",
+  "bubjung": "원효로1가"
+ },
+ {
+  "Column1": 173,
+  "jachigu": "용산구",
+  "bubjung": "원효로2가"
+ },
+ {
+  "Column1": 174,
+  "jachigu": "용산구",
+  "bubjung": "신창동"
+ },
+ {
+  "Column1": 175,
+  "jachigu": "용산구",
+  "bubjung": "산천동"
+ },
+ {
+  "Column1": 176,
+  "jachigu": "용산구",
+  "bubjung": "청암동"
+ },
+ {
+  "Column1": 177,
+  "jachigu": "용산구",
+  "bubjung": "원효로3가"
+ },
+ {
+  "Column1": 178,
+  "jachigu": "용산구",
+  "bubjung": "원효로4가"
+ },
+ {
+  "Column1": 179,
+  "jachigu": "용산구",
+  "bubjung": "효창동"
+ },
+ {
+  "Column1": 180,
+  "jachigu": "용산구",
+  "bubjung": "도원동"
+ },
+ {
+  "Column1": 181,
+  "jachigu": "용산구",
+  "bubjung": "용문동"
+ },
+ {
+  "Column1": 182,
+  "jachigu": "용산구",
+  "bubjung": "문배동"
+ },
+ {
+  "Column1": 183,
+  "jachigu": "용산구",
+  "bubjung": "신계동"
+ },
+ {
+  "Column1": 184,
+  "jachigu": "용산구",
+  "bubjung": "한강로1가"
+ },
+ {
+  "Column1": 185,
+  "jachigu": "용산구",
+  "bubjung": "한강로2가"
+ },
+ {
+  "Column1": 186,
+  "jachigu": "용산구",
+  "bubjung": "용산동3가"
+ },
+ {
+  "Column1": 187,
+  "jachigu": "용산구",
+  "bubjung": "용산동5가"
+ },
+ {
+  "Column1": 188,
+  "jachigu": "용산구",
+  "bubjung": "한강로3가"
+ },
+ {
+  "Column1": 189,
+  "jachigu": "용산구",
+  "bubjung": "이촌동"
+ },
+ {
+  "Column1": 190,
+  "jachigu": "용산구",
+  "bubjung": "이태원동"
+ },
+ {
+  "Column1": 191,
+  "jachigu": "용산구",
+  "bubjung": "한남동"
+ },
+ {
+  "Column1": 192,
+  "jachigu": "용산구",
+  "bubjung": "동빙고동"
+ },
+ {
+  "Column1": 193,
+  "jachigu": "용산구",
+  "bubjung": "서빙고동"
+ },
+ {
+  "Column1": 194,
+  "jachigu": "용산구",
+  "bubjung": "주성동"
+ },
+ {
+  "Column1": 195,
+  "jachigu": "용산구",
+  "bubjung": "용산동6가"
+ },
+ {
+  "Column1": 196,
+  "jachigu": "용산구",
+  "bubjung": "보광동"
+ },
+ {
+  "Column1": 197,
+  "jachigu": "성동구",
+  "bubjung": "상왕십리동"
+ },
+ {
+  "Column1": 198,
+  "jachigu": "성동구",
+  "bubjung": "하왕십리동"
+ },
+ {
+  "Column1": 199,
+  "jachigu": "성동구",
+  "bubjung": "홍익동"
+ },
+ {
+  "Column1": 200,
+  "jachigu": "성동구",
+  "bubjung": "도선동"
+ },
+ {
+  "Column1": 201,
+  "jachigu": "성동구",
+  "bubjung": "마장동"
+ },
+ {
+  "Column1": 202,
+  "jachigu": "성동구",
+  "bubjung": "사근동"
+ },
+ {
+  "Column1": 203,
+  "jachigu": "성동구",
+  "bubjung": "행당동"
+ },
+ {
+  "Column1": 204,
+  "jachigu": "성동구",
+  "bubjung": "응봉동"
+ },
+ {
+  "Column1": 205,
+  "jachigu": "성동구",
+  "bubjung": "금호동1가"
+ },
+ {
+  "Column1": 206,
+  "jachigu": "성동구",
+  "bubjung": "금호동2가"
+ },
+ {
+  "Column1": 207,
+  "jachigu": "성동구",
+  "bubjung": "금호동3가"
+ },
+ {
+  "Column1": 208,
+  "jachigu": "성동구",
+  "bubjung": "금호동4가"
+ },
+ {
+  "Column1": 209,
+  "jachigu": "성동구",
+  "bubjung": "옥수동"
+ },
+ {
+  "Column1": 210,
+  "jachigu": "성동구",
+  "bubjung": "성수동1가"
+ },
+ {
+  "Column1": 211,
+  "jachigu": "성동구",
+  "bubjung": "성수동2가"
+ },
+ {
+  "Column1": 212,
+  "jachigu": "성동구",
+  "bubjung": "송정동"
+ },
+ {
+  "Column1": 213,
+  "jachigu": "성동구",
+  "bubjung": "용답동"
+ },
+ {
+  "Column1": 214,
+  "jachigu": "광진구",
+  "bubjung": "중곡동"
+ },
+ {
+  "Column1": 215,
+  "jachigu": "광진구",
+  "bubjung": "능동"
+ },
+ {
+  "Column1": 216,
+  "jachigu": "광진구",
+  "bubjung": "구의동"
+ },
+ {
+  "Column1": 217,
+  "jachigu": "광진구",
+  "bubjung": "광장동"
+ },
+ {
+  "Column1": 218,
+  "jachigu": "광진구",
+  "bubjung": "자양동"
+ },
+ {
+  "Column1": 219,
+  "jachigu": "광진구",
+  "bubjung": "화양동"
+ },
+ {
+  "Column1": 220,
+  "jachigu": "광진구",
+  "bubjung": "군자동"
+ },
+ {
+  "Column1": 221,
+  "jachigu": "동대문구",
+  "bubjung": "신설동"
+ },
+ {
+  "Column1": 222,
+  "jachigu": "동대문구",
+  "bubjung": "용두동"
+ },
+ {
+  "Column1": 223,
+  "jachigu": "동대문구",
+  "bubjung": "제기동"
+ },
+ {
+  "Column1": 224,
+  "jachigu": "동대문구",
+  "bubjung": "전농동"
+ },
+ {
+  "Column1": 225,
+  "jachigu": "동대문구",
+  "bubjung": "답십리동"
+ },
+ {
+  "Column1": 226,
+  "jachigu": "동대문구",
+  "bubjung": "장안동"
+ },
+ {
+  "Column1": 227,
+  "jachigu": "동대문구",
+  "bubjung": "청량리동"
+ },
+ {
+  "Column1": 228,
+  "jachigu": "동대문구",
+  "bubjung": "회기동"
+ },
+ {
+  "Column1": 229,
+  "jachigu": "동대문구",
+  "bubjung": "휘경동"
+ },
+ {
+  "Column1": 230,
+  "jachigu": "동대문구",
+  "bubjung": "이문동"
+ },
+ {
+  "Column1": 231,
+  "jachigu": "중랑구",
+  "bubjung": "면목동"
+ },
+ {
+  "Column1": 232,
+  "jachigu": "중랑구",
+  "bubjung": "상봉동"
+ },
+ {
+  "Column1": 233,
+  "jachigu": "중랑구",
+  "bubjung": "중화동"
+ },
+ {
+  "Column1": 234,
+  "jachigu": "중랑구",
+  "bubjung": "묵동"
+ },
+ {
+  "Column1": 235,
+  "jachigu": "중랑구",
+  "bubjung": "망우동"
+ },
+ {
+  "Column1": 236,
+  "jachigu": "중랑구",
+  "bubjung": "신내동"
+ },
+ {
+  "Column1": 237,
+  "jachigu": "성북구",
+  "bubjung": "성북동"
+ },
+ {
+  "Column1": 238,
+  "jachigu": "성북구",
+  "bubjung": "성북동1가"
+ },
+ {
+  "Column1": 239,
+  "jachigu": "성북구",
+  "bubjung": "돈암동"
+ },
+ {
+  "Column1": 240,
+  "jachigu": "성북구",
+  "bubjung": "동소문동1가"
+ },
+ {
+  "Column1": 241,
+  "jachigu": "성북구",
+  "bubjung": "동소문동2가"
+ },
+ {
+  "Column1": 242,
+  "jachigu": "성북구",
+  "bubjung": "동소문동3가"
+ },
+ {
+  "Column1": 243,
+  "jachigu": "성북구",
+  "bubjung": "동소문동4가"
+ },
+ {
+  "Column1": 244,
+  "jachigu": "성북구",
+  "bubjung": "동소문동5가"
+ },
+ {
+  "Column1": 245,
+  "jachigu": "성북구",
+  "bubjung": "동소문동6가"
+ },
+ {
+  "Column1": 246,
+  "jachigu": "성북구",
+  "bubjung": "동소문동7가"
+ },
+ {
+  "Column1": 247,
+  "jachigu": "성북구",
+  "bubjung": "삼선동1가"
+ },
+ {
+  "Column1": 248,
+  "jachigu": "성북구",
+  "bubjung": "삼선동2가"
+ },
+ {
+  "Column1": 249,
+  "jachigu": "성북구",
+  "bubjung": "삼선동3가"
+ },
+ {
+  "Column1": 250,
+  "jachigu": "성북구",
+  "bubjung": "삼선동4가"
+ },
+ {
+  "Column1": 251,
+  "jachigu": "성북구",
+  "bubjung": "삼선동5가"
+ },
+ {
+  "Column1": 252,
+  "jachigu": "성북구",
+  "bubjung": "동선동1가"
+ },
+ {
+  "Column1": 253,
+  "jachigu": "성북구",
+  "bubjung": "동선동2가"
+ },
+ {
+  "Column1": 254,
+  "jachigu": "성북구",
+  "bubjung": "동선동3가"
+ },
+ {
+  "Column1": 255,
+  "jachigu": "성북구",
+  "bubjung": "동선동4가"
+ },
+ {
+  "Column1": 256,
+  "jachigu": "성북구",
+  "bubjung": "동선동5가"
+ },
+ {
+  "Column1": 257,
+  "jachigu": "성북구",
+  "bubjung": "안암동1가"
+ },
+ {
+  "Column1": 258,
+  "jachigu": "성북구",
+  "bubjung": "안암동2가"
+ },
+ {
+  "Column1": 259,
+  "jachigu": "성북구",
+  "bubjung": "안암동3가"
+ },
+ {
+  "Column1": 260,
+  "jachigu": "성북구",
+  "bubjung": "안암동4가"
+ },
+ {
+  "Column1": 261,
+  "jachigu": "성북구",
+  "bubjung": "안암동5가"
+ },
+ {
+  "Column1": 262,
+  "jachigu": "성북구",
+  "bubjung": "보문동4가"
+ },
+ {
+  "Column1": 263,
+  "jachigu": "성북구",
+  "bubjung": "보문동5가"
+ },
+ {
+  "Column1": 264,
+  "jachigu": "성북구",
+  "bubjung": "보문동6가"
+ },
+ {
+  "Column1": 265,
+  "jachigu": "성북구",
+  "bubjung": "보문동7가"
+ },
+ {
+  "Column1": 266,
+  "jachigu": "성북구",
+  "bubjung": "보문동1가"
+ },
+ {
+  "Column1": 267,
+  "jachigu": "성북구",
+  "bubjung": "보문동2가"
+ },
+ {
+  "Column1": 268,
+  "jachigu": "성북구",
+  "bubjung": "보문동3가"
+ },
+ {
+  "Column1": 269,
+  "jachigu": "성북구",
+  "bubjung": "정릉동"
+ },
+ {
+  "Column1": 270,
+  "jachigu": "성북구",
+  "bubjung": "길음동"
+ },
+ {
+  "Column1": 271,
+  "jachigu": "성북구",
+  "bubjung": "종암동"
+ },
+ {
+  "Column1": 272,
+  "jachigu": "성북구",
+  "bubjung": "하월곡동"
+ },
+ {
+  "Column1": 273,
+  "jachigu": "성북구",
+  "bubjung": "상월곡동"
+ },
+ {
+  "Column1": 274,
+  "jachigu": "성북구",
+  "bubjung": "장위동"
+ },
+ {
+  "Column1": 275,
+  "jachigu": "성북구",
+  "bubjung": "석관동"
+ },
+ {
+  "Column1": 276,
+  "jachigu": "강북구",
+  "bubjung": "미아동"
+ },
+ {
+  "Column1": 277,
+  "jachigu": "강북구",
+  "bubjung": "번동"
+ },
+ {
+  "Column1": 278,
+  "jachigu": "강북구",
+  "bubjung": "수유동"
+ },
+ {
+  "Column1": 279,
+  "jachigu": "강북구",
+  "bubjung": "우이동"
+ },
+ {
+  "Column1": 280,
+  "jachigu": "도봉구",
+  "bubjung": "쌍문동"
+ },
+ {
+  "Column1": 281,
+  "jachigu": "도봉구",
+  "bubjung": "방학동"
+ },
+ {
+  "Column1": 282,
+  "jachigu": "도봉구",
+  "bubjung": "창동"
+ },
+ {
+  "Column1": 283,
+  "jachigu": "도봉구",
+  "bubjung": "도봉동"
+ },
+ {
+  "Column1": 284,
+  "jachigu": "노원구",
+  "bubjung": "월계동"
+ },
+ {
+  "Column1": 285,
+  "jachigu": "노원구",
+  "bubjung": "공릉동"
+ },
+ {
+  "Column1": 286,
+  "jachigu": "노원구",
+  "bubjung": "하계동"
+ },
+ {
+  "Column1": 287,
+  "jachigu": "노원구",
+  "bubjung": "상계동"
+ },
+ {
+  "Column1": 288,
+  "jachigu": "노원구",
+  "bubjung": "중계동"
+ },
+ {
+  "Column1": 289,
+  "jachigu": "은평구",
+  "bubjung": "수색동"
+ },
+ {
+  "Column1": 290,
+  "jachigu": "은평구",
+  "bubjung": "녹번동"
+ },
+ {
+  "Column1": 291,
+  "jachigu": "은평구",
+  "bubjung": "불광동"
+ },
+ {
+  "Column1": 292,
+  "jachigu": "은평구",
+  "bubjung": "갈현동"
+ },
+ {
+  "Column1": 293,
+  "jachigu": "은평구",
+  "bubjung": "구산동"
+ },
+ {
+  "Column1": 294,
+  "jachigu": "은평구",
+  "bubjung": "대조동"
+ },
+ {
+  "Column1": 295,
+  "jachigu": "은평구",
+  "bubjung": "응암동"
+ },
+ {
+  "Column1": 296,
+  "jachigu": "은평구",
+  "bubjung": "역촌동"
+ },
+ {
+  "Column1": 297,
+  "jachigu": "은평구",
+  "bubjung": "신사동"
+ },
+ {
+  "Column1": 298,
+  "jachigu": "은평구",
+  "bubjung": "증산동"
+ },
+ {
+  "Column1": 299,
+  "jachigu": "은평구",
+  "bubjung": "진관동"
+ },
+ {
+  "Column1": 300,
+  "jachigu": "서대문구",
+  "bubjung": "충정로2가"
+ },
+ {
+  "Column1": 301,
+  "jachigu": "서대문구",
+  "bubjung": "충정로3가"
+ },
+ {
+  "Column1": 302,
+  "jachigu": "서대문구",
+  "bubjung": "합동"
+ },
+ {
+  "Column1": 303,
+  "jachigu": "서대문구",
+  "bubjung": "미근동"
+ },
+ {
+  "Column1": 304,
+  "jachigu": "서대문구",
+  "bubjung": "냉천동"
+ },
+ {
+  "Column1": 305,
+  "jachigu": "서대문구",
+  "bubjung": "천연동"
+ },
+ {
+  "Column1": 306,
+  "jachigu": "서대문구",
+  "bubjung": "옥천동"
+ },
+ {
+  "Column1": 307,
+  "jachigu": "서대문구",
+  "bubjung": "영천동"
+ },
+ {
+  "Column1": 308,
+  "jachigu": "서대문구",
+  "bubjung": "현저동"
+ },
+ {
+  "Column1": 309,
+  "jachigu": "서대문구",
+  "bubjung": "북아현동"
+ },
+ {
+  "Column1": 310,
+  "jachigu": "서대문구",
+  "bubjung": "홍제동"
+ },
+ {
+  "Column1": 311,
+  "jachigu": "서대문구",
+  "bubjung": "대현동"
+ },
+ {
+  "Column1": 312,
+  "jachigu": "서대문구",
+  "bubjung": "대신동"
+ },
+ {
+  "Column1": 313,
+  "jachigu": "서대문구",
+  "bubjung": "신촌동"
+ },
+ {
+  "Column1": 314,
+  "jachigu": "서대문구",
+  "bubjung": "봉원동"
+ },
+ {
+  "Column1": 315,
+  "jachigu": "서대문구",
+  "bubjung": "창천동"
+ },
+ {
+  "Column1": 316,
+  "jachigu": "서대문구",
+  "bubjung": "연희동"
+ },
+ {
+  "Column1": 317,
+  "jachigu": "서대문구",
+  "bubjung": "홍은동"
+ },
+ {
+  "Column1": 318,
+  "jachigu": "서대문구",
+  "bubjung": "북가좌동"
+ },
+ {
+  "Column1": 319,
+  "jachigu": "서대문구",
+  "bubjung": "남가좌동"
+ },
+ {
+  "Column1": 320,
+  "jachigu": "마포구",
+  "bubjung": "아현동"
+ },
+ {
+  "Column1": 321,
+  "jachigu": "마포구",
+  "bubjung": "공덕동"
+ },
+ {
+  "Column1": 322,
+  "jachigu": "마포구",
+  "bubjung": "신공덕동"
+ },
+ {
+  "Column1": 323,
+  "jachigu": "마포구",
+  "bubjung": "도화동"
+ },
+ {
+  "Column1": 324,
+  "jachigu": "마포구",
+  "bubjung": "용강동"
+ },
+ {
+  "Column1": 325,
+  "jachigu": "마포구",
+  "bubjung": "토정동"
+ },
+ {
+  "Column1": 326,
+  "jachigu": "마포구",
+  "bubjung": "마포동"
+ },
+ {
+  "Column1": 327,
+  "jachigu": "마포구",
+  "bubjung": "대흥동"
+ },
+ {
+  "Column1": 328,
+  "jachigu": "마포구",
+  "bubjung": "염리동"
+ },
+ {
+  "Column1": 329,
+  "jachigu": "마포구",
+  "bubjung": "노고산동"
+ },
+ {
+  "Column1": 330,
+  "jachigu": "마포구",
+  "bubjung": "신수동"
+ },
+ {
+  "Column1": 331,
+  "jachigu": "마포구",
+  "bubjung": "현석동"
+ },
+ {
+  "Column1": 332,
+  "jachigu": "마포구",
+  "bubjung": "구수동"
+ },
+ {
+  "Column1": 333,
+  "jachigu": "마포구",
+  "bubjung": "창전동"
+ },
+ {
+  "Column1": 334,
+  "jachigu": "마포구",
+  "bubjung": "상수동"
+ },
+ {
+  "Column1": 335,
+  "jachigu": "마포구",
+  "bubjung": "하중동"
+ },
+ {
+  "Column1": 336,
+  "jachigu": "마포구",
+  "bubjung": "신정동"
+ },
+ {
+  "Column1": 337,
+  "jachigu": "마포구",
+  "bubjung": "당인동"
+ },
+ {
+  "Column1": 338,
+  "jachigu": "마포구",
+  "bubjung": "서교동"
+ },
+ {
+  "Column1": 339,
+  "jachigu": "마포구",
+  "bubjung": "동교동"
+ },
+ {
+  "Column1": 340,
+  "jachigu": "마포구",
+  "bubjung": "합정동"
+ },
+ {
+  "Column1": 341,
+  "jachigu": "마포구",
+  "bubjung": "망원동"
+ },
+ {
+  "Column1": 342,
+  "jachigu": "마포구",
+  "bubjung": "연남동"
+ },
+ {
+  "Column1": 343,
+  "jachigu": "마포구",
+  "bubjung": "성산동"
+ },
+ {
+  "Column1": 344,
+  "jachigu": "마포구",
+  "bubjung": "중동"
+ },
+ {
+  "Column1": 345,
+  "jachigu": "마포구",
+  "bubjung": "상암동"
+ },
+ {
+  "Column1": 346,
+  "jachigu": "양천구",
+  "bubjung": "목동"
+ },
+ {
+  "Column1": 347,
+  "jachigu": "양천구",
+  "bubjung": "신월동"
+ },
+ {
+  "Column1": 348,
+  "jachigu": "강서구",
+  "bubjung": "염창동"
+ },
+ {
+  "Column1": 349,
+  "jachigu": "강서구",
+  "bubjung": "등촌동"
+ },
+ {
+  "Column1": 350,
+  "jachigu": "강서구",
+  "bubjung": "화곡동"
+ },
+ {
+  "Column1": 351,
+  "jachigu": "강서구",
+  "bubjung": "가양동"
+ },
+ {
+  "Column1": 352,
+  "jachigu": "강서구",
+  "bubjung": "마곡동"
+ },
+ {
+  "Column1": 353,
+  "jachigu": "강서구",
+  "bubjung": "내발산동"
+ },
+ {
+  "Column1": 354,
+  "jachigu": "강서구",
+  "bubjung": "외발산동"
+ },
+ {
+  "Column1": 355,
+  "jachigu": "강서구",
+  "bubjung": "공항동"
+ },
+ {
+  "Column1": 356,
+  "jachigu": "강서구",
+  "bubjung": "방화동"
+ },
+ {
+  "Column1": 357,
+  "jachigu": "강서구",
+  "bubjung": "개화동"
+ },
+ {
+  "Column1": 358,
+  "jachigu": "강서구",
+  "bubjung": "과해동"
+ },
+ {
+  "Column1": 359,
+  "jachigu": "강서구",
+  "bubjung": "오곡동"
+ },
+ {
+  "Column1": 360,
+  "jachigu": "강서구",
+  "bubjung": "오쇠동"
+ },
+ {
+  "Column1": 361,
+  "jachigu": "구로구",
+  "bubjung": "신도림동"
+ },
+ {
+  "Column1": 362,
+  "jachigu": "구로구",
+  "bubjung": "구로동"
+ },
+ {
+  "Column1": 363,
+  "jachigu": "구로구",
+  "bubjung": "가리봉동"
+ },
+ {
+  "Column1": 364,
+  "jachigu": "구로구",
+  "bubjung": "고척동"
+ },
+ {
+  "Column1": 365,
+  "jachigu": "구로구",
+  "bubjung": "개봉동"
+ },
+ {
+  "Column1": 366,
+  "jachigu": "구로구",
+  "bubjung": "오류동"
+ },
+ {
+  "Column1": 367,
+  "jachigu": "구로구",
+  "bubjung": "궁동"
+ },
+ {
+  "Column1": 368,
+  "jachigu": "구로구",
+  "bubjung": "온수동"
+ },
+ {
+  "Column1": 369,
+  "jachigu": "구로구",
+  "bubjung": "천왕동"
+ },
+ {
+  "Column1": 370,
+  "jachigu": "구로구",
+  "bubjung": "항동"
+ },
+ {
+  "Column1": 371,
+  "jachigu": "금천구",
+  "bubjung": "가산동"
+ },
+ {
+  "Column1": 372,
+  "jachigu": "금천구",
+  "bubjung": "독산동"
+ },
+ {
+  "Column1": 373,
+  "jachigu": "금천구",
+  "bubjung": "시흥동"
+ },
+ {
+  "Column1": 374,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동"
+ },
+ {
+  "Column1": 375,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동1가"
+ },
+ {
+  "Column1": 376,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동2가"
+ },
+ {
+  "Column1": 377,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동3가"
+ },
+ {
+  "Column1": 378,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동4가"
+ },
+ {
+  "Column1": 379,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동5가"
+ },
+ {
+  "Column1": 380,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동6가"
+ },
+ {
+  "Column1": 381,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동7가"
+ },
+ {
+  "Column1": 382,
+  "jachigu": "영등포구",
+  "bubjung": "영등포동8가"
+ },
+ {
+  "Column1": 383,
+  "jachigu": "영등포구",
+  "bubjung": "여의도동"
+ },
+ {
+  "Column1": 384,
+  "jachigu": "영등포구",
+  "bubjung": "당산동1가"
+ },
+ {
+  "Column1": 385,
+  "jachigu": "영등포구",
+  "bubjung": "당산동2가"
+ },
+ {
+  "Column1": 386,
+  "jachigu": "영등포구",
+  "bubjung": "당산동3가"
+ },
+ {
+  "Column1": 387,
+  "jachigu": "영등포구",
+  "bubjung": "당산동4가"
+ },
+ {
+  "Column1": 388,
+  "jachigu": "영등포구",
+  "bubjung": "당산동5가"
+ },
+ {
+  "Column1": 389,
+  "jachigu": "영등포구",
+  "bubjung": "당산동6가"
+ },
+ {
+  "Column1": 390,
+  "jachigu": "영등포구",
+  "bubjung": "당산동"
+ },
+ {
+  "Column1": 391,
+  "jachigu": "영등포구",
+  "bubjung": "도림동"
+ },
+ {
+  "Column1": 392,
+  "jachigu": "영등포구",
+  "bubjung": "문래동1가"
+ },
+ {
+  "Column1": 393,
+  "jachigu": "영등포구",
+  "bubjung": "문래동2가"
+ },
+ {
+  "Column1": 394,
+  "jachigu": "영등포구",
+  "bubjung": "문래동3가"
+ },
+ {
+  "Column1": 395,
+  "jachigu": "영등포구",
+  "bubjung": "문래동4가"
+ },
+ {
+  "Column1": 396,
+  "jachigu": "영등포구",
+  "bubjung": "문래동5가"
+ },
+ {
+  "Column1": 397,
+  "jachigu": "영등포구",
+  "bubjung": "문래동6가"
+ },
+ {
+  "Column1": 398,
+  "jachigu": "영등포구",
+  "bubjung": "양평동1가"
+ },
+ {
+  "Column1": 399,
+  "jachigu": "영등포구",
+  "bubjung": "양평동2가"
+ },
+ {
+  "Column1": 400,
+  "jachigu": "영등포구",
+  "bubjung": "양평동3가"
+ },
+ {
+  "Column1": 401,
+  "jachigu": "영등포구",
+  "bubjung": "양평동4가"
+ },
+ {
+  "Column1": 402,
+  "jachigu": "영등포구",
+  "bubjung": "양평동5가"
+ },
+ {
+  "Column1": 403,
+  "jachigu": "영등포구",
+  "bubjung": "양평동6가"
+ },
+ {
+  "Column1": 404,
+  "jachigu": "영등포구",
+  "bubjung": "양화동"
+ },
+ {
+  "Column1": 405,
+  "jachigu": "영등포구",
+  "bubjung": "신길동"
+ },
+ {
+  "Column1": 406,
+  "jachigu": "영등포구",
+  "bubjung": "대림동"
+ },
+ {
+  "Column1": 407,
+  "jachigu": "영등포구",
+  "bubjung": "양평동"
+ },
+ {
+  "Column1": 408,
+  "jachigu": "동작구",
+  "bubjung": "노량진동"
+ },
+ {
+  "Column1": 409,
+  "jachigu": "동작구",
+  "bubjung": "상도동"
+ },
+ {
+  "Column1": 410,
+  "jachigu": "동작구",
+  "bubjung": "상도1동"
+ },
+ {
+  "Column1": 411,
+  "jachigu": "동작구",
+  "bubjung": "본동"
+ },
+ {
+  "Column1": 412,
+  "jachigu": "동작구",
+  "bubjung": "흑석동"
+ },
+ {
+  "Column1": 413,
+  "jachigu": "동작구",
+  "bubjung": "동작동"
+ },
+ {
+  "Column1": 414,
+  "jachigu": "동작구",
+  "bubjung": "사당동"
+ },
+ {
+  "Column1": 415,
+  "jachigu": "동작구",
+  "bubjung": "대방동"
+ },
+ {
+  "Column1": 416,
+  "jachigu": "동작구",
+  "bubjung": "신대방동"
+ },
+ {
+  "Column1": 417,
+  "jachigu": "관악구",
+  "bubjung": "봉천동"
+ },
+ {
+  "Column1": 418,
+  "jachigu": "관악구",
+  "bubjung": "신림동"
+ },
+ {
+  "Column1": 419,
+  "jachigu": "관악구",
+  "bubjung": "남현동"
+ },
+ {
+  "Column1": 420,
+  "jachigu": "서초구",
+  "bubjung": "방배동"
+ },
+ {
+  "Column1": 421,
+  "jachigu": "서초구",
+  "bubjung": "양재동"
+ },
+ {
+  "Column1": 422,
+  "jachigu": "서초구",
+  "bubjung": "우면동"
+ },
+ {
+  "Column1": 423,
+  "jachigu": "서초구",
+  "bubjung": "원지동"
+ },
+ {
+  "Column1": 424,
+  "jachigu": "서초구",
+  "bubjung": "잠원동"
+ },
+ {
+  "Column1": 425,
+  "jachigu": "서초구",
+  "bubjung": "반포동"
+ },
+ {
+  "Column1": 426,
+  "jachigu": "서초구",
+  "bubjung": "서초동"
+ },
+ {
+  "Column1": 427,
+  "jachigu": "서초구",
+  "bubjung": "내곡동"
+ },
+ {
+  "Column1": 428,
+  "jachigu": "서초구",
+  "bubjung": "염곡동"
+ },
+ {
+  "Column1": 429,
+  "jachigu": "서초구",
+  "bubjung": "신원동"
+ },
+ {
+  "Column1": 430,
+  "jachigu": "강남구",
+  "bubjung": "역삼동"
+ },
+ {
+  "Column1": 431,
+  "jachigu": "강남구",
+  "bubjung": "개포동"
+ },
+ {
+  "Column1": 432,
+  "jachigu": "강남구",
+  "bubjung": "청담동"
+ },
+ {
+  "Column1": 433,
+  "jachigu": "강남구",
+  "bubjung": "삼성동"
+ },
+ {
+  "Column1": 434,
+  "jachigu": "강남구",
+  "bubjung": "대치동"
+ },
+ {
+  "Column1": 435,
+  "jachigu": "강남구",
+  "bubjung": "논현동"
+ },
+ {
+  "Column1": 436,
+  "jachigu": "강남구",
+  "bubjung": "압구정동"
+ },
+ {
+  "Column1": 437,
+  "jachigu": "강남구",
+  "bubjung": "세곡동"
+ },
+ {
+  "Column1": 438,
+  "jachigu": "강남구",
+  "bubjung": "자곡동"
+ },
+ {
+  "Column1": 439,
+  "jachigu": "강남구",
+  "bubjung": "율현동"
+ },
+ {
+  "Column1": 440,
+  "jachigu": "강남구",
+  "bubjung": "일원동"
+ },
+ {
+  "Column1": 441,
+  "jachigu": "강남구",
+  "bubjung": "수서동"
+ },
+ {
+  "Column1": 442,
+  "jachigu": "강남구",
+  "bubjung": "도곡동"
+ },
+ {
+  "Column1": 443,
+  "jachigu": "송파구",
+  "bubjung": "잠실동"
+ },
+ {
+  "Column1": 444,
+  "jachigu": "송파구",
+  "bubjung": "신천동"
+ },
+ {
+  "Column1": 445,
+  "jachigu": "송파구",
+  "bubjung": "풍납동"
+ },
+ {
+  "Column1": 446,
+  "jachigu": "송파구",
+  "bubjung": "송파동"
+ },
+ {
+  "Column1": 447,
+  "jachigu": "송파구",
+  "bubjung": "석촌동"
+ },
+ {
+  "Column1": 448,
+  "jachigu": "송파구",
+  "bubjung": "삼전동"
+ },
+ {
+  "Column1": 449,
+  "jachigu": "송파구",
+  "bubjung": "가락동"
+ },
+ {
+  "Column1": 450,
+  "jachigu": "송파구",
+  "bubjung": "문정동"
+ },
+ {
+  "Column1": 451,
+  "jachigu": "송파구",
+  "bubjung": "장지동"
+ },
+ {
+  "Column1": 452,
+  "jachigu": "송파구",
+  "bubjung": "방이동"
+ },
+ {
+  "Column1": 453,
+  "jachigu": "송파구",
+  "bubjung": "오금동"
+ },
+ {
+  "Column1": 454,
+  "jachigu": "송파구",
+  "bubjung": "거여동"
+ },
+ {
+  "Column1": 455,
+  "jachigu": "송파구",
+  "bubjung": "마천동"
+ },
+ {
+  "Column1": 456,
+  "jachigu": "강동구",
+  "bubjung": "명일동"
+ },
+ {
+  "Column1": 457,
+  "jachigu": "강동구",
+  "bubjung": "고덕동"
+ },
+ {
+  "Column1": 458,
+  "jachigu": "강동구",
+  "bubjung": "상일동"
+ },
+ {
+  "Column1": 459,
+  "jachigu": "강동구",
+  "bubjung": "길동"
+ },
+ {
+  "Column1": 460,
+  "jachigu": "강동구",
+  "bubjung": "둔촌동"
+ },
+ {
+  "Column1": 461,
+  "jachigu": "강동구",
+  "bubjung": "암사동"
+ },
+ {
+  "Column1": 462,
+  "jachigu": "강동구",
+  "bubjung": "성내동"
+ },
+ {
+  "Column1": 463,
+  "jachigu": "강동구",
+  "bubjung": "천호동"
+ },
+ {
+  "Column1": 464,
+  "jachigu": "강동구",
+  "bubjung": "강일동"
+ }
+]

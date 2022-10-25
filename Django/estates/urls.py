@@ -12,4 +12,8 @@ urlpatterns = [
     path('getmamuls', views.getmamuls, name='getmamuls'),
     path('getlatlng', views.getlatlng, name='getlatlng'),
     path('getdong', views.getdong, name='getdong'),
+    path('getdong_xy', views.getdong_xy, name='getdong_xy'),
+    path('getmain_xy', views.getmain_xy, name='getmain_xy'),
+
+    
 ]
