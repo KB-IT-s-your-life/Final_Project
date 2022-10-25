@@ -19,7 +19,6 @@
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
-        <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/facilities.css' %}">
         {% block css %}
@@ -104,462 +103,751 @@
                 </div>
                 <!-- 검색조건 sidebar 구성 -->
                 <div id="sidebar">
-                    <fieldset>
-                        <legend>매물 조건을 선택하세요!</legend>
-                        <form action="{% url 'estates:mamul' %}" method="POST" id="frm">
+                    <div class = "pageHead">
+                        <button
+                            type="button"
+                            class="btn btn-pageback"
+                            id="sidebarClose"
+                            onclick="sidebar_click()"
+                            style= 'float: left'
+                        >
+                        <span style = 'font-size: 25px;'>〈</span>
+                        </button>
+                        <h5> TITLE</h4>
+                    </div>
+                        <form action="{% url 'estates:mamul' %}" method = "POST" id="frm">
                             {% csrf_token %}
-                            <div class=""></div>
                             <div id="first_sidebar">
-                                <div class="form-group" id="medical">
-                                    <p>의료시설</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_medical"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_medical"></span></p>
-                                    <script>
-                                        var result_medical = $("#val_medical");
-                                        var slider_medical = $("#Range_medical");
-                                        slider_medical.on("input", function () {
-                                            result_medical.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class="form-group" id="security">
-                                    <p>치안시설</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_security"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_security"></span></p>
-                                    <script>
-                                        var result_security = $("#val_security");
-                                        var slider_security = $("#Range_security");
-                                        slider_security.on("input", function () {
-                                            result_security.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class=""></div>
-                                <div class="form-group" id="shopping">
-                                    <p>쇼핑시설</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_shopping"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_shopping"></span></p>
-                                    <script>
-                                        var result_shopping = $("#val_shopping");
-                                        var slider_shopping = $("#Range_shopping");
-                                        slider_shopping.on("input", function () {
-                                            result_shopping.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class="form-group" id="market">
-                                    <p>장보기시설</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_market"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_market"></span></p>
-                                    <script>
-                                        var result_market = $("#val_market");
-                                        var slider_market = $("#Range_market");
-                                        slider_market.on("input", function () {
-                                            result_market.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class=""></div>
-                                <div class="form-group" id="convenient">
-                                    <p>생활편의시설</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_convenient"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_convenient"></span></p>
-                                    <script>
-                                        var result_convenient =
-                                            $("#val_convenient");
-                                        var slider_convenient =
-                                            $("#Range_convenient");
-                                        slider_convenient.on("input", function () {
-                                            result_convenient.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class="form-group" id="leisure">
-                                    <p>여가시설</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_leisure"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_leisure"></span></p>
-                                    <script>
-                                        var result_leisure = $("#val_leisure");
-                                        var slider_leisure = $("#Range_leisure");
-                                        slider_leisure.on("input", function () {
-                                            result_leisure.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class=""></div>
-                                <div class="form-group" id="traffic">
-                                    <p>교통시설</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_traffic"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_traffic"></span></p>
-                                    <script>
-                                        var result_traffic = $("#val_traffic");
-                                        var slider_traffic = $("#Range_traffic");
-                                        slider_traffic.on("input", function () {
-                                            result_traffic.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class="form-group" id="oil">
-                                    <p>석유판매업</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_oil"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_oil"></span></p>
-                                    <script>
-                                        var result_oil = $("#val_oil");
-                                        var slider_oil = $("#Range_oil");
-                                        slider_oil.on("input", function () {
-                                            result_oil.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class=""></div>
-                                <div class="form-group" id="park">
-                                    <p>공원</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_park"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_park"></span></p>
-                                    <script>
-                                        var result_park = $("#val_park");
-                                        var slider_park = $("#Range_park");
-                                        slider_park.on("input", function () {
-                                            result_park.html($(this).val());
-                                        });
-                                    </script>
-                                </div>
-                                <div class=""></div>
-                                <div class="form-group" id="restaurant">
-                                    <p>음식점</p>
-                                    <p></p>
-                                    <input
-                                        type="range"
-                                        class="slider_range"
-                                        id="Range_restaurant"
-                                        value="0"
-                                        min="0"
-                                        max="3"
-                                        step="1"
-                                        list="tickmarks"
-                                    />
-                                    <datalist id="tickmarks">
-                                        <option value="0"></option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                    </datalist>
-                                    <p>Value: <span id="val_restaurant"></span></p>
-                                    <script>
-                                        var result_restaurant =
-                                            $("#val_restaurant");
-                                        var slider_restaurant =
-                                            $("#Range_restaurant");
-                                        slider_restaurant.on("input", function () {
-                                            result_restaurant.html($(this).val());
-                                        });
-                                    </script>
+                                <div class="myhomeCont">
+                                        <div class="noti-wrap">
+                                            <strong><div style="margin-top:5px; margin-bottom:20px;"><span 
+                                                style ='color:#000; 
+                                                font-weight:600; 
+                                                font-size:28px;'
+                                                >
+                                                나에게 딱 맞는 동네 찾기
+                                            </span></div></strong>
+                                            <div style="font-weight:600;">똑똑한 AI가</div>
+                                            <div>
+                                                <span style = 'font-weight:800; font-size:18px; color: #F0C500;'>
+                                                    알.잘.딱.깔.센
+                                                </span>으로
+                                            </div>
+                                            <div style="font-weight:600;">찾아주는 내가 살기 좋은 동네</div>
+                                            <div style="margin-top:20px">
+                                                <img src="{% static 'img/map.png' %}" alt="" id="mapimg">
+                                                </img>
+                                            </div>
+                                        </div>
+                                        <fieldset>
+                                            <legend text-align=left>인프라에 따라 중요도를 설정하세요!</legend>
+                                    <div class="form-group" id="medical">
+                                        <p>의료시설</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_medical"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <datalist id="tickmarks">
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                            <option value="3"></option>
+                                            <option value="4"></option>
+                                            <option value="5"></option>
+                                            <option value="6"></option>
+                                            <option value="7"></option>
+                                            <option value="8"></option>
+                                            <option value="9"></option>
+                                            <option value="10"></option>
+                                        </datalist>
+                                        <p>Value: <span id="val_medical"></span></p>
+                                        <script>
+                                            var result_medical = $("#val_medical");
+                                            var slider_medical = $("#Range_medical");
+                                            slider_medical.on("input", function () {
+                                                result_medical.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class="form-group" id="facility">
+                                        <p>생활복지시설</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_facility"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_facility"></span></p>
+                                        <script>
+                                            var result_security = $("#val_facility");
+                                            var slider_security = $("#Range_facility");
+                                            slider_security.on("input", function () {
+                                                result_security.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class=""></div>
+                                    <div class="form-group" id="convenient">
+                                        <p>생활편의시설</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_convenient"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_convenient"></span></p>
+                                        <script>
+                                            var result_shopping = $("#val_convenient");
+                                            var slider_shopping = $("#Range_convenient");
+                                            slider_shopping.on("input", function () {
+                                                result_shopping.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class="form-group" id="leisure">
+                                        <p>여가</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_leisure"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_leisure"></span></p>
+                                        <script>
+                                            var result_market = $("#val_leisure");
+                                            var slider_market = $("#Range_leisure");
+                                            slider_market.on("input", function () {
+                                                result_market.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class=""></div>
+                                    <div class="form-group" id="restaurant">
+                                        <p>음식점</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_restaurant"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_restaurant"></span></p>
+                                        <script>
+                                            var result_convenient =
+                                                $("#val_restaurant");
+                                            var slider_convenient =
+                                                $("#Range_restaurant");
+                                            slider_convenient.on("input", function () {
+                                                result_convenient.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class="form-group" id="traffic">
+                                        <p>교통</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_traffic"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_traffic"></span></p>
+                                        <script>
+                                            var result_leisure = $("#val_traffic");
+                                            var slider_leisure = $("#Range_traffic");
+                                            slider_leisure.on("input", function () {
+                                                result_leisure.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class="form-group" id="fastfood">
+                                        <p>패스트푸드</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_fastfood"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_fastfood"></span></p>
+                                        <script>
+                                            var result_oil = $("#val_fastfood");
+                                            var slider_oil = $("#Range_fastfood");
+                                            slider_oil.on("input", function () {
+                                                result_oil.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class=""></div>
+                                    <div class="form-group" id="cafe">
+                                        <p>카페</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_cafe"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_cafe"></span></p>
+                                        <script>
+                                            var result_park = $("#val_cafe");
+                                            var slider_park = $("#Range_cafe");
+                                            slider_park.on("input", function () {
+                                                result_park.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class=""></div>
+                                    <div class="form-group" id="market">
+                                        <p>장보기</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_market"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_market"></span></p>
+                                        <script>
+                                            var result_restaurant =
+                                                $("#val_market");
+                                            var slider_restaurant =
+                                                $("#Range_market");
+                                            slider_restaurant.on("input", function () {
+                                                result_restaurant.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <div class="form-group" id="shopping">
+                                        <p>쇼핑</p>
+                                        <p></p>
+                                        <input
+                                            type="range"
+                                            class="slider_range"
+                                            id="Range_shopping"
+                                            value="5"
+                                            min="0"
+                                            max="10"
+                                            step="1" 
+                                            list="tickmarks" 
+                                        />
+                                        <p>Value: <span id="val_shopping"></span></p>
+                                        <script>
+                                            var result_traffic = $("#val_shopping");
+                                            var slider_traffic = $("#Range_shopping");
+                                            slider_traffic.on("input", function () {
+                                                result_traffic.html($(this).val());
+                                            });
+                                        </script>
+                                    </div>
+                                    <button
+                                            type="button"
+                                            class="btn btn-primary"
+                                            id="nextbutton"
+                                        >
+                                            다음
+                                    </button>
                                 </div>
                             </div>
-                            
-                            <button
-                                    type="button"
-                                    class="btn btn-primary"
-                                    id="nextbutton"
-                                >
-                                    다음
-                            </button>
                             <!-- 매물 조건 -->
-                            <div id="next_sidebar" style="display: none;">
-                                <p style="white-space: nowrap">
-                                    희망하는 매물의 조건과 가격을 고르세요!
-                                </p>
-                                <div class="Check">
-                                    <div
-                                        class="custom-control custom-checkbox mb-3"
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            class="custom-control-input"
-                                            id="charterCheck"
-                                        />
-                                        <label
-                                            class="custom-control-label"
-                                            for="charterCheck"
-                                            >전세</label
+                            <div class="myhomeCont">
+                                <div id="next_sidebar" style="display: none;">
+                                    <p style="white-space: nowrap">
+                                        희망하는 매물의 조건과 가격을 고르세요!
+                                    </p>
+                                    <div class="Check">
+                                        <div
+                                            class="custom-control custom-checkbox mb-3"
                                         >
-                                    </div>
-                                    <div
-                                        class="custom-control custom-checkbox mb-3"
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            class="custom-control-input"
-                                            id="monthlyCheck"
-                                        />
-                                        <label
-                                            class="custom-control-label"
-                                            for="monthlyCheck"
-                                            >월세</label
+                                            <input
+                                                type="checkbox"
+                                                class="custom-control-input"
+                                                id="charterCheck"
+                                            />
+                                            <label
+                                                class="custom-control-label"
+                                                for="charterCheck"
+                                                >전세</label
+                                            >
+                                        </div>
+                                        <div
+                                            class="custom-control custom-checkbox mb-3"
                                         >
+                                            <input
+                                                type="checkbox"
+                                                class="custom-control-input"
+                                                id="monthlyCheck"
+                                            />
+                                            <label
+                                                class="custom-control-label"
+                                                for="monthlyCheck"
+                                                >월세</label
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="ms" style="display:none" id="ms_charter">
+                                        <div class="middle" id="charter">
+                                            <div class="multi-range-slider">
+                                                
+                                                <input type="range" id="input-left2" min="0" max="46" step="1" value="0" />                                                                                                               
+                                                <input type="range" id="input-right2" min="0" max="46" step="1" value="46" />
+                                                <p><span>보증금</span><span id="val_input-right2" style="float:right" ></span><span id="range_blank2" style="float:right"> ~ </span><span id="val_input-left2" style="float:right"></span></p>
+                                                
+                                                <script>
+                                                    var result_left2 = $("#val_input-left2");
+                                                    var slider_left2 = $("#input-left2");
+                                                    result_left2.html("0만원 ");
+                                                    slider_left2.on("input", function () {
+                                                        if (slider_left2.val() == 0){
+                                                            result_left2.html("0만원 ");
+                                                        }else if(slider_left2.val() == 1){
+                                                            result_left2.html("100만원 ");
+                                                        }else if(slider_left2.val() == 2){
+                                                            result_left2.html("200만원 ");
+                                                        }else if(slider_left2.val() == 3){
+                                                            result_left2.html("300만원 ");
+                                                        }else if(slider_left2.val() == 4){
+                                                            result_left2.html("400만원 ");
+                                                        }else if(slider_left2.val() == 5){
+                                                            result_left2.html("500만원 ");
+                                                        }else if(slider_left2.val() == 6){
+                                                            result_left2.html("1000만원 ");
+                                                        }else if(slider_left2.val() == 7){
+                                                            result_left2.html("1500만원 ");
+                                                        }else if(slider_left2.val() == 8){
+                                                            result_left2.html("2000만원 ");
+                                                        }else if(slider_left2.val() == 9){
+                                                            result_left2.html("2500만원 ");
+                                                        }else if(slider_left2.val() == 10){
+                                                            result_left2.html("3000만원 ");
+                                                        }else if(slider_left2.val() == 11){
+                                                            result_left2.html("3500만원 ");
+                                                        }else if(slider_left2.val() == 12){
+                                                            result_left2.html("4000만원 ");
+                                                        }else if(slider_left2.val() == 13){
+                                                            result_left2.html("4500만원 ");
+                                                        }else if(slider_left2.val() == 14){
+                                                            result_left2.html("5000만원 ");
+                                                        }else if(slider_left2.val() == 15){
+                                                            result_left2.html("5500만원 ");
+                                                        }else if(slider_left2.val() == 16){
+                                                            result_left2.html("6000만원 ");
+                                                        }else if(slider_left2.val() == 17){
+                                                            result_left2.html("6500만원 ");
+                                                        }else if(slider_left2.val() == 18){
+                                                            result_left2.html("7000만원 ");
+                                                        }else if(slider_left2.val() == 19){
+                                                            result_left2.html("8000만원 ");
+                                                        }else if(slider_left2.val() == 20){
+                                                            result_left2.html("9000만원 ");
+                                                        }else if(slider_left2.val() == 21){
+                                                            result_left2.html("1억원 ");
+                                                        }else if(slider_left2.val() == 22){
+                                                            result_left2.html("1억 1천만원 ");
+                                                        }else if(slider_left2.val() == 23){
+                                                            result_left2.html("1억 2천만원 ");
+                                                        }else if(slider_left2.val() == 24){
+                                                            result_left2.html("1억 3천만원 ");
+                                                        }else if(slider_left2.val() == 25){
+                                                            result_left2.html("1억 4천만원 ");
+                                                        }else if(slider_left2.val() == 26){
+                                                            result_left2.html("1억 5천만원 ");
+                                                        }else if(slider_left2.val() == 27){
+                                                            result_left2.html("1억 6천만원 ");
+                                                        }else if(slider_left2.val() == 28){
+                                                            result_left2.html("1억 7천만원 ");
+                                                        }else if(slider_left2.val() == 29){
+                                                            result_left2.html("1억 8천만원 ");
+                                                        }else if(slider_left2.val() == 30){
+                                                            result_left2.html("1억 9천만원 ");
+                                                        }else if(slider_left2.val() == 31){
+                                                            result_left2.html("2억원 ");
+                                                        }else if(slider_left2.val() == 32){
+                                                            result_left2.html("2억 5천만원 ");
+                                                        }else if(slider_left2.val() == 33){
+                                                            result_left2.html("3억원 ");
+                                                        }else if(slider_left2.val() == 34){
+                                                            result_left2.html("3억 5천만원 ");
+                                                        }else if(slider_left2.val() == 35){
+                                                            result_left2.html("4억원 ");
+                                                        }else if(slider_left2.val() == 36){
+                                                            result_left2.html("4억 5천만원 ");
+                                                        }else if(slider_left2.val() == 37){
+                                                            result_left2.html("5억원 ");
+                                                        }else if(slider_left2.val() == 38){
+                                                            result_left2.html("5억 5천만원 ");
+                                                        }else if(slider_left2.val() == 39){
+                                                            result_left2.html("6억원 ");
+                                                        }else if(slider_left2.val() == 40){
+                                                            result_left2.html("6억 5천만원 ");
+                                                        }else if(slider_left2.val() == 41){
+                                                            result_left2.html("7억원 ");
+                                                        }else if(slider_left2.val() == 42){
+                                                            result_left2.html("7억 5천만원 ");
+                                                        }else if(slider_left2.val() == 43){
+                                                            result_left2.html("8억원 ");
+                                                        }else if(slider_left2.val() == 44){
+                                                            result_left2.html("8억 5천만원 ");
+                                                        }else if(slider_left2.val() == 45){
+                                                            result_left2.html("9억원 ");
+                                                        }else{
+                                                            result_left2.html("무제한 ");
+                                                        }
+                                                    });
+                                    
+                                                    var result_right2 = $("#val_input-right2");
+                                                    var slider_right2 = $("#input-right2");
+                                                    result_right2.html(" 무제한");
+                                                    slider_right2.on("input", function () {
+                                                        if (slider_right2.val() == 0){
+                                                            result_right2.html(" 0만원");
+                                                        }else if(slider_right2.val() == 1){
+                                                            result_right2.html(" 100만원");
+                                                        }else if(slider_right2.val() == 2){
+                                                            result_right2.html(" 200만원");
+                                                        }else if(slider_right2.val() == 3){
+                                                            result_right2.html(" 300만원");
+                                                        }else if(slider_right2.val() == 4){
+                                                            result_right2.html(" 400만원");
+                                                        }else if(slider_right2.val() == 5){
+                                                            result_right2.html(" 500만원");
+                                                        }else if(slider_right2.val() == 6){
+                                                            result_right2.html(" 1000만원");
+                                                        }else if(slider_right2.val() == 7){
+                                                            result_right2.html(" 1500만원");
+                                                        }else if(slider_right2.val() == 8){
+                                                            result_right2.html(" 2000만원");
+                                                        }else if(slider_right2.val() == 9){
+                                                            result_right2.html(" 2500만원");
+                                                        }else if(slider_right2.val() == 10){
+                                                            result_right2.html(" 3000만원");
+                                                        }else if(slider_right2.val() == 11){
+                                                            result_right2.html(" 3500만원");
+                                                        }else if(slider_right2.val() == 12){
+                                                            result_right2.html(" 4000만원");
+                                                        }else if(slider_right2.val() == 13){
+                                                            result_right2.html(" 4500만원");
+                                                        }else if(slider_right2.val() == 14){
+                                                            result_right2.html(" 5000만원");
+                                                        }else if(slider_right2.val() == 15){
+                                                            result_right2.html(" 5500만원");
+                                                        }else if(slider_right2.val() == 16){
+                                                            result_right2.html(" 6000만원");
+                                                        }else if(slider_right2.val() == 17){
+                                                            result_right2.html(" 6500만원");
+                                                        }else if(slider_right2.val() == 18){
+                                                            result_right2.html(" 7000만원");
+                                                        }else if(slider_right2.val() == 19){
+                                                            result_right2.html(" 8000만원");
+                                                        }else if(slider_right2.val() == 20){
+                                                            result_right2.html(" 9000만원");
+                                                        }else if(slider_right2.val() == 21){
+                                                            result_right2.html(" 1억원");
+                                                        }else if(slider_right2.val() == 22){
+                                                            result_right2.html(" 1억 1천만원");
+                                                        }else if(slider_right2.val() == 23){
+                                                            result_right2.html(" 1억 2천만원");
+                                                        }else if(slider_right2.val() == 24){
+                                                            result_right2.html(" 1억 3천만원");
+                                                        }else if(slider_right2.val() == 25){
+                                                            result_right2.html(" 1억 4천만원");
+                                                        }else if(slider_right2.val() == 26){
+                                                            result_right2.html(" 1억 5천만원");
+                                                        }else if(slider_right2.val() == 27){
+                                                            result_right2.html(" 1억 6천만원");
+                                                        }else if(slider_right2.val() == 28){
+                                                            result_right2.html(" 1억 7천만원");
+                                                        }else if(slider_right2.val() == 29){
+                                                            result_right2.html(" 1억 8천만원");
+                                                        }else if(slider_right2.val() == 30){
+                                                            result_right2.html(" 1억 9천만원");
+                                                        }else if(slider_right2.val() == 31){
+                                                            result_right2.html(" 2억원");
+                                                        }else if(slider_right2.val() == 32){
+                                                            result_right2.html(" 2억 5천만원");
+                                                        }else if(slider_right2.val() == 33){
+                                                            result_right2.html(" 3억원");
+                                                        }else if(slider_right2.val() == 34){
+                                                            result_right2.html(" 3억 5천만원");
+                                                        }else if(slider_right2.val() == 35){
+                                                            result_right2.html(" 4억원");
+                                                        }else if(slider_right2.val() == 36){
+                                                            result_right2.html(" 4억 5천만원");
+                                                        }else if(slider_right2.val() == 37){
+                                                            result_right2.html(" 5억원");
+                                                        }else if(slider_right2.val() == 38){
+                                                            result_right2.html(" 5억 5천만원");
+                                                        }else if(slider_right2.val() == 39){
+                                                            result_right2.html(" 6억원");
+                                                        }else if(slider_right2.val() == 40){
+                                                            result_right2.html(" 6억 5천만원");
+                                                        }else if(slider_right2.val() == 41){
+                                                            result_right2.html(" 7억원");
+                                                        }else if(slider_right2.val() == 42){
+                                                            result_right2.html(" 7억 5천만원");
+                                                        }else if(slider_right2.val() == 43){
+                                                            result_right2.html(" 8억원");
+                                                        }else if(slider_right2.val() == 44){
+                                                            result_right2.html(" 8억 5천만원");
+                                                        }else if(slider_right2.val() == 45){
+                                                            result_right2.html(" 9억원");
+                                                        }else{
+                                                            result_right2.html(" 무제한");
+                                                        }
+                                                    });
+
+
+                                                </script>
+                                                <div class="custom_slider2">
+                                                    <div class="track"></div>
+                                                    <div class="range" id="silder_range"></div>
+                                                    <div class="thumb left" id="thumb_left"></div>
+                                                    <div class="thumb right" id ="thumb_right"></div>
+                                                </div>                                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms" style="display:none" id="ms_monthly">
+                                        <div class="middle" id="monthly">
+                                            <div class="multi-range-slider">
+                                                
+                                                <input type="range" id="input-left" min="0" max="33" value="0" />
+                                                                                                                        
+                                                <input type="range" id="input-right" min="0" max="33"  value="33" />
+                                                <p><span>월세</span><span id="val_input-right" style="float:right"></span><span id="range_blank" style="float:right"> ~ </span><span id="val_input-left" style="float:right"></span></p>
+                                                
+                                                <script>
+                                                    var result_left = $("#val_input-left");
+                                                    var slider_left = $("#input-left");
+                                                    result_left.html("0만원 ");
+                                                    slider_left.on("input", function () {
+                                                        if (slider_left.val() == 0){
+                                                            result_left.html("0만원 ");
+                                                        }else if (slider_left.val() == 1){
+                                                            result_left.html("5만원 ");
+                                                        }else if(slider_left.val() == 2){
+                                                            result_left.html("10만원 ");
+                                                        }else if(slider_left.val() == 3){
+                                                            result_left.html("15만원 ");
+                                                        }else if(slider_left.val() == 4){
+                                                            result_left.html("20만원 ");
+                                                        }else if(slider_left.val() == 5){
+                                                            result_left.html("25만원 ");
+                                                        }else if(slider_left.val() == 6){
+                                                            result_left.html("30만원 ");
+                                                        }else if(slider_left.val() == 7){
+                                                            result_left.html("35만원 ");
+                                                        }else if(slider_left.val() == 8){
+                                                            result_left.html("40만원 ");
+                                                        }else if(slider_left.val() == 9){
+                                                            result_left.html("45만원 ");
+                                                        }else if(slider_left.val() == 10){
+                                                            result_left.html("50만원 ");
+                                                        }else if(slider_left.val() == 11){
+                                                            result_left.html("55만원 ");
+                                                        }else if(slider_left.val() == 12){
+                                                            result_left.html("60만원 ");
+                                                        }else if(slider_left.val() == 13){
+                                                            result_left.html("65만원 ");
+                                                        }else if(slider_left.val() == 14){
+                                                            result_left.html("70만원 ");
+                                                        }else if(slider_left.val() == 15){
+                                                            result_left.html("75만원 ");
+                                                        }else if(slider_left.val() == 16){
+                                                            result_left.html("80만원 ");
+                                                        }else if(slider_left.val() == 17){
+                                                            result_left.html("85만원 ");
+                                                        }else if(slider_left.val() == 18){
+                                                            result_left.html("90만원 ");
+                                                        }else if(slider_left.val() == 19){
+                                                            result_left.html("95만원 ");
+                                                        }else if(slider_left.val() == 20){
+                                                            result_left.html("100만원 ");
+                                                        }else if(slider_left.val() == 21){
+                                                            result_left.html("110만원 ");
+                                                        }else if(slider_left.val() == 22){
+                                                            result_left.html("120만원 ");
+                                                        }else if(slider_left.val() == 23){
+                                                            result_left.html("130만원 ");
+                                                        }else if(slider_left.val() == 24){
+                                                            result_left.html("140만원 ");
+                                                        }else if(slider_left.val() == 25){
+                                                            result_left.html("150만원 ");
+                                                        }else if(slider_left.val() == 26){
+                                                            result_left.html("160만원 ");
+                                                        }else if(slider_left.val() == 27){
+                                                            result_left.html("170만원 ");
+                                                        }else if(slider_left.val() == 28){
+                                                            result_left.html("180만원 ");
+                                                        }else if(slider_left.val() == 29){
+                                                            result_left.html("190만원 ");
+                                                        }else if(slider_left.val() == 30){
+                                                            result_left.html("200만원 ");
+                                                        }else if(slider_left.val() == 31){
+                                                            result_left.html("250만원 ");
+                                                        }else if(slider_left.val() == 32){
+                                                            result_left.html("300만원 ");
+                                                        }else{
+                                                            result_left.html("무제한 ");
+                                                        }
+                                                    });
+                                    
+                                                    var result_right = $("#val_input-right");
+                                                    var slider_right = $("#input-right");
+                                                    result_right.html(" 무제한");
+                                                    slider_right.on("input", function () {
+                                                        if (slider_right.val() == 0){
+                                                            result_right.html(" 0만원");
+                                                        }else if (slider_right.val() == 1){
+                                                            result_right.html(" 5만원");
+                                                        }else if(slider_right.val() == 2){
+                                                            result_right.html(" 10만원");
+                                                        }else if(slider_right.val() == 3){
+                                                            result_right.html(" 15만원");
+                                                        }else if(slider_right.val() == 4){
+                                                            result_right.html(" 20만원");
+                                                        }else if(slider_right.val() == 5){
+                                                            result_right.html(" 25만원");
+                                                        }else if(slider_right.val() == 6){
+                                                            result_right.html(" 30만원");
+                                                        }else if(slider_right.val() == 7){
+                                                            result_right.html(" 35만원");
+                                                        }else if(slider_right.val() == 8){
+                                                            result_right.html(" 40만원");
+                                                        }else if(slider_right.val() == 9){
+                                                            result_right.html(" 45만원");
+                                                        }else if(slider_right.val() == 10){
+                                                            result_right.html(" 50만원");
+                                                        }else if(slider_right.val() == 11){
+                                                            result_right.html(" 55만원");
+                                                        }else if(slider_right.val() == 12){
+                                                            result_right.html(" 60만원");
+                                                        }else if(slider_right.val() == 13){
+                                                            result_right.html(" 65만원");
+                                                        }else if(slider_right.val() == 14){
+                                                            result_right.html(" 70만원");
+                                                        }else if(slider_right.val() == 15){
+                                                            result_right.html(" 75만원");
+                                                        }else if(slider_right.val() == 16){
+                                                            result_right.html(" 80만원");
+                                                        }else if(slider_right.val() == 17){
+                                                            result_right.html(" 85만원");
+                                                        }else if(slider_right.val() == 18){
+                                                            result_right.html(" 90만원");
+                                                        }else if(slider_right.val() == 19){
+                                                            result_right.html(" 95만원");
+                                                        }else if(slider_right.val() == 20){
+                                                            result_right.html(" 100만원");
+                                                        }else if(slider_right.val() == 21){
+                                                            result_right.html(" 110만원");
+                                                        }else if(slider_right.val() == 22){
+                                                            result_right.html(" 120만원");
+                                                        }else if(slider_right.val() == 23){
+                                                            result_right.html(" 130만원");
+                                                        }else if(slider_right.val() == 24){
+                                                            result_right.html(" 140만원");
+                                                        }else if(slider_right.val() == 25){
+                                                            result_right.html(" 150만원");
+                                                        }else if(slider_right.val() == 26){
+                                                            result_right.html(" 160만원");
+                                                        }else if(slider_right.val() == 27){
+                                                            result_right.html(" 170만원");
+                                                        }else if(slider_right.val() == 28){
+                                                            result_right.html(" 180만원");
+                                                        }else if(slider_right.val() == 29){
+                                                            result_right.html(" 190만원");
+                                                        }else if(slider_right.val() == 30){
+                                                            result_right.html(" 200만원");
+                                                        }else if(slider_right.val() == 31){
+                                                            result_right.html(" 250만원");
+                                                        }else if(slider_right.val() == 32){
+                                                            result_right.html(" 300만원");
+                                                        }else{
+                                                            result_right.html(" 무제한");
+                                                        }
+                                                    });
+                                                </script>
+                                                <div class="custom_slider">
+                                                    <div class="track"></div>
+                                                    <div class="range" id="silder_range"></div>
+                                                    <div class="thumb left" id="thumb_left"></div>
+                                                    <div class="thumb right" id ="thumb_right"></div>
+                                                </div>                                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr">직장의 위치..?</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="usr"
+                                        />
                                     </div>
                                 </div>
-                                <div class="form-group" id="charter">
-                                    <span>보증금/전세가</span>
-                                    <select
-                                        class="custom-select custom-select-sm mb-3"
-                                        id="charter_select"
+                                <div>
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary"
+                                        id="prebutton"
+                                        style="display: none;"
                                     >
-                                        <option selected value=0>금액을 선택하세요</option>
-                                        <option value=1000>1000</option>
-                                        <option value=5000>5000</option>
-                                        <option value=10000>10000</option>
-                                        <option value=15000>15000</option>
-                                        <option value=20000>20000</option>
-                                        <option value=25000>25000</option>
-                                        <option value=30000>30000</option>
-                                    </select>
-                                </div>
-                                <div class="form-group" id="monthly">
-                                    <span>월세</span>
-                                    <select
-                                        class="custom-select custom-select-sm mb-3"
-                                        id="monthly_select"
+                                        이전
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                        id="submit"
+                                        style="display: none;"
                                     >
-                                        <option selected value=0>금액을 선택하세요</option>
-                                        <option value=30>30</option>
-                                        <option value=40>40</option>
-                                        <option value=50>50</option>
-                                        <option value=60>60</option>
-                                        <option value=70>70</option>
-                                        <option value=1000>상관없음</option>
-                                    </select>
+                                        Submit
+                                    </button>
                                 </div>
-                                <div class="form-group">
-                                    <label for="usr">직장의 위치..?</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="usr"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <button
-                                    type="button"
-                                    class="btn btn-primary"
-                                    id="prebutton"
-                                    style="display: none;"
-                                >
-                                    이전
-                                </button>
-                                <button
-                                    type="submit"
-                                    class="btn btn-primary"
-                                    id="submit"
-                                    style="display: none;"
-                                >
-                                    Submit
-                                </button>
                             </div>
                             <br /><br /><br /><br /><br />
                         </form>
                     </fieldset>
-                </div>
-                <!-- 편의시설 facilitiesbar 구성 -->
-                <div id="facilities">
-                    <div id='plot'>
-                        <canvas id="pie-chart"></canvas>
-                        <p></p>
-                        <div id='subplot_btn'>
-                            <h5>상세히 보고 싶은 분류를 선택하세요.</h5>
-                            <div id="btn1">
-                                <button id='btn_traffic'>교통</button>
-                                <button id='btn_treatment'>의료</button>
-                                <button id='btn_welfare'>생활복지시설</button>
-                                <button id='btn_facilities'>생활편의시설</button>
-                            </div>
-                            <p></p>
-                            <div id="btn1">
-                                <button id='btn_leisure'>여가</button>
-                                <button id='btn_shop'>쇼핑시설</button>
-                                <button id='btn_mart'>장보기시설</button>
-                                <button id='btn_restaurant'>음식점</button>
-                            </div>
-                            <p></p>
-                        </div>
-                        <div id='bar_traffic'>
-                            <canvas id="bar-chart-horizontal traffic"></canvas>
-                            <hr>
-                        </div>
-                        <div id='bar_treatment'>
-                            <canvas id="bar-chart-horizontal treatment"></canvas>
-                            <hr>
-                        </div>
-                        <div id='bar_welfare'>
-                            <canvas id="bar-chart-horizontal welfare"></canvas>
-                            <hr>
-                        </div>
-                        <div id='bar_facilities'>
-                            <canvas id="bar-chart-horizontal facilities"></canvas>
-                            <hr>
-                        </div>
-                        <div id='bar_leisure'>
-                            <canvas id="bar-chart-horizontal leisure"></canvas>
-                            <hr>
-                        </div>
-                        <div id='bar_shop'>
-                            <canvas id="bar-chart-horizontal shop"></canvas>
-                            <hr>
-                        </div>
-                        <div id='bar_mart'>
-                            <canvas id="bar-chart-horizontal mart"></canvas>
-                            <hr>
-                        </div>
-                        <div id='bar_restaurant'>
-                            <canvas id="bar-chart-horizontal restaurant"></canvas>
-                            <hr>
-                        </div>
-                    </div>
                 </div>
                 <!-- 매물보기 sidebar_mamul 구성 -->
                 <div id="mamulbar">
