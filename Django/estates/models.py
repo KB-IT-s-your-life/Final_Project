@@ -78,3 +78,13 @@ class Mamul(models.Model):
 class Jachibubjung(models.Model):
     jachigu = models.CharField(max_length=50)
     bubjung = models.CharField(max_length=50)
+    
+class Jachibubjung_xy(models.Model):
+    bubjung = models.CharField(max_length=50)
+    position_x = models.FloatField()
+    position_y = models.FloatField()
+    
+class cluster_class(models.Model):
+    cluster_num = models.PositiveIntegerField()
+    dong = models.CharField(max_length=50)
+    

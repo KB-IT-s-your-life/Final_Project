@@ -14,4 +14,6 @@ urlpatterns = [
     path('pca', views.pca, name='pca'),
     path('getwallselatlng', views.getwallselatlng, name='getwallselatlng'),
     path('getbozeonglatlng', views.getbozeonglatlng, name='getbozeonglatlng'),
+    path('getdong_xy', views.getdong_xy, name='getdong_xy'),
+    path('getmain_xy', views.getmain_xy, name='getmain_xy'),
 ]

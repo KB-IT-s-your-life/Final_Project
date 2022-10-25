@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Facilities, Mamul, Jachibubjung
+from . models import Facilities, Mamul, Jachibubjung, Jachibubjung_xy
 from django.http import JsonResponse
 import joblib
 import json
@@ -41,6 +41,33 @@ def getmamuls(request):
     del mamuls['_state']
     context = {
         'mamuls':mamuls,     
+    }
+    return JsonResponse(context)
+
+
+def getmain_xy(request):
+    print('시작')
+    dong = request.GET.get('dong')
+    print(dong)
+    mainxy = Jachibubjung_xy.objects.get(bubjung=dong).__dict__
+    del mainxy['_state']
+    print(mainxy)
+
+    context = {
+        'mainxy':mainxy,      
+    }
+    return JsonResponse(context)
+
+def getdong_xy(request):
+    print('시작')
+    dong = request.GET.get('dong')
+    print(dong)
+    mainxy = Jachibubjung_xy.objects.get(bubjung=dong).__dict__
+    del mainxy['_state']
+    print(mainxy)
+
+    context = {
+        'mainxy':mainxy,      
     }
     return JsonResponse(context)
 
