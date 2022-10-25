@@ -19,7 +19,7 @@
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
-        <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
         <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/facilities.css' %}">
         {% block css %}
@@ -105,16 +105,21 @@
                 <!-- 검색조건 sidebar 구성 -->
                 <div id="sidebar">
                     <div class = "pageHead">
-                        <button
-                            type="button"
-                            class="btn btn-pageback"
-                            id="sidebarClose"
-                            onclick="sidebar_click()"
-                            style= 'float: left'
-                        >
-                        <span style = 'font-size: 25px;'>〈</span>
-                        </button>
-                        <h5> TITLE</h4>
+                        <div>
+                            <button
+                                type="button"
+                                class="btn btn-pageback"
+                                id="sidebarClose"
+                                onclick="sidebar_click()"
+                                style= 'float: left'
+                            >
+                            <span style = 'font-size: 25px;'>〈</span>
+                            </button>
+                        </div>
+                        <div>
+                            <h5>TITLE</h5>
+                        </div>
+                        <div></div>
                     </div>
                         <form action="{% url 'estates:mamul' %}" method = "POST" id="frm">
                             {% csrf_token %}
@@ -137,250 +142,256 @@
                                             <div style="font-weight:600;">찾아주는 내가 살기 좋은 동네</div>
                                             <div style="margin-top:20px">
                                                 <img src="{% static 'img/map.png' %}" alt="" id="mapimg">
-                                                </img>
                                             </div>
                                         </div>
                                         <fieldset>
-                                            <legend text-align=left>인프라에 따라 중요도를 설정하세요!</legend>
-                                    <div class="form-group" id="medical">
-                                        <p>의료시설</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_medical"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <datalist id="tickmarks">
-                                            <option value="1"></option>
-                                            <option value="2"></option>
-                                            <option value="3"></option>
-                                            <option value="4"></option>
-                                            <option value="5"></option>
-                                            <option value="6"></option>
-                                            <option value="7"></option>
-                                            <option value="8"></option>
-                                            <option value="9"></option>
-                                            <option value="10"></option>
-                                        </datalist>
-                                        <p>Value: <span id="val_medical"></span></p>
-                                        <script>
-                                            var result_medical = $("#val_medical");
-                                            var slider_medical = $("#Range_medical");
-                                            slider_medical.on("input", function () {
-                                                result_medical.html($(this).val());
-                                            });
-                                        </script>
+                                            <h5>※ 인프라에 따라 중요도를 설정하세요!</h5>
+                                            <p></p>
+                                    <div class="form-group">
+                                        <div>
+                                            <p>의료시설</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_medical"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <datalist id="tickmarks">
+                                                <option value="1"></option>
+                                                <option value="2"></option>
+                                                <option value="3"></option>
+                                                <option value="4"></option>
+                                                <option value="5"></option>
+                                                <option value="6"></option>
+                                                <option value="7"></option>
+                                                <option value="8"></option>
+                                                <option value="9"></option>
+                                                <option value="10"></option>
+                                            </datalist>
+                                            <p>Value: <span id="val_medical"></span></p>
+                                            <script>
+                                                var result_medical = $("#val_medical");
+                                                var slider_medical = $("#Range_medical");
+                                                slider_medical.on("input", function () {
+                                                    result_medical.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
+                                        <div>
+                                            <p>생활복지시설</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_facility"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_facility"></span></p>
+                                            <script>
+                                                var result_security = $("#val_facility");
+                                                var slider_security = $("#Range_facility");
+                                                slider_security.on("input", function () {
+                                                    result_security.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
-                                    <div class="form-group" id="facility">
-                                        <p>생활복지시설</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_facility"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_facility"></span></p>
-                                        <script>
-                                            var result_security = $("#val_facility");
-                                            var slider_security = $("#Range_facility");
-                                            slider_security.on("input", function () {
-                                                result_security.html($(this).val());
-                                            });
-                                        </script>
+                                    <div class="form-group">
+                                        <div>
+                                            <p>생활편의시설</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_convenient"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_convenient"></span></p>
+                                            <script>
+                                                var result_shopping = $("#val_convenient");
+                                                var slider_shopping = $("#Range_convenient");
+                                                slider_shopping.on("input", function () {
+                                                    result_shopping.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
+                                        <div>
+                                            <p>여가</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_leisure"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_leisure"></span></p>
+                                            <script>
+                                                var result_market = $("#val_leisure");
+                                                var slider_market = $("#Range_leisure");
+                                                slider_market.on("input", function () {
+                                                    result_market.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
-                                    <div class=""></div>
-                                    <div class="form-group" id="convenient">
-                                        <p>생활편의시설</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_convenient"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_convenient"></span></p>
-                                        <script>
-                                            var result_shopping = $("#val_convenient");
-                                            var slider_shopping = $("#Range_convenient");
-                                            slider_shopping.on("input", function () {
-                                                result_shopping.html($(this).val());
-                                            });
-                                        </script>
+                                    <div class="form-group">
+                                        <div>
+                                            <p>음식점</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_restaurant"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_restaurant"></span></p>
+                                            <script>
+                                                var result_convenient =
+                                                    $("#val_restaurant");
+                                                var slider_convenient =
+                                                    $("#Range_restaurant");
+                                                slider_convenient.on("input", function () {
+                                                    result_convenient.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
+                                        <div>
+                                            <p>교통</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_traffic"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_traffic"></span></p>
+                                            <script>
+                                                var result_leisure = $("#val_traffic");
+                                                var slider_leisure = $("#Range_traffic");
+                                                slider_leisure.on("input", function () {
+                                                    result_leisure.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
-                                    <div class="form-group" id="leisure">
-                                        <p>여가</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_leisure"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_leisure"></span></p>
-                                        <script>
-                                            var result_market = $("#val_leisure");
-                                            var slider_market = $("#Range_leisure");
-                                            slider_market.on("input", function () {
-                                                result_market.html($(this).val());
-                                            });
-                                        </script>
+                                    <div class="form-group">
+                                        <div>
+                                            <p>패스트푸드</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_fastfood"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_fastfood"></span></p>
+                                            <script>
+                                                var result_oil = $("#val_fastfood");
+                                                var slider_oil = $("#Range_fastfood");
+                                                slider_oil.on("input", function () {
+                                                    result_oil.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
+                                        <div>
+                                            <p>카페</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_cafe"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_cafe"></span></p>
+                                            <script>
+                                                var result_park = $("#val_cafe");
+                                                var slider_park = $("#Range_cafe");
+                                                slider_park.on("input", function () {
+                                                    result_park.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
-                                    <div class=""></div>
-                                    <div class="form-group" id="restaurant">
-                                        <p>음식점</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_restaurant"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_restaurant"></span></p>
-                                        <script>
-                                            var result_convenient =
-                                                $("#val_restaurant");
-                                            var slider_convenient =
-                                                $("#Range_restaurant");
-                                            slider_convenient.on("input", function () {
-                                                result_convenient.html($(this).val());
-                                            });
-                                        </script>
-                                    </div>
-                                    <div class="form-group" id="traffic">
-                                        <p>교통</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_traffic"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_traffic"></span></p>
-                                        <script>
-                                            var result_leisure = $("#val_traffic");
-                                            var slider_leisure = $("#Range_traffic");
-                                            slider_leisure.on("input", function () {
-                                                result_leisure.html($(this).val());
-                                            });
-                                        </script>
-                                    </div>
-                                    <div class="form-group" id="fastfood">
-                                        <p>패스트푸드</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_fastfood"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_fastfood"></span></p>
-                                        <script>
-                                            var result_oil = $("#val_fastfood");
-                                            var slider_oil = $("#Range_fastfood");
-                                            slider_oil.on("input", function () {
-                                                result_oil.html($(this).val());
-                                            });
-                                        </script>
-                                    </div>
-                                    <div class=""></div>
-                                    <div class="form-group" id="cafe">
-                                        <p>카페</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_cafe"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_cafe"></span></p>
-                                        <script>
-                                            var result_park = $("#val_cafe");
-                                            var slider_park = $("#Range_cafe");
-                                            slider_park.on("input", function () {
-                                                result_park.html($(this).val());
-                                            });
-                                        </script>
-                                    </div>
-                                    <div class=""></div>
-                                    <div class="form-group" id="market">
-                                        <p>장보기</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_market"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_market"></span></p>
-                                        <script>
-                                            var result_restaurant =
-                                                $("#val_market");
-                                            var slider_restaurant =
-                                                $("#Range_market");
-                                            slider_restaurant.on("input", function () {
-                                                result_restaurant.html($(this).val());
-                                            });
-                                        </script>
-                                    </div>
-                                    <div class="form-group" id="shopping">
-                                        <p>쇼핑</p>
-                                        <p></p>
-                                        <input
-                                            type="range"
-                                            class="slider_range"
-                                            id="Range_shopping"
-                                            value="5"
-                                            min="0"
-                                            max="10"
-                                            step="1" 
-                                            list="tickmarks" 
-                                        />
-                                        <p>Value: <span id="val_shopping"></span></p>
-                                        <script>
-                                            var result_traffic = $("#val_shopping");
-                                            var slider_traffic = $("#Range_shopping");
-                                            slider_traffic.on("input", function () {
-                                                result_traffic.html($(this).val());
-                                            });
-                                        </script>
+                                    <div class="form-group">
+                                        <div>
+                                            <p>장보기</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_market"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_market"></span></p>
+                                            <script>
+                                                var result_restaurant =
+                                                    $("#val_market");
+                                                var slider_restaurant =
+                                                    $("#Range_market");
+                                                slider_restaurant.on("input", function () {
+                                                    result_restaurant.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
+                                        <div>
+                                            <p>쇼핑</p>
+                                            <p></p>
+                                            <input
+                                                type="range"
+                                                class="slider_range"
+                                                id="Range_shopping"
+                                                value="5"
+                                                min="0"
+                                                max="10"
+                                                step="1" 
+                                                list="tickmarks" 
+                                            />
+                                            <p>Value: <span id="val_shopping"></span></p>
+                                            <script>
+                                                var result_traffic = $("#val_shopping");
+                                                var slider_traffic = $("#Range_shopping");
+                                                slider_traffic.on("input", function () {
+                                                    result_traffic.html($(this).val());
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
                                     <button
                                             type="button"
@@ -394,9 +405,10 @@
                             <!-- 매물 조건 -->
                             <div class="myhomeCont">
                                 <div id="next_sidebar" style="display: none;">
-                                    <p style="white-space: nowrap">
-                                        희망하는 매물의 조건과 가격을 고르세요!
-                                    </p>
+                                    <h5 style="white-space: nowrap">
+                                        ※ 희망하는 매물의 조건과 가격을 고르세요!
+                                    </h5>
+                                    <p></p>
                                     <div class="Check">
                                         <div
                                             class="custom-control custom-checkbox mb-3"
@@ -823,13 +835,15 @@
                             <hr>
                             <div class="myhomeCont">
                                 <div id='regionchoice' style="display: none;">
-                                    <p style="white-space: nowrap">
-                                        직장의 위치를 구/동 단위까지 골라주세요!
-                                    </p>
+                                    <h5 style="white-space: nowrap">
+                                        ※ 직장의 위치를 구/동 단위까지 골라주세요!
+                                    </h5>
+                                    <p></p>
                                     <span>선택한 지역:</span>
                                     <span id='showregion'></span>
                                     <span id='showregion_dong'></span>
                                     <button type='button' id='reset'>초기화</button>
+                                    <p></p>
                                     <div id="btn-gubox">
                                     <button type='button' class="btn_gu" value='강남구'>
                                         {% comment %} <input type='radio' name='options' id='option1'> {% endcomment %}
@@ -956,17 +970,18 @@
                                     </button>
                                 </div>
                             </div>
-                            <br /><br /><br /><br /><br />
+                            <br />
                         </form>
                     </fieldset>
                 </div>
                 <!-- 편의시설 facilitiesbar 구성 -->
                 <div id="facilities">
+                    <p></p>
                     <div id='plot'>
                         <canvas id="pie-chart"></canvas>
                         <p></p>
                         <div id='subplot_btn'>
-                            <h5>상세히 보고 싶은 분류를 선택하세요.</h5>
+                            <h5>※ 상세히 보고 싶은 분류를 선택하세요.</h5>
                             <div id="btn1">
                                 <button id='btn_traffic'>교통</button>
                                 <button id='btn_treatment'>의료</button>

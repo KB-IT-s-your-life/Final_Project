@@ -1,262 +1,39 @@
-.bd-sidebar {
-    position: sticky;
-    top: 4rem;
-    z-index: 1000;
-    height: 100vh;
-    overflow-y: auto;
-    min-width: 70px;
-    max-width: 70px;
-}
-.bd-sidebar .nav {
-    font-weight: 400;
-    text-align: center;
-    font-size: 14px;
-    color: #fff;
-    line-height: 1.5;
-    box-sizing: border-box;
-    display: block;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 99999;
-    background: rgb(0, 0, 0);
-    box-shadow: 0 -4px 8px rgb(0 0 0 / 10%);
-    max-width: 424px;
-    width: 70px;
-    height: 100%;
-    left: 0;
-    top: 0;
-    border-radius: 0;
-}
-.bd-sidebar .nav .bodyline{
-    font-weight: 400;
-    user-select: none;
-    border: 1px solid transparent;
-    min-width: 24px;
-    min-height: 93%;
-    padding: 0;
-    color: #222;
-    position: relative;
-    flex: 1;
-    width: 100%;
-    margin: 0;
-    line-height: 18px;
-    text-align: center;
-    background: #fff;
-    transition: .3s;
-    display: block;
-    height: 30px;
-    border-bottom: 1px solid #eee;
-    border-radius: 10;
-    font-size: 14px;
-    cursor: pointer;
-}
-.bd-sidebar .nav .tailline{
-    font-weight: 400;
-    user-select: none;
-    border: 1px solid transparent;
-    min-width: 24px;
-    min-height: 7%;
-    padding: 0;
-    color: #222;
-    position: relative;
-    flex: 1;
-    width: 100%;
-    margin: 0;
-    line-height: 18px;
-    text-align: center;
-    background: #fff;
-    transition: .3s;
-    display: block;
-    height: 30px;
-    border-bottom: 1px solid #eee;
-    border-radius: 10;
-    font-size: 14px;
-    cursor: pointer;
-}
-.bd-sidebar .nav button{
-    box-sizing: border-box;
-    overflow: visible;
-    text-transform: none;
-    letter-spacing: 0;
-    box-shadow: none;
-    font-weight: 400;
-    user-select: none;
-    border: 1px solid transparent;
-    min-width: 24px;
-    min-height: 100px;
-    padding: 0;
-    color: #222;
-    position: relative;
-    flex: 1;
-    width: 100%;
-    margin: 0;
-    padding-top: 25px;
-    line-height: 18px;
-    text-align: center;
-    background: #fff;
-    transition: .3s;
-    display: block;
-    height: 30px;
-    border-bottom: 1px solid #eee;
-    border-radius: 10;
-    font-size: 14px;
-    cursor: pointer;
-}
 .pageHead {
-    position: relative;
     width: 100%;
     height: 56px;
-    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 14px;
     z-index: 9999;
-    left: 0;
-    top: 0;
     color: #444;
     background: transparent;
 }
-.pageHead .btn-pageback {
-    position: relative;
-    top: 0px;
-    left: 1px;
-}
-h5{
-    padding:2.8%;
-    padding-left: 40%;
-}
+
 .noti-wrap {
-    margin-bottom: 40px;
-    padding-bottom: 166px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 80px;
 }
 .myhomeCont {
     padding: 16px;
 }
-#kbicon{
-    padding-top: 0%;
-    min-height: 53px;
-    /* box-sizing: border-box;
-    overflow: visible;
-    text-transform: none;
-    letter-spacing: 0;
-    box-shadow: none;
-    font-weight: 400;
-    user-select: none;
-    border: 1px solid transparent;
-    min-width: 24px;
-    min-height: 70px;
-    padding: 0px;
-    color: #222;
-    position: relative;
-    flex: 1;
-    width: 100%;
-    margin: 0;
-    padding-top: 0%;
-    line-height: 18px;
-    text-align: center;
-    background: #fff;
-    transition: .3s;
-    display: block;
-    height: 30px;
-    border-bottom: 1px solid #eee;
-    border-radius: 0;
-    font-size: 14px;
-    cursor: pointer; */
-}
-#map{
-    position: relative;
-    width: 95.4vw;
-    height: 100vh;
-    z-index: 1;
-}
-.nopadding {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-#sidebar {    
-    position: absolute;
-    display: none;    
-    width: 100%;    
-    align-items: stretch;
-    max-width: 470px;
-    min-width: 470px;
-    min-height: 100%;    
-    max-height: 100vh;
-    background-color: rgb(255, 255, 255);    
-    transition: 0.5s all;
-    z-index: 2;
-    padding-left: 72px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    box-shadow: 0 -4px 8px rgb(0 0 0 / 10%);
-}
-#facilities {
-    position: absolute;
-    display: none;    
-    width: 100%;    
-    align-items: stretch;
-    max-width: 470px;
-    min-width: 470px;    
-    min-height: 100vh;
-    background-color: whitesmoke;    
-    transition: 0.5s all;
-    z-index: 2;
-    padding-left: 85px;
-}
+
 fieldset{
-    width: 350px;
     margin-top: 20px;
     margin-left: 5px;
 }
 legend{
     text-align: center;
 }
-.form-groug{
-    margin-bottom: 0px !important;
-}
 #submit{
     float: right;
+    margin-right: 12px;
 }
 
-/* 편의시설 조건 */
-#medical{
-    float: left;
-    width: 170px;
-}
-#facility{
-    float: right;
-    width: 170px;
-}
-#convenient{
-    float: left;
-    width: 170px;
-}
-#leisure{
-    float: right;
-    width: 170px;
-}
-#restaurant{
-    float: left;
-    width: 170px;
-}
-#traffic{
-    float: right;
-    width: 170px;
-}
-#fastfood{
-    float: left;
-    width: 170px;
-}
-#cafe{
-    float: right;
-    width: 170px;
-}
-#market{
-    float: left;
-    width: 170px;
-}
-#shopping{
-    float: right;
-    width: 170px;
+.form-group{
+    display: flex;
+    justify-content: space-around;
 }
 
 .Check{
@@ -501,8 +278,8 @@ legend{
 
 .btn_gu{
     height: 50px;
-    min-width: calc((100% / 3 - 30px));
-    max-width: calc((100% / 3 - 30px));
+    min-width: calc((100% / 4 - 16px));
+    max-width: calc((100% / 4 - 16px));
     border-radius: 8px !important;
     border: 1px white;
     margin: 6px;
@@ -514,8 +291,8 @@ legend{
 }
 .btn_dong{
     height: 50px;
-    min-width: calc((100% / 3 - 28px) );
-    max-width: calc((100% / 3 - 28px));
+    min-width: calc((100% / 4 - 13px));
+    max-width: calc((100% / 4 - 13px));
     border-radius: 8px !important;
     border: 1px white;
     margin: 6px;
