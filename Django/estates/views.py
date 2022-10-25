@@ -90,7 +90,11 @@ def getwallselatlng(request):
     wallse_min = jsonObject.get('wallse_min')
     wallse_max = jsonObject.get('wallse_max')
     one_dong = jsonObject.get('one_dong')
-    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, imdaeru__gte=wallse_min, imdaeru__lte=wallse_max, junwallse='월세', bubjung=one_dong).values())
+    two_dong = jsonObject.get('two_dong')
+    three_dong = jsonObject.get('three_dong')
+    four_dong = jsonObject.get('four_dong')
+    five_dong = jsonObject.get('five_dong')
+    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, imdaeru__gte=wallse_min, imdaeru__lte=wallse_max, junwallse='월세', bubjung__in=[one_dong, two_dong, three_dong, four_dong, five_dong]).values())
     print('월세 끝')
     print(mamul[0])
     context = {
@@ -104,10 +108,38 @@ def getbozeonglatlng(request):
     bozeong_min = jsonObject.get('bozeong_min')
     bozeong_max = jsonObject.get('bozeong_max')
     one_dong = jsonObject.get('one_dong')
-    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, junwallse='전세', bubjung=one_dong).values())
+    two_dong = jsonObject.get('two_dong')
+    three_dong = jsonObject.get('three_dong')
+    four_dong = jsonObject.get('four_dong')
+    five_dong = jsonObject.get('five_dong')
+    mamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, junwallse='전세', bubjung__in=[one_dong, two_dong, three_dong, four_dong, five_dong]).values())
 
     context = {
         'mamul':mamul,      
+    }
+    return JsonResponse(context)
+
+@csrf_exempt
+def getjunwallselatlng(request):
+    print('전월세시작')
+    jsonObject = json.loads(request.body)
+    bozeong_min = jsonObject.get('bozeong_min')
+    bozeong_max = jsonObject.get('bozeong_max')
+    wallse_min = jsonObject.get('wallse_min')
+    wallse_max = jsonObject.get('wallse_max')
+    one_dong = jsonObject.get('one_dong')
+    two_dong = jsonObject.get('two_dong')
+    three_dong = jsonObject.get('three_dong')
+    four_dong = jsonObject.get('four_dong')
+    five_dong = jsonObject.get('five_dong')
+    wallsemamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, imdaeru__gte=wallse_min, imdaeru__lte=wallse_max, junwallse='월세', bubjung__in=[one_dong, two_dong, three_dong, four_dong, five_dong]).values())
+    junsemamul = list(Mamul.objects.filter(bozeonggum__gte = bozeong_min, bozeonggum__lte = bozeong_max, junwallse='전세', bubjung__in=[one_dong, two_dong, three_dong, four_dong, five_dong]).values())
+    
+    print('전월세 끝')
+
+    context = {
+        'wallsemamul': wallsemamul,
+        'junsemamul' : junsemamul,
     }
     return JsonResponse(context)
 
