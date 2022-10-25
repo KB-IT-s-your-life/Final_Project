@@ -18,7 +18,7 @@ $(function () {
             var charter_val = $("#charter_select").val();
             var monthly_val = $("#monthly_select").val();
             var usr_val = $("#usr").val();
-
+            var junwallse = 0;
             //로컬 스토리지에 넣음
             localStorage.setItem('Range_medical', medical);
             localStorage.setItem('Range_security', security);
@@ -30,10 +30,17 @@ $(function () {
             localStorage.setItem('Range_traffic', traffic);
             localStorage.setItem('Range_restaurant', restaurant);
             localStorage.setItem('Range_park', park);
-            localStorage.setItem('charter_select', charter_val);
-            localStorage.setItem('monthly_select', monthly_val);
+            if ($('#charterCheck').is(":checked")) {
+                localStorage.setItem('charter_select', charter_val);
+                junwallse += 1;
+            }
+            if ($('#monthlyCheck').is(":checked")) {
+                localStorage.setItem('charter_select', charter_val);
+                localStorage.setItem('monthly_select', monthly_val);
+                junwallse += 1;
+            }
             localStorage.setItem('usr', usr_val);
-
+            localStorage.setItem('junwallse', junwallse); 
             // alert(medical + security + shopping + market + leisure + convenient + oil + traffic + restaurant + park + charter_val + monthly_val + usr_val);
             // return confirm(medical+shopping+market+convenient+oil+leisure+park+traffic+restaurant);
             //submit 이벤트 작동안하도록 ..기본적인 이벤트 막아주는 함수,…preventDefault()

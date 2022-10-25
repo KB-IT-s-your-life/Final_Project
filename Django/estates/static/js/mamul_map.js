@@ -81,19 +81,28 @@ function hideMarkers() {
 $(function () {
     getval();
     getvalue();
-
     localStorage.clear();
+
 });
 
 function getval() {
     var bozeong = localStorage.getItem("charter_select"); //aaa,sss,3000
     var wallse = localStorage.getItem("monthly_select");
+    var junwallse = localStorage.getItem("junwallse");
     // alert(bozeong);
 
-    if (wallse) {
-        return make_wallse_filter_cluster(bozeong, wallse);
-    } else {
-        return make_bozeong_filter_cluster(bozeong);
+    if (junwallse == 2) {
+        make_wallse_filter_cluster(bozeong, wallse)
+        make_bozeong_filter_cluster(bozeong)
+    }
+    else {
+        if (wallse) {
+            console.log('월세')
+            return make_wallse_filter_cluster(bozeong, wallse);
+        } else {
+            console.log('전세')
+            return make_bozeong_filter_cluster(bozeong);
+        }
     }
 } // getval
 function make_bozeong_filter_cluster(bozeong) {
@@ -171,7 +180,7 @@ function make_wallse_filter_cluster(bozeong, wallse) {
         headers: {
             "X-CSRFTOKEN": "{{ csrf_token }}",
         },
-        url: "/estates/getbozeonglatlng",
+        url: "/estates/getwallselatlng",
         data: JSON.stringify(params),
         dateType: "json",
         success: function (jsonData) {
