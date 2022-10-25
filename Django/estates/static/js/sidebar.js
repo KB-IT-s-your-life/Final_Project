@@ -496,6 +496,7 @@ $(function () {
             $("#first_sidebar").hide();
             $("#nextbutton").hide();
             $("#prebutton").show();
+            $("#regionchoice").show();
             $("#submit").show();
         }); // 다음 버튼 누르면 매물조건
         $("#prebutton").click(function(){
@@ -503,9 +504,36 @@ $(function () {
             $("#first_sidebar").show();
             $("#nextbutton").show();
             $("#prebutton").hide();
+            $("#regionchoice").hide();
             $("#submit").hide();
         }); // 다음 버튼 누르면 매물조건
     });
+    $('.btn_gu').click(function () {
+        company.push($(this).val());
+        $('#btn-gubox').hide();
+        $('#btn-dongbox').empty();
+        $('#btn-dongbox').show();
+        show = $(this).val() + " > "
+        $('#showregion').append(show);
+        make_dong_btn($(this).val());
+
+    })
+    $('#btn-dongbox').on('click', '.btn_dong', function () {
+
+        company.push($(this).val());
+        show = $(this).val()
+        $('#showregion_dong').html(show);
+
+    })
+
+    $('#reset').click(function () {
+        $('#btn-gubox').show();
+        $('#btn-dongbox').hide();
+        $('#showregion').empty();
+        $('#showregion_dong').empty();
+
+        company = [];
+    })
 });
 
 var inputLeft = document.getElementById("input-left");
@@ -585,3 +613,287 @@ setRightValue2();
 
 inputLeft2.addEventListener("input", setLeftValue2);
 inputRight2.addEventListener("input", setRightValue2);
+
+    
+var temp = [];
+var company = [];
+var show = '';
+var dong_temp1 = [];
+
+var dong_dict = {};
+var sortable = [];
+
+var clusterdong = [
+'동소문동5가',
+'동소문동3가',
+'동소문동1가',
+'창동',
+'방학동',
+'쌍문동',
+'도봉동'
+]; //여기는 클러스터 결과 동들 넣어줘야함.
+var real_dong = [];
+var temp_gu = [];
+var main_x = 0.0;
+var main_y = 0.0;
+
+var temp_dong2 = '';
+// var dong_dict = {};
+//var sortable = [];
+
+function make_dong_btn(gu) {
+    $.ajax({
+        type: 'get',
+        url: '/estates/getdong?jachigu=' + gu,
+        dateType: 'json',
+        success: function (jsonData) {
+        // alert(jsonData.facil.subway)
+        $.each(jsonData, function (index, item) {
+            for (i = 0; i < item.length; i++) {
+                temp.push(item[i].bubjung);
+            } //for
+            for (i = 0; i < temp.length; i++) {
+                content = "<button type='button' class='btn_dong' value='" + temp[i] + "'><input type='radio' name='options' id='option" + (
+                i + 1) + "'>" + temp[i] + "</button>";
+                $('#btn-dongbox').append(content);
+            }
+                temp = [];
+            }); //each
+        }
+    });
+}
+
+function make_dong_list(gu) {
+for (inx = 0; inx < gu.length; inx++) {
+    $.ajax({
+        type: 'get',
+        url: '/estates/getdong?jachigu=' + gu[inx],
+        dateType: 'json',
+        async: false,
+        success: function (jsonData) {
+            var dong_temp2 = [];
+            $.each(jsonData, function (index, item) {
+                for (i = 0; i < item.length; i++) {
+                    dong_temp2.push(item[i].bubjung);
+                } //for
+                for (k = 0; k < dong_temp2.length; k++) {
+                    dong_temp1.push(dong_temp2[k]);
+                }
+            }); //each
+        }
+    });
+}
+return dong_temp1
+}
+
+function return_dong(gu, dong) {
+
+    if (gu == "도봉구") {
+        temp_gu = ['강북구', '노원구', '도봉구'];
+    } else if (gu == "노원구") {
+        temp_gu = ['중랑구', '노원구', '도봉구'];
+    } else if (gu == "중랑구") {
+        temp_gu = ['중랑구', '노원구', '성북구', '동대문구', '광진구'];
+    } else if (gu == "강북구") {
+        temp_gu = ['강북구', '노원구', '도봉구', '성북구'];
+    } else if (gu == "노원구") {
+        temp_gu = ['중랑구', '노원구', '도봉구'];
+    } else if (gu == "성북구") {
+        temp_gu = [
+        '종로구',
+        '성북구',
+        '동대문구',
+        '중랑구',
+        '노원구',
+        '강북구'
+        ];
+    } else if (gu == "은평구") {
+        temp_gu = ['은평구', '종로구', '서대문구', '마포구'];
+    } else if (gu == "서대문구") {
+        temp_gu = [
+        '서대문구',
+        '은평구',
+        '마포구',
+        '종로구',
+        '중구',
+        '용산구'
+        ];
+    } else if (gu == "종로구") {
+        temp_gu = ['은평구', '종로구', '서대문구', '성북구', '중구'];
+    } else if (gu == "동대문구") {
+        temp_gu = [
+        '성북구',
+        '중랑구',
+        '광진구',
+        '성동구',
+        '동대문구',
+        '노원구'
+        ];
+    } else if (gu == "마포구") {
+        temp_gu = [
+        '마포구',
+        '서대문구',
+        '중구',
+        '용산구',
+        '영등포구',
+        '양천구'
+        ];
+    } else if (gu == "중구") {
+        temp_gu = [
+        '중구',
+        '종로구',
+        '서대문구',
+        '마포구',
+        '용산구',
+        '성동구',
+        '동대문구',
+        '성북구'
+        ];
+    } else if (gu == "성동구") {
+        temp_gu = [
+        '성동구',
+        '동대문구',
+        '성북구',
+        '종로구',
+        '중구',
+        '용산구',
+        '강남구',
+        '송파구',
+        '광진구',
+        '중랑구'
+        ];
+    } else if (gu == "광진구") {
+        temp_gu = [
+        '광진구',
+        '중랑구',
+        '동대문구',
+        '성동구',
+        '강남구',
+        '송파구',
+        '강동구'
+        ];
+    } else if (gu == "강동구") {
+        temp_gu = ['광진구', '강동구', '송파구'];
+    } else if (gu == "강서구") {
+        temp_gu = ['강서구', '마포구', '양천구', '영등포구'];
+    } else if (gu == "양천구") {
+        temp_gu = ['양천구', '강서구', '영등포구', '구로구', '마포구'];
+    } else if (gu == "영등포구") {
+        temp_gu = [
+        '영등포구',
+        '마포구',
+        '용산구',
+        '동작구',
+        '관악구',
+        '금천구',
+        '구로구',
+        '양천구'
+        ];
+    } else if (gu == "동작구") {
+        temp_gu = [
+        '동작구',
+        '영등포구',
+        '용산구',
+        '서초구',
+        '관악구',
+        '금천구',
+        '구로구'
+        ];
+    } else if (gu == "서초구") {
+        temp_gu = [
+        '서초구',
+        '관악구',
+        '동작구',
+        '용산구',
+        '강남구',
+        '성동구'
+        ];
+    } else if (gu == "강남구") {
+        temp_gu = [
+        '강남구',
+        '서초구',
+        '용산구',
+        '성동구',
+        '광진구',
+        '송파구',
+        '중구'
+        ];
+    } else if (gu == "송파구") {
+        temp_gu = ['송파구', '강남구', '성동구', '광진구', '강동구'];
+    } else if (gu == "금천구") {
+        temp_gu = ['금천구', '구로구', '영등포구', '동작구', '관악구'];
+    } else if (gu == "구로구") {
+        temp_gu = [
+        '구로구',
+        '양천구',
+        '영등포구',
+        '동작구',
+        '관악구',
+        '금천구'
+        ];
+    } else if (gu == "관악구") {
+        temp_gu = [
+        '관악구',
+        '동작구',
+        '영등포구',
+        '구로구',
+        '금천구',
+        '서초구'
+        ];
+    }
+
+    var temp_dong = make_dong_list(temp_gu); //여기에 주변 구의 동들 다 저장 되어있음.
+    //alert(temp_dong);
+    for (i = 0; i < temp_dong.length; i++) {
+        for (j = 0; j < clusterdong.length; j++) {
+            if (temp_dong[i] == clusterdong[j]) {
+                real_dong.push(temp_dong[i]);
+                break;
+            }
+        }
+    } // 여기까지 거리잴 동들 real_dong에 저장완료 기준(선택한)동 dong, 모델이 골라준 동 real_dong리스트
+    // 이제 여기서 부터 real_dong과 dong의 좌표값들 다 가져와 주면 됨.
+    $.ajax({
+        type: 'get',
+        url: '/estates/getmain_xy?dong=' + dong,
+        dateType: 'json',
+        async: false,
+        success: function (jsonData) {
+        main_x = jsonData.mainxy.position_x
+        main_y = jsonData.mainxy.position_y
+
+        }
+    }); //main x,y
+    //alert(main_x);
+    for (i = 0; i < real_dong.length; i++) {
+        temp_dong2 = real_dong[i];
+        $.ajax({
+            type: 'get',
+            url: '/estates/getdong_xy?dong=' + temp_dong2,
+            dateType: 'json',
+            async: false,
+            success: function (jsonData) {
+
+                dong_x = jsonData.mainxy.position_x
+                dong_y = jsonData.mainxy.position_y
+                dong_dict[real_dong[i]] = ((main_x - dong_x) ** 2 + (main_y - dong_y) ** 2) * 1000;
+            }
+        });
+    }
+    for (var dongdong in dong_dict) {
+        sortable.push([
+        dongdong, dong_dict[dongdong]
+        ]);
+    }
+
+    sortable.sort(function (a, b) {
+        return a[1] - b[1];
+    });
+    alert(sortable[0][0]);
+    alert(sortable[1][0]);
+    alert(sortable[2][0]);
+    }
+
+    function show_reseult() {
+    return_dong(company[0], company[1]);
+}

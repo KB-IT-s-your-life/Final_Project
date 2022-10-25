@@ -818,15 +818,125 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="usr">직장의 위치..?</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="usr"
-                                        />
-                                    </div>
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="myhomeCont">
+                                <div id='regionchoice' style="display: none;">
+                                    <p style="white-space: nowrap">
+                                        직장의 위치를 구/동 단위까지 골라주세요!
+                                    </p>
+                                    <span>선택한 지역:</span>
+                                    <span id='showregion'></span>
+                                    <span id='showregion_dong'></span>
+                                    <button type='button' id='reset'>초기화</button>
+                                    <div id="btn-gubox">
+                                    <button type='button' class="btn_gu" value='강남구'>
+                                        {% comment %} <input type='radio' name='options' id='option1'> {% endcomment %}
+                                        강남구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='강동구'>
+                                        <input type='radio' name='options' id='option2'>
+                                        강동구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='강북구'>
+                                        <input type='radio' name='options' id='option3'>
+                                        강북구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='강서구'>
+                                        <input type='radio' name='options' id='option4'>
+                                        강서구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='관악구'>
+                                        <input type='radio' name='options' id='option5'>
+                                        관악구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='광진구'>
+                                        <input type='radio' name='options' id='option6'>
+                                        광진구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='구로구'>
+                                        <input type='radio' name='options' id='option7'>
+                                        구로구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='금천구'>
+                                        <input type='radio' name='options' id='option8'>
+                                        금천구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='노원구'>
+                                        <input type='radio' name='options' id='option9'>
+                                        노원구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='도봉구'>
+                                        <input type='radio' name='options' id='option10'>
+                                        도봉구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='동대문구'>
+                                        <input type='radio' name='options' id='option11'>
+                                        동대문구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='동작구'>
+                                        <input type='radio' name='options' id='option12'>
+                                        동작구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='마포구'>
+                                        <input type='radio' name='options' id='option13'>
+                                        마포구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='서대문구'>
+                                        <input type='radio' name='options' id='option14'>
+                                        서대문구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='서초구'>
+                                        <input type='radio' name='options' id='option15'>
+                                        서초구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='성동구'>
+                                        <input type='radio' name='options' id='option16'>
+                                        성동구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='성북구'>
+                                        <input type='radio' name='options' id='option17'>
+                                        성북구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='송파구'>
+                                        <input type='radio' name='options' id='option18'>
+                                        송파구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='양천구'>
+                                        <input type='radio' name='options' id='option19'>
+                                        양천구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='영등포구'>
+                                        <input type='radio' name='options' id='option20'>
+                                        영등포구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='용산구'>
+                                        <input type='radio' name='options' id='option21'>
+                                        용산구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='은평구'>
+                                        <input type='radio' name='options' id='option22'>
+                                        은평구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='종로구'>
+                                        <input type='radio' name='options' id='option23'>
+                                        종로구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='중구'>
+                                        <input type='radio' name='options' id='option24'>
+                                        중구
+                                    </button>
+                                    <button type='button' class="btn_gu" value='중랑구'>
+                                        <input type='radio' name='options' id='option25'>
+                                        중랑구
+                                    </button>
+                                    </div>
+                                    <div id="btn-dongbox"></div>
+                                    <div class='result'></div>
+                                </div>
+                            </div>
+                            <div class="myhomeCont">
                                 <div>
                                     <button
                                         type="button"
