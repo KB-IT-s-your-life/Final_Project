@@ -1,3 +1,27 @@
+@font-face {
+    font-family: 'HGGGOTHICSSI';
+    font-style: 'normal';
+    font-weight: 400;
+    src: url("http://127.0.0.1:8000/static/font/HGGGOTHICSSI_PRO_60G_0.OTF") format('woff')
+    }
+    
+@font-face {
+    font-family: 'nanumsquareneo';
+    font-style: 'normal';
+    font-weight: 400;
+    src: url("http://127.0.0.1:8000/static/font/NanumSquareNeoTTF-bRg.woff") format('woff')
+}
+
+@font-face {
+    font-family: 'sdsandol';
+    font-style: 'normal';
+    font-weight: 400;
+    src: url("http://127.0.0.1:8000/static/font/AppleSDGothicNeoEB.ttf") format('ttf')
+}
+    
+* {
+    font-family: 'sdsandol';
+}
 .bd-sidebar {
     position: sticky;
     top: 4rem;
@@ -162,4 +186,8 @@
     padding-left: 85px;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+#highlight{
+    text-shadow:0.5px 0.5px 0.8px rgb(179, 179, 179);
 }

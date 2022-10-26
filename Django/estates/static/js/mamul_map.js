@@ -1,3 +1,5 @@
+$('#mamulbar').show()
+
 var x_positions = [];
 var y_positions = [];
 var dong_names = [];
@@ -32,7 +34,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     };
 
 $.getJSON(
-    "http://localhost:8000/static/json/동시각화 전용.json",
+    "http://127.0.0.1:8000/static/json/동시각화 전용.json",
     function (json) {
         var data = json;
 
@@ -719,7 +721,7 @@ function first_click() {
     var level = 5;
     var a, b;
     $.getJSON(
-        "http://localhost:8000/static/json/동시각화 전용.json",
+        "http://127.0.0.1:8000/static/json/동시각화 전용.json",
         function (json) {
             var data = json;
             $.each(data, function (index, item) {
@@ -743,7 +745,7 @@ function second_click() {
     var level = 5;
     var a, b;
     $.getJSON(
-        "http://localhost:8000/static/json/동시각화 전용.json",
+        "http://127.0.0.1:8000/static/json/동시각화 전용.json",
         function (json) {
             var data = json;
             $.each(data, function (index, item) {
@@ -767,7 +769,7 @@ function third_click() {
     var level = 5;
     var a, b;
     $.getJSON(
-        "http://localhost:8000/static/json/동시각화 전용.json",
+        "http://127.0.0.1:8000/static/json/동시각화 전용.json",
         function (json) {
             var data = json;
             $.each(data, function (index, item) {
@@ -791,7 +793,7 @@ function fourth_click() {
     var level = 5;
     var a, b;
     $.getJSON(
-        "http://localhost:8000/static/json/동시각화 전용.json",
+        "http://127.0.0.1:8000/static/json/동시각화 전용.json",
         function (json) {
             var data = json;
             $.each(data, function (index, item) {
@@ -815,7 +817,7 @@ function fifth_click() {
     var level = 5;
     var a, b;
     $.getJSON(
-        "http://localhost:8000/static/json/동시각화 전용.json",
+        "http://127.0.0.1:8000/static/json/동시각화 전용.json",
         function (json) {
             var data = json;
             $.each(data, function (index, item) {

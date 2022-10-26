@@ -118,30 +118,34 @@
                             <span style = 'font-size: 25px;'>〈</span>
                             </button>
                         </div>
-                        <div>
-                            <h3>인프라기반 부동산 서비스</h3>
-                        </div>
-                        <div></div>
                     </div>
+                    <div id="pagehead">
+                        <h4>인프라기반 부동산 서비스</h4>
+                    </div>
+                
                         <form action="{% url 'estates:mamul' %}" method = "POST" id="frm">
                             {% csrf_token %}
                             <div id="first_sidebar">
                                 <div class="myhomeCont">
                                         <div class="noti-wrap">
                                             <strong><div style="margin-top:5px; margin-bottom:10px;"><span 
-                                                style ='color:#000; 
-                                                font-weight:600; 
-                                                font-size:25px;'
+                                                id = 'highlight'
+                                                style = 
+                                                'font-weight: 800;
+                                                font-size: 20px;'
                                                 >
                                                 나에게 딱 맞는 동네 찾기
                                             </span></div></strong>
-                                            <div style="font-weight:600;">똑똑한 AI가</div>
+                                            <div><span id = 'highlight' style="font-weight:800; font-size:15px;color: #fe7da4;">똑똑한 AI </span><span style='font-size:13px'>가</span></div>
                                             <div>
-                                                <span style = 'font-weight:800; font-size:18px; color: #F0C500;'>
+                                                <span id = 'highlight' style = 'font-weight:800; font-size:18px; color: #615ef8;'>
                                                     알.잘.딱.깔.센
                                                 </span>으로
                                             </div>
-                                            <div style="font-weight:600;">찾아주는 내가 살기 좋은 동네</div>
+                                            <div style="font-weight:600;">
+                                                <span>찾아주는 내가</span>
+                                                <span id = 'highlight' style = 'font-weight:800; font-size:18px; color: #f8cf4f;'> 살기 좋은 동네</span>
+                                            </div>
                                             <div style="margin-top:20px">
                                                 <img src="{% static 'img/map.png' %}" alt="" id="mapimg">
                                             </div>
