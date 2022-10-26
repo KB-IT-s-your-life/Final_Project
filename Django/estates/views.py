@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from matplotlib.style import context
 from . models import Facilities, Mamul, Jachibubjung, Jachibubjung_xy, cluster_class
 from django.http import JsonResponse
 import joblib
@@ -80,6 +81,17 @@ def getdong_xy(request):
         'mainxy':mainxy,      
     }
     return JsonResponse(context)
+
+def getallindexlatlng(request):
+    print('index 시작')
+    index_xy = list(Mamul.objects.all().values())
+    print(index_xy[0])
+    print('매물 가져옴')
+    context = {
+        'index_xy':index_xy
+    }
+    return JsonResponse(context)
+    
 
 @csrf_exempt
 def getwallselatlng(request):
