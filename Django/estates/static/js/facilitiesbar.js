@@ -26,6 +26,14 @@ function facilities_click_change(dong) {
     $("#facilities").show();
     $("#mamulbar").hide();
     $("#subplot_btn").show();
+    $("#bar_traffic").hide()
+    $("#bar_treatment").hide()
+    $("#bar_welfare").hide()
+    $("#bar_facilities").hide()
+    $("#bar_leisure").hide()
+    $("#bar_shop").hide()
+    $("#bar_mart").hide()
+    $("#bar_restaurant").hide()
 
     if (temp_plot != dong) {
         clear()
