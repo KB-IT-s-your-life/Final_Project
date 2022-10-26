@@ -98,12 +98,17 @@ function showMarkers() {
 
     $(".customoverlay").click(function () {
         facilities_click_change($(this).attr("val"));
-        //_change($(this).attr("val"));
     });
+    $('#show_facil').hide()
+    $('#hide_facil').show()
 }
 
+//    setMarkers(null);
+
 function hideMarkers() {
-    // $('#facilities').hide()
+    $('#hide_facil').hide()
+    $('#show_facil').show()
+    
     setMarkers(null);
 }
 
