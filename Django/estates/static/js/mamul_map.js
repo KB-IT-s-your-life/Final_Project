@@ -162,8 +162,8 @@ $(function () {
     getvalue();
     get_five_dong();
     getval();
-    // localStorage.clear();
-
+    
+    localStorage.clear();
 });
 
 function getval() {
