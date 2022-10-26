@@ -18,5 +18,6 @@ urlpatterns = [
     path('getmain_xy', views.getmain_xy, name='getmain_xy'),
     path('getclusterdong', views.getclusterdong, name='getclusterdong'),
     path('getjunwallselatlng', views.getjunwallselatlng, name='getjunwallselatlng'),
+    path('getallindexlatlng', views.getallindexlatlng, name='getallindexlatlng'),
     
 ]

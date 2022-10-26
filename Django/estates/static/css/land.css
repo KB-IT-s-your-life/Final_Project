@@ -2,19 +2,53 @@
     font-family:'Spoqa Han Sans Neo';
 }
 
+.container{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 .index1{
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(map_main.jpg) fixed;
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.index2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.index3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(0, 0, 0, 0.03);
+}
+
+.index4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120vh;
 }
 
 .main_txt{
     font-size: 5em;
-    width: 1200px;  /*글자 가로폭조정*/
+    /* width: 1200px;  글자 가로폭조정 */
     color: white;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-
+.col-lg-5 {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+}
 
 em{
     color: #ffaf00;
@@ -43,7 +77,7 @@ em{
     border-style: solid;
     border : 5px #ffaf00 solid;
     padding: 8px;
-    width : 800px;
+    min-width : 800px;
     height : auto;
 }
 
@@ -74,8 +108,6 @@ em{
 .main_txt1{
     font-size: 3.5em;
     text-align: left;
-    max-width:800px; 
-    margin-top: 70%;
     color: black;
     font-weight: 600;
 }
@@ -83,18 +115,14 @@ em{
 
 .main_txt2{
     font-size: 2em;
-    width: 500px;  /*글자 가로폭조정*/
     color: black;
-    margin-top: 20%;
     font-weight: 600;
     
 }
 
 #photo{
-    width: 130%;
-    height: 70%;
-    margin-top: 12%;
-    margin-bottom: 50%;
+    width: 110%;
+    height: 100%;
 }
 
 
@@ -122,9 +150,9 @@ em{
 }
 
 .photo1{
-    width: 60%;
-    height: 40%;
-    margin-top: 30%;
+    width: 210px;
+    height: 205px;
+    margin-top: 150px;
 
 }
 
@@ -141,9 +169,9 @@ em{
 }
 
 .photo2{
-    width: 60%;
-    height: 40%;
-    margin-top: 30%;
+    width: 210px;
+    height: 205px;
+    margin-top: 150px;
 }
 
 .main_txt5_1{
@@ -160,8 +188,8 @@ em{
 
 
 .photo3{
-    width: 60%;
-    height: 30%;
+    width: 210px;
+    height: 205px;
     margin-top: 20%;
     margin-bottom: 10%;
 
@@ -180,8 +208,8 @@ em{
 }
 
 .photo4{
-    width: 60%;
-    height: 30%;
+    width: 210px;
+    height: 205px;
     margin-top: 20%;
     margin-bottom: 10%;
 
@@ -200,38 +228,17 @@ em{
     margin-bottom: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.index4{
-    margin-bottom: 3%;
+.card-wrap {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .card-box{
     position: relative; /*얘 기준에 맞춰서 상대적으로 맞추는듯?*/
     border-radius: 16px;
     overflow: hidden; /*다른 부모의 높이에 넘어가는 걸 숨김*/
-    display: inline-block;
-    margin: 30px;
     width: 100%;
     max-width: 300px;
     height: 360px;
@@ -370,7 +377,7 @@ em{
 
 @keyframes img_slide{
     from{
-        margin-left: 30%;
+        margin-left: 15%;
         opacity: 0; /*선명도*/
 
     }
@@ -387,7 +394,7 @@ em{
         opacity: 1;
     }
     to{
-        margin-left: 30%;
+        margin-left: 15%;
         opacity: 0; /*선명도*/
     }
 }
