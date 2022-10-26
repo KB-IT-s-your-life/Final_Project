@@ -328,21 +328,21 @@ function mamul_click_info(mamul_detail) {
                     "<div class= 'listinfo'>" +
                     "<span class = 'height'>" +
                     jsonData.mamuls.height +
-                    "층 /</span>" +
+                    "층/</span>" +
                     "<span class = 'pyeong'>" +
-                    jsonData.mamuls.pyeong +
-                    "㎡ /</span>" +
+                    jsonData.mamuls.pyeong.toFixed(1) +
+                    "㎡/</span>" +
                     "<span class = 'gunchukyear'>" +
                     jsonData.mamuls.gunchukyear +
-                    "(건축년도) <br></span>" +
+                    "(건축년도)<br></span>" +
                     "<span class = 'lastbozeong'>" +
                     "종전보증금: " +
                     jsonData.mamuls.lastbozeong +
-                    "</span>" +
+                    "만</span><br>" +
                     "<span class = 'lastimdaeru'>" +
-                    "종전 임대료:" +
+                    "종전임대료: " +
                     jsonData.mamuls.lastimdaeru +
-                    "</span>" +
+                    "만</span>" +
                     "</div>" +
                     "<div class= 'listpredict'>" +
                     "<span class='label kb'><em>KB</em>AI예측시세</span>" +
