@@ -16,7 +16,29 @@
 {% endblock body %}
 
 {% block sidebar_mamul %}
+    <div class = "mamulHead">
+        <div>
+        </div>
+        <div>
+            <h5>TITLE</h5>
+        </div>
+        <div>
+            <button type="button" onclick="return_list()">
+            <span style = 'font-size: 25px;'>버튼!</span>
+            </button>
+        </div>
+    </div>
+    <div id="rank_dong">
+        <button type="button" id="first" onclick="first_click()" value=""></button>
+        <button type="button" id="second" onclick="second_click()" value=""></button>
+        <button type="button" id="third" onclick="third_click()" value=""></button>
+        <button type="button" id="fourth" onclick="fourth_click()" value=""></button>
+        <button type="button" id="fifth" onclick="fifth_click()" value=""></button>
+    </div>
+    <div id="mamuldiv"></div>
+    <div>
 
+    </div>
 {% endblock sidebar_mamul %}
 
 {% block map %}

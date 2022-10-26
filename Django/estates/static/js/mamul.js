@@ -1,5 +1,5 @@
 function mamul_click_marker(mark) {
-    $("#mamulbar").empty();
+    $("#mamuldiv").empty();
     $("#mamulbar").show();
     $("#facilities").hide();
     var pk = mark.Gb;
@@ -8,7 +8,7 @@ function mamul_click_marker(mark) {
         url: "/estates/getmamuls?pk=" + pk,
         dateType: "json",
         success: function (jsonData) {
-            $("#mamulbar").append(
+            $("#mamuldiv").append(
                 "<div class ='listname'>" +
                 "<span class = 'gunmulyongdo'>" +
                 jsonData.mamuls.gunmulyongdo +
@@ -72,7 +72,7 @@ function mamul_click_marker(mark) {
     });
 }
 function mamul_click_info(mamul_detail) {
-    $("#mamulbar").empty();
+    $("#mamuldiv").empty();
     $("#mamulbar").show();
     $("#facilities").hide();
     var mamul_list = [];
@@ -85,7 +85,7 @@ function mamul_click_info(mamul_detail) {
             url: "/estates/getmamuls?pk=" + mamul_list[i],
             dateType: "json",
             success: function (jsonData) {
-                $("#mamulbar").append(
+                $("#mamuldiv").append(
                     "<div class ='listname'>" +
                         "<span class = 'gunmulyongdo'>" +
                         jsonData.mamuls.gunmulyongdo +
@@ -151,7 +151,7 @@ function mamul_click_info(mamul_detail) {
 } //facilities_click_info
 
 function junwallse_mamul_click_info(mamul_detail) {
-    $("#mamulbar").empty();
+    $("#mamuldiv").empty();
     $("#mamulbar").show();
     $("#facilities").hide();
     var mamul_list = [];
@@ -164,7 +164,7 @@ function junwallse_mamul_click_info(mamul_detail) {
             url: "/estates/getmamuls?pk=" + mamul_list[i],
             dateType: "json",
             success: function (jsonData) {
-                $("#mamulbar").append(
+                $("#mamuldiv").append(
                     "<div class ='listname'>" +
                         "<span class = 'gunmulyongdo'>" +
                         jsonData.mamuls.gunmulyongdo +
@@ -233,4 +233,7 @@ function home() {
     location.href ='index';
 }
 
-
+// function return_list (){
+//     $('#rank_dong').show()
+//     $('#mamuldiv').hide()
+// }

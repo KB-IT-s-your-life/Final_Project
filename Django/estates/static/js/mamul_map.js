@@ -27,7 +27,7 @@ var temp_dong2 = '';
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(37.55811, 126.97406), // 지도의 중심좌표
-        level: 5, // 지도의 확대 레벨
+        level: 8, // 지도의 확대 레벨
         mapTypeId: kakao.maps.MapTypeId.ROADMAP, // 지도종류
     };
 
@@ -112,7 +112,7 @@ function get_five_dong(){
     gu = localStorage.getItem('choose_gu');
     dong = localStorage.getItem('choose_dong');
     sortable1 = return_dong(gu, dong);
-    alert(sortable1);
+    // alert(sortable1);
     if (sortable1.length >= 5){
         one_dong = sortable1[0][0];
         two_dong = sortable1[1][0];
@@ -124,16 +124,26 @@ function get_five_dong(){
             sortable_list[i] = sortable1[i][0];
             
     }
-one_dong = sortable_list[0];
-two_dong = sortable_list[1];
-three_dong = sortable_list[2];
-four_dong = sortable_list[3];
-five_dong = sortable_list[4];
-}
+    one_dong = sortable_list[0];
+    two_dong = sortable_list[1];
+    three_dong = sortable_list[2];
+    four_dong = sortable_list[3];
+    five_dong = sortable_list[4];
+    }
+    
+    $("#first").attr('value', one_dong);
+    $("#first").append(one_dong)
+    $("#second").attr('value', two_dong);
+    $("#second").append(two_dong)
+    $("#third").attr('value', three_dong);
+    $("#third").append(three_dong)
+    $("#fourth").attr('value', four_dong);
+    $("#fourth").append(four_dong)
+    $("#fifth").attr('value', five_dong);
+    $("#fifth").append(five_dong)
 
-
-alert(one_dong);
-alert(two_dong);
+// alert(one_dong);
+// alert(two_dong);
 }
 
 
@@ -211,6 +221,7 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_don
                         title: title[i],
                     }); //마커
                     kakao.maps.event.addListener(marker, "click", function () {
+                        $('#mamuldiv').show()
                         mamul_click_marker(this);
                     });
                     markers.push(marker);
@@ -230,6 +241,7 @@ function make_bozeong_filter_cluster(bozeong_min, bozeong_max, one_dong, two_don
                 clusterer,
                 "clusterclick",
                 function (cluster) {
+                    $('#mamuldiv').show()
                     mamul_click_info(cluster);
                 }
             );
@@ -285,6 +297,7 @@ function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse
                         title: title[i],
                     }); //마커
                     kakao.maps.event.addListener(marker, "click", function () {
+                        $('#mamuldiv').show()
                         mamul_click_marker(this);
                     });
                     markers.push(marker);
@@ -304,8 +317,8 @@ function make_wallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wallse
                 clusterer,
                 "clusterclick",
                 function (cluster) {
-                    
-                        mamul_click_info(cluster);
+                    $('#mamuldiv').show()
+                    mamul_click_info(cluster);
                     
                 }
             );
@@ -363,6 +376,7 @@ function make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wal
                         title: title[i],
                     }); //마커
                     kakao.maps.event.addListener(marker, "click", function () {
+                        $('#mamuldiv').show()
                         mamul_click_marker(this);
                     });
                     markers.push(marker);
@@ -382,7 +396,7 @@ function make_junwallse_filter_cluster(bozeong_min, bozeong_max, wallse_min, wal
                 clusterer_junwallse,
                 "clusterclick",
                 function (cluster) {
-                    
+                        $('#mamuldiv').show()
                         junwallse_mamul_click_info(cluster);
                     
                 }
@@ -415,7 +429,7 @@ function getvalue(){
     input_data.push(shopping)
     input_data.push(market)
 
-    alert(input_data)
+    // alert(input_data)
     //return convert_pca(input_data);
     return convert_pca(medical,facility,shopping,market,leisure,convenient,cafe,traffic,restaurant,fastfood);
 };
@@ -449,7 +463,7 @@ function convert_pca(medical,facility,shopping,market,leisure,convenient,cafe,tr
         //console.log(result);
             $.each(result, function(index,item){
                 cluster_num = item;
-                alert(cluster_num);
+                // alert(cluster_num);
                 cluster_dong(cluster_num);
             }) //each
         },//success
@@ -679,4 +693,137 @@ function return_dong(gu, dong) {
         return a[1] - b[1];
     });
     return (sortable);
+}
+
+function return_list (){
+    $('#rank_dong').show()
+    $('#mamuldiv').hide()
+    var level = 8;
+    map.setLevel(level, {
+        center: new kakao.maps.LatLng(37.55811, 126.97406),
+        animate: {
+            duration: 500,
+        },
+    });
+}
+
+
+function first_click() {
+    $('#rank_dong').hide()
+    var level = 5;
+    var a, b;
+    $.getJSON(
+        "http://localhost:8000/static/json/동시각화 전용.json",
+        function (json) {
+            var data = json;
+            $.each(data, function (index, item) {
+                if (item.법정동명 == $('#first').val()) {
+                    a = item.position_x;
+                    b = item.position_y;
+                }
+            }); //each
+            map.setLevel(level, {
+                anchor: new kakao.maps.LatLng(a, b),
+                animate: {
+                    duration: 500,
+                },
+            });
+        }
+    );
+}
+
+function second_click() {
+    $('#rank_dong').hide()
+    var level = 5;
+    var a, b;
+    $.getJSON(
+        "http://localhost:8000/static/json/동시각화 전용.json",
+        function (json) {
+            var data = json;
+            $.each(data, function (index, item) {
+                if (item.법정동명 == $('#second').val()) {
+                    a = item.position_x;
+                    b = item.position_y;
+                }
+            }); //each
+            map.setLevel(level, {
+                anchor: new kakao.maps.LatLng(a, b),
+                animate: {
+                    duration: 500,
+                },
+            });
+        }
+    );
+}
+
+function third_click() {
+    $('#rank_dong').hide()
+    var level = 5;
+    var a, b;
+    $.getJSON(
+        "http://localhost:8000/static/json/동시각화 전용.json",
+        function (json) {
+            var data = json;
+            $.each(data, function (index, item) {
+                if (item.법정동명 == $('#third').val()) {
+                    a = item.position_x;
+                    b = item.position_y;
+                }
+            }); //each
+            map.setLevel(level, {
+                anchor: new kakao.maps.LatLng(a, b),
+                animate: {
+                    duration: 500,
+                },
+            });
+        }
+    );
+}
+
+function fourth_click() {
+    $('#rank_dong').hide()
+    var level = 5;
+    var a, b;
+    $.getJSON(
+        "http://localhost:8000/static/json/동시각화 전용.json",
+        function (json) {
+            var data = json;
+            $.each(data, function (index, item) {
+                if (item.법정동명 == $('#fourth').val()) {
+                    a = item.position_x;
+                    b = item.position_y;
+                }
+            }); //each
+            map.setLevel(level, {
+                anchor: new kakao.maps.LatLng(a, b),
+                animate: {
+                    duration: 500,
+                },
+            });
+        }
+    );
+}
+
+function fifth_click() {
+    $('#rank_dong').hide()
+    var level = 5;
+    var a, b;
+    $.getJSON(
+        "http://localhost:8000/static/json/동시각화 전용.json",
+        function (json) {
+            var data = json;
+            $.each(data, function (index, item) {
+                if (item.법정동명 == $('#fifth').val()) {
+                    a = item.position_x;
+                    b = item.position_y;
+                }
+            }); //each
+            map.setLevel(level, {
+                anchor: new kakao.maps.LatLng(a, b),
+                animate: {
+                    duration: 500,
+                },
+            });
+        }
+    );
 }
