@@ -161,7 +161,7 @@ $(function () {
     getvalue();
     get_five_dong();
     getval();
-    localStorage.clear();
+    // localStorage.clear();
 
 });
 
@@ -837,3 +837,12 @@ function fifth_click() {
         }
     );
 }
+
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+kakao.maps.event.addListener(map, "zoom_changed", function () {
+    // 지도의 현재 레벨을 얻어옵니다
+    var level = map.getLevel();
+});

@@ -179,6 +179,7 @@ hr{
     z-index: 9999;
     color: #444;
     background: transparent;
+    padding-right: 5px;
 }
 
 #mamuldiv {
@@ -187,4 +188,37 @@ hr{
 
 #hide_facil {
     display: none;
+}
+
+#reset_btn{
+    border-radius: 8px !important;
+    border: 1px solid rgb(121, 121, 121);
+    margin: 6px;
+    letter-spacing: -.5px;
+    background: #ffffff;
+    color: #fff;
+    font-size: 16px;
+    width: 70px;
+    height: 30px;
+}
+
+#rank_dong {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 6px;
+    font-weight: 700;
+}
+
+#first, #second, #third, #fourth, #fifth {
+    border-radius: 8px !important;
+    border: 1px solid rgb(121, 121, 121);
+    margin: 6px;
+    letter-spacing: -.5px;
+    background: #ffffff;
+    color:black;
+    font-size: 15px;
+    height: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
+    box-shadow: 2px 2px 2px rgb(81, 81, 81);
 }

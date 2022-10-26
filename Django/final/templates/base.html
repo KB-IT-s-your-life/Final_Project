@@ -87,20 +87,22 @@
                             </button>
                         </div>
                         <!-- bodyline -->
-                        <button
-                            type="button"
-                            class="btn btn-nav home"
-                            id="kbicon"
-                        >
-                            <a href="http://www.kbland.kr" target="_blank">
-                                <img
-                                    src="{% static "img/kbland.png" %}"
-                                    alt=""
-                                    width="32px"
-                                    height="32px"
-                                />
-                            </a>
-                        </button>
+                        <div class='tailline'>
+                            <button
+                                type="button"
+                                class="btn btn-nav home"
+                                id="kbicon"
+                            >
+                                <a href="http://www.kbland.kr" target="_blank">
+                                    <img
+                                        src="{% static "img/kbland.png" %}"
+                                        alt=""
+                                        width="55px"
+                                        height="55px"
+                                    />
+                                </a>
+                            </button>
+                        </div>
                     </ul>
                     <br />
                 </div>
@@ -151,10 +153,10 @@
                                             </div>
                                         </div>
                                         <fieldset>
-                                            <h4>※ 인프라에 따라 중요도를 설정하세요!</h4>
+                                            <li style="padding-left: 10px; font-size: 18px">인프라에 따라 중요도를 설정하세요!</li>
                                             <p></p>
                                     <div class="form-group">
-                                        <div style = "width:180px">
+                                        <div style = "width:195px; padding-left:15px">
                                             
                                             <span>의료시설</span>
                                             <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*지역 내 병원 의원 약국 개수"></img>
@@ -217,7 +219,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div style = "width:180px">
+                                        <div style = "width:195px; padding-left:15px">
                                             <span>생활편의시설</span>
                                             <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*세탁소 등 생활 편의시설의 개수"></img>
                                             <p></p>
@@ -265,7 +267,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div style = "width:180px">
+                                        <div style = "width:195px; padding-left:15px">
                                             <span>음식점</span>
                                             <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*한식,중식 등 일반음식점 개수"></img>
 
@@ -317,7 +319,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div style = "width:180px">
+                                        <div style = "width:195px; padding-left:15px">
                                             <span>패스트푸드</span>
                                             <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*패스트푸드점 개수"></img>
 
@@ -367,7 +369,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div style = "width:180px">
+                                        <div style = "width:195px; padding-left:15px">
                                             <span>장보기</span>
                                             <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*대형마트, 시장 등 장보기시설 개수"></img>
 
@@ -430,9 +432,9 @@
                             <!-- 매물 조건 -->
                             <div class="myhomeCont">
                                 <div id="next_sidebar" style="display: none;">
-                                    <h4 style="white-space: nowrap">
-                                        ※ 희망하는 매물의 조건과 가격을 고르세요!
-                                    </h4>
+                                    <li style="padding-left: 10px; font-size: 18px; white-space: nowrap">
+                                        희망하는 매물의 조건과 가격을 고르세요!
+                                    </li>
                                     <p></p>
                                     <div class="Check">
                                         <div
@@ -859,12 +861,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
+                            <hr style='margin: 0px;'>
                             <div class="myhomeCont">
                                 <div id='regionchoice' style="display: none;">
-                                    <h4 style="white-space: nowrap">
-                                        ※ 직장의 위치를 구/동 단위까지 골라주세요!
-                                    </h3>
+                                    <li style="padding-left: 10px; font-size: 18px; white-space: nowrap">
+                                        직장의 위치를 구/동 단위까지 고르세요!
+                                    </li>
                                     <p></p>
                                     <div id='regionchoice_val'>
                                         <span padding-left: "11px">선택한 지역:</span>
@@ -995,7 +997,7 @@
                                         id="submit"
                                         style="display: none;"
                                     >
-                                        Submit
+                                        찾기
                                     </button>
                                 </div>
                             </div>
@@ -1010,14 +1012,14 @@
                         <canvas id="pie-chart"></canvas>
                         <p></p>
                         <div id='subplot_btn'>
-                            <h4>※ 상세히 보고 싶은 분류를 선택하세요.</h4>
+                            <li style="padding-left: 20px; font-size: 18px">상세히 보고 싶은 분류를 선택하세요.</li>
+                            <p></p>
                             <div id="btn1">
                                 <button id='btn_traffic'>교통</button>
                                 <button id='btn_treatment'>의료</button>
                                 <button id='btn_welfare'>생활복지시설</button>
                                 <button id='btn_facilities'>생활편의시설</button>
                             </div>
-                            <p></p>
                             <div id="btn1">
                                 <button id='btn_leisure'>여가</button>
                                 <button id='btn_shop'>쇼핑시설</button>

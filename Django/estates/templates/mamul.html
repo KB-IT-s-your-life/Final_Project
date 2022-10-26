@@ -16,15 +16,16 @@
 {% endblock body %}
 
 {% block sidebar_mamul %}
+    <div id="pagehead">
+        <h4> AI가 뽑은 당신을 위한 추천 지역</h4>
+    </div>
     <div class = "mamulHead">
         <div>
+            <li style="padding-left: 20px; font-size: 16px"> 자세히 보고싶은 지역을 클릭하세요 </li>
         </div>
-        <div>
-            <h5>TITLE</h5>
-        </div>
-        <div>
-            <button type="button" onclick="return_list()">
-            <span style = 'font-size: 25px;'>버튼!</span>
+        <div >
+            <button type="button" onclick="return_list()" id='reset_btn'>
+            <img src="{% static 'img/reset.png' %}" width="20px" height="20px" alt="">
             </button>
         </div>
     </div>
@@ -35,6 +36,8 @@
         <button type="button" id="fourth" onclick="fourth_click()" value=""></button>
         <button type="button" id="fifth" onclick="fifth_click()" value=""></button>
     </div>
+    <span style='font-size: 13px; float: right; padding-right: 12px'>※ 해당 지역에 매물이 없는 경우도 있습니다! </span>
+    <hr>
     <div id="mamuldiv"></div>
     <div>
 
