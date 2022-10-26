@@ -5,6 +5,31 @@
     z-index: 1;
 }
 
+#mambtn{
+    position: absolute;
+    z-index: 3;
+    right: 20px;
+    bottom: 20px;
+}
+
+#show_mamul{
+    border-radius: 15px;
+    background: white;
+    border-color: royalblue;
+    color: royalblue;
+    font-weight: 700;
+    height: 40px;
+}
+
+#hide_mamul{
+    border-radius: 15px;
+    background: royalblue;
+    border-color: royalblue;
+    color: white;
+    font-weight: 700;
+    height: 40px;
+}
+
 .area {
     position: absolute;
     width: 70px;

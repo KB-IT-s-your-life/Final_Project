@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 
 {% block css %}
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/map.css' %}"/>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/map.css' %}"/>
 {% endblock css %}
+
+{% block body %}
+<div id='mambtn'>
+	<button id="show_mamul" onclick='showCluster()'>전체매물</button>
+    <button id="hide_mamul" onclick='hideCluster()'>전체매물</button>
+</div>
+{% endblock body %}
 
 {% block sidebar_mamul %}{% endblock sidebar_mamul %}
 
 {% block map %}
-  <div id="map"></div>
+	<div id="map"></div>
 {% endblock map %}
 
 {% block mapscript %}
-  {% load static %}
-  <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/all_mamul.js' %}"></script>
 {% endblock mapscript %}
 
 {% block js %}{% endblock js %}

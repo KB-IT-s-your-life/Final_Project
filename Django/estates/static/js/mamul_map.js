@@ -110,6 +110,7 @@ function showMarkers() {
 function hideMarkers() {
     $('#hide_facil').hide()
     $('#show_facil').show()
+    $('#sidebar').hide()
     $('#facilities').hide()
     $('#mamulbar').show()
     
