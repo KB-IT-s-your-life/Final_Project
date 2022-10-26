@@ -22,7 +22,7 @@ var temp_gu = [];
 var main_x = 0.0;
 var main_y = 0.0;
 
-var temp_dong2 = '';
+var temp_dong2 = '';    
 
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     mapOption = {
@@ -103,6 +103,7 @@ function showMarkers() {
 }
 
 function hideMarkers() {
+    // $('#facilities').hide()
     setMarkers(null);
 }
 

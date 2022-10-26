@@ -1,3 +1,7 @@
+span{
+    font-size: 16px;
+}
+
 .pageHead {
     width: 100%;
     height: 56px;
@@ -42,11 +46,21 @@ legend{
     justify-content: space-around;
 }
 
+.custom-control-label::before, 
+.custom-control-label::after {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
 #charter{
     display: none;
 }
 #monthly{
     display: none;
+}
+
+#regionchoice_val {
+    margin-left: 20px;
 }
 
 .area {
@@ -275,6 +289,19 @@ legend{
 #mapimg{
     padding-left: 15%;
     width: 330px;
+}
+
+#reset{
+    border-radius: 8px !important;
+    border: 1px white;
+    margin: 6px;
+    letter-spacing: -.5px;
+    background: #777777;
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
+    color: #fff;
+    font-size: 16px;
+    width: 70px;
+    height: 30px;
 }
 
 .btn_gu{

@@ -8,13 +8,9 @@ var lei = new Chart(document.getElementById("bar-chart-horizontal leisure"))
 var sho = new Chart(document.getElementById("bar-chart-horizontal shop"))
 var mar = new Chart(document.getElementById("bar-chart-horizontal mart"))
 var res = new Chart(document.getElementById("bar-chart-horizontal restaurant"))
+var temp_plot = '';
 
-
-function facilities_click_change(dong) {
-    $("#facilities").show();
-    $("#mamulbar").hide();
-    $("#subplot_btn").show();
-
+function clear() {
     pie.destroy()
     tra.destroy()
     tre.destroy()
@@ -24,8 +20,16 @@ function facilities_click_change(dong) {
     sho.destroy()
     mar.destroy()
     res.destroy()
+}
 
-    $.ajax({
+function facilities_click_change(dong) {
+    $("#facilities").show();
+    $("#mamulbar").hide();
+    $("#subplot_btn").show();
+
+    if (temp_plot != dong) {
+        clear()
+        $.ajax({
         type:'get',
         url: '/estates/getfacilities?title='+dong,
         dateType: 'json',
@@ -256,7 +260,11 @@ function facilities_click_change(dong) {
                 }
             });
         } // callback
-    })
+        })
+    }
+    else {
+        clear()
+    }
 }
 
 var traffic = document.getElementById('btn_traffic')

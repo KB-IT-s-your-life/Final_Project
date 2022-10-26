@@ -1,40 +1,3 @@
-/* .customoverlay{
-    padding-left: 25px;
-    position: relative;
-    width: 95px;
-    height: 30px;
-    font-size: 5px;
-    font-weight: bold;
-    background-color: white;
-    color: rgb(17, 135, 207);
-    border: 1px solid rgb(17, 135, 207);
-    border-radius: 30px;
-    
-}
-.title{
-    text-align: center;
-    line-height: 26px;
-    width: 35%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgb(17, 135, 207);
-    color: white;
-    border-radius: 30px;
-    border: 2px solid rgb(17, 135, 207);
-    position: absolute;
-    white-space: nowrap;
-}
-.customoverlay:hover .title{
-    background-color: white;
-    color: rgb(17, 135, 207);
-} */
-/* .dong_{
-    margin-bottom: 0px;
-    padding: 8px;
-    margin-left: 5px;
-} */
-
 #svg-area {
     position: relative;
   }
@@ -59,8 +22,17 @@
 #facbtn{
     position: absolute;
     z-index: 3;
-    right: 0;
-    bottom: 0;
+    right: 20px;
+    bottom: 20px;
+}
+
+#facbtn button{
+border-radius: 15px;
+    background: white;
+    border-color: royalblue;
+    color: royalblue;
+    font-weight: 700;
+    height: 30px;
 }
 
 .listname {

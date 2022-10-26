@@ -119,7 +119,7 @@
                             </button>
                         </div>
                         <div>
-                            <h5>TITLE</h5>
+                            <h3>인프라기반 부동산 서비스</h3>
                         </div>
                         <div></div>
                     </div>
@@ -147,7 +147,7 @@
                                             </div>
                                         </div>
                                         <fieldset>
-                                            <h5>※ 인프라에 따라 중요도를 설정하세요!</h5>
+                                            <h4>※ 인프라에 따라 중요도를 설정하세요!</h4>
                                             <p></p>
                                     <div class="form-group">
                                         <div style = "width:180px">
@@ -159,7 +159,7 @@
                                             <input
                                                 type="range"
                                                 class="slider_range"
-                                                id="Range_medical"⍰
+                                                id="Range_medical"
                                                 value="5"
                                                 min="0"
                                                 max="10"
@@ -178,7 +178,7 @@
                                                 <option value="9"></option> {% endcomment %}
                                                 <option value="10"></option>
                                             </datalist>
-                                            <p>중요도: <span id="val_medical"></span></p>
+                                            <p>중요도: <span id="val_medical">5</span></p>
                                             <script>
                                                 var result_medical = $("#val_medical");
                                                 var slider_medical = $("#Range_medical");
@@ -202,7 +202,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_facility"></span></p>
+                                            <p>중요도: <span id="val_facility">5</span></p>
                                             <script>
                                                 var result_security = $("#val_facility");
                                                 var slider_security = $("#Range_facility");
@@ -227,7 +227,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_convenient"></span></p>
+                                            <p>중요도: <span id="val_convenient">5</span></p>
                                             <script>
                                                 var result_shopping = $("#val_convenient");
                                                 var slider_shopping = $("#Range_convenient");
@@ -250,7 +250,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_leisure"></span></p>
+                                            <p>중요도: <span id="val_leisure">5</span></p>
                                             <script>
                                                 var result_market = $("#val_leisure");
                                                 var slider_market = $("#Range_leisure");
@@ -276,7 +276,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_restaurant"></span></p>
+                                            <p>중요도: <span id="val_restaurant">5</span></p>
                                             <script>
                                                 var result_convenient =
                                                     $("#val_restaurant");
@@ -302,7 +302,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_traffic"></span></p>
+                                            <p>중요도: <span id="val_traffic">5</span></p>
                                             <script>
                                                 var result_leisure = $("#val_traffic");
                                                 var slider_leisure = $("#Range_traffic");
@@ -328,7 +328,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_fastfood"></span></p>
+                                            <p>중요도: <span id="val_fastfood">5</span></p>
                                             <script>
                                                 var result_oil = $("#val_fastfood");
                                                 var slider_oil = $("#Range_fastfood");
@@ -352,7 +352,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_cafe"></span></p>
+                                            <p>중요도: <span id="val_cafe">5</span></p>
                                             <script>
                                                 var result_park = $("#val_cafe");
                                                 var slider_park = $("#Range_cafe");
@@ -378,7 +378,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_market"></span></p>
+                                            <p>중요도: <span id="val_market">5</span></p>
                                             <script>
                                                 var result_restaurant =
                                                     $("#val_market");
@@ -404,7 +404,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>중요도: <span id="val_shopping"></span></p>
+                                            <p>중요도: <span id="val_shopping">5</span></p>
                                             <script>
                                                 var result_traffic = $("#val_shopping");
                                                 var slider_traffic = $("#Range_shopping");
@@ -426,9 +426,9 @@
                             <!-- 매물 조건 -->
                             <div class="myhomeCont">
                                 <div id="next_sidebar" style="display: none;">
-                                    <h5 style="white-space: nowrap">
+                                    <h4 style="white-space: nowrap">
                                         ※ 희망하는 매물의 조건과 가격을 고르세요!
-                                    </h5>
+                                    </h4>
                                     <p></p>
                                     <div class="Check">
                                         <div
@@ -442,6 +442,7 @@
                                             <label
                                                 class="custom-control-label"
                                                 for="charterCheck"
+                                                style="font-size: 17px; padding-left: 7px; font-weight: 500"
                                                 >전세</label
                                             >
                                         </div>
@@ -456,6 +457,7 @@
                                             <label
                                                 class="custom-control-label"
                                                 for="monthlyCheck"
+                                                style="font-size: 17px; padding-left: 7px; font-weight: 500"
                                                 >월세</label
                                             >
                                         </div>
@@ -856,14 +858,16 @@
                             <hr>
                             <div class="myhomeCont">
                                 <div id='regionchoice' style="display: none;">
-                                    <h5 style="white-space: nowrap">
+                                    <h4 style="white-space: nowrap">
                                         ※ 직장의 위치를 구/동 단위까지 골라주세요!
-                                    </h5>
+                                    </h3>
                                     <p></p>
-                                    <span padding-left: "11px">선택한 지역:</span>
-                                    <span id='showregion'></span>
-                                    <span id='showregion_dong'></span>
-                                    <button type='button' id='reset'>초기화</button>
+                                    <div id='regionchoice_val'>
+                                        <span padding-left: "11px">선택한 지역:</span>
+                                        <span id='showregion'></span>
+                                        <span id='showregion_dong'></span>
+                                        <button type='button' id='reset'>초기화</button>
+                                    </div>
                                     <p></p>
                                     <div id="btn-gubox">
                                     <button type='button' class="btn_gu" value='강남구'>
@@ -1002,7 +1006,7 @@
                         <canvas id="pie-chart"></canvas>
                         <p></p>
                         <div id='subplot_btn'>
-                            <h5>※ 상세히 보고 싶은 분류를 선택하세요.</h5>
+                            <h4>※ 상세히 보고 싶은 분류를 선택하세요.</h4>
                             <div id="btn1">
                                 <button id='btn_traffic'>교통</button>
                                 <button id='btn_treatment'>의료</button>

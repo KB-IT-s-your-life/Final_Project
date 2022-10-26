@@ -36,3 +36,17 @@
     display: flex;
     justify-content: space-between;
 }
+
+#btn_traffic, #btn_treatment, #btn_welfare, #btn_facilities, #btn_leisure, #btn_shop, #btn_mart, #btn_restaurant {
+    border-radius: 8px !important;
+    border: 1px white;
+    margin: 3px;
+    letter-spacing: -.5px;
+    background: #777777;
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
+    color: #fff;
+    font-size: 16px;
+    height: 31px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
