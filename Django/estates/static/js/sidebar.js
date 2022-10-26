@@ -461,7 +461,7 @@ $(function () {
             localStorage.setItem('choose_dong', company[1]);
 
         }); //submit
-
+        
         $("#charterCheck").click(function () {
             if ($(this).is(":checked")) {
                 $("#charter").show();
@@ -536,6 +536,9 @@ $(function () {
         $('#showregion_dong').empty();
 
         company = [];
+    })
+    $(function () {
+        $('[data-toggle="popover"]').popover()
     })
 });
 
