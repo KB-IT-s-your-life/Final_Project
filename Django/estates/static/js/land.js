@@ -1,15 +1,13 @@
-let mainText = document.querySelector('.main_txt'); //h1태그를 선택
-let mainimg = document.querySelector('.photo'); //h1태그를 선택
-let target = document.querySelector("#dynamic");
-let search = document.querySelector(".wrap_typing");
-let tedri = document.querySelector(".tedri");
+let mainText = document.querySelector('.main_txt'); //인프라
+let sub_txt = document.querySelector(".sub_txt");
 let button_index = document.querySelector(".button_index");
-let photo1 = document.querySelector(".photo");
+
+let target = document.querySelector("#dynamic");
 
 
 let mainText1 = document.querySelector('.main_txt1'); //두번쨰 화면
 let main_txt2 = document.querySelector('.main_txt2');
-
+let photo1 = document.querySelector("#photo");
 
 function randomString(){
     let stringArr = ["음식점 많은 게 좋아", "집 근처에 장보는 시설이 많았으면..", "카페가 많은 게 좋아","운동을 좋아해서 헬스장 있었으면 해","버스정류장이 많았으면 좋겠어"];
@@ -43,33 +41,31 @@ function blink(){
 }
 setInterval(blink,500);
 
-mainText.style.animation='text_slide 1s ease-out forwards';
-search.style.animation='text_slide 1s ease-out forwards';
-tedri.style.animation='text_slide 1s ease-out forwards';
-button_index.style.animation='text_slide 1s ease-out forwards';
+mainText.style.animation='main_slide 1s ease-out forwards';
+sub_txt.style.animation='main_slide 1s ease-out forwards';
+button_index.style.animation='main_slide 1s ease-out forwards';
+
 
 window.addEventListener('scroll',function(){ //스크롤 되면
     let value = window.scrollY;   //스크롤될때마다 y좌표 들고오기
     console.log("scrollY",value); 
 
     if(value>130){
-        mainText.style.animation='text_disappear 1s ease-out forwards';
+        mainText.style.animation='main_disappear 1s ease-out forwards';
         // mainimg.style.animation='img_disappear 1s ease-out forwards';
-        search.style.animation='text_disappear 1s ease-out forwards';
-        tedri.style.animation='text_disappear 1s ease-out forwards';
-        button_index.style.animation='text_disappear 1s ease-out forwards';
+        sub_txt.style.animation='main_disappear 1s ease-out forwards';
+        button_index.style.animation='main_disappear 1s ease-out forwards';
         
     } /*forwards는 계속사라지게*/
     else{
-        mainText.style.animation='text_slide 1s ease-out forwards';
+        mainText.style.animation='main_slide 1s ease-out forwards';
         // mainimg.style.animation='img_slide 1s ease-out forwards';
-        search.style.animation='text_slide 1s ease-out forwards';
-        tedri.style.animation='text_slide 1s ease-out forwards';
-        button_index.style.animation='text_slide 1s ease-out forwards';
+        sub_txt.style.animation='main_slide 1s ease-out forwards';
+        button_index.style.animation='main_slide 1s ease-out forwards';
 
     }
 
-    if(value < 500 | value > 1300){
+    if(value < 700 | value > 1500){
         mainText1.style.animation='text_disappear 1.5s ease-out forwards';
         main_txt2.style.animation='text_disappear 1.5s ease-out forwards';
         photo1.style.animation='img_disappear 1.5s ease-out forwards';
