@@ -60,21 +60,15 @@ em{
     border-radius: 10px;
     text-shadow: 2px 2px 6px #000;
     margin-top: 5%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .button_index:hover {
+    color: rgb(255,255,255,0.9);
+    text-shadow: 2px 2px 6px #000;
+  }
 
 
 .main_txt1{
