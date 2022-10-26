@@ -9,16 +9,18 @@
             rel="stylesheet"
             href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
         />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
         <script
             type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=219025cfba1979327f3c84484d93245a&libraries=clusterer"
-        ></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            ></script>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="{% static 'css/base.css' %}" />
         <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/facilities.css' %}">
@@ -126,10 +128,10 @@
                             <div id="first_sidebar">
                                 <div class="myhomeCont">
                                         <div class="noti-wrap">
-                                            <strong><div style="margin-top:5px; margin-bottom:20px;"><span 
+                                            <strong><div style="margin-top:5px; margin-bottom:10px;"><span 
                                                 style ='color:#000; 
                                                 font-weight:600; 
-                                                font-size:28px;'
+                                                font-size:25px;'
                                                 >
                                                 나에게 딱 맞는 동네 찾기
                                             </span></div></strong>
@@ -148,13 +150,16 @@
                                             <h5>※ 인프라에 따라 중요도를 설정하세요!</h5>
                                             <p></p>
                                     <div class="form-group">
-                                        <div>
-                                            <p>의료시설</p>
+                                        <div style = "width:180px">
+                                            
+                                            <span>의료시설</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*지역 내 병원 의원 약국 개수"></img>
+                                            
                                             <p></p>
                                             <input
                                                 type="range"
                                                 class="slider_range"
-                                                id="Range_medical"
+                                                id="Range_medical"⍰
                                                 value="5"
                                                 min="0"
                                                 max="10"
@@ -162,18 +167,18 @@
                                                 list="tickmarks" 
                                             />
                                             <datalist id="tickmarks">
-                                                <option value="1"></option>
-                                                <option value="2"></option>
+                                                <option value="0"></option>
+                                                {% comment %} <option value="2"></option>
                                                 <option value="3"></option>
-                                                <option value="4"></option>
+                                                <option value="4"></option> {% endcomment %}
                                                 <option value="5"></option>
-                                                <option value="6"></option>
+                                                {% comment %} <option value="6"></option>
                                                 <option value="7"></option>
                                                 <option value="8"></option>
-                                                <option value="9"></option>
+                                                <option value="9"></option> {% endcomment %}
                                                 <option value="10"></option>
                                             </datalist>
-                                            <p>Value: <span id="val_medical"></span></p>
+                                            <p>중요도: <span id="val_medical"></span></p>
                                             <script>
                                                 var result_medical = $("#val_medical");
                                                 var slider_medical = $("#Range_medical");
@@ -182,8 +187,10 @@
                                                 });
                                             </script>
                                         </div>
-                                        <div>
-                                            <p>생활복지시설</p>
+                                        <div style = "width:180px">
+                                            <span>생활복지시설</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*경찰서 소방서 등 관공서 개수"></img>
+
                                             <p></p>
                                             <input
                                                 type="range"
@@ -195,7 +202,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_facility"></span></p>
+                                            <p>중요도: <span id="val_facility"></span></p>
                                             <script>
                                                 var result_security = $("#val_facility");
                                                 var slider_security = $("#Range_facility");
@@ -206,8 +213,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div>
-                                            <p>생활편의시설</p>
+                                        <div style = "width:180px">
+                                            <span>생활편의시설</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*세탁소 등 생활 편의시설의 개수"></img>
                                             <p></p>
                                             <input
                                                 type="range"
@@ -219,7 +227,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_convenient"></span></p>
+                                            <p>중요도: <span id="val_convenient"></span></p>
                                             <script>
                                                 var result_shopping = $("#val_convenient");
                                                 var slider_shopping = $("#Range_convenient");
@@ -228,8 +236,9 @@
                                                 });
                                             </script>
                                         </div>
-                                        <div>
-                                            <p>여가</p>
+                                        <div style = "width:180px">
+                                            <span>여가</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*박물관, 헬스장 등 여가생활 시설의 개수"></img>
                                             <p></p>
                                             <input
                                                 type="range"
@@ -241,7 +250,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_leisure"></span></p>
+                                            <p>중요도: <span id="val_leisure"></span></p>
                                             <script>
                                                 var result_market = $("#val_leisure");
                                                 var slider_market = $("#Range_leisure");
@@ -252,8 +261,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div>
-                                            <p>음식점</p>
+                                        <div style = "width:180px">
+                                            <span>음식점</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*한식,중식 등 일반음식점 개수"></img>
+
                                             <p></p>
                                             <input
                                                 type="range"
@@ -265,7 +276,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_restaurant"></span></p>
+                                            <p>중요도: <span id="val_restaurant"></span></p>
                                             <script>
                                                 var result_convenient =
                                                     $("#val_restaurant");
@@ -276,8 +287,10 @@
                                                 });
                                             </script>
                                         </div>
-                                        <div>
-                                            <p>교통</p>
+                                        <div style = "width:180px">
+                                            <span>교통</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*지하철역과 버스정류장 개수"></img>
+
                                             <p></p>
                                             <input
                                                 type="range"
@@ -289,7 +302,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_traffic"></span></p>
+                                            <p>중요도: <span id="val_traffic"></span></p>
                                             <script>
                                                 var result_leisure = $("#val_traffic");
                                                 var slider_leisure = $("#Range_traffic");
@@ -300,8 +313,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div>
-                                            <p>패스트푸드</p>
+                                        <div style = "width:180px">
+                                            <span>패스트푸드</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*패스트푸드점 개수"></img>
+
                                             <p></p>
                                             <input
                                                 type="range"
@@ -313,7 +328,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_fastfood"></span></p>
+                                            <p>중요도: <span id="val_fastfood"></span></p>
                                             <script>
                                                 var result_oil = $("#val_fastfood");
                                                 var slider_oil = $("#Range_fastfood");
@@ -322,8 +337,10 @@
                                                 });
                                             </script>
                                         </div>
-                                        <div>
-                                            <p>카페</p>
+                                        <div style = "width:180px">
+                                            <span>카페</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*지역 내 카페 개수"></img>
+
                                             <p></p>
                                             <input
                                                 type="range"
@@ -335,7 +352,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_cafe"></span></p>
+                                            <p>중요도: <span id="val_cafe"></span></p>
                                             <script>
                                                 var result_park = $("#val_cafe");
                                                 var slider_park = $("#Range_cafe");
@@ -346,8 +363,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div>
-                                            <p>장보기</p>
+                                        <div style = "width:180px">
+                                            <span>장보기</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*대형마트, 시장 등 장보기시설 개수"></img>
+
                                             <p></p>
                                             <input
                                                 type="range"
@@ -359,7 +378,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_market"></span></p>
+                                            <p>중요도: <span id="val_market"></span></p>
                                             <script>
                                                 var result_restaurant =
                                                     $("#val_market");
@@ -370,8 +389,10 @@
                                                 });
                                             </script>
                                         </div>
-                                        <div>
-                                            <p>쇼핑</p>
+                                        <div style = "width:180px">
+                                            <span>쇼핑</span>
+                                            <img src="{% static 'img/question.png' %}" style="margin-bottom:2px"width ="13px" opacity = "1" data-toggle="popover" data-content="*백화점, 쇼핑센터 등 쇼핑시설 개수"></img>
+
                                             <p></p>
                                             <input
                                                 type="range"
@@ -383,7 +404,7 @@
                                                 step="1" 
                                                 list="tickmarks" 
                                             />
-                                            <p>Value: <span id="val_shopping"></span></p>
+                                            <p>중요도: <span id="val_shopping"></span></p>
                                             <script>
                                                 var result_traffic = $("#val_shopping");
                                                 var slider_traffic = $("#Range_shopping");
@@ -839,7 +860,7 @@
                                         ※ 직장의 위치를 구/동 단위까지 골라주세요!
                                     </h5>
                                     <p></p>
-                                    <span>선택한 지역:</span>
+                                    <span padding-left: "11px">선택한 지역:</span>
                                     <span id='showregion'></span>
                                     <span id='showregion_dong'></span>
                                     <button type='button' id='reset'>초기화</button>

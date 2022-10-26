@@ -13,7 +13,7 @@
 .noti-wrap {
     padding-left: 10px;
     padding-top: 20px;
-    padding-bottom: 80px;
+    padding-bottom: 10px;
 }
 .myhomeCont {
     padding: 16px;
@@ -34,6 +34,7 @@ legend{
 .form-group{
     display: flex;
     justify-content: space-around;
+    margin-bottom:3%
 }
 
 .Check{
@@ -272,8 +273,8 @@ legend{
 }
 
 #mapimg{
-    padding-left: 10%;
-    width: 325px;
+    padding-left: 15%;
+    width: 330px;
 }
 
 .btn_gu{
@@ -304,4 +305,36 @@ legend{
 }
 input[type=radio] {
     display:none;
+}
+
+#nextbutton{
+    float: right;
+    margin-right: 43px;
+}
+
+.form-group .slider_range{
+    width: 85%;
+}
+
+/* Popover */
+/* .popover {
+border: 1px rgb(0, 0, 0);
+} */
+/* Popover Header */
+.popover-title {
+background-color: #73AD21; 
+color: #FFFFFF; 
+font-size: 28px;
+text-align:center;
+}
+/* Popover Body */
+.popover-content {
+background-color: rgb(255, 255, 255);
+color: black;
+padding: 3px;
+font-size: 13px;
+}
+/* Popover Arrow */
+.arrow {
+border-right-color: rgb(255, 255, 255) !important;
 }
