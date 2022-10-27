@@ -8,8 +8,8 @@
 
 {% block body %}
 <div id='mambtn'>
-	<button id="show_mamul">전체매물</button>
-    <button id="hide_mamul">전체매물</button>
+	<button id="show_mamul">매물보이기</button>
+    <button id="hide_mamul">매물숨기기</button>
 </div>
 {% endblock body %}
 
@@ -48,4 +48,8 @@
 	<script type="text/javascript" src="{% static 'js/mamul.js' %}"></script>
 {% endblock mapscript %}
 
-{% block js %}{% endblock js %}
+{% block js %}
+	<script>
+		$('#sidebar').show()
+	</script>
+{% endblock js %}
