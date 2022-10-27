@@ -37,9 +37,13 @@
     min-height: 120vh;
 }
 
+.kb{
+    font-size: 7em;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
 .main_txt{
     font-size: 5em;
-    /* width: 1200px;  글자 가로폭조정 */
     color: white;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
@@ -123,6 +127,7 @@ em{
 #photo{
     width: 110%;
     height: 100%;
+    filter: drop-shadow(5px 5px 20px #000);
 }
 
 

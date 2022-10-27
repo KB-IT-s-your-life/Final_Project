@@ -1,4 +1,5 @@
 let mainText = document.querySelector('.main_txt'); //인프라
+let kbText = document.querySelector('.kb'); //인프라
 let sub_txt = document.querySelector(".sub_txt");
 let button_index = document.querySelector(".button_index");
 
@@ -42,6 +43,7 @@ function blink(){
 setInterval(blink,500);
 
 mainText.style.animation='main_slide 1s ease-out forwards';
+kbText.style.animation='main_slide 1s ease-out forwards';
 sub_txt.style.animation='main_slide 1s ease-out forwards';
 button_index.style.animation='main_slide 1s ease-out forwards';
 
@@ -52,6 +54,7 @@ window.addEventListener('scroll',function(){ //스크롤 되면
 
     if(value>130){
         mainText.style.animation='main_disappear 1s ease-out forwards';
+        kbText.style.animation='main_disappear 1s ease-out forwards';
         // mainimg.style.animation='img_disappear 1s ease-out forwards';
         sub_txt.style.animation='main_disappear 1s ease-out forwards';
         button_index.style.animation='main_disappear 1s ease-out forwards';
@@ -59,6 +62,7 @@ window.addEventListener('scroll',function(){ //스크롤 되면
     } /*forwards는 계속사라지게*/
     else{
         mainText.style.animation='main_slide 1s ease-out forwards';
+        kbText.style.animation='main_slide 1s ease-out forwards';
         // mainimg.style.animation='img_slide 1s ease-out forwards';
         sub_txt.style.animation='main_slide 1s ease-out forwards';
         button_index.style.animation='main_slide 1s ease-out forwards';
