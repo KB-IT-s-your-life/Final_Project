@@ -4,14 +4,23 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                 level: 9, // 지도의 확대 레벨
             };
 
+var map = new kakao.maps.Map(mapContainer, mapOption),
+        customOverlay = new kakao.maps.CustomOverlay({}),
+        infowindow = new kakao.maps.InfoWindow({ removable: true });
+//var map2 = new kakao.maps.Map(mapContainer, mapOption);
+
+var clusterer_index = new kakao.maps.MarkerClusterer({
+                            map: map, 
+                            averageCenter: true,
+                            minLevel: 1, 
+                            disableClickZoom: true,
+});
+
         home();
 
         function home() {
             $("#sidebar").hide();
             $("#facilities").hide();
-            var map = new kakao.maps.Map(mapContainer, mapOption),
-                customOverlay = new kakao.maps.CustomOverlay({}),
-                infowindow = new kakao.maps.InfoWindow({ removable: true });
             var x_positions = [];
             var y_positions = [];
             var dong_names = [];
@@ -192,4 +201,60 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
                 // 지도의 현재 레벨을 얻어옵니다
                 var level = map.getLevel();
             });
+
+            var index_x = [];
+            var index_y = [];
+            var index_title = [];
+            var markers = [];
+
+            $.ajax({
+                type: "get",
+                url: "/estates/getallindexlatlng",
+                dateType: "json",
+                async: false,
+                success: function (jsonData) {
+                    $.each(jsonData, function (index, item) {
+                        // alert(item.length);
+                        
+        
+                        for (i = 0; i < item.length; i++) {
+                            index_x.push(item[i].x);
+                            index_y.push(item[i].y);
+                            index_title.push(item[i].id);
+                            // 마커 이미지의 이미지 크기 입니다
+                            var imageSize = new kakao.maps.Size(24, 35);
+        
+                            var imageSrc =
+                                "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+                            // 마커 이미지를 생성합니다
+                            var markerImage = new kakao.maps.MarkerImage(
+                                imageSrc,
+                                imageSize
+                            );
+        
+                            // 마커를 생성합니다
+                            var marker = new kakao.maps.Marker({
+                                position: new kakao.maps.LatLng(index_x[i], index_y[i]), 
+                                index_title: index_title[i],
+                            }); //마커
+                            kakao.maps.event.addListener(marker, "click", function () {
+                                $('#mamuldiv').show()
+                                mamul_click_marker(this);
+                            });
+                            markers.push(marker);
+                            } //for문
+                            clusterer_index.addMarkers(markers);
+                            }); //each문
+                            kakao.maps.event.addListener(
+                                clusterer_index,
+                                "clusterclick",
+                            function (cluster) {
+                            $('#mamuldiv').show()
+                            mamul_click_info(cluster);
+                            } //function cluster
+                        ); // addlistener
+                        clusterer_index.setMap(null);
+                    }, // success
+            }); //  ajax
+
         }
