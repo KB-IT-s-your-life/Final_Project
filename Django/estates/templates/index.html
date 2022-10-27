@@ -3,6 +3,7 @@
 {% block css %}
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'css/map.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/mamul.css' %}"/>
 {% endblock css %}
 
 {% block body %}
@@ -12,7 +13,30 @@
 </div>
 {% endblock body %}
 
-{% block sidebar_mamul %}{% endblock sidebar_mamul %}
+
+
+{% block sidebar_mamul %}
+	<div class = "pageHead">
+		<div>
+			<button
+				type="button"
+				class="btn btn-pageback"
+				id="mamulbarClose"
+				style= 'float: left'
+			>
+			<span style = 'font-size: 25px;'>〈</span>
+			</button>
+		</div>
+	</div>
+	<div id="pagehead">
+		<h4 style="margin-right: 8%;"> 매물을 클릭하여 확인하세요!</h4>
+	</div>
+    <hr>
+	<div id="mamuldiv"></div>
+	<div>
+
+	</div>
+{% endblock sidebar_mamul %}
 
 {% block map %}
 	<div id="map"></div>
@@ -21,6 +45,7 @@
 {% block mapscript %}
 	{% load static %}
 	<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/mamul.js' %}"></script>
 {% endblock mapscript %}
 
 {% block js %}{% endblock js %}

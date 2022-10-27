@@ -118,7 +118,6 @@
                                 type="button"
                                 class="btn btn-pageback"
                                 id="sidebarClose"
-                                onclick="sidebar_click()"
                                 style= 'float: left'
                             >
                             <span style = 'font-size: 25px;'>〈</span>
@@ -1011,6 +1010,23 @@
                 </div>
                 <!-- 편의시설 facilitiesbar 구성 -->
                 <div id="facilities">
+                    <div class = "pageHead">
+                        <div>
+                            <button
+                                type="button"
+                                class="btn btn-pageback"
+                                id="facilitiesbarClose"
+                                style= 'float: left'
+                            >
+                            <span style = 'font-size: 25px;'>〈</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="pagehead">
+                        <h4 style="margin-right: 8%;"> 법정동에 따른 편의시설 현황</h4>
+                    </div>
+                    <div></div>
+                    <hr>
                     <p></p>
                     <div id='plot'>
                         <canvas id="pie-chart"></canvas>
@@ -1069,7 +1085,6 @@
                 <!-- 매물보기 sidebar_mamul 구성 -->
                 <div id="mamulbar">
                     {% block sidebar_mamul %}
-                    
                     {% endblock sidebar_mamul %}
                 </div>
                 <main>

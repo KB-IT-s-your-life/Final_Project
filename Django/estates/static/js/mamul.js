@@ -22,7 +22,7 @@ function mamul_click_marker(mark) {
         url: "/estates/getmamuls?pk=" + pk,
         dateType: "json",
         async: false,
-            success: function (jsonData) {
+        success: function (jsonData) {
                 var img1;
                 if(jsonData.mamuls.gunmulyongdo == "아파트"){
                     if(myeong1 == ""){
@@ -117,7 +117,8 @@ function mamul_click_marker(mark) {
                 }
 
                 
-                $("#mamuldiv").append(
+            $("#mamuldiv").append(
+                "<div class='div_mam'>" +
                     "<div class ='listname'>" +
                     "<span class = 'gunmulyongdo'>" +
                     jsonData.mamuls.gunmulyongdo +
@@ -172,7 +173,8 @@ function mamul_click_marker(mark) {
                     "</div>" +
                     "<div class = 'info_right'>" +
                     img1 +
-                    "</div>" + "<br>" + "<hr>"
+                    "</div>" +
+                "</div>"
                 );
             }, //callback
         }); //ajax
@@ -300,6 +302,7 @@ function mamul_click_info(mamul_detail) {
 
                 
                 $("#mamuldiv").append(
+                "<div class='div_mam'>" +
                     "<div class ='listname'>" +
                     "<span class = 'gunmulyongdo'>" +
                     jsonData.mamuls.gunmulyongdo +
@@ -354,7 +357,8 @@ function mamul_click_info(mamul_detail) {
                     "</div>" +
                     "<div class = 'info_right'>" +
                     img1 +
-                    "</div>" + "<br>" + "<hr>"
+                    "</div>" +
+                "</div><hr>"
                 );
             }, //callback
         }); //ajax
@@ -487,6 +491,7 @@ function junwallse_mamul_click_info(mamul_detail) {
 
                 
                 $("#mamuldiv").append(
+                "<div class='div_mam'>" +
                     "<div class ='listname'>" +
                     "<span class = 'gunmulyongdo'>" +
                     jsonData.mamuls.gunmulyongdo +
@@ -541,7 +546,7 @@ function junwallse_mamul_click_info(mamul_detail) {
                     "</div>" +
                     "<div class = 'info_right'>" +
                     img1 +
-                    "</div>" + "<br>" + "<hr>"
+                "</div></div><hr>"
                 );
             }, //callback
         }); //ajax

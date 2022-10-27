@@ -220,7 +220,7 @@ function home() {
                             // 마커를 생성합니다
                             var marker = new kakao.maps.Marker({
                                 position: new kakao.maps.LatLng(index_x[i], index_y[i]),
-                                index_title: index_title[i],
+                                title: index_title[i],
                             }); //마커)
                             kakao.maps.event.addListener(marker, "click", function () {
                                 $('#mamuldiv').show()
