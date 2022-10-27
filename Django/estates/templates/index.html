@@ -7,8 +7,8 @@
 
 {% block body %}
 <div id='mambtn'>
-	<button id="show_mamul" onclick='showCluster()'>전체매물</button>
-    <button id="hide_mamul" onclick='hideCluster()'>전체매물</button>
+	<button id="show_mamul">전체매물</button>
+    <button id="hide_mamul">전체매물</button>
 </div>
 {% endblock body %}
 
@@ -21,7 +21,6 @@
 {% block mapscript %}
 	{% load static %}
 	<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/all_mamul.js' %}"></script>
 {% endblock mapscript %}
 
 {% block js %}{% endblock js %}
