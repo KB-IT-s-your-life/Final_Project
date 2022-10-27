@@ -103,7 +103,7 @@ function facilities_click_change(dong) {
                     title: {
                         fontSize: 30,
                         display: true,
-                        text: fac[0] + ' 편의시설 수',
+                        text: fac[0] + ' 인프라 수',
                     }
                 }
             });
@@ -123,7 +123,7 @@ function facilities_click_change(dong) {
                     title: {
                     fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 교통 편의시설 수',
+                    text: fac[0] + ' 교통 시설 수',
                 }
                 }
             });
@@ -143,7 +143,7 @@ function facilities_click_change(dong) {
                     title: {
                     fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 의료 편의시설 수',
+                    text: fac[0] + ' 의료 시설 수',
                 }
                 }
             });
@@ -203,7 +203,7 @@ function facilities_click_change(dong) {
                     title: {
                     fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 여가 편의시설 수',
+                    text: fac[0] + ' 여가 시설 수',
                 }
                 }
             });
@@ -223,7 +223,7 @@ function facilities_click_change(dong) {
                     title: {
                     fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 쇼핑 편의시설 수',
+                    text: fac[0] + ' 쇼핑 시설 수',
                 }
                 }
             });
@@ -243,7 +243,7 @@ function facilities_click_change(dong) {
                 title: {
                     fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 마트 편의시설 수',
+                    text: fac[0] + ' 마트 시설 수',
                 }
                 }
             });
@@ -263,7 +263,7 @@ function facilities_click_change(dong) {
                     title: {
                     fontSize: 20,
                     display: true,
-                    text: fac[0] + ' 음식점 편의시설 수',
+                    text: fac[0] + ' 음식점 시설 수',
                 }
                 }
             });

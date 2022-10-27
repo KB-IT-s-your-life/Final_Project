@@ -13,21 +13,6 @@ sidebar.addEventListener('click', function(){
     }
 })
 
-var sidebar_cli = document.getElementById('sidebarClose');
-sidebar_cli.addEventListener('click', function(){
-    $("#sidebar").hide();
-})
-
-var facil_cli = document.getElementById('facilitiesbarClose');
-facil_cli.addEventListener('click', function(){
-    $("#facilities").hide();
-})
-
-var mamul_cli = document.getElementById('mamulbarClose');
-mamul_cli.addEventListener('click', function(){
-    $("#mamulbar").hide();
-})
-
 var facilities = document.getElementById('facilitiesToggle');
 facilities.addEventListener('click', function () {
     if ($("#facilities").css("display") == "none") {
@@ -56,4 +41,19 @@ mamul.addEventListener('click', function () {
     } else {
         $("#mamulbar").hide();
     }
+})
+
+var sidebar_cli = document.getElementById('sidebarClose');
+sidebar_cli.addEventListener('click', function(){
+    $("#sidebar").hide();
+})
+
+var facil_cli = document.getElementById('facilitiesbarClose');
+facil_cli.addEventListener('click', function(){
+    $("#facilities").hide();
+})
+
+var mamul_cli = document.getElementById('mamulbarClose');
+mamul_cli.addEventListener('click', function(){
+    $("#mamulbar").hide();
 })
