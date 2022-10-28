@@ -7,28 +7,28 @@
   + 웹 서비스 아키텍쳐  
   <img src = "src/1.PNG">
   + 기술 스택  
-  <img src = "src/2.png">
+  <img src = "src/2.PNG">
 # AI 모델
 ## 인프라 기반 거주지역 추천 모델 (Clustering)  
   + 데이터셋 - 서울시 공공데이터  
-  <img src = "src/5.png">
+  <img src = "src/5.PNG">
     + 전처리 - 구간호(Binning), 표준화(Standardization), 차원축소(PCA)  
-    <img src = "src/6.png">
+    <img src = "src/6.PNG">
   + 학습
       + KMeans
-      <img src = "src/7.png">
+      <img src = "src/7.PNG">
       + KNN을 통한 군집 추천
-      <img src = "src/8.png">
+      <img src = "src/8.PNG">
 ## 전월세 가격 예측 모델 (Regression)
   + 데이터셋 - 서울시 공공데이터
-  <img src = "src/9.png">
+  <img src = "src/9.PNG">
     + 전처리 - One-hot 인코딩
-    <img src = "src/10.png">
+    <img src = "src/10.PNG">
   + 학습
     + 전세 - Lasso
-    <img src = "src/11.png">
+    <img src = "src/11.PNG">
     + 월세 - Poly Elastic
-    <img src = "src/12.png">
+    <img src = "src/12.PNG">
 # 웹 서비스 개발
 
 ## 
