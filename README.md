@@ -38,6 +38,6 @@
 권혁준 : gurwns876@naver.com  
 김정훈 : junghun2581@naver.com  
 윤태호 : ice_98@naver.com  
-이수종 :   
+이수종 : tnwhd1547@naver.com  
 이정윤 :   
 정희원 : sheewons@naver.com**
