@@ -40,4 +40,4 @@
 윤태호 : ice_98@naver.com  
 이수종 : tnwhd1547@naver.com  
 이정윤 : ghfy124533@gmail.com
-정희원 : sheewons@naver.com**
+정희원 : sheewons@naver.com
