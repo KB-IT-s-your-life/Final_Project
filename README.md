@@ -34,7 +34,7 @@
 ## 
 - 💻 **https://youtu.be/--s3rMLrr3s**
 
-**- 📮  Contact us -  
+- 📮  **Contact us -  
 권혁준 : gurwns876@naver.com  
 김정훈 : junghun2581@naver.com  
 윤태호 : ice_98@naver.com  
